@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="gestion_membresiasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
+          <Property Name="telefono" Type="varchar" MaxLength="10" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="foto" Type="varchar" MaxLength="100" />
+          <Property Name="altura" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="peso" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="id_promocion_membresia" Type="int" />
+        </EntityType>
+        <EntityType Name="Membresias">
+          <Key>
+            <PropertyRef Name="id_membresia" />
+          </Key>
+          <Property Name="id_membresia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="costo" Type="money" Nullable="false" />
+          <Property Name="fecha_inicio" Type="date" Nullable="false" />
+          <Property Name="fecha_fin" Type="date" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Pago_diario">
+          <Key>
+            <PropertyRef Name="id_pago_diario" />
+          </Key>
+          <Property Name="id_pago_diario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="monto" Type="money" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Promociones">
+          <Key>
+            <PropertyRef Name="id_promocion" />
+          </Key>
+          <Property Name="id_promocion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="nchar" MaxLength="50" />
+          <Property Name="costo" Type="money" Nullable="false" />
+          <Property Name="fecha_inicio" Type="date" />
+          <Property Name="fecha_fin" Type="date" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="id_usuario" Type="int" />
+        </EntityType>
+        <EntityType Name="Promociones_membresias">
+          <Key>
+            <PropertyRef Name="id_promocion_membresia" />
+          </Key>
+          <Property Name="id_promocion_membresia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_promocion" Type="int" />
+          <Property Name="id_membresia" Type="int" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre_usuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="contraseña" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Cliente_Promociones_membresias">
+          <End Role="Promociones_membresias" Type="Self.Promociones_membresias" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promociones_membresias">
+              <PropertyRef Name="id_promocion_membresia" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_promocion_membresia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membresias_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Membresias" Type="Self.Membresias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Membresias">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_diario_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Pago_diario" Type="Self.Pago_diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Pago_diario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promociones_membresias_Membresias">
+          <End Role="Membresias" Type="Self.Membresias" Multiplicity="0..1" />
+          <End Role="Promociones_membresias" Type="Self.Promociones_membresias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membresias">
+              <PropertyRef Name="id_membresia" />
+            </Principal>
+            <Dependent Role="Promociones_membresias">
+              <PropertyRef Name="id_membresia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promociones_membresias_Promociones">
+          <End Role="Promociones" Type="Self.Promociones" Multiplicity="0..1" />
+          <End Role="Promociones_membresias" Type="Self.Promociones_membresias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promociones">
+              <PropertyRef Name="id_promocion" />
+            </Principal>
+            <Dependent Role="Promociones_membresias">
+              <PropertyRef Name="id_promocion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promociones_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Promociones" Type="Self.Promociones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Promociones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gestion_membresiasModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Membresias" EntityType="Self.Membresias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pago_diario" EntityType="Self.Pago_diario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promociones" EntityType="Self.Promociones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promociones_membresias" EntityType="Self.Promociones_membresias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cliente_Promociones_membresias" Association="Self.FK_Cliente_Promociones_membresias">
+            <End Role="Promociones_membresias" EntitySet="Promociones_membresias" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membresias_Usuario" Association="Self.FK_Membresias_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Membresias" EntitySet="Membresias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_diario_Usuario" Association="Self.FK_Pago_diario_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pago_diario" EntitySet="Pago_diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promociones_membresias_Membresias" Association="Self.FK_Promociones_membresias_Membresias">
+            <End Role="Membresias" EntitySet="Membresias" />
+            <End Role="Promociones_membresias" EntitySet="Promociones_membresias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promociones_membresias_Promociones" Association="Self.FK_Promociones_membresias_Promociones">
+            <End Role="Promociones" EntitySet="Promociones" />
+            <End Role="Promociones_membresias" EntitySet="Promociones_membresias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promociones_Usuario" Association="Self.FK_Promociones_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Promociones" EntitySet="Promociones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gestion_membresiasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id_cliente" />
+          </Key>
+          <Property Name="id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="altura" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="peso" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="id_promocion_membresia" Type="Int32" />
+          <NavigationProperty Name="Promociones_membresias" Relationship="Self.FK_Cliente_Promociones_membresias" FromRole="Cliente" ToRole="Promociones_membresias" />
+        </EntityType>
+        <EntityType Name="Membresias">
+          <Key>
+            <PropertyRef Name="id_membresia" />
+          </Key>
+          <Property Name="id_membresia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Membresias_Usuario" FromRole="Membresias" ToRole="Usuario" />
+          <NavigationProperty Name="Promociones_membresias" Relationship="Self.FK_Promociones_membresias_Membresias" FromRole="Membresias" ToRole="Promociones_membresias" />
+        </EntityType>
+        <EntityType Name="Pago_diario">
+          <Key>
+            <PropertyRef Name="id_pago_diario" />
+          </Key>
+          <Property Name="id_pago_diario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Pago_diario_Usuario" FromRole="Pago_diario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Promociones">
+          <Key>
+            <PropertyRef Name="id_promocion" />
+          </Key>
+          <Property Name="id_promocion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="id_usuario" Type="Int32" />
+          <NavigationProperty Name="Promociones_membresias" Relationship="Self.FK_Promociones_membresias_Promociones" FromRole="Promociones" ToRole="Promociones_membresias" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Promociones_Usuario" FromRole="Promociones" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Promociones_membresias">
+          <Key>
+            <PropertyRef Name="id_promocion_membresia" />
+          </Key>
+          <Property Name="id_promocion_membresia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_promocion" Type="Int32" />
+          <Property Name="id_membresia" Type="Int32" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Promociones_membresias" FromRole="Promociones_membresias" ToRole="Cliente" />
+          <NavigationProperty Name="Membresias" Relationship="Self.FK_Promociones_membresias_Membresias" FromRole="Promociones_membresias" ToRole="Membresias" />
+          <NavigationProperty Name="Promociones" Relationship="Self.FK_Promociones_membresias_Promociones" FromRole="Promociones_membresias" ToRole="Promociones" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id_usuario" />
+          </Key>
+          <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="Membresias" Relationship="Self.FK_Membresias_Usuario" FromRole="Usuario" ToRole="Membresias" />
+          <NavigationProperty Name="Pago_diario" Relationship="Self.FK_Pago_diario_Usuario" FromRole="Usuario" ToRole="Pago_diario" />
+          <NavigationProperty Name="Promociones" Relationship="Self.FK_Promociones_Usuario" FromRole="Usuario" ToRole="Promociones" />
+        </EntityType>
+        <Association Name="FK_Cliente_Promociones_membresias">
+          <End Role="Promociones_membresias" Type="Self.Promociones_membresias" Multiplicity="0..1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promociones_membresias">
+              <PropertyRef Name="id_promocion_membresia" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="id_promocion_membresia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membresias_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Membresias" Type="Self.Membresias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Membresias">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promociones_membresias_Membresias">
+          <End Role="Membresias" Type="Self.Membresias" Multiplicity="0..1" />
+          <End Role="Promociones_membresias" Type="Self.Promociones_membresias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membresias">
+              <PropertyRef Name="id_membresia" />
+            </Principal>
+            <Dependent Role="Promociones_membresias">
+              <PropertyRef Name="id_membresia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pago_diario_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Pago_diario" Type="Self.Pago_diario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Pago_diario">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promociones_membresias_Promociones">
+          <End Role="Promociones" Type="Self.Promociones" Multiplicity="0..1" />
+          <End Role="Promociones_membresias" Type="Self.Promociones_membresias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promociones">
+              <PropertyRef Name="id_promocion" />
+            </Principal>
+            <Dependent Role="Promociones_membresias">
+              <PropertyRef Name="id_promocion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Promociones_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Promociones" Type="Self.Promociones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id_usuario" />
+            </Principal>
+            <Dependent Role="Promociones">
+              <PropertyRef Name="id_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="gestion_membresiasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Membresias" EntityType="Self.Membresias" />
+          <EntitySet Name="Pago_diario" EntityType="Self.Pago_diario" />
+          <EntitySet Name="Promociones" EntityType="Self.Promociones" />
+          <EntitySet Name="Promociones_membresias" EntityType="Self.Promociones_membresias" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Cliente_Promociones_membresias" Association="Self.FK_Cliente_Promociones_membresias">
+            <End Role="Promociones_membresias" EntitySet="Promociones_membresias" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membresias_Usuario" Association="Self.FK_Membresias_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Membresias" EntitySet="Membresias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promociones_membresias_Membresias" Association="Self.FK_Promociones_membresias_Membresias">
+            <End Role="Membresias" EntitySet="Membresias" />
+            <End Role="Promociones_membresias" EntitySet="Promociones_membresias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pago_diario_Usuario" Association="Self.FK_Pago_diario_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pago_diario" EntitySet="Pago_diario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promociones_membresias_Promociones" Association="Self.FK_Promociones_membresias_Promociones">
+            <End Role="Promociones" EntitySet="Promociones" />
+            <End Role="Promociones_membresias" EntitySet="Promociones_membresias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Promociones_Usuario" Association="Self.FK_Promociones_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Promociones" EntitySet="Promociones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gestion_membresiasModelStoreContainer" CdmEntityContainer="gestion_membresiasEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="altura" ColumnName="altura" />
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_promocion_membresia" ColumnName="id_promocion_membresia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Membresias">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.Membresias">
+              <MappingFragment StoreEntitySet="Membresias">
+                <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pago_diario">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.Pago_diario">
+              <MappingFragment StoreEntitySet="Pago_diario">
+                <ScalarProperty Name="id_pago_diario" ColumnName="id_pago_diario" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promociones">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.Promociones">
+              <MappingFragment StoreEntitySet="Promociones">
+                <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
+                <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promociones_membresias">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.Promociones_membresias">
+              <MappingFragment StoreEntitySet="Promociones_membresias">
+                <ScalarProperty Name="id_promocion_membresia" ColumnName="id_promocion_membresia" />
+                <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
+                <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="gestion_membresiasModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

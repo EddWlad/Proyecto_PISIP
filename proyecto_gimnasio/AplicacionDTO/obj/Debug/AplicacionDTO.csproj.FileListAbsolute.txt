@@ -1,0 +1,6 @@
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\AplicacionDTO\bin\Debug\AplicacionDTO.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\AplicacionDTO\bin\Debug\AplicacionDTO.pdb
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\AplicacionDTO\obj\Debug\AplicacionDTO.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\AplicacionDTO\obj\Debug\AplicacionDTO.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\AplicacionDTO\obj\Debug\AplicacionDTO.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\AplicacionDTO\obj\Debug\AplicacionDTO.pdb

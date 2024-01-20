@@ -1,0 +1,6 @@
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Dominio.Modelo\bin\Debug\Dominio.Modelo.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Dominio.Modelo\bin\Debug\Dominio.Modelo.pdb
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Dominio.Modelo\obj\Debug\Dominio.Modelo.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Dominio.Modelo\obj\Debug\Dominio.Modelo.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Dominio.Modelo\obj\Debug\Dominio.Modelo.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Dominio.Modelo\obj\Debug\Dominio.Modelo.pdb

@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Infraestructura.AccesoDatos",
+    "\\Infraestructura.AccesoDatos\\Repositorio",
+    "\\UI.Windows",
+    "\\UI.Windows\\Controladores",
+    "\\UI.Windows\\Formularios"
+  ],
+  "SelectedNode": "\\Infraestructura.AccesoDatos\\Repositorio\\ClienteRepository.cs",
+  "PreviewInSolutionExplorer": false
+}

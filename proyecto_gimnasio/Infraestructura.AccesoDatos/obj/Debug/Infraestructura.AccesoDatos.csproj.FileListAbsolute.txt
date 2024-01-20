@@ -1,0 +1,16 @@
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Infraestructura.AccesoDatos.dll.config
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Infraestructura.AccesoDatos.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Infraestructura.AccesoDatos.pdb
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Dominio.Modelo.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Dominio.Servicios.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Dominio.Modelo.pdb
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\Dominio.Servicios.pdb
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\obj\Debug\Infraestructura.AccesoDatos.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\obj\Debug\Infraestructura.AccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\obj\Debug\Infraestructura.AccesoDatos.csproj.CopyComplete
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\obj\Debug\Infraestructura.AccesoDatos.dll
+C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.AccesoDatos\obj\Debug\Infraestructura.AccesoDatos.pdb
