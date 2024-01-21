@@ -24,6 +24,7 @@
           <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
           <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
           <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
           <ScalarProperty Name="estado" ColumnName="estado" />

@@ -23,8 +23,9 @@ namespace Dominio.Modelo.Entidades
         public int id_membresia { get; set; }
         public string tipo { get; set; }
         public decimal costo { get; set; }
-        public System.DateTime fecha_inicio { get; set; }
-        public System.DateTime fecha_fin { get; set; }
+        public string descripcion { get; set; }
+        public Nullable<System.DateTime> fecha_inicio { get; set; }
+        public Nullable<System.DateTime> fecha_fin { get; set; }
         public bool estado { get; set; }
         public Nullable<int> id_usuario { get; set; }
     

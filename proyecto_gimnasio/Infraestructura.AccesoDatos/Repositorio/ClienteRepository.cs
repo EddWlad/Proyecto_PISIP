@@ -73,9 +73,9 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Cliente> ListarClientesMembresia(string membresia)
-        {
+        //public IEnumerable<Cliente> ListarClientesMembresia(string membresia)
+        //{
            
-        }
+        //}
     }
 }

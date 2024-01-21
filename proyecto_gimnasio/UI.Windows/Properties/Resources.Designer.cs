@@ -143,6 +143,16 @@ namespace UI.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Membresia {
+            get {
+                object obj = ResourceManager.GetObject("Membresia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus_circle_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("minus-circle-regular-24", resourceCulture);
@@ -176,6 +186,16 @@ namespace UI.Windows.Properties {
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap star_regular_24 {
+            get {
+                object obj = ResourceManager.GetObject("star-regular-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -94,5 +94,10 @@ namespace UI.Windows.Formularios
             pictureBox1_Click_1(null, e);
             lblUsuario.Text = usuarioActual.nombre_usuario;
         }
+
+        private void btnMembresias_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FrmMembresias());
+        }
     }
 }

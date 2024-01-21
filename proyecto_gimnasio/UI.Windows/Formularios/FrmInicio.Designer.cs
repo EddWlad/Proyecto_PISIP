@@ -31,8 +31,12 @@
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.lblNombre = new System.Windows.Forms.Label();
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panleContenedor = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMembresias = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
             this.btnSubInicio = new System.Windows.Forms.PictureBox();
@@ -41,8 +45,6 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnCerar = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.BarraTitulo.SuspendLayout();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSubInicio)).BeginInit();
@@ -85,7 +87,9 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.SystemColors.Desktop;
+            this.MenuVertical.Controls.Add(this.panel1);
             this.MenuVertical.Controls.Add(this.lblUsuario);
+            this.MenuVertical.Controls.Add(this.btnMembresias);
             this.MenuVertical.Controls.Add(this.label1);
             this.MenuVertical.Controls.Add(this.button1);
             this.MenuVertical.Controls.Add(this.panel3);
@@ -97,10 +101,34 @@
             this.MenuVertical.Size = new System.Drawing.Size(188, 554);
             this.MenuVertical.TabIndex = 1;
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblUsuario.Font = new System.Drawing.Font("Comic Sans MS", 9F);
+            this.lblUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblUsuario.Location = new System.Drawing.Point(59, 0);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(65, 17);
+            this.lblUsuario.TabIndex = 8;
+            this.lblUsuario.Text = "lblUsuario";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Usuario: ";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel3.Location = new System.Drawing.Point(0, 204);
+            this.panel3.Location = new System.Drawing.Point(0, 190);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(5, 35);
             this.panel3.TabIndex = 5;
@@ -113,6 +141,33 @@
             this.panleContenedor.Name = "panleContenedor";
             this.panleContenedor.Size = new System.Drawing.Size(1155, 554);
             this.panleContenedor.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel1.Location = new System.Drawing.Point(0, 248);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 35);
+            this.panel1.TabIndex = 7;
+            // 
+            // btnMembresias
+            // 
+            this.btnMembresias.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnMembresias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMembresias.FlatAppearance.BorderSize = 0;
+            this.btnMembresias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnMembresias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMembresias.Font = new System.Drawing.Font("Wide Latin", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMembresias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMembresias.Image = global::UI.Windows.Properties.Resources.star_regular_24;
+            this.btnMembresias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMembresias.Location = new System.Drawing.Point(3, 248);
+            this.btnMembresias.Name = "btnMembresias";
+            this.btnMembresias.Size = new System.Drawing.Size(179, 35);
+            this.btnMembresias.TabIndex = 6;
+            this.btnMembresias.Text = "          Membresias";
+            this.btnMembresias.UseVisualStyleBackColor = false;
+            this.btnMembresias.Click += new System.EventHandler(this.btnMembresias_Click);
             // 
             // button1
             // 
@@ -145,7 +200,7 @@
             this.btnNuevoCliente.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNuevoCliente.Image = global::UI.Windows.Properties.Resources._new;
             this.btnNuevoCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoCliente.Location = new System.Drawing.Point(3, 204);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(3, 190);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(179, 35);
             this.btnNuevoCliente.TabIndex = 4;
@@ -157,7 +212,7 @@
             // btnSubInicio
             // 
             this.btnSubInicio.Image = global::UI.Windows.Properties.Resources.LogoGYM3;
-            this.btnSubInicio.Location = new System.Drawing.Point(3, 90);
+            this.btnSubInicio.Location = new System.Drawing.Point(0, 58);
             this.btnSubInicio.Name = "btnSubInicio";
             this.btnSubInicio.Size = new System.Drawing.Size(167, 98);
             this.btnSubInicio.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -229,30 +284,6 @@
             this.btnCerar.TabStop = false;
             this.btnCerar.Click += new System.EventHandler(this.btnCerar_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Usuario: ";
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblUsuario.Font = new System.Drawing.Font("Comic Sans MS", 9F);
-            this.lblUsuario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblUsuario.Location = new System.Drawing.Point(59, 0);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(65, 17);
-            this.lblUsuario.TabIndex = 8;
-            this.lblUsuario.Text = "lblUsuario";
-            // 
             // FrmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,5 +328,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnMembresias;
     }
 }

@@ -28,8 +28,9 @@
           <Property Name="id_membresia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="costo" Type="money" Nullable="false" />
-          <Property Name="fecha_inicio" Type="date" Nullable="false" />
-          <Property Name="fecha_fin" Type="date" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="fecha_inicio" Type="date" />
+          <Property Name="fecha_fin" Type="date" />
           <Property Name="estado" Type="bit" Nullable="false" />
           <Property Name="id_usuario" Type="int" />
         </EntityType>
@@ -219,8 +220,9 @@
           <Property Name="id_membresia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
+          <Property Name="fecha_fin" Type="DateTime" Precision="0" />
           <Property Name="estado" Type="Boolean" Nullable="false" />
           <Property Name="id_usuario" Type="Int32" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Membresias_Usuario" FromRole="Membresias" ToRole="Usuario" />
@@ -421,6 +423,7 @@
                 <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
                 <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

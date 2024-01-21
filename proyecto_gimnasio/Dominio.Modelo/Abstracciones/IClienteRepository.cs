@@ -12,7 +12,7 @@ namespace Dominio.Modelo.Abstracciones
         IEnumerable<Cliente> ListarClienteNombre(String nombre);
         IEnumerable<Cliente> ListarClientesActivos();
         IEnumerable<Cliente> ListarClientesEstados(Boolean estado);
-        IEnumerable<Cliente> ListarClientesMembresia(String membresia);
+        //IEnumerable<Cliente> ListarClientesMembresia(String membresia);
     }
 }
 

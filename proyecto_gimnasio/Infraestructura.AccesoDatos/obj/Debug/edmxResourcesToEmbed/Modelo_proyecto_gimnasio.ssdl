@@ -23,8 +23,9 @@
     <Property Name="id_membresia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="costo" Type="money" Nullable="false" />
-    <Property Name="fecha_inicio" Type="date" Nullable="false" />
-    <Property Name="fecha_fin" Type="date" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="fecha_inicio" Type="date" />
+    <Property Name="fecha_fin" Type="date" />
     <Property Name="estado" Type="bit" Nullable="false" />
     <Property Name="id_usuario" Type="int" />
   </EntityType>

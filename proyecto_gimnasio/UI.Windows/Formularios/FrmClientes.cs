@@ -66,7 +66,7 @@ namespace UI.Windows.Formularios
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             BusquedaDataGrid();
-            ContenidoCboEstado(valorEstado);
+            ContenidoCboEstado();
             Listar();
         }
 
@@ -83,7 +83,7 @@ namespace UI.Windows.Formularios
             cboBusqueda.ValueMember = "Valor";
             cboBusqueda.SelectedIndex = 0;
         }
-        private void ContenidoCboEstado(bool valorEstado)
+        private void ContenidoCboEstado()
         {
             cboEstado.Items.Add(new OpComboEstadoCliente() { Valor = true, Texto = "Activo" });
             cboEstado.Items.Add(new OpComboEstadoCliente() { Valor = false, Texto = "Inactivo" });
@@ -141,7 +141,7 @@ namespace UI.Windows.Formularios
             }
         }
 
-        private bool ConversionBooleanaBusqueda(string txtBusquedaEstado)
+        private bool ConversionBooleanaBusqueda()
         {
             string busqueda = txtBusqueda.Text.ToLower();
             if ( busqueda == "activo")
@@ -206,22 +206,13 @@ namespace UI.Windows.Formularios
                     //Seleciondo el id se cambia el combo box
                     foreach (OpComboEstadoCliente opcCliente in cboEstado.Items)
                     {
-                        bool valorOpcCliente = Convert.ToBoolean(opcCliente.Valor);
-
-                        bool valorEstado;
-                        if (Boolean.TryParse(dataGridClientes.Rows[indice].Cells["estado"].Value.ToString(), out valorEstado))
+                        if(Convert.ToBoolean(opcCliente.Valor)== Convert.ToBoolean(dataGridClientes.Rows[indice].Cells["EstadoValor"].Value))
                         {
-                            if (valorOpcCliente == valorEstado)
-                            {
-                                int indice_cboEstado = cboEstado.Items.IndexOf(opcCliente);
-                                cboEstado.SelectedIndex = indice_cboEstado;
-                                break;
-                            }
+                            int indice_combo = cboEstado.Items.IndexOf(opcCliente);
+                            cboEstado.SelectedIndex = indice_combo;
+                            break;
                         }
-                        else
-                        {
-                            // Manejo del caso en que la conversión falla
-                        }
+                        
                     }
                     txtPeso.Text = dataGridClientes.Rows[indice].Cells["peso"].Value.ToString();
                     txtAltura.Text = dataGridClientes.Rows[indice].Cells["altura"].Value.ToString();
@@ -243,7 +234,7 @@ namespace UI.Windows.Formularios
         public void ListarClientesEstados()
         {
             dataGridClientes.Rows.Clear();
-            bool busquedaEnGrid = ConversionBooleanaBusqueda(txtBusqueda.Text);
+            bool busquedaEnGrid = ConversionBooleanaBusqueda();
             List<Cliente> listaClientesEstado = (List<Cliente>)clienteControlador.ListarClientesEstado(busquedaEnGrid);
             foreach (Cliente item in listaClientesEstado)
             {

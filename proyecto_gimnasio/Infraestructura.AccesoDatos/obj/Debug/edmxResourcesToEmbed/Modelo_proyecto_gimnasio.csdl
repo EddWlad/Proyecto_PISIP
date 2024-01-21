@@ -24,8 +24,9 @@
     <Property Name="id_membresia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="costo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_inicio" Type="DateTime" Precision="0" />
+    <Property Name="fecha_fin" Type="DateTime" Precision="0" />
     <Property Name="estado" Type="Boolean" Nullable="false" />
     <Property Name="id_usuario" Type="Int32" />
     <NavigationProperty Name="Usuario" Relationship="Self.FK_Membresias_Usuario" FromRole="Membresias" ToRole="Usuario" />
