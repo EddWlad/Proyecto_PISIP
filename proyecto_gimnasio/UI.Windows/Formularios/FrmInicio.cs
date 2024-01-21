@@ -99,5 +99,15 @@ namespace UI.Windows.Formularios
         {
             AbrirFormHija(new FrmMembresias());
         }
+
+        private void btnPromociones_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FrmPromociones());
+        }
+
+        private void btnPagoDiario_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FmrPagoDiario());
+        }
     }
 }

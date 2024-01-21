@@ -9,5 +9,7 @@ namespace Dominio.Modelo.Abstracciones
 {
     public interface IPagoDiarioRepository : IBaseRepository<Pago_diario>
     {
+        IEnumerable<Pago_diario> ListarPagosFecha(DateTime fecha);
+        IEnumerable<Pago_diario> ListarPagosActivos();
     }
 }

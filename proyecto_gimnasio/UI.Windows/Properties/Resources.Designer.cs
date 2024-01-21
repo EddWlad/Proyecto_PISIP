@@ -73,6 +73,16 @@ namespace UI.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bookmark_alt_regular_24 {
+            get {
+                object obj = ResourceManager.GetObject("bookmark-alt-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap check_circle_solid_24 {
             get {
                 object obj = ResourceManager.GetObject("check_circle_solid_24", resourceCulture);
@@ -86,6 +96,16 @@ namespace UI.Windows.Properties {
         internal static System.Drawing.Bitmap close {
             get {
                 object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dollar_circle_regular_24 {
+            get {
+                object obj = ResourceManager.GetObject("dollar-circle-regular-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +183,29 @@ namespace UI.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pagodiario {
+            get {
+                object obj = ResourceManager.GetObject("pagodiario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pesas {
             get {
                 object obj = ResourceManager.GetObject("pesas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap promocion {
+            get {
+                object obj = ResourceManager.GetObject("promocion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

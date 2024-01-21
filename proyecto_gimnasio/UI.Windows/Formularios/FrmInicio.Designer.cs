@@ -31,11 +31,15 @@
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.lblNombre = new System.Windows.Forms.Label();
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panleContenedor = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnPagoDiario = new System.Windows.Forms.Button();
+            this.btnPromociones = new System.Windows.Forms.Button();
             this.btnMembresias = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
@@ -87,7 +91,11 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.SystemColors.Desktop;
+            this.MenuVertical.Controls.Add(this.panel4);
+            this.MenuVertical.Controls.Add(this.panel2);
+            this.MenuVertical.Controls.Add(this.btnPagoDiario);
             this.MenuVertical.Controls.Add(this.panel1);
+            this.MenuVertical.Controls.Add(this.btnPromociones);
             this.MenuVertical.Controls.Add(this.lblUsuario);
             this.MenuVertical.Controls.Add(this.btnMembresias);
             this.MenuVertical.Controls.Add(this.label1);
@@ -100,6 +108,22 @@
             this.MenuVertical.Name = "MenuVertical";
             this.MenuVertical.Size = new System.Drawing.Size(188, 554);
             this.MenuVertical.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel2.Location = new System.Drawing.Point(0, 306);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(5, 35);
+            this.panel2.TabIndex = 9;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel1.Location = new System.Drawing.Point(0, 248);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 35);
+            this.panel1.TabIndex = 7;
             // 
             // lblUsuario
             // 
@@ -142,13 +166,53 @@
             this.panleContenedor.Size = new System.Drawing.Size(1155, 554);
             this.panleContenedor.TabIndex = 2;
             // 
-            // panel1
+            // panel4
             // 
-            this.panel1.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel1.Location = new System.Drawing.Point(0, 248);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(5, 35);
-            this.panel1.TabIndex = 7;
+            this.panel4.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel4.Location = new System.Drawing.Point(0, 361);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(5, 35);
+            this.panel4.TabIndex = 11;
+            // 
+            // btnPagoDiario
+            // 
+            this.btnPagoDiario.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnPagoDiario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagoDiario.FlatAppearance.BorderSize = 0;
+            this.btnPagoDiario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnPagoDiario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagoDiario.Font = new System.Drawing.Font("Wide Latin", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagoDiario.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPagoDiario.Image = global::UI.Windows.Properties.Resources.dollar_circle_regular_24;
+            this.btnPagoDiario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPagoDiario.Location = new System.Drawing.Point(3, 361);
+            this.btnPagoDiario.Name = "btnPagoDiario";
+            this.btnPagoDiario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnPagoDiario.Size = new System.Drawing.Size(179, 35);
+            this.btnPagoDiario.TabIndex = 10;
+            this.btnPagoDiario.Text = "          Pago Diario";
+            this.btnPagoDiario.UseVisualStyleBackColor = false;
+            this.btnPagoDiario.Click += new System.EventHandler(this.btnPagoDiario_Click);
+            // 
+            // btnPromociones
+            // 
+            this.btnPromociones.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnPromociones.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPromociones.FlatAppearance.BorderSize = 0;
+            this.btnPromociones.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnPromociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPromociones.Font = new System.Drawing.Font("Wide Latin", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPromociones.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPromociones.Image = global::UI.Windows.Properties.Resources.bookmark_alt_regular_24;
+            this.btnPromociones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPromociones.Location = new System.Drawing.Point(3, 306);
+            this.btnPromociones.Name = "btnPromociones";
+            this.btnPromociones.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnPromociones.Size = new System.Drawing.Size(179, 35);
+            this.btnPromociones.TabIndex = 8;
+            this.btnPromociones.Text = "          Promociones";
+            this.btnPromociones.UseVisualStyleBackColor = false;
+            this.btnPromociones.Click += new System.EventHandler(this.btnPromociones_Click);
             // 
             // btnMembresias
             // 
@@ -330,5 +394,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnMembresias;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnPromociones;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnPagoDiario;
     }
 }

@@ -124,8 +124,14 @@
   <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dollar-circle-regular-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dollar-circle-regular-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="resturar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\resturar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="promocion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\promocion.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoGYM31" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\LogoGYM3.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -138,6 +144,9 @@
   </data>
   <data name="pesas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\pesas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="star-regular-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\star-regular-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoGYM3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\LogoGYM3.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,13 +163,16 @@
   <data name="check_circle_solid_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\check-circle-solid-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Formularios\img\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="minus-circle-regular-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\minus-circle-regular-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="star-regular-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\star-regular-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exit1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Formularios\img\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bookmark-alt-regular-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bookmark-alt-regular-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pagodiario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pagodiario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

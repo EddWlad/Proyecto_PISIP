@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMembresias));
             this.txtIndice = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -270,15 +270,16 @@
             this.dataGridMembresias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridMembresias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridMembresias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridMembresias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridMembresias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMembresias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
@@ -293,9 +294,9 @@
             this.dataGridMembresias.MultiSelect = false;
             this.dataGridMembresias.Name = "dataGridMembresias";
             this.dataGridMembresias.ReadOnly = true;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridMembresias.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridMembresias.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridMembresias.RowTemplate.Height = 28;
             this.dataGridMembresias.Size = new System.Drawing.Size(709, 419);
             this.dataGridMembresias.TabIndex = 65;
@@ -409,12 +410,12 @@
             // 
             // btnSeleccionar
             // 
+            this.btnSeleccionar.FillWeight = 30.45685F;
             this.btnSeleccionar.HeaderText = "";
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 30;
             // 
             // idusuario
             // 
@@ -425,34 +426,35 @@
             // 
             // tipo
             // 
+            this.tipo.FillWeight = 113.9086F;
             this.tipo.HeaderText = "Tipo";
             this.tipo.Name = "tipo";
             this.tipo.ReadOnly = true;
-            this.tipo.Width = 110;
             // 
             // costo
             // 
+            this.costo.FillWeight = 113.9086F;
             this.costo.HeaderText = "Costo";
             this.costo.Name = "costo";
             this.costo.ReadOnly = true;
-            this.costo.Width = 80;
             // 
             // descripcion
             // 
+            this.descripcion.FillWeight = 113.9086F;
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 280;
             // 
             // estado
             // 
+            this.estado.FillWeight = 113.9086F;
             this.estado.HeaderText = "Estado";
             this.estado.Name = "estado";
             this.estado.ReadOnly = true;
-            this.estado.Width = 70;
             // 
             // id_usuario
             // 
+            this.id_usuario.FillWeight = 113.9086F;
             this.id_usuario.HeaderText = "Creado por:";
             this.id_usuario.Name = "id_usuario";
             this.id_usuario.ReadOnly = true;
