@@ -112,7 +112,7 @@ namespace UI.Windows.Formularios
         public DateTime ConvertirFecha()
         {
             DateTime fecha;
-            if (DateTime.TryParse(txtFecha.Text, out fecha))
+            if (DateTime.TryParse(txtBusqueda.Text, out fecha))
             {
                 return fecha;
             }
@@ -155,6 +155,15 @@ namespace UI.Windows.Formularios
 
                 }
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (cboBusqueda.Text == "Fecha")
+            {
+                ListarPagoDiarioFecha();
+            }
+            
         }
     }
 }
