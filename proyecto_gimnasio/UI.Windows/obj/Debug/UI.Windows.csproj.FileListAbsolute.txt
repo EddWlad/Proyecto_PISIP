@@ -57,3 +57,5 @@ C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Wind
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.csproj.CopyComplete
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.exe
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmTipoCliente.resources
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmAsistencia.resources

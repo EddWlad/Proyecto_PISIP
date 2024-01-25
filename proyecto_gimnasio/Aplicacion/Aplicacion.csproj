@@ -46,6 +46,8 @@
     <Compile Include="Servicio\MembresiasServicio.cs" />
     <Compile Include="Servicio\PagoDiarioServicio.cs" />
     <Compile Include="Servicio\PromocionesServicio.cs" />
+    <Compile Include="Servicio\RegistroAsistenciaServicio.cs" />
+    <Compile Include="Servicio\TipoClienteServicio.cs" />
     <Compile Include="Servicio\UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>

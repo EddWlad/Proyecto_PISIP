@@ -208,11 +208,15 @@ namespace UI.Windows.Formularios
         private void btnTipoCliente_Click(object sender, EventArgs e)
         {
             pnlSubMenuCliente.Visible = false;
+            AbrirFormHija(new FrmTipoCliente());
+            posicionbtnFrmIncio();
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
         {
             pnlSubMenuCliente.Visible = false;
+            AbrirFormHija(new FrmAsistencia());
+            posicionbtnFrmIncio();
         }
 
         private void btnNuevaMembresia_Click(object sender, EventArgs e)

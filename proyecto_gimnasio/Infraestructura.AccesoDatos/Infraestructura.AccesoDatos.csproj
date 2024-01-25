@@ -68,8 +68,9 @@
     <Compile Include="Repositorio\ClienteRepository.cs" />
     <Compile Include="Repositorio\MembresiasRepository.cs" />
     <Compile Include="Repositorio\PagoDiarioRepository.cs" />
-    <Compile Include="Repositorio\CostoMembresiaRepository.cs" />
     <Compile Include="Repositorio\PromocionesRepository.cs" />
+    <Compile Include="Repositorio\RegistroAsistenciaRepository.cs" />
+    <Compile Include="Repositorio\TipoClienteRepository.cs" />
     <Compile Include="Repositorio\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>

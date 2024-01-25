@@ -45,8 +45,9 @@
     <Compile Include="Abstracciones\IClienteRepository.cs" />
     <Compile Include="Abstracciones\IMembresiasRepository.cs" />
     <Compile Include="Abstracciones\IPagoDiarioRepository.cs" />
-    <Compile Include="Abstracciones\ICostoMembresiaRepository.cs" />
     <Compile Include="Abstracciones\IPromocionesRepository.cs" />
+    <Compile Include="Abstracciones\IRegistroAsistenciaRepository.cs" />
+    <Compile Include="Abstracciones\ITipoClienteRepository.cs" />
     <Compile Include="Abstracciones\IUsuarioRepository.cs" />
     <Compile Include="Entidades\Cliente.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>

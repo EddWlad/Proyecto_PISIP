@@ -17,7 +17,7 @@ namespace UI.Windows.Formularios
 {
     public partial class FrmClientes : Form
     {
-        private bool valorEstado;
+        
         ClienteVistaModelo clienteVistaModelo = new ClienteVistaModelo();
         ClienteControlador clienteControlador;
         public FrmClientes()
@@ -77,7 +77,7 @@ namespace UI.Windows.Formularios
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
-            //cboEstado.SelectedIndex = 0;
+
             txtPeso.Text = "";
             txtAltura.Text = "";
 
@@ -174,24 +174,12 @@ namespace UI.Windows.Formularios
             List<Cliente> listaClientesNombre = (List<Cliente>)clienteControlador.ListarClientesNombres(txtBusqueda.Text);
                 foreach (Cliente item in listaClientesNombre)
                 {
-                    dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                    item.estado == true ? "Activo" : "Inactivo",item.peso,item.altura,"","",
-                    item.estado == true ? 1:0});
+                    dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                    item.peso,item.altura,"",""});
                 }
             
         }
-        //public void ListarClientesEstados()
-        //{
-            //dataGridClientes.Rows.Clear();
-            //bool busquedaEnGrid = ConversionBooleanaBusqueda();
-            //List<Cliente> listaClientesEstado = (List<Cliente>)clienteControlador.ListarClientesEstado(busquedaEnGrid);
-            //foreach (Cliente item in listaClientesEstado)
-            //{
-                //dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                    //item.estado == true ? "Activo" : "Inactivo",item.peso,item.altura,"","",
-                    //item.estado == true ? 1:0});
-            //}
-       // }
+
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {

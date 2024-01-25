@@ -73,6 +73,16 @@ namespace UI.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Asistencia {
+            get {
+                object obj = ResourceManager.GetObject("Asistencia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bookmark_alt_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("bookmark-alt-regular-24", resourceCulture);
@@ -296,6 +306,16 @@ namespace UI.Windows.Properties {
         internal static System.Drawing.Bitmap star_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("star-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tipos_usuarios {
+            get {
+                object obj = ResourceManager.GetObject("Tipos usuarios", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

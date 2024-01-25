@@ -67,12 +67,20 @@
     <Compile Include="Controladores\MembresiasControlador.cs" />
     <Compile Include="Controladores\PagoDiarioControlador.cs" />
     <Compile Include="Controladores\PromocionesControlador.cs" />
+    <Compile Include="Controladores\RegistroAsistenciaControlador.cs" />
+    <Compile Include="Controladores\TipoClienteControlador.cs" />
     <Compile Include="Controladores\UsuarioControlador.cs" />
     <Compile Include="Formularios\FmrPagoDiario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\FmrPagoDiario.Designer.cs">
       <DependentUpon>FmrPagoDiario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAsistencia.Designer.cs">
+      <DependentUpon>FrmAsistencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\FrmClientes.cs">
       <SubType>Form</SubType>
@@ -110,6 +118,14 @@
     <Compile Include="Formularios\FrmSubInicio.Designer.cs">
       <DependentUpon>FrmSubInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmTipoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmTipoCliente.Designer.cs">
+      <DependentUpon>FrmTipoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Utilitarios\OpcionBusquedaTipoCliente.cs" />
+    <Compile Include="Formularios\Utilitarios\OpComboAsistencia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboBusquedaPagoDiario.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoCliente.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoMembresia.cs" />
@@ -120,9 +136,14 @@
     <Compile Include="VistaModelos\MembresiasVistaModelo.cs" />
     <Compile Include="VistaModelos\PagoDiarioVistaModelo.cs" />
     <Compile Include="VistaModelos\PromocionesVistaModelo.cs" />
+    <Compile Include="VistaModelos\RegistroAsistenciaVistaModelo.cs" />
+    <Compile Include="VistaModelos\TipoClienteVistaModelo.cs" />
     <Compile Include="VistaModelos\UsuarioVistaModelo.cs" />
     <EmbeddedResource Include="Formularios\FmrPagoDiario.resx">
       <DependentUpon>FmrPagoDiario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmAsistencia.resx">
+      <DependentUpon>FrmAsistencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
@@ -141,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmSubInicio.resx">
       <DependentUpon>FrmSubInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmTipoCliente.resx">
+      <DependentUpon>FrmTipoCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -254,6 +278,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\trash-alt-solid-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tipos usuarios.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Asistencia.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
