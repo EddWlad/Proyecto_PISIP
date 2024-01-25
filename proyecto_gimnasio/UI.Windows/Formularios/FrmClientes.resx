@@ -123,6 +123,12 @@
   <metadata name="id_cliente.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="tipoCliente.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cedula.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -138,22 +144,16 @@
   <metadata name="email.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="estado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="peso.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="altura.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="tipoMembresia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="foto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="id_promocion_membresia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="EstadoValor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -176,24 +176,6 @@
         StOuK0sWBaG74kZk3iI/lAqob2jax3QQE9KdmuKy68s1FiwugbVevNMiFC0OQ/nnp+INZ7HNlpNTFlFP
         mXCAtVYJQ7keN3WyDI+oX9Wj+ErkGBtsi3Qw0IGTuI/PqH/JFk5ho3X0PUievhPMxcNZopviud4BLrHJ
         lrJDN8ULvQOMWJwtbNyMo3b5T1qi6BsQDCh4Gu8vkAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnEliminar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAI5JREFUSEvd
-        zjEKgDAQRNGcyspj5A56YUHwJjZxNb9TGccUgg+2cn4w/V8pZYy7MzB7Jx7o49bjqWv7t465Vpt2PHfG
-        92Y89yF+xEausbeRa+xt5Bp7G7nG3kausbeRa+xt5Bp7G7nG3kausbeRa+xt5Bp7G7nG3kauxXaqiWUi
-        12Kc45Yje2aOy+S/ktIG1a8XY+8QrPAAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnEditar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAQtJREFUSEvl
-        lMFqwkAURbMSXBZTs4hW6B+59mdKf7CtVKm22oKl0K+YnjvzprRKxMxkpQcuGV7mnoQwWlwuzrkemZIZ
-        6du4GxBekQcS2ZIbu50HIskfZYUv8hKWfl3ZtjQQlORJNnglY3JN4uzOtraH8pAsvSbwRkZED5hrAPe2
-        vR0UKxLl32QVlm5H4lrzoVVOh5LkGxngk9ySAVloYPi5VU6H0r58YvO/p+h33gpKNWmSP2sIHyRZrrI4
-        Jq99oQ2UJlYW3cqFlcU7iXKd/3gU1yRNLoLD4yVcJY9vriOZ/Wv12Fry+Fega55cBNcBkpe2JY/g+4c+
-        Tzfy8yB8lXRM04ztS8Y0Z0NR/AADdmzI2rd9hQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

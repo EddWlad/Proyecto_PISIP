@@ -38,9 +38,7 @@ namespace Aplicacion.Servicio
         {
             return this.clienteRepository.ListarClienteNombre(nombre);
         }
-        public IEnumerable<Cliente> ListarClientesEstado(Boolean estado)
-        {
-            return this.clienteRepository.ListarClientesEstados(estado);
-        }
+        
+       
     }
 }

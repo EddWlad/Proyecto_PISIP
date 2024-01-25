@@ -28,10 +28,10 @@ namespace Aplicacion.Servicio
         {
             this.promocionesRepository.Modify(modificadoPromocion);
         }
-        public IEnumerable<Promociones> ListarPromocionesTipo(String tipo)
-        {
-            return this.promocionesRepository.ListarPromocionesTipo(tipo);
-        }
+        //public IEnumerable<Promociones> ListarPromocionesTipo(String tipo)
+        //{
+            //return this.promocionesRepository.ListarPromocionesTipo(tipo);
+        //}
         public IEnumerable<Promociones> ListarPromocionesActivas()
         {
             return this.promocionesRepository.ListarPromocionesActivas();

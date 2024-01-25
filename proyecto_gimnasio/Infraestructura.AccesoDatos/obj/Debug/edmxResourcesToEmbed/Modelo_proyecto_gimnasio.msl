@@ -5,6 +5,7 @@
       <EntityTypeMapping TypeName="gestion_membresiasModel.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
           <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido" ColumnName="apellido" />
           <ScalarProperty Name="direccion" ColumnName="direccion" />
@@ -14,7 +15,18 @@
           <ScalarProperty Name="altura" ColumnName="altura" />
           <ScalarProperty Name="peso" ColumnName="peso" />
           <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="id_promocion_membresia" ColumnName="id_promocion_membresia" />
+          <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
+          <ScalarProperty Name="id_tipo_cliente" ColumnName="id_tipo_cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Costo_Membresia">
+      <EntityTypeMapping TypeName="gestion_membresiasModel.Costo_Membresia">
+        <MappingFragment StoreEntitySet="Costo_Membresia">
+          <ScalarProperty Name="id_costo_membresia" ColumnName="id_costo_membresia" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -22,13 +34,14 @@
       <EntityTypeMapping TypeName="gestion_membresiasModel.Membresias">
         <MappingFragment StoreEntitySet="Membresias">
           <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
-          <ScalarProperty Name="tipo" ColumnName="tipo" />
-          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
           <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
           <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_tipo_membresia" ColumnName="id_tipo_membresia" />
+          <ScalarProperty Name="id_costo_membresia" ColumnName="id_costo_membresia" />
+          <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -39,7 +52,7 @@
           <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="monto" ColumnName="monto" />
           <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="id_registro" ColumnName="id_registro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,23 +60,21 @@
       <EntityTypeMapping TypeName="gestion_membresiasModel.Promociones">
         <MappingFragment StoreEntitySet="Promociones">
           <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
-          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="fecha_registro" ColumnName="fecha_registro" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-          <ScalarProperty Name="costo" ColumnName="costo" />
           <ScalarProperty Name="fecha_inicio" ColumnName="fecha_inicio" />
           <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
           <ScalarProperty Name="estado" ColumnName="estado" />
-          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Promociones_membresias">
-      <EntityTypeMapping TypeName="gestion_membresiasModel.Promociones_membresias">
-        <MappingFragment StoreEntitySet="Promociones_membresias">
-          <ScalarProperty Name="id_promocion_membresia" ColumnName="id_promocion_membresia" />
-          <ScalarProperty Name="id_promocion" ColumnName="id_promocion" />
-          <ScalarProperty Name="id_membresia" ColumnName="id_membresia" />
+    <EntitySetMapping Name="Registro_Asistencia">
+      <EntityTypeMapping TypeName="gestion_membresiasModel.Registro_Asistencia">
+        <MappingFragment StoreEntitySet="Registro_Asistencia">
+          <ScalarProperty Name="id_registro" ColumnName="id_registro" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
           <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -75,6 +86,24 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Cliente">
+      <EntityTypeMapping TypeName="gestion_membresiasModel.Tipo_Cliente">
+        <MappingFragment StoreEntitySet="Tipo_Cliente">
+          <ScalarProperty Name="id_tipo_cliente" ColumnName="id_tipo_cliente" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Membresia">
+      <EntityTypeMapping TypeName="gestion_membresiasModel.Tipo_Membresia">
+        <MappingFragment StoreEntitySet="Tipo_Membresia">
+          <ScalarProperty Name="id_tipo_membresia" ColumnName="id_tipo_membresia" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

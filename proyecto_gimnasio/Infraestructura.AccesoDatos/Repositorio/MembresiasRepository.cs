@@ -51,25 +51,25 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Membresias> ListarMembresiasTipo(string tipo)
-        {
+        //public IEnumerable<Membresias> ListarMembresiasTipo(string tipo)
+        //{
             //1.- conectar a la base
-            try
-            {
-                using (var context = new gestion_membresiasEntities())
-                {
+            //try
+            //{
+                //using (var context = new gestion_membresiasEntities())
+               // {
                     //2.- escribil la consulta
-                    var membresiasTipo = from e in context.Membresias
-                                         where e.tipo == tipo
-                                         select e;
-                    //3.- retorno resultado
-                    return membresiasTipo.ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("No se pudieron recuperar los registro.", ex);
-            }
-        }
+                   // var membresiasTipo = from e in context.Membresias
+                                         //where e.tipo == tipo
+                                         //select e;
+                    ////3.- retorno resultado
+                    //return membresiasTipo.ToList();
+                //}
+            //}
+            //catch (Exception ex)
+            //{
+                //throw new Exception("No se pudieron recuperar los registro.", ex);
+            //}
+        //}
     }
 }

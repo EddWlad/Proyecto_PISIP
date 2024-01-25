@@ -18,8 +18,8 @@ namespace Dominio.Modelo.Entidades
         public System.DateTime fecha { get; set; }
         public decimal monto { get; set; }
         public bool estado { get; set; }
-        public Nullable<int> id_usuario { get; set; }
+        public Nullable<int> id_registro { get; set; }
     
-        public virtual Usuario Usuario { get; set; }
+        public virtual Registro_Asistencia Registro_Asistencia { get; set; }
     }
 }

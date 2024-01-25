@@ -25,23 +25,23 @@ namespace UI.Windows.Formularios
             promocionesControlador = new PromocionesControlador();
         }
 
-        public void InsertarPromocion()
-        {
-            if (promocionesControlador.InsertarPromocion(promocionesVistaModelo))
-            {
-                MessageBox.Show("Promocion insertada correctamente");
-            }
-            else
-            {
-                MessageBox.Show("Error: Al promocion membresia");
-            }
-        }
+        //public void InsertarPromocion()
+        //{
+            //if (promocionesControlador.InsertarPromocion(promocionesVistaModelo))
+            //{
+                //MessageBox.Show("Promocion insertada correctamente");
+            //}
+            //else
+            //{
+                //MessageBox.Show("Error: Al promocion membresia");
+            //}
+        //}
 
         private void FrmPromociones_Load(object sender, EventArgs e)
         {
             BusquedaDataGrid();
             ContenidoCboEstado();
-            Listar();
+            //Listar();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace UI.Windows.Formularios
                 dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.IdPromocion, promocionesVistaModelo.Tipo,promocionesVistaModelo.Costo,promocionesVistaModelo.Descripcion,
                 ((OpComboEstadoPromociones)cboEstado.SelectedItem).Texto.ToString(),"",((OpComboEstadoPromociones)cboEstado.SelectedItem).Valor.ToString()});
                 Limpiar();
-                InsertarPromocion();
+                //InsertarPromocion();
             }
         }
         private void Limpiar()
@@ -106,41 +106,41 @@ namespace UI.Windows.Formularios
             cboBusqueda.ValueMember = "Valor";
             cboBusqueda.SelectedIndex = 0;
         }
-        public void Listar()
-        {
-            List<Promociones> listaPromociones = (List<Promociones>)promocionesControlador.ListarPromocionesActivas();
-            foreach (Promociones item in listaPromociones)
-            {
-                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
-                item.estado == true ? "Activo" : "Inactivo","",
-                item.estado == true ? 1:0});
-            }
+        //public void Listar()
+        //{
+            //List<Promociones> listaPromociones = (List<Promociones>)promocionesControlador.ListarPromocionesActivas();
+            //foreach (Promociones item in listaPromociones)
+            //{
+                //dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
+                //item.estado == true ? "Activo" : "Inactivo","",
+               // item.estado == true ? 1:0});
+            //}
 
-        }
-        public void ListarPromocionesTipo()
-        {
-            dataGridPromociones.Rows.Clear();
-            List<Promociones> listaPromocionesTipo = (List<Promociones>)promocionesControlador.ListarPromocionesTipo(txtBusqueda.Text);
-            foreach (Promociones item in listaPromocionesTipo)
-            {
-                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
-                    item.estado == true ? "Activo" : "Inactivo","",
-                    item.estado == true ? 1:0});
-            }
+        //}
+       // public void ListarPromocionesTipo()
+        //{
+            //dataGridPromociones.Rows.Clear();
+            //List<Promociones> listaPromocionesTipo = (List<Promociones>)promocionesControlador.ListarPromocionesTipo(txtBusqueda.Text);
+            //foreach (Promociones item in listaPromocionesTipo)
+            //{
+                //dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
+                    //item.estado == true ? "Activo" : "Inactivo","",
+                    //item.estado == true ? 1:0});
+            //}
 
-        }
-        public void ListarPromocionesEstados()
-        {
-            dataGridPromociones.Rows.Clear();
-            bool busquedaEnGrid = ConversionBooleanaBusqueda();
-            List<Promociones> listaPromocionesEstado = (List<Promociones>)promocionesControlador.ListarPromocionesEstado(busquedaEnGrid);
-            foreach (Promociones item in listaPromocionesEstado)
-            {
-                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
-                    item.estado == true ? "Activo" : "Inactivo","",
-                    item.estado == true ? 1:0});
-            }
-        }
+        //}
+        //public void ListarPromocionesEstados()
+        //{
+            //dataGridPromociones.Rows.Clear();
+            //bool busquedaEnGrid = ConversionBooleanaBusqueda();
+           // List<Promociones> listaPromocionesEstado = (List<Promociones>)promocionesControlador.ListarPromocionesEstado(busquedaEnGrid);
+           //foreach (Promociones item in listaPromocionesEstado)
+            //{
+               // dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
+                    //item.estado == true ? "Activo" : "Inactivo","",
+                    //item.estado == true ? 1:0});
+            //}
+        //}
         private bool ConversionBooleanaBusqueda()
         {
             string busqueda = txtBusqueda.Text.ToLower();
@@ -209,11 +209,11 @@ namespace UI.Windows.Formularios
         {
             if (cboBusqueda.Text == "Tipo")
             {
-                ListarPromocionesTipo();
+                //ListarPromocionesTipo();
             }
             if (cboBusqueda.Text == "Estado")
             {
-                ListarPromocionesEstados();
+                //ListarPromocionesEstados();
             }
         }
     }

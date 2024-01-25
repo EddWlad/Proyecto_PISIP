@@ -17,20 +17,23 @@ namespace Dominio.Modelo.Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Membresias()
         {
-            this.Promociones_membresias = new HashSet<Promociones_membresias>();
+            this.Cliente = new HashSet<Cliente>();
         }
     
         public int id_membresia { get; set; }
-        public string tipo { get; set; }
-        public decimal costo { get; set; }
+        public Nullable<System.DateTime> fecha_registro { get; set; }
         public string descripcion { get; set; }
         public Nullable<System.DateTime> fecha_inicio { get; set; }
         public Nullable<System.DateTime> fecha_fin { get; set; }
         public bool estado { get; set; }
-        public Nullable<int> id_usuario { get; set; }
+        public Nullable<int> id_tipo_membresia { get; set; }
+        public Nullable<int> id_costo_membresia { get; set; }
+        public Nullable<int> id_promocion { get; set; }
     
-        public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Promociones_membresias> Promociones_membresias { get; set; }
+        public virtual ICollection<Cliente> Cliente { get; set; }
+        public virtual Costo_Membresia Costo_Membresia { get; set; }
+        public virtual Promociones Promociones { get; set; }
+        public virtual Tipo_Membresia Tipo_Membresia { get; set; }
     }
 }

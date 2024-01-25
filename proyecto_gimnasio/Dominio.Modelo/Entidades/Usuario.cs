@@ -14,25 +14,10 @@ namespace Dominio.Modelo.Entidades
     
     public partial class Usuario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
-        {
-            this.Membresias = new HashSet<Membresias>();
-            this.Pago_diario = new HashSet<Pago_diario>();
-            this.Promociones = new HashSet<Promociones>();
-        }
-    
         public int id_usuario { get; set; }
         public string email { get; set; }
         public string nombre_usuario { get; set; }
         public string contraseña { get; set; }
         public Nullable<bool> estado { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Membresias> Membresias { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pago_diario> Pago_diario { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Promociones> Promociones { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Dominio.Modelo.Abstracciones
 {
     public interface IMembresiasRepository : IBaseRepository<Membresias>
     {
-        IEnumerable<Membresias> ListarMembresiasTipo(String tipo);
+        //IEnumerable<Membresias> ListarMembresiasTipo(String tipo);
         IEnumerable<Membresias> ListarMembresiasActivas();
         IEnumerable<Membresias> ListarMembresiasEstados(Boolean estado);
     }

@@ -27,11 +27,14 @@ namespace Infraestructura.AccesoDatos
         }
     
         public virtual DbSet<Cliente> Cliente { get; set; }
+        public virtual DbSet<Costo_Membresia> Costo_Membresia { get; set; }
         public virtual DbSet<Membresias> Membresias { get; set; }
         public virtual DbSet<Pago_diario> Pago_diario { get; set; }
         public virtual DbSet<Promociones> Promociones { get; set; }
-        public virtual DbSet<Promociones_membresias> Promociones_membresias { get; set; }
+        public virtual DbSet<Registro_Asistencia> Registro_Asistencia { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Tipo_Cliente> Tipo_Cliente { get; set; }
+        public virtual DbSet<Tipo_Membresia> Tipo_Membresia { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

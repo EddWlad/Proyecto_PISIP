@@ -38,7 +38,7 @@ namespace UI.Windows.Formularios
         private void FmrPagoDiario_Load(object sender, EventArgs e)
         {
             BusquedaDataGrid();
-            Listar();
+            //Listar();
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             
         }
@@ -88,26 +88,26 @@ namespace UI.Windows.Formularios
             cboBusqueda.ValueMember = "Valor";
             cboBusqueda.SelectedIndex = 0;
         }
-        public void Listar()
-        {
-            List<Pago_diario> listaPagoDiario = (List<Pago_diario>)pagoDiarioControlador.ListarPagoDiarioActivos();
-            foreach (Pago_diario item in listaPagoDiario)
-            {
-                dataGridPagoDiario.Rows.Add(new object[] {"",item.id_pago_diario,item.fecha,item.monto,item.estado,item.id_usuario,"" });
-            }
+        //public void Listar()
+        //{
+            //List<Pago_diario> listaPagoDiario = (List<Pago_diario>)pagoDiarioControlador.ListarPagoDiarioActivos();
+            //foreach (Pago_diario item in listaPagoDiario)
+            //{
+               // dataGridPagoDiario.Rows.Add(new object[] {"",item.id_pago_diario,item.fecha,item.monto,item.estado,item.id_usuario,"" });
+            //}
 
-        }
-        public void ListarPagoDiarioFecha()
-        {
-            DateTime fechaTxtBusqueda = ConvertirFecha();
-            dataGridPagoDiario.Rows.Clear();
-            List<Pago_diario> listaPagoDiarioFecha = (List<Pago_diario>)pagoDiarioControlador.ListarPagoDiarioFecha(fechaTxtBusqueda);
-            foreach (Pago_diario item in listaPagoDiarioFecha)
-            {
-                dataGridPagoDiario.Rows.Add(new object[] { "",item.id_pago_diario,item.fecha,item.monto,item.estado,item.id_usuario,"" });
-            }
+        //}
+        //public void ListarPagoDiarioFecha()
+        //{
+            //DateTime fechaTxtBusqueda = ConvertirFecha();
+            //dataGridPagoDiario.Rows.Clear();
+            //List<Pago_diario> listaPagoDiarioFecha = (List<Pago_diario>)pagoDiarioControlador.ListarPagoDiarioFecha(fechaTxtBusqueda);
+            //foreach (Pago_diario item in listaPagoDiarioFecha)
+            //{
+               // dataGridPagoDiario.Rows.Add(new object[] { "",item.id_pago_diario,item.fecha,item.monto,item.estado,item.id_usuario,"" });
+            //}
 
-        }
+        //}
 
         public DateTime ConvertirFecha()
         {
@@ -161,7 +161,7 @@ namespace UI.Windows.Formularios
         {
             if (cboBusqueda.Text == "Fecha")
             {
-                ListarPagoDiarioFecha();
+                //ListarPagoDiarioFecha();
             }
             
         }

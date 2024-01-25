@@ -231,6 +231,30 @@
   <ItemGroup>
     <None Include="Resources\pagodiario.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-regular-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar-check-regular-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medal-regular-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\star-half-solid-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\purchase-tag-regular-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit-alt-regular-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-alt-solid-24.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

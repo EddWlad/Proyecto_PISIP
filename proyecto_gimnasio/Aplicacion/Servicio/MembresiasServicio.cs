@@ -28,10 +28,10 @@ namespace Aplicacion.Servicio
         {
             this.membresiasRepository.Modify(modificadoMembresia);
         }
-        public IEnumerable<Membresias> ListarMembresiasTipo(String tipo)
-        {
-            return this.membresiasRepository.ListarMembresiasTipo(tipo);
-        }
+        //public IEnumerable<Membresias> ListarMembresiasTipo(String tipo)
+        //{
+            //return this.membresiasRepository.ListarMembresiasTipo(tipo);
+        //}
         public IEnumerable<Membresias> ListarMembresiasActivas()
         {
             return this.membresiasRepository.ListarMembresiasActivas();

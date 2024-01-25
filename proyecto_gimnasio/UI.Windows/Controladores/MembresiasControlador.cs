@@ -16,28 +16,28 @@ namespace UI.Windows.Controladores
         {
             servicio = new MembresiasServicio();
         }
-        public bool InsertarMembresia(MembresiasVistaModelo membresiaVistaModelo)
-        {
-            Membresias membresiaDB = new Membresias();
-            try
-            {
-                membresiaDB.tipo= membresiaVistaModelo.Tipo;
-                membresiaDB.costo = membresiaVistaModelo.Costo;
-                membresiaDB.descripcion = membresiaVistaModelo.Descripcion;
-                membresiaDB.estado = membresiaVistaModelo.Estado;
-                servicio.InsertarMembresias(membresiaDB);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+        //public bool InsertarMembresia(MembresiasVistaModelo membresiaVistaModelo)
+        //{
+           //Membresias membresiaDB = new Membresias();
+           // try
+            //{
+                //membresiaDB.tipo= membresiaVistaModelo.Tipo;
+                //membresiaDB.costo = membresiaVistaModelo.Costo;
+                //membresiaDB.descripcion = membresiaVistaModelo.Descripcion;
+                //membresiaDB.estado = membresiaVistaModelo.Estado;
+                //servicio.InsertarMembresias(membresiaDB);
+                //return true;
+            //}
+            //catch (Exception ex)
+            //{
+                //return false;
+            //}
+        //}
 
-        public IEnumerable<Membresias> ListarMembresiasTipo(string tipo)
-        {
-            return servicio.ListarMembresiasTipo(tipo);
-        }
+        //public IEnumerable<Membresias> ListarMembresiasTipo(string tipo)
+        //{
+            //return servicio.ListarMembresiasTipo(tipo);
+        //}
 
         public IEnumerable<Membresias> ListarMembresiasActivas()
         {

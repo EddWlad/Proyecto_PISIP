@@ -45,10 +45,13 @@
     <Compile Include="Abstracciones\IClienteRepository.cs" />
     <Compile Include="Abstracciones\IMembresiasRepository.cs" />
     <Compile Include="Abstracciones\IPagoDiarioRepository.cs" />
-    <Compile Include="Abstracciones\IPromocionesMembresiasRepository.cs" />
+    <Compile Include="Abstracciones\ICostoMembresiaRepository.cs" />
     <Compile Include="Abstracciones\IPromocionesRepository.cs" />
     <Compile Include="Abstracciones\IUsuarioRepository.cs" />
     <Compile Include="Entidades\Cliente.cs">
+      <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Costo_Membresia.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Membresias.cs">
@@ -65,10 +68,16 @@
     <Compile Include="Entidades\Promociones.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\Promociones_membresias.cs">
+    <Compile Include="Entidades\Registro_Asistencia.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\sysdiagrams.cs">
+      <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Tipo_Cliente.cs">
+      <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Tipo_Membresia.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Usuario.cs">

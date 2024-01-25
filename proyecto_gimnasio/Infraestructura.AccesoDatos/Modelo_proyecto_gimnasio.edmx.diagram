@@ -4,20 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="173ccf4cd10b4ae7bcfebe32d5e96d4d" Name="Diagram1">
-        <EntityTypeShape EntityType="gestion_membresiasModel.Cliente" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_membresiasModel.Membresias" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_membresiasModel.Pago_diario" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_membresiasModel.Promociones" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_membresiasModel.Promociones_membresias" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_membresiasModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gestion_membresiasModel.Usuario" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <AssociationConnector Association="gestion_membresiasModel.FK_Cliente_Promociones_membresias" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_membresiasModel.FK_Membresias_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_membresiasModel.FK_Promociones_membresias_Membresias" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_membresiasModel.FK_Pago_diario_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_membresiasModel.FK_Promociones_membresias_Promociones" ManuallyRouted="false" />
-        <AssociationConnector Association="gestion_membresiasModel.FK_Promociones_Usuario" ManuallyRouted="false" />
+      <Diagram DiagramId="3b9b1c08e0ad472795fb9d5d4b7c5ffb" Name="Diagram1">
+        <EntityTypeShape EntityType="gestion_membresiasModel.Cliente" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Costo_Membresia" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Membresias" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Pago_diario" Width="1.5" PointX="9.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Promociones" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Registro_Asistencia" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Tipo_Cliente" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Tipo_Membresia" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gestion_membresiasModel.Usuario" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Cliente_Membresias" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Cliente_Tipo_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Registro_Asistencia_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Membresias_Costo_Membresia" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Membresias_Promociones" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Membresias_Tipo_Membresia" ManuallyRouted="false" />
+        <AssociationConnector Association="gestion_membresiasModel.FK_Pago_diario_Registro_Asistencia" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,20 +17,17 @@ namespace Dominio.Modelo.Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Promociones()
         {
-            this.Promociones_membresias = new HashSet<Promociones_membresias>();
+            this.Membresias = new HashSet<Membresias>();
         }
     
         public int id_promocion { get; set; }
-        public string tipo { get; set; }
+        public Nullable<System.DateTime> fecha_registro { get; set; }
         public string descripcion { get; set; }
-        public decimal costo { get; set; }
         public Nullable<System.DateTime> fecha_inicio { get; set; }
         public Nullable<System.DateTime> fecha_fin { get; set; }
         public bool estado { get; set; }
-        public Nullable<int> id_usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Promociones_membresias> Promociones_membresias { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual ICollection<Membresias> Membresias { get; set; }
     }
 }

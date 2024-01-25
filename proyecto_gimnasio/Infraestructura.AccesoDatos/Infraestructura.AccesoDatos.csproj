@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -68,7 +68,7 @@
     <Compile Include="Repositorio\ClienteRepository.cs" />
     <Compile Include="Repositorio\MembresiasRepository.cs" />
     <Compile Include="Repositorio\PagoDiarioRepository.cs" />
-    <Compile Include="Repositorio\PromocionesMembresiasRepository.cs" />
+    <Compile Include="Repositorio\CostoMembresiaRepository.cs" />
     <Compile Include="Repositorio\PromocionesRepository.cs" />
     <Compile Include="Repositorio\UsuarioRepository.cs" />
   </ItemGroup>
@@ -83,10 +83,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <EntityDeploy Include="Modelo_proyecto_gimnasio.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo_proyecto_gimnasio.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="App.Config" />
     <None Include="Modelo_proyecto_gimnasio.edmx.diagram">
       <DependentUpon>Modelo_proyecto_gimnasio.edmx</DependentUpon>
@@ -94,13 +99,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Modelo_proyecto_gimnasio.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modelo_proyecto_gimnasio.edmx</DependentUpon>
       <LastGenOutput>Modelo_proyecto_gimnasio.Context.cs</LastGenOutput>
+      <DependentUpon>Modelo_proyecto_gimnasio.edmx</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

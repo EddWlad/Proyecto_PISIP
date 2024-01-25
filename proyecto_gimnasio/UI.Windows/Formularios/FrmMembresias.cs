@@ -24,17 +24,17 @@ namespace UI.Windows.Formularios
             InitializeComponent();
             membresiasControlador = new MembresiasControlador();
         }
-        public void InsertarMembresia()
-        {
-            if (membresiasControlador.InsertarMembresia(membresiasVistaModelo))
-            {
-                MessageBox.Show("Membresia insertada correctamente");
-            }
-            else
-            {
-                MessageBox.Show("Error: Al insertar membresia");
-            }
-        }
+        //public void InsertarMembresia()
+        //{
+            //if (membresiasControlador.InsertarMembresia(membresiasVistaModelo))
+            //{
+                //MessageBox.Show("Membresia insertada correctamente");
+            //}
+            //else
+            //{
+                //MessageBox.Show("Error: Al insertar membresia");
+            //}
+       // }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -47,7 +47,7 @@ namespace UI.Windows.Formularios
                 dataGridMembresias.Rows.Add(new object[] {"",membresiasVistaModelo.IdMembresia, membresiasVistaModelo.Tipo,membresiasVistaModelo.Costo,membresiasVistaModelo.Descripcion,
                 ((OpComboEstadoMembresia)cboEstado.SelectedItem).Texto.ToString(),"",((OpComboEstadoMembresia)cboEstado.SelectedItem).Valor.ToString()});
                 Limpiar();
-                InsertarMembresia();
+                //InsertarMembresia();
             }
         }
 
@@ -103,43 +103,43 @@ namespace UI.Windows.Formularios
             cboEstado.SelectedIndex = 0;
         }
 
-        public void Listar()
-        {
-            List<Membresias> listaMembresias = (List<Membresias>)membresiasControlador.ListarMembresiasActivas();
-            foreach (Membresias item in listaMembresias)
-            {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
-                item.estado == true ? "Activo" : "Inactivo","",
-                item.estado == true ? 1:0});
-            }
+        //public void Listar()
+        //{
+            //List<Membresias> listaMembresias = (List<Membresias>)membresiasControlador.ListarMembresiasActivas();
+            //foreach (Membresias item in listaMembresias)
+            //{
+               //// dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
+                //item.estado == true ? "Activo" : "Inactivo","",
+                //item.estado == true ? 1:0});
+            //}
 
-        }
+        //}
 
-        public void ListarMmebresiasTipo()
-        {
-            dataGridMembresias.Rows.Clear();
-            List<Membresias> listaMembresiasTipo = (List<Membresias>)membresiasControlador.ListarMembresiasTipo(txtBusqueda.Text);
-            foreach (Membresias item in listaMembresiasTipo)
-            {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
-                    item.estado == true ? "Activo" : "Inactivo","",
-                    item.estado == true ? 1:0});
-            }
+        //public void ListarMmebresiasTipo()
+        //{
+            //dataGridMembresias.Rows.Clear();
+           // List<Membresias> listaMembresiasTipo = (List<Membresias>)membresiasControlador.ListarMembresiasTipo(txtBusqueda.Text);
+            //foreach (Membresias item in listaMembresiasTipo)
+            //{
+                //dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
+                   // item.estado == true ? "Activo" : "Inactivo","",
+                   // item.estado == true ? 1:0});
+            //}
 
-        }
+        //}
 
-        public void ListarMembresiasEstados()
-        {
-            dataGridMembresias.Rows.Clear();
-            bool busquedaEnGrid = ConversionBooleanaBusqueda();
-            List<Membresias> listaMembresiasEstado = (List<Membresias>)membresiasControlador.ListarMembresiasEstado(busquedaEnGrid);
-            foreach (Membresias item in listaMembresiasEstado)
-            {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
-                    item.estado == true ? "Activo" : "Inactivo","",
-                    item.estado == true ? 1:0});
-            }
-        }
+        //public void ListarMembresiasEstados()
+        //{
+            //dataGridMembresias.Rows.Clear();
+            //bool busquedaEnGrid = ConversionBooleanaBusqueda();
+            //List<Membresias> listaMembresiasEstado = (List<Membresias>)membresiasControlador.ListarMembresiasEstado(busquedaEnGrid);
+            //foreach (Membresias item in listaMembresiasEstado)
+            //{
+                //dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
+                    //item.estado == true ? "Activo" : "Inactivo","",
+                    //item.estado == true ? 1:0});
+            //}
+        //}
 
         private bool ConversionBooleanaBusqueda()
         {
@@ -162,7 +162,7 @@ namespace UI.Windows.Formularios
         {
             BusquedaDataGrid();
             ContenidoCboEstado();
-            Listar();
+            //Listar();
         }
 
         private void dataGridMembresias_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -216,11 +216,11 @@ namespace UI.Windows.Formularios
         {
             if (cboBusqueda.Text == "Tipo")
             {
-                ListarMmebresiasTipo();
+                //ListarMmebresiasTipo();
             }
             if (cboBusqueda.Text == "Estado")
             {
-                ListarMembresiasEstados();
+                //ListarMembresiasEstados();
             }
         }
     }
