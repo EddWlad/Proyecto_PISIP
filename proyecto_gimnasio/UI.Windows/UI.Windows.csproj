@@ -88,6 +88,12 @@
     <Compile Include="Formularios\FrmClientes.Designer.cs">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmCostoMembresias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmCostoMembresias.Designer.cs">
+      <DependentUpon>FrmCostoMembresias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,12 @@
     <Compile Include="Formularios\FrmTipoCliente.Designer.cs">
       <DependentUpon>FrmTipoCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmTipoMembresia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmTipoMembresia.Designer.cs">
+      <DependentUpon>FrmTipoMembresia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Utilitarios\OpcionBusquedaTipoCliente.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboAsistencia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboBusquedaPagoDiario.cs" />
@@ -148,6 +160,9 @@
     <EmbeddedResource Include="Formularios\FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmCostoMembresias.resx">
+      <DependentUpon>FrmCostoMembresias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmTipoCliente.resx">
       <DependentUpon>FrmTipoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmTipoMembresia.resx">
+      <DependentUpon>FrmTipoMembresia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -284,6 +302,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Asistencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\membership-icon-design-free-vector.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Costos Memmbresia.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

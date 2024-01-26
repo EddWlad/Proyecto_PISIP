@@ -228,11 +228,13 @@ namespace UI.Windows.Formularios
         private void btnTiposMembresia_Click(object sender, EventArgs e)
         {
             pnlSubmenuMembresias.Visible = false;
+            AbrirFormHija(new FrmTipoMembresia());
         }
 
         private void btnCostosMembresia_Click(object sender, EventArgs e)
         {
             pnlSubmenuMembresias.Visible = false;
+            AbrirFormHija(new FrmCostoMembresias());
         }
     }
 }

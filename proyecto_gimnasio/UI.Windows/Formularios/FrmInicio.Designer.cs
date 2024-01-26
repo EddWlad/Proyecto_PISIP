@@ -242,7 +242,7 @@
             this.btnTiposMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTiposMembresia.Image = global::UI.Windows.Properties.Resources.star_half_solid_24;
             this.btnTiposMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTiposMembresia.Location = new System.Drawing.Point(6, 34);
+            this.btnTiposMembresia.Location = new System.Drawing.Point(5, 34);
             this.btnTiposMembresia.Name = "btnTiposMembresia";
             this.btnTiposMembresia.Size = new System.Drawing.Size(150, 25);
             this.btnTiposMembresia.TabIndex = 10;

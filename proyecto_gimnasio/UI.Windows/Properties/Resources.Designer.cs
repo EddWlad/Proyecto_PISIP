@@ -123,6 +123,16 @@ namespace UI.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Costos_Memmbresia {
+            get {
+                object obj = ResourceManager.GetObject("Costos Memmbresia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dollar_circle_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("dollar-circle-regular-24", resourceCulture);
@@ -206,6 +216,16 @@ namespace UI.Windows.Properties {
         internal static System.Drawing.Bitmap medal_regular_24 {
             get {
                 object obj = ResourceManager.GetObject("medal-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap membership_icon_design_free_vector {
+            get {
+                object obj = ResourceManager.GetObject("membership-icon-design-free-vector", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

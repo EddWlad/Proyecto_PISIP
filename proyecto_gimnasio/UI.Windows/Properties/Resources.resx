@@ -196,13 +196,19 @@
   <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Asistencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Asistencia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="membership-icon-design-free-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\membership-icon-design-free-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="star-half-solid-24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\star-half-solid-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoGYM3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Formularios\img\LogoGYM3.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Asistencia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Asistencia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Costos Memmbresia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Costos Memmbresia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
