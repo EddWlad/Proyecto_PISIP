@@ -11,7 +11,10 @@ namespace Dominio.Modelo.Abstracciones
     {
         IEnumerable<Cliente> ListarClienteNombre(String nombre);
         IEnumerable<ClienteTipoCliente> ListarClientesActivos();
-        
+
+        bool ElminarCliente(int id);
+
+
     }
 }
 

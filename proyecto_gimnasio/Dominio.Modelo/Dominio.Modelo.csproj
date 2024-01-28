@@ -68,6 +68,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\PagoDiarioRegistro.cs" />
     <Compile Include="Entidades\Pago_diario.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>

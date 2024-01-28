@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmrPagoDiario));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIndice = new System.Windows.Forms.TextBox();
@@ -48,17 +50,34 @@
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.cboBusqueda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridPagoDiario = new System.Windows.Forms.DataGridView();
+            this.dataGridClientesMiembros = new System.Windows.Forms.DataGridView();
             this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idpagodiario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCedula = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_pago_diario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cedula_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtId2 = new System.Windows.Forms.TextBox();
+            this.txtIndice2 = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnReporte = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPagoDiario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientesMiembros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -180,7 +199,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(204, 323);
+            this.btnEliminar.Location = new System.Drawing.Point(204, 382);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(199, 32);
             this.btnEliminar.TabIndex = 91;
@@ -199,7 +218,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnGuardar.Image = global::UI.Windows.Properties.Resources.save;
-            this.btnGuardar.Location = new System.Drawing.Point(204, 286);
+            this.btnGuardar.Location = new System.Drawing.Point(204, 345);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(199, 31);
             this.btnGuardar.TabIndex = 87;
@@ -214,13 +233,13 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label6.Location = new System.Drawing.Point(434, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(709, 90);
+            this.label6.Size = new System.Drawing.Size(709, 43);
             this.label6.TabIndex = 96;
-            this.label6.Text = "Lista de pagos";
+            this.label6.Text = "Detalle clientes / miembros";
             // 
             // btnLimpiar
             // 
@@ -233,7 +252,7 @@
             this.btnLimpiar.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.Image")));
-            this.btnLimpiar.Location = new System.Drawing.Point(1085, 47);
+            this.btnLimpiar.Location = new System.Drawing.Point(1092, 16);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(38, 27);
             this.btnLimpiar.TabIndex = 107;
@@ -250,13 +269,12 @@
             this.btnBuscar.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(1041, 47);
+            this.btnBuscar.Location = new System.Drawing.Point(1048, 16);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(38, 27);
             this.btnBuscar.TabIndex = 106;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBusqueda
             // 
@@ -265,9 +283,9 @@
             this.txtBusqueda.BackColor = System.Drawing.Color.White;
             this.txtBusqueda.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBusqueda.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtBusqueda.Location = new System.Drawing.Point(894, 50);
+            this.txtBusqueda.Location = new System.Drawing.Point(928, 19);
             this.txtBusqueda.Name = "txtBusqueda";
-            this.txtBusqueda.Size = new System.Drawing.Size(141, 23);
+            this.txtBusqueda.Size = new System.Drawing.Size(114, 23);
             this.txtBusqueda.TabIndex = 105;
             // 
             // cboBusqueda
@@ -276,7 +294,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cboBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBusqueda.FormattingEnabled = true;
-            this.cboBusqueda.Location = new System.Drawing.Point(764, 51);
+            this.cboBusqueda.Location = new System.Drawing.Point(798, 20);
             this.cboBusqueda.Name = "cboBusqueda";
             this.cboBusqueda.Size = new System.Drawing.Size(124, 21);
             this.cboBusqueda.TabIndex = 104;
@@ -289,19 +307,19 @@
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label7.Location = new System.Drawing.Point(693, 53);
+            this.label7.Location = new System.Drawing.Point(727, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 15);
             this.label7.TabIndex = 103;
             this.label7.Text = "Buscar por:";
             // 
-            // dataGridPagoDiario
+            // dataGridClientesMiembros
             // 
-            this.dataGridPagoDiario.AllowUserToAddRows = false;
-            this.dataGridPagoDiario.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataGridClientesMiembros.AllowUserToAddRows = false;
+            this.dataGridClientesMiembros.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridPagoDiario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridClientesMiembros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,27 +328,25 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridPagoDiario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridPagoDiario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPagoDiario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridClientesMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridClientesMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridClientesMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
-            this.idpagodiario,
+            this.id_cliente,
             this.cedula,
-            this.nombre,
-            this.fecha,
-            this.costo});
-            this.dataGridPagoDiario.Location = new System.Drawing.Point(434, 122);
-            this.dataGridPagoDiario.MultiSelect = false;
-            this.dataGridPagoDiario.Name = "dataGridPagoDiario";
-            this.dataGridPagoDiario.ReadOnly = true;
+            this.nombre});
+            this.dataGridClientesMiembros.Location = new System.Drawing.Point(434, 70);
+            this.dataGridClientesMiembros.MultiSelect = false;
+            this.dataGridClientesMiembros.Name = "dataGridClientesMiembros";
+            this.dataGridClientesMiembros.ReadOnly = true;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridPagoDiario.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridPagoDiario.RowTemplate.Height = 28;
-            this.dataGridPagoDiario.Size = new System.Drawing.Size(709, 419);
-            this.dataGridPagoDiario.TabIndex = 108;
-            this.dataGridPagoDiario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPagoDiario_CellContentClick);
-            this.dataGridPagoDiario.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridPagoDiario_CellPainting);
+            this.dataGridClientesMiembros.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridClientesMiembros.RowTemplate.Height = 28;
+            this.dataGridClientesMiembros.Size = new System.Drawing.Size(709, 145);
+            this.dataGridClientesMiembros.TabIndex = 108;
+            this.dataGridClientesMiembros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientesMiembros_CellContentClick);
+            this.dataGridClientesMiembros.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridClientesMiembros_CellPainting);
             // 
             // btnSeleccionar
             // 
@@ -343,12 +359,12 @@
             this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.btnSeleccionar.Width = 38;
             // 
-            // idpagodiario
+            // id_cliente
             // 
-            this.idpagodiario.HeaderText = "ID";
-            this.idpagodiario.Name = "idpagodiario";
-            this.idpagodiario.ReadOnly = true;
-            this.idpagodiario.Visible = false;
+            this.id_cliente.HeaderText = "ID";
+            this.id_cliente.Name = "id_cliente";
+            this.id_cliente.ReadOnly = true;
+            this.id_cliente.Visible = false;
             // 
             // cedula
             // 
@@ -362,20 +378,6 @@
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
             // 
-            // fecha
-            // 
-            this.fecha.FillWeight = 122.5819F;
-            this.fecha.HeaderText = "Fecha";
-            this.fecha.Name = "fecha";
-            this.fecha.ReadOnly = true;
-            // 
-            // costo
-            // 
-            this.costo.FillWeight = 122.5819F;
-            this.costo.HeaderText = "Costo";
-            this.costo.Name = "costo";
-            this.costo.ReadOnly = true;
-            // 
             // txtCedula
             // 
             this.txtCedula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -385,6 +387,7 @@
             this.txtCedula.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtCedula.Location = new System.Drawing.Point(204, 245);
             this.txtCedula.Name = "txtCedula";
+            this.txtCedula.ReadOnly = true;
             this.txtCedula.Size = new System.Drawing.Size(199, 23);
             this.txtCedula.TabIndex = 110;
             // 
@@ -402,15 +405,253 @@
             this.label3.TabIndex = 109;
             this.label3.Text = "Cedula";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Teal;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(1092, 235);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(38, 27);
+            this.button1.TabIndex = 116;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSlateGray;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(1048, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(38, 27);
+            this.button2.TabIndex = 115;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox1.Location = new System.Drawing.Point(928, 238);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(114, 23);
+            this.textBox1.TabIndex = 114;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(798, 239);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(124, 21);
+            this.comboBox1.TabIndex = 113;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.White;
+            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label5.Location = new System.Drawing.Point(727, 241);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 15);
+            this.label5.TabIndex = 112;
+            this.label5.Text = "Buscar por:";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label8.Location = new System.Drawing.Point(434, 230);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(709, 43);
+            this.label8.TabIndex = 111;
+            this.label8.Text = "Lista de pagos";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewButtonColumn1,
+            this.id_pago_diario,
+            this.cedula_pago,
+            this.nombre_pago,
+            this.fecha,
+            this.costo});
+            this.dataGridView1.Location = new System.Drawing.Point(434, 286);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(709, 256);
+            this.dataGridView1.TabIndex = 117;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewButtonColumn1.FillWeight = 13.11036F;
+            this.dataGridViewButtonColumn1.HeaderText = "";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.ReadOnly = true;
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewButtonColumn1.Width = 38;
+            // 
+            // id_pago_diario
+            // 
+            this.id_pago_diario.HeaderText = "ID";
+            this.id_pago_diario.Name = "id_pago_diario";
+            this.id_pago_diario.ReadOnly = true;
+            this.id_pago_diario.Visible = false;
+            // 
+            // cedula_pago
+            // 
+            this.cedula_pago.HeaderText = "Cedula";
+            this.cedula_pago.Name = "cedula_pago";
+            this.cedula_pago.ReadOnly = true;
+            // 
+            // nombre_pago
+            // 
+            this.nombre_pago.HeaderText = "Nombre";
+            this.nombre_pago.Name = "nombre_pago";
+            this.nombre_pago.ReadOnly = true;
+            // 
+            // fecha
+            // 
+            this.fecha.HeaderText = "Fecha";
+            this.fecha.Name = "fecha";
+            this.fecha.ReadOnly = true;
+            // 
+            // costo
+            // 
+            this.costo.HeaderText = "Costo";
+            this.costo.Name = "costo";
+            this.costo.ReadOnly = true;
+            // 
+            // txtId2
+            // 
+            this.txtId2.Location = new System.Drawing.Point(204, 50);
+            this.txtId2.Name = "txtId2";
+            this.txtId2.ReadOnly = true;
+            this.txtId2.Size = new System.Drawing.Size(26, 20);
+            this.txtId2.TabIndex = 119;
+            this.txtId2.Text = "0";
+            // 
+            // txtIndice2
+            // 
+            this.txtIndice2.Location = new System.Drawing.Point(204, 76);
+            this.txtIndice2.Name = "txtIndice2";
+            this.txtIndice2.ReadOnly = true;
+            this.txtIndice2.Size = new System.Drawing.Size(26, 20);
+            this.txtIndice2.TabIndex = 118;
+            this.txtIndice2.Text = "0";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtNombre.BackColor = System.Drawing.Color.White;
+            this.txtNombre.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtNombre.Location = new System.Drawing.Point(204, 300);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ReadOnly = true;
+            this.txtNombre.Size = new System.Drawing.Size(199, 23);
+            this.txtNombre.TabIndex = 121;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label9.Location = new System.Drawing.Point(201, 284);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 120;
+            this.label9.Text = "Nombre";
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.BackColor = System.Drawing.Color.White;
+            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporte.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.btnReporte.IconColor = System.Drawing.Color.Green;
+            this.btnReporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReporte.IconSize = 20;
+            this.btnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporte.Location = new System.Drawing.Point(607, 237);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(114, 26);
+            this.btnReporte.TabIndex = 122;
+            this.btnReporte.Text = "Descargar Excel";
+            this.btnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReporte.UseVisualStyleBackColor = false;
+            // 
             // FmrPagoDiario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1155, 554);
+            this.Controls.Add(this.btnReporte);
+            this.Controls.Add(this.txtNombre);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtId2);
+            this.Controls.Add(this.txtIndice2);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCedula);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridPagoDiario);
+            this.Controls.Add(this.dataGridClientesMiembros);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtBusqueda);
@@ -433,7 +674,8 @@
             this.Text = "FmrPagoDiario";
             this.Load += new System.EventHandler(this.FmrPagoDiario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPagoDiario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridClientesMiembros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,14 +700,30 @@
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.ComboBox cboBusqueda;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridPagoDiario;
-        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idpagodiario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn costo;
+        private System.Windows.Forms.DataGridView dataGridClientesMiembros;
         private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtId2;
+        private System.Windows.Forms.TextBox txtIndice2;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_pago_diario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedula_pago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_pago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costo;
+        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private FontAwesome.Sharp.IconButton btnReporte;
     }
 }

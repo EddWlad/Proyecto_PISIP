@@ -42,7 +42,36 @@ namespace UI.Windows.Controladores
             }
         }
 
- 
+        public bool ModificarCliente(ClienteVistaModelo clienteVistaModelo)
+        {
+            Cliente clienteDB = new Cliente();
+            try
+            {
+                clienteDB.id_cliente = clienteVistaModelo.Id_Cliente;
+                clienteDB.id_tipo_cliente = clienteVistaModelo.Id_Tipo_Cliente;
+                clienteDB.cedula = clienteVistaModelo.Cedula;
+                clienteDB.nombre = clienteVistaModelo.Nombre;
+                clienteDB.apellido = clienteVistaModelo.Apellido;
+                clienteDB.direccion = clienteVistaModelo.Direccion;
+                clienteDB.telefono = clienteVistaModelo.Telefono;
+                clienteDB.email = clienteVistaModelo.Email;
+                clienteDB.altura = clienteVistaModelo.Altura;
+                clienteDB.peso = clienteVistaModelo.Peso;
+                clienteDB.id_membresia = clienteVistaModelo.Id_Membresia;
+                clienteDB.estado = clienteVistaModelo.Estado;
+                servicio.ModificarCliente(clienteDB);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public Cliente ObtenerCliente(int id)
+        {
+            return servicio.ObtenerCliente(id);
+        }
 
         public IEnumerable<ClienteTipoCliente> ListarClientesActivos()
         {
@@ -53,7 +82,11 @@ namespace UI.Windows.Controladores
             return servicio.ListarClientesNombre(nombre);
         }
   
-
+        public bool EliminarCliente(int id)
+        {
+            return servicio.EliminarCliente(id);
+            
+        }
         
     }
 }

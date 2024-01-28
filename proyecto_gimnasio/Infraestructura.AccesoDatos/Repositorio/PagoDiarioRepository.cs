@@ -30,18 +30,31 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Pago_diario> ListarPagosActivos()
+        public IEnumerable<PagoDiarioRegistro> ListarPagosActivos()
         {
             try
             {
                 using (var context = new gestion_membresiasEntities())
                 {
-                    //2.- escribil la consulta
-                    var pagosActivos = from e in context.Pago_diario
-                                            where e.estado == true
-                                            select e;
+                    var pagosRegistros = context.Pago_diario
+                     .Join(context.Registro_Asistencia,
+                         p => p.id_registro,
+                         r => r.id_registro,
+                        (pago, registro) => new { pago, registro })
+                     .Join(context.Cliente,
+                        nc => nc.registro.id_cliente,
+                        c => c.id_cliente,
+                        (nombreCliente, clientes) => new PagoDiarioRegistro
+                        {
+                            id_pago_diario = nombreCliente.pago.id_pago_diario,
+                            cedula = clientes.cedula,
+                            nombre = clientes.nombre,
+                            fecha = nombreCliente.pago.fecha,
+                            costo = nombreCliente.pago.monto,
+                            estado = nombreCliente.pago.estado
+                        }).Where(p => p.estado.Equals(true)).ToList();
                     //3.- retorno resultado
-                    return pagosActivos.ToList();
+                    return pagosRegistros.ToList();
                 }
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using Dominio.Modelo.Entidades;
+﻿using ClosedXML.Excel;
+using Dominio.Modelo.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -218,6 +219,11 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El cliente ya existe");
+                return;
+            }
             clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
             clienteVistaModelo.Cedula = txtCedula.Text;
             clienteVistaModelo.Nombre = txtNombre.Text;
@@ -240,8 +246,124 @@ namespace UI.Windows.Formularios
                 // Manejar el caso en el que el valor no es un número válido
                 MessageBox.Show("Por favor,ingrese el valor correcto");
             }
+            
         }
 
-       
+        private void ObtenerCliente(int id)
+        {
+            var cliente = clienteControlador.ObtenerCliente(id);
+        }
+
+        private void modificarCliente()
+        {
+            if (clienteControlador.ModificarCliente(clienteVistaModelo))
+            {
+                MessageBox.Show("Cliente modficado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error: Al modificar cliente");
+            }
+        }
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            if(dataGridClientes.Rows.Count <1 )
+            {
+                MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                DataTable dt = new DataTable();
+                foreach(DataGridViewColumn columna in dataGridClientes.Columns)
+                {
+                    if(columna.HeaderText != "" && columna.Visible && columna.HeaderText != "Foto")
+                        dt.Columns.Add(columna.HeaderText,typeof(string));
+                }
+                foreach(DataGridViewRow fila in dataGridClientes.Rows)
+                {
+                    if (fila.Visible)
+                        dt.Rows.Add(new object[] {
+                           fila.Cells[2].Value.ToString(),
+                           fila.Cells[3].Value.ToString(),
+                           fila.Cells[4].Value.ToString(),
+                           fila.Cells[5].Value.ToString(),
+                           fila.Cells[6].Value.ToString(),
+                           fila.Cells[7].Value.ToString(),
+                           fila.Cells[8].Value.ToString(),
+                           fila.Cells[9].Value.ToString(),
+                           fila.Cells[10].Value.ToString(),
+                        });
+                }
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.FileName = string.Format("ReportePagos_{0}.xlsx", DateTime.Now.ToString("dd-MM-yyyy"));
+                savefile.Filter = "Excel Files | *.xlsx";
+
+                if(savefile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        XLWorkbook wb = new XLWorkbook();
+                        var hoja = wb.Worksheets.Add(dt, "Informe");
+                        hoja.ColumnsUsed().AdjustToContents();
+                        wb.SaveAs(savefile.FileName);
+                        MessageBox.Show("Reporte de pagos generado");
+                    }
+                    catch 
+                    {
+                        MessageBox.Show("Error al generar reporte");
+                    }
+                }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+            clienteVistaModelo.Id_Cliente = int.Parse(txtId.Text); 
+            clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
+            clienteVistaModelo.Cedula = txtCedula.Text;
+            clienteVistaModelo.Nombre = txtNombre.Text;
+            clienteVistaModelo.Apellido = txtApellido.Text;
+            clienteVistaModelo.Direccion = txtDireccion.Text;
+            clienteVistaModelo.Telefono = txtTelefono.Text;
+            clienteVistaModelo.Email = txtEmail.Text;
+            clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
+            // Validacion de valores de peso y altura correctos
+            if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
+            {
+                clienteVistaModelo.Estado = true;
+                Limpiar();
+                modificarCliente();
+            }
+            else
+            {
+                // Manejar el caso en el que el valor no es un número válido
+                MessageBox.Show("Por favor,ingrese el valor correcto");
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+           
+            var eliminacionCliente = clienteControlador.EliminarCliente(int.Parse(txtId.Text));
+            if (eliminacionCliente)
+            {
+                MessageBox.Show("Cliente eliminado correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar cliente");
+            }
+        }
     }
 }

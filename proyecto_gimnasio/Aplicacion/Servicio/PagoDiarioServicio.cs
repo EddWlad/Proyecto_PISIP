@@ -32,7 +32,7 @@ namespace Aplicacion.Servicio
         {
             return this.pagosdiariosRepository.ListarPagosFecha(fecha);
         }
-        public IEnumerable<Pago_diario> ListarPagosDiariosActivos()
+        public IEnumerable<PagoDiarioRegistro> ListarPagosDiariosActivos()
         {
             return this.pagosdiariosRepository.ListarPagosActivos();
         }

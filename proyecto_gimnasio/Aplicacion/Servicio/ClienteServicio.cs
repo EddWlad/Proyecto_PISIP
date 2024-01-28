@@ -38,7 +38,14 @@ namespace Aplicacion.Servicio
         {
             return this.clienteRepository.ListarClienteNombre(nombre);
         }
-        
-       
+        public Cliente ObtenerCliente(int id)
+        {
+            return this.clienteRepository.GetById(id);
+        }
+        public bool EliminarCliente(int id)
+        {
+            return this.clienteRepository.ElminarCliente(id);
+        }
+
     }
 }

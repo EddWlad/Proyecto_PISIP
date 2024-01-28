@@ -150,13 +150,46 @@
   <metadata name="btnSeleccionar.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="idpagodiario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="id_cliente.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="cedula.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALJJREFUSEvt
+        lDEKAjEQRdN4G/EgNl7GztYzeC8btRFRRKy9wPg3eVg4G8EdF1n0wYeE/+cPpEj6DcxsJK2km3SVFlif
+        QYVL6Zk5dhyVXUqnTaRxOdoJOw6FxtXdw9A3gAWamUnbPN0CsceCFjbSlJhH5jnHKhB7taBhT8xDoPPb
+        Ml6fx+9/QRTqPPhhqPPg9/9EXN+G8f+COox/d8GxREIcqPPIbD67XY51Yy3VP7sBktIdGdqItfbyjsUA
+        AAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAYZJREFUSEvt
+        lE0rBVEYxydl491dSEK6i1sSYWVD+Sq+gJVEvoAF5aXcjQWlbJXsJJRsvJQFsZGFpOSlhJTH75nzTKnb
+        uWfUrORXv27zP//nTOc2M9HfRUTacRx38cncwTFstdrvYbgON7AcX7iOVTaWDh3AM1TecQ7ztqzreVzE
+        D1QOsdKWw1BejcdEbrDT4hJY68FbLcKMxeWh2O368ol9FnuhMxS33WlaLPZDaSGu82tRELprbkQmLPJD
+        6cp1pcuiIHSH3YjsWeSH0qvrSoVFQejm3Ig8WOSH0ovrSrVFQejWuBG5t8gPpVPXlX6LgtAdcCOybZEf
+        StOuK0sWBaG74kZk3iI/lAqob2jax3QQE9KdmuKy68s1FiwugbVevNMiFC0OQ/nnp+INZ7HNlpNTFlFP
+        mXCAtVYJQ7keN3WyDI+oX9Wj+ErkGBtsi3Qw0IGTuI/PqH/JFk5ho3X0PUievhPMxcNZopviud4BLrHJ
+        lrJDN8ULvQOMWJwtbNyMo3b5T1qi6BsQDCh4Gu8vkAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="dataGridViewButtonColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="id_pago_diario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="cedula_pago.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nombre_pago.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="fecha.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

@@ -112,6 +112,41 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
+        public bool ElminarCliente(int id)
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    // 1.- Buscar el cliente a actualizar
+                    var cliente = context.Cliente.FirstOrDefault(c => c.id_cliente == id);
+                    if (cliente != null)
+                    {
+                        // 2.- Actualizar los campos necesarios
+
+                        cliente.estado = false;
+
+
+                        // 3.- Guardar los cambios en la base de datos
+                        context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                        throw new Exception("El valor de cliente es nulo");
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+                throw new Exception("No se pudo actualizar el registro del cliente.", ex);
+                
+            }
+        }
+
         //public IEnumerable<Cliente> ListarClientesMembresia(string membresia)
         //{
 
