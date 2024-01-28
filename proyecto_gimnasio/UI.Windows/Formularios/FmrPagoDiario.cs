@@ -49,7 +49,7 @@ namespace UI.Windows.Formularios
             {
                 pagoDiarioVistaModelo.Fecha = DateTime.Now;
                 pagoDiarioVistaModelo.Estado = true;
-                dataGridPagoDiario.Rows.Add(new object[] {"",pagoDiarioVistaModelo.IdPagodiario, pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto,pagoDiarioVistaModelo.Estado,pagoDiarioVistaModelo.IdUsuario,""});
+                dataGridPagoDiario.Rows.Add(new object[] {"",pagoDiarioVistaModelo.IdPagodiario,"","", pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto});
                 Limpiar();
                 InsertarPagoDiario();
             }
@@ -73,7 +73,8 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
-            txtCosto.Text = "";    
+            txtCosto.Text = "";
+            txtCedula.Text = "";
         }
         private void BusquedaDataGrid()
         {
@@ -152,7 +153,7 @@ namespace UI.Windows.Formularios
                     txtId.Text = dataGridPagoDiario.Rows[indice].Cells["idpagodiario"].Value.ToString();
                     txtFecha.Text = dataGridPagoDiario.Rows[indice].Cells["fecha"].Value.ToString();
                     txtCosto.Text = dataGridPagoDiario.Rows[indice].Cells["costo"].Value.ToString();
-
+                    txtCedula.Text = dataGridPagoDiario.Rows[indice].Cells["cedula"].Value.ToString();
                 }
             }
         }

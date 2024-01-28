@@ -29,5 +29,35 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("No se pudieron recuperar los registro.", ex);
             }
         }
+
+        public IEnumerable<AsistenciaCliente> ListarAsistencias()
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var registroAsistencias = context.Registro_Asistencia
+                    .Join(context.Cliente,
+                        c => c.id_cliente,
+                        t => t.id_cliente,
+                       (asistencia, cliente) => new AsistenciaCliente
+                        {
+                            id_registro = asistencia.id_registro,
+                            cedula = cliente.cedula,
+                            nombre = cliente.nombre,
+                            telefono = cliente.telefono,
+                            fecha = (DateTime)asistencia.fecha,
+                            estado = asistencia.estado,
+                        }).Where(c => c.estado.Equals(true)).ToList();
+                    //3.- retorno resultado
+                    return registroAsistencias.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
     }
 }

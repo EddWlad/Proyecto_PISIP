@@ -55,7 +55,7 @@
     <Key>
       <PropertyRef Name="id_promocion" />
     </Key>
-    <Property Name="id_promocion" Type="int" Nullable="false" />
+    <Property Name="id_promocion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fecha_registro" Type="date" />
     <Property Name="descripcion" Type="nchar" MaxLength="50" />
     <Property Name="fecha_inicio" Type="date" />

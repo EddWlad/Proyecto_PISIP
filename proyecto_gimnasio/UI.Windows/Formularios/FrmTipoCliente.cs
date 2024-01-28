@@ -122,6 +122,8 @@ namespace UI.Windows.Formularios
             }
         }
 
+
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             tipoClienteVistaModelo.Descripcion = txtDescripcion.Text;

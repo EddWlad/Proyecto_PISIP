@@ -39,10 +39,10 @@ namespace UI.Windows.Formularios
 
             if(validacion != null)
             {
-                FrmInicio form = new FrmInicio(validacion);
-                form.Show();
-                this.Hide();
 
+                FrmInicio form = new FrmInicio(validacion);
+                this.Hide();
+                form.Show();
                 form.FormClosing += frm_closing;
             }
             else

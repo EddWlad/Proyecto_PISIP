@@ -16,28 +16,29 @@ namespace UI.Windows.Controladores
         {
             servicio = new PromocionesServicio();
         }
-        //public bool InsertarPromocion(PromocionesVistaModelo promocionVistaModelo)
-        //{
-            //Promociones promocionDB = new Promociones();
-            //try
-            //{
-                //promocionDB.tipo = promocionVistaModelo.Tipo;
-                //promocionDB.descripcion = promocionVistaModelo.Descripcion;
-                //promocionDB.costo = promocionVistaModelo.Costo;
-                //promocionDB.estado = promocionVistaModelo.Estado;
-               // servicio.InsertarPromociones(promocionDB);
-                //return true;
-            //}
-            //catch (Exception ex)
-            //{
-                //return false;
-            //}
-        //}
+        public bool InsertarPromocion(PromocionesVistaModelo promocionVistaModelo)
+        {
+            Promociones promocionDB = new Promociones();
+            try
+            {
+                promocionDB.fecha_registro = promocionVistaModelo.Fecha_registro;
+                promocionDB.descripcion = promocionVistaModelo.Descripcion;
+                promocionDB.fecha_inicio = promocionVistaModelo.Fecha_inicio;
+                promocionDB.fecha_fin = promocionVistaModelo.Fecha_fin;
+                promocionDB.estado = promocionVistaModelo.Estado;
+                servicio.InsertarPromociones(promocionDB);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
-       // public IEnumerable<Promociones> ListarPromocionesTipo(string tipo)
-        //{
-            //return servicio.ListarPromocionesTipo(tipo);
-        //}
+       public IEnumerable<Promociones> ListarPromocionesTipo(string tipo)
+        {
+            return servicio.ListarPromocionesTipo(tipo);
+        }
 
         public IEnumerable<Promociones> ListarPromocionesActivas()
         {

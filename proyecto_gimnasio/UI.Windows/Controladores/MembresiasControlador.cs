@@ -16,30 +16,34 @@ namespace UI.Windows.Controladores
         {
             servicio = new MembresiasServicio();
         }
-        //public bool InsertarMembresia(MembresiasVistaModelo membresiaVistaModelo)
-        //{
-           //Membresias membresiaDB = new Membresias();
-           // try
-            //{
-                //membresiaDB.tipo= membresiaVistaModelo.Tipo;
-                //membresiaDB.costo = membresiaVistaModelo.Costo;
-                //membresiaDB.descripcion = membresiaVistaModelo.Descripcion;
-                //membresiaDB.estado = membresiaVistaModelo.Estado;
-                //servicio.InsertarMembresias(membresiaDB);
-                //return true;
-            //}
-            //catch (Exception ex)
-            //{
-                //return false;
-            //}
-        //}
+        public bool InsertarMembresia(MembresiasVistaModelo membresiaVistaModelo)
+        {
+           Membresias membresiaDB = new Membresias();
+           try
+            {
+                membresiaDB.fecha_registro= membresiaVistaModelo.Fecha_Registro;
+                membresiaDB.descripcion = membresiaVistaModelo.Descripcion;
+                membresiaDB.fecha_inicio = membresiaVistaModelo.Fecha_Inicio;
+                membresiaDB.fecha_fin = membresiaVistaModelo.Fecha_Fin;
+                membresiaDB.estado = membresiaVistaModelo.Estado;
+                membresiaDB.id_tipo_membresia = membresiaVistaModelo.Id_Tipo_Membresia;
+                membresiaDB.id_costo_membresia = membresiaVistaModelo.Id_Costo_Membresia;
+                membresiaDB.id_promocion = membresiaVistaModelo.Id_Promocion;
+                servicio.InsertarMembresias(membresiaDB);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
         //public IEnumerable<Membresias> ListarMembresiasTipo(string tipo)
         //{
             //return servicio.ListarMembresiasTipo(tipo);
         //}
 
-        public IEnumerable<Membresias> ListarMembresiasActivas()
+        public IEnumerable<MembresiaTipoCostoPromocion> ListarMembresiasActivas()
         {
             return servicio.ListarMembresiasActivas();
         }

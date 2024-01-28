@@ -22,6 +22,7 @@ namespace UI.Windows.Controladores
             Cliente clienteDB = new Cliente();
             try 
             {
+                clienteDB.id_tipo_cliente = clienteVistaModelo.Id_Tipo_Cliente;
                 clienteDB.cedula = clienteVistaModelo.Cedula;
                 clienteDB.nombre = clienteVistaModelo.Nombre;
                 clienteDB.apellido = clienteVistaModelo.Apellido;
@@ -30,6 +31,7 @@ namespace UI.Windows.Controladores
                 clienteDB.email = clienteVistaModelo.Email;
                 clienteDB.altura = clienteVistaModelo.Altura;
                 clienteDB.peso = clienteVistaModelo.Peso;
+                clienteDB.id_membresia = clienteVistaModelo.Id_Membresia;
                 clienteDB.estado = clienteVistaModelo.Estado;
                 servicio.InsertarCliente(clienteDB);
                 return true;
@@ -42,7 +44,7 @@ namespace UI.Windows.Controladores
 
  
 
-        public IEnumerable<Cliente> ListarClientesActivos()
+        public IEnumerable<ClienteTipoCliente> ListarClientesActivos()
         {
             return servicio.ListarClientesActivos();
         }

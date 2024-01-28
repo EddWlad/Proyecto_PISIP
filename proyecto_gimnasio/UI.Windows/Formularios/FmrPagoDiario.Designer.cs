@@ -51,11 +51,12 @@
             this.dataGridPagoDiario = new System.Windows.Forms.DataGridView();
             this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idpagodiario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCedula = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPagoDiario)).BeginInit();
             this.SuspendLayout();
@@ -114,7 +115,7 @@
             this.txtFecha.Location = new System.Drawing.Point(204, 156);
             this.txtFecha.Name = "txtFecha";
             this.txtFecha.ReadOnly = true;
-            this.txtFecha.Size = new System.Drawing.Size(204, 23);
+            this.txtFecha.Size = new System.Drawing.Size(199, 23);
             this.txtFecha.TabIndex = 84;
             // 
             // txtCosto
@@ -126,7 +127,7 @@
             this.txtCosto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtCosto.Location = new System.Drawing.Point(204, 198);
             this.txtCosto.Name = "txtCosto";
-            this.txtCosto.Size = new System.Drawing.Size(204, 23);
+            this.txtCosto.Size = new System.Drawing.Size(199, 23);
             this.txtCosto.TabIndex = 86;
             // 
             // label1
@@ -181,7 +182,7 @@
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
             this.btnEliminar.Location = new System.Drawing.Point(204, 323);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(204, 32);
+            this.btnEliminar.Size = new System.Drawing.Size(199, 32);
             this.btnEliminar.TabIndex = 91;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -200,7 +201,7 @@
             this.btnGuardar.Image = global::UI.Windows.Properties.Resources.save;
             this.btnGuardar.Location = new System.Drawing.Point(204, 286);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(204, 31);
+            this.btnGuardar.Size = new System.Drawing.Size(199, 31);
             this.btnGuardar.TabIndex = 87;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -314,11 +315,10 @@
             this.dataGridPagoDiario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
             this.idpagodiario,
+            this.cedula,
+            this.nombre,
             this.fecha,
-            this.costo,
-            this.estado,
-            this.id_usuario,
-            this.EstadoValor});
+            this.costo});
             this.dataGridPagoDiario.Location = new System.Drawing.Point(434, 122);
             this.dataGridPagoDiario.MultiSelect = false;
             this.dataGridPagoDiario.Name = "dataGridPagoDiario";
@@ -334,12 +334,14 @@
             // 
             // btnSeleccionar
             // 
+            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.btnSeleccionar.FillWeight = 13.11036F;
             this.btnSeleccionar.HeaderText = "";
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.ReadOnly = true;
             this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 38;
             // 
             // idpagodiario
             // 
@@ -347,6 +349,18 @@
             this.idpagodiario.Name = "idpagodiario";
             this.idpagodiario.ReadOnly = true;
             this.idpagodiario.Visible = false;
+            // 
+            // cedula
+            // 
+            this.cedula.HeaderText = "Cedula";
+            this.cedula.Name = "cedula";
+            this.cedula.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
             // fecha
             // 
@@ -362,28 +376,31 @@
             this.costo.Name = "costo";
             this.costo.ReadOnly = true;
             // 
-            // estado
+            // txtCedula
             // 
-            this.estado.FillWeight = 113.9086F;
-            this.estado.HeaderText = "Estado";
-            this.estado.Name = "estado";
-            this.estado.ReadOnly = true;
-            this.estado.Visible = false;
+            this.txtCedula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtCedula.BackColor = System.Drawing.Color.White;
+            this.txtCedula.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCedula.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtCedula.Location = new System.Drawing.Point(204, 245);
+            this.txtCedula.Name = "txtCedula";
+            this.txtCedula.Size = new System.Drawing.Size(199, 23);
+            this.txtCedula.TabIndex = 110;
             // 
-            // id_usuario
+            // label3
             // 
-            this.id_usuario.FillWeight = 113.9086F;
-            this.id_usuario.HeaderText = "Creado por:";
-            this.id_usuario.Name = "id_usuario";
-            this.id_usuario.ReadOnly = true;
-            this.id_usuario.Visible = false;
-            // 
-            // EstadoValor
-            // 
-            this.EstadoValor.HeaderText = "EstadoValor";
-            this.EstadoValor.Name = "EstadoValor";
-            this.EstadoValor.ReadOnly = true;
-            this.EstadoValor.Visible = false;
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label3.Location = new System.Drawing.Point(201, 229);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 13);
+            this.label3.TabIndex = 109;
+            this.label3.Text = "Cedula";
             // 
             // FmrPagoDiario
             // 
@@ -391,6 +408,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1155, 554);
+            this.Controls.Add(this.txtCedula);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridPagoDiario);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnBuscar);
@@ -442,10 +461,11 @@
         private System.Windows.Forms.DataGridView dataGridPagoDiario;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idpagodiario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn costo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoValor;
+        private System.Windows.Forms.TextBox txtCedula;
+        private System.Windows.Forms.Label label3;
     }
 }

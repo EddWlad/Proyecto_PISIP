@@ -32,5 +32,9 @@ namespace Aplicacion.Servicio
         {
             return this.registroAsistenciaRepository.ListarAsistenciaFecha(fecha);
         }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciaClientes()
+        {
+            return this.registroAsistenciaRepository.ListarAsistencias();
+        }
     }
 }

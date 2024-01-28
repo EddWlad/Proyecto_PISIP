@@ -43,11 +43,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio\ClienteServicio.cs" />
+    <Compile Include="Servicio\CostoMembresiasServicio.cs" />
     <Compile Include="Servicio\MembresiasServicio.cs" />
     <Compile Include="Servicio\PagoDiarioServicio.cs" />
     <Compile Include="Servicio\PromocionesServicio.cs" />
     <Compile Include="Servicio\RegistroAsistenciaServicio.cs" />
     <Compile Include="Servicio\TipoClienteServicio.cs" />
+    <Compile Include="Servicio\TipoMembresiaServicio.cs" />
     <Compile Include="Servicio\UsuarioServicio.cs" />
   </ItemGroup>
   <ItemGroup>

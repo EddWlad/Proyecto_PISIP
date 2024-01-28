@@ -8,13 +8,14 @@ namespace UI.Windows.VistaModelos
 {
     public class MembresiasVistaModelo
     {
-        public int IdMembresia { get; set; }
-        public string Tipo { get; set; }
-        public decimal Costo { get; set; }
+        public int Id_Membresia { get; set; }
+        public Nullable<System.DateTime> Fecha_Registro { get; set; }
         public string Descripcion { get; set; }
-        public Nullable<System.DateTime> Fecha_inicio { get; set; }
-        public Nullable<System.DateTime> Fecha_fin { get; set; }
+        public Nullable<System.DateTime> Fecha_Inicio { get; set; }
+        public Nullable<System.DateTime> Fecha_Fin { get; set; }
         public bool Estado { get; set; }
-        public Nullable<int> IdUsuario { get; set; }
+        public Nullable<int> Id_Tipo_Membresia { get; set; }
+        public Nullable<int> Id_Costo_Membresia { get; set; }
+        public Nullable<int> Id_Promocion { get; set; }
     }
 }

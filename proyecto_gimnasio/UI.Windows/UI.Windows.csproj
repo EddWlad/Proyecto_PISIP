@@ -64,11 +64,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\ClienteControlador.cs" />
+    <Compile Include="Controladores\CostoMembresiasControlador.cs" />
     <Compile Include="Controladores\MembresiasControlador.cs" />
     <Compile Include="Controladores\PagoDiarioControlador.cs" />
     <Compile Include="Controladores\PromocionesControlador.cs" />
     <Compile Include="Controladores\RegistroAsistenciaControlador.cs" />
     <Compile Include="Controladores\TipoClienteControlador.cs" />
+    <Compile Include="Controladores\TipoMembresiaControlador.cs" />
     <Compile Include="Controladores\UsuarioControlador.cs" />
     <Compile Include="Formularios\FmrPagoDiario.cs">
       <SubType>Form</SubType>
@@ -138,18 +140,22 @@
     </Compile>
     <Compile Include="Formularios\Utilitarios\OpcionBusquedaTipoCliente.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboAsistencia.cs" />
+    <Compile Include="Formularios\Utilitarios\OpComboBusquedaCostoMembresia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboBusquedaPagoDiario.cs" />
+    <Compile Include="Formularios\Utilitarios\OpComboBusquedaTipoMembresia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoCliente.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoMembresia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoPromociones.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VistaModelos\ClienteVistaModelo.cs" />
+    <Compile Include="VistaModelos\CostoMembresiasVistaModelo.cs" />
     <Compile Include="VistaModelos\MembresiasVistaModelo.cs" />
     <Compile Include="VistaModelos\PagoDiarioVistaModelo.cs" />
     <Compile Include="VistaModelos\PromocionesVistaModelo.cs" />
     <Compile Include="VistaModelos\RegistroAsistenciaVistaModelo.cs" />
     <Compile Include="VistaModelos\TipoClienteVistaModelo.cs" />
+    <Compile Include="VistaModelos\TipoMembresiaVistaModelo.cs" />
     <Compile Include="VistaModelos\UsuarioVistaModelo.cs" />
     <EmbeddedResource Include="Formularios\FmrPagoDiario.resx">
       <DependentUpon>FmrPagoDiario.cs</DependentUpon>

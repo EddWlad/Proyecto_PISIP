@@ -52,7 +52,6 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -77,6 +76,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtId1 = new System.Windows.Forms.TextBox();
+            this.txtIndex2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientesMiembros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGirdDetalleAsistencia)).BeginInit();
@@ -90,7 +91,6 @@
             this.txtIndice.Size = new System.Drawing.Size(26, 20);
             this.txtIndice.TabIndex = 107;
             this.txtIndice.Text = "0";
-            this.txtIndice.Visible = false;
             // 
             // txtId
             // 
@@ -100,7 +100,6 @@
             this.txtId.Size = new System.Drawing.Size(26, 20);
             this.txtId.TabIndex = 106;
             this.txtId.Text = "0";
-            this.txtId.Visible = false;
             // 
             // dataGridClientesMiembros
             // 
@@ -135,6 +134,8 @@
             this.dataGridClientesMiembros.RowTemplate.Height = 28;
             this.dataGridClientesMiembros.Size = new System.Drawing.Size(709, 170);
             this.dataGridClientesMiembros.TabIndex = 105;
+            this.dataGridClientesMiembros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientesMiembros_CellContentClick);
+            this.dataGridClientesMiembros.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridClientesMiembros_CellPainting);
             // 
             // btnSeleccionar
             // 
@@ -241,6 +242,7 @@
             this.txtCedula.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtCedula.Location = new System.Drawing.Point(211, 214);
             this.txtCedula.Name = "txtCedula";
+            this.txtCedula.ReadOnly = true;
             this.txtCedula.Size = new System.Drawing.Size(204, 23);
             this.txtCedula.TabIndex = 93;
             // 
@@ -315,7 +317,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEliminar.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminar.Image")));
-            this.btnEliminar.Location = new System.Drawing.Point(211, 431);
+            this.btnEliminar.Location = new System.Drawing.Point(211, 393);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(204, 32);
             this.btnEliminar.TabIndex = 98;
@@ -323,25 +325,6 @@
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.Location = new System.Drawing.Point(211, 393);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(204, 32);
-            this.btnEditar.TabIndex = 97;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditar.UseVisualStyleBackColor = false;
             // 
             // btnGuardar
             // 
@@ -550,6 +533,7 @@
             this.dataGirdDetalleAsistencia.RowTemplate.Height = 28;
             this.dataGirdDetalleAsistencia.Size = new System.Drawing.Size(709, 222);
             this.dataGirdDetalleAsistencia.TabIndex = 117;
+            this.dataGirdDetalleAsistencia.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGirdDetalleAsistencia_CellPainting);
             // 
             // dataGridViewButtonColumn1
             // 
@@ -629,6 +613,7 @@
             this.txtNombre.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtNombre.Location = new System.Drawing.Point(211, 261);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(204, 23);
             this.txtNombre.TabIndex = 121;
             // 
@@ -656,6 +641,7 @@
             this.txtTelefono.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtTelefono.Location = new System.Drawing.Point(211, 310);
             this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(204, 23);
             this.txtTelefono.TabIndex = 123;
             // 
@@ -674,12 +660,32 @@
             this.label8.Text = "Telefono";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // txtId1
+            // 
+            this.txtId1.Location = new System.Drawing.Point(211, 45);
+            this.txtId1.Name = "txtId1";
+            this.txtId1.ReadOnly = true;
+            this.txtId1.Size = new System.Drawing.Size(26, 20);
+            this.txtId1.TabIndex = 125;
+            this.txtId1.Text = "0";
+            // 
+            // txtIndex2
+            // 
+            this.txtIndex2.Location = new System.Drawing.Point(211, 71);
+            this.txtIndex2.Name = "txtIndex2";
+            this.txtIndex2.ReadOnly = true;
+            this.txtIndex2.Size = new System.Drawing.Size(26, 20);
+            this.txtIndex2.TabIndex = 124;
+            this.txtIndex2.Text = "0";
+            // 
             // FrmAsistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1155, 554);
+            this.Controls.Add(this.txtId1);
+            this.Controls.Add(this.txtIndex2);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtNombre);
@@ -706,7 +712,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
@@ -737,7 +742,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
@@ -771,5 +775,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
+        private System.Windows.Forms.TextBox txtId1;
+        private System.Windows.Forms.TextBox txtIndex2;
     }
 }

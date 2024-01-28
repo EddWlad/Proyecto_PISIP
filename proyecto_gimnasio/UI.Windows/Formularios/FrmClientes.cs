@@ -20,10 +20,15 @@ namespace UI.Windows.Formularios
         
         ClienteVistaModelo clienteVistaModelo = new ClienteVistaModelo();
         ClienteControlador clienteControlador;
+        TipoClienteControlador tipoClienteControlador;
+        MembresiasControlador membresiasControlador;
+        
         public FrmClientes()
         {
             InitializeComponent();
             clienteControlador = new ClienteControlador();
+            tipoClienteControlador = new TipoClienteControlador();
+            membresiasControlador = new MembresiasControlador();
         }
 
         public void InsertarCliente()
@@ -41,10 +46,18 @@ namespace UI.Windows.Formularios
         private void FrmClientes_Load(object sender, EventArgs e)
         {
             BusquedaDataGrid();
+            contenidoTipoCliente();
+            contenidoMembresia();
             //ContenidoCboEstado();
             Listar();
         }
+        private void contenidoMembresia()
+        {
+            cboTipoMembresia.DataSource = membresiasControlador.ListarMembresiasActivas();
+            cboTipoMembresia.DisplayMember = "descripcion";
+            cboTipoMembresia.ValueMember = "id_membresia";
 
+        }
         private void BusquedaDataGrid()
         {
             foreach(DataGridViewColumn columna in dataGridClientes.Columns)
@@ -80,6 +93,14 @@ namespace UI.Windows.Formularios
 
             txtPeso.Text = "";
             txtAltura.Text = "";
+
+        }
+
+        private void contenidoTipoCliente()
+        {
+            cboTipoCliente.DataSource = tipoClienteControlador.ListarTipoClientesActivos();
+            cboTipoCliente.DisplayMember = "descripcion";
+            cboTipoCliente.ValueMember = "id_tipo_cliente";
 
         }
         private bool ConversionAltura(string txtAltura)
@@ -120,11 +141,11 @@ namespace UI.Windows.Formularios
 
         public void Listar()
         {  
-            List<Cliente> listaClientes = (List<Cliente>)clienteControlador.ListarClientesActivos();
-            foreach (Cliente item in listaClientes)
+            List<ClienteTipoCliente> listaClientes = (List<ClienteTipoCliente>)clienteControlador.ListarClientesActivos();
+            foreach (ClienteTipoCliente item in listaClientes)
             {
-                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,"",item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,"","",});
+                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                item.peso,item.altura,item.membresia,"",});
             }
                 
         }
@@ -197,18 +218,20 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
+            clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
             clienteVistaModelo.Cedula = txtCedula.Text;
             clienteVistaModelo.Nombre = txtNombre.Text;
             clienteVistaModelo.Apellido = txtApellido.Text;
             clienteVistaModelo.Direccion = txtDireccion.Text;
             clienteVistaModelo.Telefono = txtTelefono.Text;
             clienteVistaModelo.Email = txtEmail.Text;
+            clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
             // Validacion de valores de peso y altura correctos
             if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
             {
                 clienteVistaModelo.Estado = true;
-                dataGridClientes.Rows.Add(new object[] {"",clienteVistaModelo.Id_Cliente,"",clienteVistaModelo.Cedula, clienteVistaModelo.Nombre,clienteVistaModelo.Apellido,clienteVistaModelo.Direccion, clienteVistaModelo.Telefono,clienteVistaModelo.Email,
-                clienteVistaModelo.Peso,clienteVistaModelo.Altura,"","",});
+                dataGridClientes.Rows.Add(new object[] {"",clienteVistaModelo.Id_Cliente,cboTipoCliente.Text,clienteVistaModelo.Cedula, clienteVistaModelo.Nombre,clienteVistaModelo.Apellido,clienteVistaModelo.Direccion, clienteVistaModelo.Telefono,clienteVistaModelo.Email,
+                clienteVistaModelo.Peso,clienteVistaModelo.Altura,cboTipoMembresia.Text,"",});
                 Limpiar();
                 InsertarCliente();
             }
@@ -218,5 +241,7 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("Por favor,ingrese el valor correcto");
             }
         }
+
+       
     }
 }

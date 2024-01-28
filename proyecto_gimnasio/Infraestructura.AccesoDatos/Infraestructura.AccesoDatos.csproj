@@ -66,11 +66,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\BaseRepository.cs" />
     <Compile Include="Repositorio\ClienteRepository.cs" />
+    <Compile Include="Repositorio\CostoMembresiasRepository.cs" />
     <Compile Include="Repositorio\MembresiasRepository.cs" />
     <Compile Include="Repositorio\PagoDiarioRepository.cs" />
     <Compile Include="Repositorio\PromocionesRepository.cs" />
     <Compile Include="Repositorio\RegistroAsistenciaRepository.cs" />
     <Compile Include="Repositorio\TipoClienteRepository.cs" />
+    <Compile Include="Repositorio\TipoMembresiasRepository.cs" />
     <Compile Include="Repositorio\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>

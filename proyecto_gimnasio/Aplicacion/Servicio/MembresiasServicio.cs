@@ -32,7 +32,7 @@ namespace Aplicacion.Servicio
         //{
             //return this.membresiasRepository.ListarMembresiasTipo(tipo);
         //}
-        public IEnumerable<Membresias> ListarMembresiasActivas()
+        public IEnumerable<MembresiaTipoCostoPromocion> ListarMembresiasActivas()
         {
             return this.membresiasRepository.ListarMembresiasActivas();
         }

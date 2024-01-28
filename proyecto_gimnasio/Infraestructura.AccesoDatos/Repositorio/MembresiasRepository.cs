@@ -31,16 +31,38 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Membresias> ListarMembresiasActivas()
+        public IEnumerable<MembresiaTipoCostoPromocion> ListarMembresiasActivas()
         {
             try
             {
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var membresiasActivas = from e in context.Membresias
-                                          where e.estado == true
-                                          select e;
+                    var membresiasActivas = context.Membresias.
+                        Join(context.Tipo_Membresia,
+                            membresia => membresia.id_tipo_membresia,
+                            tipo => tipo.id_tipo_membresia,
+                            (membresia, tipo) => new { Membresia = membresia, Tipo = tipo })
+                       .Join(context.Costo_Membresia,
+                            membresiaTipo => membresiaTipo.Membresia.id_costo_membresia,
+                            costo => costo.id_costo_membresia,
+                            (membresiaTipo, costo) => new { MembresiaTipo = membresiaTipo, Costo = costo })
+                       .Join(context.Promociones,
+                            membresiaTipoCosto => membresiaTipoCosto.MembresiaTipo.Membresia.id_promocion,
+                            promocion => promocion.id_promocion,
+                            (membresiaTipoCosto, promocion) => new MembresiaTipoCostoPromocion
+                            {
+                                id_membresia = membresiaTipoCosto.MembresiaTipo.Membresia.id_membresia,
+                                fecha_registro = (DateTime)membresiaTipoCosto.MembresiaTipo.Membresia.fecha_registro,
+                                descripcion = membresiaTipoCosto.MembresiaTipo.Membresia.descripcion,
+                                fecha_inicio = (DateTime)membresiaTipoCosto.MembresiaTipo.Membresia.fecha_inicio,
+                                fecha_fin = (DateTime)membresiaTipoCosto.MembresiaTipo.Membresia.fecha_fin,
+                                estado = membresiaTipoCosto.MembresiaTipo.Membresia.estado,
+                                tipoMembresia = membresiaTipoCosto.MembresiaTipo.Tipo.descripcion,
+                                costo = (decimal)membresiaTipoCosto.Costo.valor,
+                                promocion = promocion.descripcion,
+                                
+                        }).Where(membresia => membresia.estado.Equals(true)).ToList();
                     //3.- retorno resultado
                     return membresiasActivas.ToList();
                 }

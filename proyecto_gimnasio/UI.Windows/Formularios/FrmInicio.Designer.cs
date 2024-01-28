@@ -37,12 +37,12 @@
             this.btnCerar = new System.Windows.Forms.PictureBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
             this.pnlSubmenuMembresias = new System.Windows.Forms.Panel();
-            this.btnCostosMembresia = new System.Windows.Forms.Button();
+            this.btnNuevaMembresia = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.btnTiposMembresia = new System.Windows.Forms.Button();
+            this.btnCostosMembresia = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.btnNuevaMembresia = new System.Windows.Forms.Button();
+            this.btnTiposMembresia = new System.Windows.Forms.Button();
             this.pnlSubMenuCliente = new System.Windows.Forms.Panel();
             this.btnRegistro = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -191,81 +191,17 @@
             // 
             // pnlSubmenuMembresias
             // 
-            this.pnlSubmenuMembresias.Controls.Add(this.btnCostosMembresia);
+            this.pnlSubmenuMembresias.Controls.Add(this.btnNuevaMembresia);
             this.pnlSubmenuMembresias.Controls.Add(this.panel10);
-            this.pnlSubmenuMembresias.Controls.Add(this.btnTiposMembresia);
+            this.pnlSubmenuMembresias.Controls.Add(this.btnCostosMembresia);
             this.pnlSubmenuMembresias.Controls.Add(this.panel5);
             this.pnlSubmenuMembresias.Controls.Add(this.panel9);
-            this.pnlSubmenuMembresias.Controls.Add(this.btnNuevaMembresia);
+            this.pnlSubmenuMembresias.Controls.Add(this.btnTiposMembresia);
             this.pnlSubmenuMembresias.Location = new System.Drawing.Point(35, 431);
             this.pnlSubmenuMembresias.Name = "pnlSubmenuMembresias";
-            this.pnlSubmenuMembresias.Size = new System.Drawing.Size(154, 95);
+            this.pnlSubmenuMembresias.Size = new System.Drawing.Size(152, 95);
             this.pnlSubmenuMembresias.TabIndex = 12;
             this.pnlSubmenuMembresias.Visible = false;
-            // 
-            // btnCostosMembresia
-            // 
-            this.btnCostosMembresia.BackColor = System.Drawing.SystemColors.Desktop;
-            this.btnCostosMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCostosMembresia.FlatAppearance.BorderSize = 0;
-            this.btnCostosMembresia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
-            this.btnCostosMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCostosMembresia.Font = new System.Drawing.Font("Wide Latin", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCostosMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCostosMembresia.Image = global::UI.Windows.Properties.Resources.purchase_tag_regular_24;
-            this.btnCostosMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCostosMembresia.Location = new System.Drawing.Point(5, 65);
-            this.btnCostosMembresia.Name = "btnCostosMembresia";
-            this.btnCostosMembresia.Size = new System.Drawing.Size(150, 25);
-            this.btnCostosMembresia.TabIndex = 8;
-            this.btnCostosMembresia.Text = "                  Costos";
-            this.btnCostosMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCostosMembresia.UseVisualStyleBackColor = false;
-            this.btnCostosMembresia.Click += new System.EventHandler(this.btnCostosMembresia_Click);
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel10.Location = new System.Drawing.Point(0, 3);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(5, 25);
-            this.panel10.TabIndex = 7;
-            // 
-            // btnTiposMembresia
-            // 
-            this.btnTiposMembresia.BackColor = System.Drawing.SystemColors.Desktop;
-            this.btnTiposMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTiposMembresia.FlatAppearance.BorderSize = 0;
-            this.btnTiposMembresia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
-            this.btnTiposMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTiposMembresia.Font = new System.Drawing.Font("Wide Latin", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTiposMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnTiposMembresia.Image = global::UI.Windows.Properties.Resources.star_half_solid_24;
-            this.btnTiposMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTiposMembresia.Location = new System.Drawing.Point(5, 34);
-            this.btnTiposMembresia.Name = "btnTiposMembresia";
-            this.btnTiposMembresia.Size = new System.Drawing.Size(150, 25);
-            this.btnTiposMembresia.TabIndex = 10;
-            this.btnTiposMembresia.Text = "                   Tipos";
-            this.btnTiposMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTiposMembresia.UseVisualStyleBackColor = false;
-            this.btnTiposMembresia.Click += new System.EventHandler(this.btnTiposMembresia_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel5.Location = new System.Drawing.Point(0, 65);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(5, 25);
-            this.panel5.TabIndex = 9;
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.OrangeRed;
-            this.panel9.Location = new System.Drawing.Point(0, 34);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(5, 25);
-            this.panel9.TabIndex = 11;
             // 
             // btnNuevaMembresia
             // 
@@ -278,7 +214,7 @@
             this.btnNuevaMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNuevaMembresia.Image = global::UI.Windows.Properties.Resources.medal_regular_24;
             this.btnNuevaMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevaMembresia.Location = new System.Drawing.Point(5, 3);
+            this.btnNuevaMembresia.Location = new System.Drawing.Point(4, 65);
             this.btnNuevaMembresia.Name = "btnNuevaMembresia";
             this.btnNuevaMembresia.Size = new System.Drawing.Size(150, 25);
             this.btnNuevaMembresia.TabIndex = 6;
@@ -286,6 +222,70 @@
             this.btnNuevaMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNuevaMembresia.UseVisualStyleBackColor = false;
             this.btnNuevaMembresia.Click += new System.EventHandler(this.btnNuevaMembresia_Click);
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel10.Location = new System.Drawing.Point(-1, 65);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(5, 25);
+            this.panel10.TabIndex = 7;
+            // 
+            // btnCostosMembresia
+            // 
+            this.btnCostosMembresia.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnCostosMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCostosMembresia.FlatAppearance.BorderSize = 0;
+            this.btnCostosMembresia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnCostosMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCostosMembresia.Font = new System.Drawing.Font("Wide Latin", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCostosMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCostosMembresia.Image = global::UI.Windows.Properties.Resources.purchase_tag_regular_24;
+            this.btnCostosMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCostosMembresia.Location = new System.Drawing.Point(4, 3);
+            this.btnCostosMembresia.Name = "btnCostosMembresia";
+            this.btnCostosMembresia.Size = new System.Drawing.Size(150, 25);
+            this.btnCostosMembresia.TabIndex = 8;
+            this.btnCostosMembresia.Text = "                  Costos";
+            this.btnCostosMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCostosMembresia.UseVisualStyleBackColor = false;
+            this.btnCostosMembresia.Click += new System.EventHandler(this.btnCostosMembresia_Click);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel5.Location = new System.Drawing.Point(-1, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(5, 25);
+            this.panel5.TabIndex = 9;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel9.Location = new System.Drawing.Point(-1, 34);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(5, 25);
+            this.panel9.TabIndex = 11;
+            // 
+            // btnTiposMembresia
+            // 
+            this.btnTiposMembresia.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnTiposMembresia.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTiposMembresia.FlatAppearance.BorderSize = 0;
+            this.btnTiposMembresia.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnTiposMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTiposMembresia.Font = new System.Drawing.Font("Wide Latin", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTiposMembresia.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnTiposMembresia.Image = global::UI.Windows.Properties.Resources.star_half_solid_24;
+            this.btnTiposMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTiposMembresia.Location = new System.Drawing.Point(4, 34);
+            this.btnTiposMembresia.Name = "btnTiposMembresia";
+            this.btnTiposMembresia.Size = new System.Drawing.Size(150, 25);
+            this.btnTiposMembresia.TabIndex = 10;
+            this.btnTiposMembresia.Text = "                   Tipos";
+            this.btnTiposMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTiposMembresia.UseVisualStyleBackColor = false;
+            this.btnTiposMembresia.Click += new System.EventHandler(this.btnTiposMembresia_Click);
             // 
             // pnlSubMenuCliente
             // 

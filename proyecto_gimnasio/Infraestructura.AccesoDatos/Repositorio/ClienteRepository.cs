@@ -32,7 +32,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Cliente> ListarClientesActivos()
+        public IEnumerable<ClienteTipoCliente> ListarClientesActivos()
         {
             //1.- conectar a la base
             try
@@ -40,9 +40,30 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var clientesActivos = from e in context.Cliente
-                                         where e.estado == true
-                                         select e;
+                    var clientesActivos = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente,tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new ClienteTipoCliente
+                       {
+                           id_cliente = detalleMembresia.cliente.id_cliente,
+                           tipoCliente = detalleMembresia.tipoCLiente.descripcion, 
+                           cedula = detalleMembresia.cliente.cedula,
+                           nombre = detalleMembresia.cliente.nombre,
+                           apellido = detalleMembresia.cliente.apellido,
+                           direccion = detalleMembresia.cliente.direccion,
+                           telefono = detalleMembresia.cliente.telefono,
+                           email = detalleMembresia.cliente.email,
+                           peso = (decimal)detalleMembresia.cliente.peso,
+                           altura = (decimal)detalleMembresia.cliente.altura,
+                           estado = detalleMembresia.cliente.estado,
+                           membresia = membresia.descripcion,
+
+                       }).Where(c => c.estado.Equals(true)).ToList();
                     //3.- retorno resultado
                     return clientesActivos.ToList();
                 }

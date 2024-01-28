@@ -10,7 +10,7 @@ namespace Dominio.Modelo.Abstracciones
     public interface IClienteRepository : IBaseRepository<Cliente>
     {
         IEnumerable<Cliente> ListarClienteNombre(String nombre);
-        IEnumerable<Cliente> ListarClientesActivos();
+        IEnumerable<ClienteTipoCliente> ListarClientesActivos();
         
     }
 }

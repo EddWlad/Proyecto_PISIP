@@ -19,66 +19,97 @@ namespace UI.Windows.Formularios
         private bool valorEstado;
         MembresiasVistaModelo membresiasVistaModelo = new MembresiasVistaModelo();
         MembresiasControlador membresiasControlador;
+        TipoMembresiaControlador tipoMembresiaControlador;
+        CostoMembresiasControlador costoMembresiasControlador;
+        PromocionesControlador promocionesControlador;
         public FrmMembresias()
         {
             InitializeComponent();
             membresiasControlador = new MembresiasControlador();
-        }
-        //public void InsertarMembresia()
-        //{
-            //if (membresiasControlador.InsertarMembresia(membresiasVistaModelo))
-            //{
-                //MessageBox.Show("Membresia insertada correctamente");
-            //}
-            //else
-            //{
-                //MessageBox.Show("Error: Al insertar membresia");
-            //}
-       // }
+            tipoMembresiaControlador = new TipoMembresiaControlador();
+            costoMembresiasControlador = new CostoMembresiasControlador();
+            promocionesControlador = new PromocionesControlador();
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            membresiasVistaModelo.Tipo = txtTipo.Text;
-            if(ConversionCosto(txtCosto.Text))
-            {
-                //bool estadoMembresias = Convert.ToBoolean(cboEstado.SelectedValue.ToString());
-                membresiasVistaModelo.Descripcion = txtDescripcion.Text;
-                membresiasVistaModelo.Estado = valorEstado;
-                dataGridMembresias.Rows.Add(new object[] {"",membresiasVistaModelo.IdMembresia, membresiasVistaModelo.Tipo,membresiasVistaModelo.Costo,membresiasVistaModelo.Descripcion,
-                ((OpComboEstadoMembresia)cboEstado.SelectedItem).Texto.ToString(),"",((OpComboEstadoMembresia)cboEstado.SelectedItem).Valor.ToString()});
-                Limpiar();
-                //InsertarMembresia();
-            }
         }
-
-        private bool ConversionCosto(string costo)
+        public void InsertarMembresia()
         {
-            // Convertir el texto de altura a decimal
-            decimal valoraCosto;
-            if (decimal.TryParse(costo, out valoraCosto))
+            if (membresiasControlador.InsertarMembresia(membresiasVistaModelo))
             {
-                membresiasVistaModelo.Costo = valoraCosto;
-                return true;
+                MessageBox.Show("Pago insertado correctamente");
             }
             else
             {
-                // Manejar el caso en el que el valor no es un número válido
-                MessageBox.Show("Por favor, ingresa un valor válido para el costo.");
-                return false;
+                MessageBox.Show("Error: Al ingresar pago");
+            }
+        }
+        private void contenidoTipoMembresia()
+        {
+            cboTipoMembresia.DataSource = tipoMembresiaControlador.ListarTipoMembresiasActivas();
+            cboTipoMembresia.DisplayMember = "descripcion";
+            cboTipoMembresia.ValueMember = "id_tipo_membresia";
+
+        }
+        private void contenidoCostoMembresia()
+        {
+            cboCostoMembresia.DataSource = costoMembresiasControlador.ListarCostoMembresiasActivas();
+            cboCostoMembresia.DisplayMember = "valor";
+            cboCostoMembresia.ValueMember = "id_costo_membresia";
+
+        }
+        private void contenidoPromociones()
+        {
+            cboPromocion.DataSource = promocionesControlador.ListarPromocionesActivas();
+            cboPromocion.DisplayMember = "descripcion";
+            cboPromocion.ValueMember = "id_promocion";
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            membresiasVistaModelo.Fecha_Registro = DateTime.Now;
+           
+                //bool estadoMembresias = Convert.ToBoolean(cboEstado.SelectedValue.ToString());
+                
+                membresiasVistaModelo.Descripcion = txtDescripcion.Text;
+                membresiasVistaModelo.Fecha_Inicio = ConvertirFechaInicio();
+                membresiasVistaModelo.Fecha_Fin = ConvertirFechaFin();
+                membresiasVistaModelo.Estado = true;
+                membresiasVistaModelo.Id_Tipo_Membresia = (int)cboTipoMembresia.SelectedValue;
+                membresiasVistaModelo.Id_Costo_Membresia = (int)cboCostoMembresia.SelectedValue;
+                membresiasVistaModelo.Id_Promocion = (int)cboPromocion.SelectedValue;
+                dataGridMembresias.Rows.Add(new object[] {"",membresiasVistaModelo.Id_Membresia, membresiasVistaModelo.Fecha_Registro,membresiasVistaModelo.Descripcion,membresiasVistaModelo.Fecha_Inicio,
+                membresiasVistaModelo.Fecha_Fin,cboTipoMembresia.Text,cboCostoMembresia.Text,cboPromocion.Text});
+                Limpiar();
+                InsertarMembresia();
+            
+        }
+
+        public DateTime ConvertirFechaInicio()
+        {
+            DateTime fechaInicio;
+            if (DateTime.TryParse(textFechaInicio.Text, out fechaInicio))
+            {
+                return fechaInicio;
+            }
+            else
+            {
+                return DateTime.Now;
+            }
+        }
+        public DateTime ConvertirFechaFin()
+        {
+            DateTime fechaFin;
+            if (DateTime.TryParse(txtFechaFin.Text, out fechaFin))
+            {
+                return fechaFin;
+            }
+            else
+            {
+                return DateTime.Now;
             }
         }
 
-        private void ContenidoCboEstado()
-        {
-            cboEstado.Items.Add(new OpComboEstadoMembresia() { Valor = true, Texto = "Activo" });
-            cboEstado.Items.Add(new OpComboEstadoMembresia() { Valor = false, Texto = "Inactivo" });
-
-            cboEstado.DisplayMember = "Texto";
-            cboEstado.ValueMember = "Valor";
-            cboEstado.SelectedIndex = 0;
-            OpComboEstadoMembresia seleccionado = (OpComboEstadoMembresia)cboEstado.SelectedItem;
-            valorEstado = (bool)seleccionado.Valor;
-        }
+        
 
         private void BusquedaDataGrid()
         {
@@ -97,23 +128,22 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
-            txtTipo.Text = "";
-            txtCosto.Text = "";
+            txtFechaRegistro.Text = "";
             txtDescripcion.Text = "";
-            cboEstado.SelectedIndex = 0;
+            txtFechaFin.Text = "";
+            textFechaInicio.Text = "";
         }
 
-        //public void Listar()
-        //{
-            //List<Membresias> listaMembresias = (List<Membresias>)membresiasControlador.ListarMembresiasActivas();
-            //foreach (Membresias item in listaMembresias)
-            //{
-               //// dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
-                //item.estado == true ? "Activo" : "Inactivo","",
-                //item.estado == true ? 1:0});
-            //}
+        public void Listar()
+        {
+            List<MembresiaTipoCostoPromocion> listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasActivas();
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
+            {
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
+            }
 
-        //}
+        }
 
         //public void ListarMmebresiasTipo()
         //{
@@ -161,8 +191,12 @@ namespace UI.Windows.Formularios
         private void FrmMembresias_Load(object sender, EventArgs e)
         {
             BusquedaDataGrid();
-            ContenidoCboEstado();
-            //Listar();
+            contenidoTipoMembresia();
+            contenidoCostoMembresia();
+            contenidoPromociones();
+            txtFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            //ContenidoCboEstado();
+            Listar();
         }
 
         private void dataGridMembresias_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -192,22 +226,23 @@ namespace UI.Windows.Formularios
                 if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
-                    txtId.Text = dataGridMembresias.Rows[indice].Cells["idusuario"].Value.ToString();
-                    txtTipo.Text = dataGridMembresias.Rows[indice].Cells["tipo"].Value.ToString();
-                    txtCosto.Text = dataGridMembresias.Rows[indice].Cells["costo"].Value.ToString();
-                    txtDescripcion.Text = dataGridMembresias.Rows[indice].Cells["descripcion"].Value.ToString(); 
+                    txtId.Text = dataGridMembresias.Rows[indice].Cells["idmembresias"].Value.ToString();
+                    txtFechaRegistro.Text = dataGridMembresias.Rows[indice].Cells["fecha_registro"].Value.ToString();
+                    txtDescripcion.Text = dataGridMembresias.Rows[indice].Cells["descripcion"].Value.ToString();
+                    textFechaInicio.Text = dataGridMembresias.Rows[indice].Cells["fecha_inicio"].Value.ToString();
+                    txtFechaFin.Text = dataGridMembresias.Rows[indice].Cells["fecha_fin"].Value.ToString();
                     //Seleciondo el id se cambia el combo box
-                    foreach (OpComboEstadoMembresia opcMembresia in cboEstado.Items)
-                    {
-                        if (Convert.ToBoolean(opcMembresia.Valor) == Convert.ToBoolean(dataGridMembresias.Rows[indice].Cells["EstadoValor"].Value))
-                        {
-                            int indice_combo = cboEstado.Items.IndexOf(opcMembresia);
-                            cboEstado.SelectedIndex = indice_combo;
-                            break;
-                        }
+                    //foreach (OpComboEstadoMembresia opcMembresia in cboEstado.Items)
+                    //{
+                    //if (Convert.ToBoolean(opcMembresia.Valor) == Convert.ToBoolean(dataGridMembresias.Rows[indice].Cells["EstadoValor"].Value))
+                    //{
+                    //int indice_combo = cboEstado.Items.IndexOf(opcMembresia);
+                    //cboEstado.SelectedIndex = indice_combo;
+                    //break;
+                    //}
 
-                    }
-                    
+                    //}
+
                 }
             }
         }

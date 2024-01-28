@@ -30,7 +30,7 @@ namespace Aplicacion.Servicio
         {
             this.clienteRepository.Modify(modificadoCliente);
         }
-        public IEnumerable<Cliente> ListarClientesActivos()
+        public IEnumerable<ClienteTipoCliente> ListarClientesActivos()
         {
             return this.clienteRepository.ListarClientesActivos();
         }

@@ -23,6 +23,7 @@ namespace UI.Windows.Controladores
             {
                 asistenciaDB.fecha = registroAsistenciaVistaModelo.Fecha;
                 asistenciaDB.estado = registroAsistenciaVistaModelo.Estado;
+                asistenciaDB.id_cliente = (int)registroAsistenciaVistaModelo.Id_Cliente;
                 servicio.InsertarAsistencia(asistenciaDB);
                 return true;
             }
@@ -34,6 +35,10 @@ namespace UI.Windows.Controladores
         public IEnumerable<Registro_Asistencia> ListarAsistenciaFechas(DateTime fecha)
         {
             return servicio.ListarAsistenciaFechas(fecha);
+        }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciasClientes()
+        {
+            return servicio.ListarAsistenciaClientes();
         }
     }
 }
