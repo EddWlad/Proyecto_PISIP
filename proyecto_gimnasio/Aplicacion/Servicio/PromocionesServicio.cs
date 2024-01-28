@@ -28,6 +28,10 @@ namespace Aplicacion.Servicio
         {
             this.promocionesRepository.Modify(modificadoPromocion);
         }
+        public bool EliminarPromocion(int id)
+        {
+            return this.promocionesRepository.ElminarPromocion(id);
+        }
         public IEnumerable<Promociones> ListarPromocionesTipo(String tipo)
         {
             return this.promocionesRepository.ListarPromocionesTipo(tipo);
@@ -35,10 +39,6 @@ namespace Aplicacion.Servicio
         public IEnumerable<Promociones> ListarPromocionesActivas()
         {
             return this.promocionesRepository.ListarPromocionesActivas();
-        }
-        public IEnumerable<Promociones> ListarPromocionesEstado(Boolean estado)
-        {
-            return this.promocionesRepository.ListarPromocionesEstados(estado);
         }
     }
 }

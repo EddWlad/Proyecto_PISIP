@@ -36,6 +36,17 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("Error: Al promocion membresia");
             }
         }
+        private void modificarPromocion()
+        {
+            if (promocionesControlador.ModificarPromocion(promocionesVistaModelo))
+            {
+                MessageBox.Show("Promocion modficada correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error: Al modificar promocion");
+            }
+        }
 
         private void FrmPromociones_Load(object sender, EventArgs e)
         {
@@ -46,16 +57,20 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-                promocionesVistaModelo.Fecha_registro = DateTime.Now;
-                promocionesVistaModelo.Descripcion = txtDescripcion.Text;
-                promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
-                promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
-                promocionesVistaModelo.Estado = true;
-                dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.Id_promocion, promocionesVistaModelo.Fecha_registro,promocionesVistaModelo.Descripcion,promocionesVistaModelo.Fecha_inicio,
-                promocionesVistaModelo.Fecha_fin,});
-                InsertarPromocion();
-                Limpiar();
-
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El cliente ya existe");
+                return;
+            }
+            promocionesVistaModelo.Fecha_registro = DateTime.Now;
+            promocionesVistaModelo.Descripcion = txtDescripcion.Text;
+            promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
+            promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
+            promocionesVistaModelo.Estado = true;
+            dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.Id_promocion, promocionesVistaModelo.Fecha_registro,promocionesVistaModelo.Descripcion,promocionesVistaModelo.Fecha_inicio,
+            promocionesVistaModelo.Fecha_fin,});
+            InsertarPromocion();
+            Limpiar();
         }
 
         public DateTime ConvertirFechaInicio()
@@ -96,7 +111,7 @@ namespace UI.Windows.Formularios
         {
             foreach (DataGridViewColumn columna in dataGridPromociones.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "costo" && columna.Name != "descripcion" && columna.Name != "id_usuario")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "fecha" && columna.Name != "fecha_inicio" && columna.Name != "fecha_fin")
                 {
                     cboBusqueda.Items.Add(new OpComboEstadoPromociones() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -115,6 +130,7 @@ namespace UI.Windows.Formularios
             }
 
         }
+
         public void ListarPromocionesTipo()
         {
             dataGridPromociones.Rows.Clear();
@@ -126,20 +142,6 @@ namespace UI.Windows.Formularios
             }
 
         }
-        //public void ListarPromocionesEstados()
-        //{
-            //dataGridPromociones.Rows.Clear();
-            //bool busquedaEnGrid = ConversionBooleanaBusqueda();
-           // List<Promociones> listaPromocionesEstado = (List<Promociones>)promocionesControlador.ListarPromocionesEstado(busquedaEnGrid);
-           //foreach (Promociones item in listaPromocionesEstado)
-            //{
-               // dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.tipo,item.costo,item.descripcion,
-                    //item.estado == true ? "Activo" : "Inactivo","",
-                    //item.estado == true ? 1:0});
-            //}
-        //}
-        
-
         private void dataGridPromociones_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -179,11 +181,48 @@ namespace UI.Windows.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (cboBusqueda.Text == "Tipo")
+            if (cboBusqueda.Text == "Descripcion")
             {
                 ListarPromocionesTipo();
             }
 
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+            promocionesVistaModelo.Id_promocion = int.Parse(txtId.Text);
+            promocionesVistaModelo.Fecha_registro = DateTime.Now;
+            promocionesVistaModelo.Descripcion = txtDescripcion.Text;
+            promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
+            promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
+            promocionesVistaModelo.Estado = true;
+            modificarPromocion();
+            Limpiar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+
+            var eliminacionPromocion = promocionesControlador.EliminarPromocion(int.Parse(txtId.Text));
+            if (eliminacionPromocion)
+            {
+                MessageBox.Show("Promocion eliminada correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar promocion");
+            }
         }
     }
 }

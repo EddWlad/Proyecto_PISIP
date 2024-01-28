@@ -11,7 +11,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
 {
     public class ClienteRepository : BaseRepository<Cliente>, IClienteRepository
     {
-        public IEnumerable<Cliente> ListarClienteNombre(string nombre)
+        public IEnumerable<ClienteTipoCliente> ListarClienteNombre(string nombre)
         {
             //1.- conectar a la base
             try
@@ -19,11 +19,32 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var clientesNombre = from e in context.Cliente
-                                         where e.nombre == nombre
-                                         select e;
+                    var clientesActivos = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new ClienteTipoCliente
+                        {
+                            id_cliente = detalleMembresia.cliente.id_cliente,
+                            tipoCliente = detalleMembresia.tipoCLiente.descripcion,
+                            cedula = detalleMembresia.cliente.cedula,
+                            nombre = detalleMembresia.cliente.nombre,
+                            apellido = detalleMembresia.cliente.apellido,
+                            direccion = detalleMembresia.cliente.direccion,
+                            telefono = detalleMembresia.cliente.telefono,
+                            email = detalleMembresia.cliente.email,
+                            peso = (decimal)detalleMembresia.cliente.peso,
+                            altura = (decimal)detalleMembresia.cliente.altura,
+                            estado = detalleMembresia.cliente.estado,
+                            membresia = membresia.descripcion,
+
+                        }).Where(c => c.nombre.Equals(nombre)).ToList();
                     //3.- retorno resultado
-                    return clientesNombre.ToList();
+                    return clientesActivos.ToList();
                 }
             }
             catch (Exception ex)
@@ -147,9 +168,130 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        //public IEnumerable<Cliente> ListarClientesMembresia(string membresia)
-        //{
+        public IEnumerable<ClienteTipoCliente> ListarClientesTipo(string tipo)
+        {
+            //1.- conectar a la base
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var clientesActivos = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new ClienteTipoCliente
+                        {
+                            id_cliente = detalleMembresia.cliente.id_cliente,
+                            tipoCliente = detalleMembresia.tipoCLiente.descripcion,
+                            cedula = detalleMembresia.cliente.cedula,
+                            nombre = detalleMembresia.cliente.nombre,
+                            apellido = detalleMembresia.cliente.apellido,
+                            direccion = detalleMembresia.cliente.direccion,
+                            telefono = detalleMembresia.cliente.telefono,
+                            email = detalleMembresia.cliente.email,
+                            peso = (decimal)detalleMembresia.cliente.peso,
+                            altura = (decimal)detalleMembresia.cliente.altura,
+                            estado = detalleMembresia.cliente.estado,
+                            membresia = membresia.descripcion,
 
-        //}
+                        }).Where(ct => ct.tipoCliente.Equals(tipo)).ToList();
+                    //3.- retorno resultado
+                    return clientesActivos.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
+
+        public IEnumerable<ClienteTipoCliente> ListarClientesCedula(string cedula)
+        {
+            //1.- conectar a la base
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var clientesActivos = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new ClienteTipoCliente
+                        {
+                            id_cliente = detalleMembresia.cliente.id_cliente,
+                            tipoCliente = detalleMembresia.tipoCLiente.descripcion,
+                            cedula = detalleMembresia.cliente.cedula,
+                            nombre = detalleMembresia.cliente.nombre,
+                            apellido = detalleMembresia.cliente.apellido,
+                            direccion = detalleMembresia.cliente.direccion,
+                            telefono = detalleMembresia.cliente.telefono,
+                            email = detalleMembresia.cliente.email,
+                            peso = (decimal)detalleMembresia.cliente.peso,
+                            altura = (decimal)detalleMembresia.cliente.altura,
+                            estado = detalleMembresia.cliente.estado,
+                            membresia = membresia.descripcion,
+
+                        }).Where(ct => ct.cedula.Equals(cedula)).ToList();
+                    //3.- retorno resultado
+                    return clientesActivos.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
+
+        public IEnumerable<ClienteTipoCliente> ListarClienteMembresia(string membresias)
+        {
+            //1.- conectar a la base
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var clientesActivos = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new ClienteTipoCliente
+                        {
+                            id_cliente = detalleMembresia.cliente.id_cliente,
+                            tipoCliente = detalleMembresia.tipoCLiente.descripcion,
+                            cedula = detalleMembresia.cliente.cedula,
+                            nombre = detalleMembresia.cliente.nombre,
+                            apellido = detalleMembresia.cliente.apellido,
+                            direccion = detalleMembresia.cliente.direccion,
+                            telefono = detalleMembresia.cliente.telefono,
+                            email = detalleMembresia.cliente.email,
+                            peso = (decimal)detalleMembresia.cliente.peso,
+                            altura = (decimal)detalleMembresia.cliente.altura,
+                            estado = detalleMembresia.cliente.estado,
+                            membresia = membresia.descripcion,
+
+                        }).Where(ct => ct.membresia.Equals(membresias)).ToList();
+                    //3.- retorno resultado
+                    return clientesActivos.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
     }
 }

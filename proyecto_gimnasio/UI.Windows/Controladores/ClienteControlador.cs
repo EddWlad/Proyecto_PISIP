@@ -77,11 +77,24 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarClientesActivos();
         }
-        public IEnumerable<Cliente> ListarClientesNombres(string nombre)
+        public IEnumerable<ClienteTipoCliente> ListarClientesNombres(string nombre)
         {
             return servicio.ListarClientesNombre(nombre);
         }
-  
+        
+        public IEnumerable<ClienteTipoCliente> ListarClientesTipo(string tipo)
+        {
+            return servicio.ListarClientesTipo(tipo);
+        }
+        public IEnumerable<ClienteTipoCliente> ListarClientesCedula(string cedula)
+        {
+            return servicio.ListarClientesCedula(cedula);
+        }
+        public IEnumerable<ClienteTipoCliente> ListarClientesMembresia(string membresia)
+        {
+            return servicio.ListarClientesMembresia(membresia);
+        }
+
         public bool EliminarCliente(int id)
         {
             return servicio.EliminarCliente(id);

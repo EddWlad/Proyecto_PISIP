@@ -193,30 +193,69 @@ namespace UI.Windows.Formularios
         public void ListarClientesNombre()
         {
             dataGridClientes.Rows.Clear();
-            List<Cliente> listaClientesNombre = (List<Cliente>)clienteControlador.ListarClientesNombres(txtBusqueda.Text);
-                foreach (Cliente item in listaClientesNombre)
+            List<ClienteTipoCliente> listaClientesNombre = (List<ClienteTipoCliente>)clienteControlador.ListarClientesNombres(txtBusqueda.Text);
+                foreach (ClienteTipoCliente item in listaClientesNombre)
                 {
-                    dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                    item.peso,item.altura,"",""});
-                }
+                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                item.peso,item.altura,item.membresia,"",});
+            }
             
         }
+        public void ListarClientesTipo()
+        {
+            dataGridClientes.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesTipo(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesTipo)
+            {
+                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                item.peso,item.altura,item.membresia,"",});
+            }
+
+        }
+        public void ListarClientesCedula()
+        {
+            dataGridClientes.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesCedula(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesTipo)
+            {
+                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                item.peso,item.altura,item.membresia,"",});
+            }
+
+        }
+        public void ListarClientesMembresia()
+        {
+            dataGridClientes.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesMembresia(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesTipo)
+            {
+                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                item.peso,item.altura,item.membresia,"",});
+            }
+
+        }
+
 
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (cboBusqueda.Text == "Tipo cliente")
+            {
+                ListarClientesTipo();
+            }
+            if (cboBusqueda.Text == "Cedula")
+            {
+                ListarClientesCedula();
+            }
+            if (cboBusqueda.Text == "Membresia")
+            {
+                ListarClientesMembresia();
+            }
             if (cboBusqueda.Text == "Nombre")
             {
                 ListarClientesNombre();
             }
-            if (cboBusqueda.Text == "Estado")
-            {
-                //ListarClientesEstados();
-            }
         }
-
-       
-
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtId.Text))
@@ -295,7 +334,7 @@ namespace UI.Windows.Formularios
                         });
                 }
                 SaveFileDialog savefile = new SaveFileDialog();
-                savefile.FileName = string.Format("ReportePagos_{0}.xlsx", DateTime.Now.ToString("dd-MM-yyyy"));
+                savefile.FileName = string.Format("ReporteClientes_{0}.xlsx", DateTime.Now.ToString("dd-MM-yyyy"));
                 savefile.Filter = "Excel Files | *.xlsx";
 
                 if(savefile.ShowDialog() == DialogResult.OK)
@@ -306,7 +345,7 @@ namespace UI.Windows.Formularios
                         var hoja = wb.Worksheets.Add(dt, "Informe");
                         hoja.ColumnsUsed().AdjustToContents();
                         wb.SaveAs(savefile.FileName);
-                        MessageBox.Show("Reporte de pagos generado");
+                        MessageBox.Show("Reporte de clientes generado");
                     }
                     catch 
                     {

@@ -34,7 +34,7 @@ namespace Aplicacion.Servicio
         {
             return this.clienteRepository.ListarClientesActivos();
         }
-        public IEnumerable<Cliente> ListarClientesNombre(String nombre)
+        public IEnumerable<ClienteTipoCliente> ListarClientesNombre(String nombre)
         {
             return this.clienteRepository.ListarClienteNombre(nombre);
         }
@@ -46,6 +46,17 @@ namespace Aplicacion.Servicio
         {
             return this.clienteRepository.ElminarCliente(id);
         }
-
+        public IEnumerable<ClienteTipoCliente> ListarClientesTipo(String tipo)
+        {
+            return this.clienteRepository.ListarClientesTipo(tipo);
+        }
+        public IEnumerable<ClienteTipoCliente> ListarClientesCedula(String cedula)
+        {
+            return this.clienteRepository.ListarClientesCedula(cedula);
+        }
+        public IEnumerable<ClienteTipoCliente> ListarClientesMembresia(String membresia)
+        {
+            return this.clienteRepository.ListarClienteMembresia(membresia);
+        }
     }
 }

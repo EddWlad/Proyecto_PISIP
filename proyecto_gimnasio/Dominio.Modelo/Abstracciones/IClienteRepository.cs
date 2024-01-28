@@ -9,11 +9,13 @@ namespace Dominio.Modelo.Abstracciones
 {
     public interface IClienteRepository : IBaseRepository<Cliente>
     {
-        IEnumerable<Cliente> ListarClienteNombre(String nombre);
+        IEnumerable<ClienteTipoCliente> ListarClienteNombre(String nombre);
+        IEnumerable<ClienteTipoCliente> ListarClienteMembresia(String membresia);
         IEnumerable<ClienteTipoCliente> ListarClientesActivos();
 
         bool ElminarCliente(int id);
-
+        IEnumerable<ClienteTipoCliente> ListarClientesTipo(string tipo);
+        IEnumerable<ClienteTipoCliente> ListarClientesCedula(string cedula);
 
     }
 }

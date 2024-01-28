@@ -10,27 +10,71 @@ namespace Infraestructura.AccesoDatos.Repositorio
 {
     public class PromocionesRepository : BaseRepository<Promociones>, IPromocionesRepository
     {
-        public IEnumerable<Promociones> ListarPromocionesEstados(bool estado)
+        public bool ElminarPromocion(int id)
         {
-            //1.- conectar a la base
             try
             {
                 using (var context = new gestion_membresiasEntities())
                 {
-                    //2.- escribil la consulta
-                    var promocionesEstados = from e in context.Promociones
-                                            where e.estado == estado
-                                            select e;
-                    //3.- retorno resultado
-                    return promocionesEstados.ToList();
+                    // 1.- Buscar el cliente a actualizar
+                    var promocion = context.Promociones.FirstOrDefault(c => c.id_promocion == id);
+                    if (promocion != null)
+                    {
+                        // 2.- Actualizar los campos necesarios
+
+                        promocion.estado = false;
+
+
+                        // 3.- Guardar los cambios en la base de datos
+                        context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                        throw new Exception("El valor de cliente es nulo");
+
+                    }
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("No se pudieron recuperar los registro.", ex);
+                return false;
+                throw new Exception("No se pudo actualizar el registro del cliente.", ex);
+
             }
         }
+        public void ModificarPromocion(Promociones promocionActualizada)
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    // 1.- Buscar el cliente a actualizar
+                    var promocion = context.Promociones.FirstOrDefault(c => c.id_promocion == promocionActualizada.id_promocion);
+                    if (promocion != null)
+                    {
+                        // 2.- Actualizar los campos necesarios
+                        promocion.fecha_registro = promocionActualizada.fecha_registro;
+                        promocion.descripcion = promocionActualizada.descripcion;
+                        promocion.fecha_inicio = promocionActualizada.fecha_inicio;
+;                       promocion.fecha_fin = promocionActualizada.fecha_fin;
 
+                        // 3.- Guardar los cambios en la base de datos
+                        context.SaveChanges();
+
+                    }
+                    else
+                    {
+                        throw new Exception("El valor de cliente es nulo");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo actualizar el registro del cliente.", ex);
+            }
+        }
         public IEnumerable<Promociones> ListarPromocionesActivas()
         {
             try

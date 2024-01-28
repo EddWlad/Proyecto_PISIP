@@ -1,4 +1,5 @@
-﻿using Dominio.Modelo.Entidades;
+﻿using ClosedXML.Excel;
+using Dominio.Modelo.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -235,6 +236,52 @@ namespace UI.Windows.Formularios
                     txtFecha.Text = dataGridView1.Rows[indice].Cells["fecha"].Value.ToString();
                     txtCosto.Text = dataGridView1.Rows[indice].Cells["costo"].Value.ToString();
 
+                }
+            }
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count < 1)
+            {
+                MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                DataTable dt = new DataTable();
+                foreach (DataGridViewColumn columna in dataGridView1.Columns)
+                {
+                    if (columna.HeaderText != "" && columna.Visible)
+                        dt.Columns.Add(columna.HeaderText, typeof(string));
+                }
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    if (fila.Visible)
+                        dt.Rows.Add(new object[] {
+                           fila.Cells[2].Value.ToString(),
+                           fila.Cells[3].Value.ToString(),
+                           fila.Cells[4].Value.ToString(),
+                           fila.Cells[5].Value.ToString(),
+                        });
+                }
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.FileName = string.Format("ReportePagos_{0}.xlsx", DateTime.Now.ToString("dd-MM-yyyy"));
+                savefile.Filter = "Excel Files | *.xlsx";
+
+                if (savefile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        XLWorkbook wb = new XLWorkbook();
+                        var hoja = wb.Worksheets.Add(dt, "Informe");
+                        hoja.ColumnsUsed().AdjustToContents();
+                        wb.SaveAs(savefile.FileName);
+                        MessageBox.Show("Reporte de pagos generado");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error al generar reporte");
+                    }
                 }
             }
         }
