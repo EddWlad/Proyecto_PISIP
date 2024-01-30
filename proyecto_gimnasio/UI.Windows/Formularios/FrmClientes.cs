@@ -34,6 +34,7 @@ namespace UI.Windows.Formularios
             this.txtAltura.KeyPress += new KeyPressEventHandler(txtAltura_KeyPress);
             this.txtPeso.KeyPress += new KeyPressEventHandler(txtPeso_KeyPress);
             this.txtTelefono.KeyPress += new KeyPressEventHandler(txtTelefono_KeyPress);
+            //this.txtCedula.Validating += new System.ComponentModel.CancelEventHandler(this.txtCedula_Validating);
         }
 
         public void InsertarCliente()
@@ -185,6 +186,14 @@ namespace UI.Windows.Formularios
                 {
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dataGridClientes.Rows[indice].Cells["id_cliente"].Value.ToString();
+                    if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoCliente"].Value?.ToString(), out int tipoClienteId))
+                    {
+                        cboTipoCliente.SelectedValue = tipoClienteId;
+                    }
+                    else
+                    {
+                        // Manejar el caso de valor no válido o nulo
+                    }
                     txtCedula.Text = dataGridClientes.Rows[indice].Cells["cedula"].Value.ToString();
                     txtNombre.Text = dataGridClientes.Rows[indice].Cells["nombre"].Value.ToString();
                     txtApellido.Text = dataGridClientes.Rows[indice].Cells["apellido"].Value.ToString();
@@ -193,6 +202,14 @@ namespace UI.Windows.Formularios
                     txtEmail.Text = dataGridClientes.Rows[indice].Cells["email"].Value.ToString();
                     txtPeso.Text = dataGridClientes.Rows[indice].Cells["peso"].Value.ToString();
                     txtAltura.Text = dataGridClientes.Rows[indice].Cells["altura"].Value.ToString();
+                    if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoMembresia"].Value?.ToString(), out int tipoMembresiaId))
+                    {
+                        cboTipoMembresia.SelectedValue = tipoMembresiaId;
+                    }
+                    else
+                    {
+                        // Manejar el caso de valor no válido o nulo
+                    }
                 }
             }
         }
@@ -240,9 +257,6 @@ namespace UI.Windows.Formularios
             }
 
         }
-
-
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (cboBusqueda.Text == "Tipo cliente")
@@ -264,6 +278,11 @@ namespace UI.Windows.Formularios
         }
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
+            if (txtCedula.Text.Length != 10)
+            {
+                MessageBox.Show("La cédula debe tener 10 caracteres.");
+                return; // Salir del método si la condición no se cumple
+            }
             if (!string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El cliente ya existe");
@@ -273,39 +292,64 @@ namespace UI.Windows.Formularios
             var cedulaEncontrada = listaClientes.Where(x=>x.cedula.Equals(txtCedula.Text)).ToList();
             if (cedulaEncontrada.Count > 0)
             {
-                MessageBox.Show("El cedula existente");
+                MessageBox.Show("La cedula existe");
+                Limpiar();
                 return;
             }
-            clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
-            clienteVistaModelo.Cedula = txtCedula.Text;
-            clienteVistaModelo.Nombre = txtNombre.Text;
-            clienteVistaModelo.Apellido = txtApellido.Text;
-            clienteVistaModelo.Direccion = txtDireccion.Text;
-            clienteVistaModelo.Telefono = txtTelefono.Text;
-            clienteVistaModelo.Email = txtEmail.Text;
-            clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
-            // Validacion de valores de peso y altura correctos
-            if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
+            bool isValid = true;
+
+            // Verificar si el campo Nombre está vacío
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                clienteVistaModelo.Estado = true;
-                dataGridClientes.Rows.Add(new object[] {"",clienteVistaModelo.Id_Cliente,cboTipoCliente.Text,clienteVistaModelo.Cedula, clienteVistaModelo.Nombre,clienteVistaModelo.Apellido,clienteVistaModelo.Direccion, clienteVistaModelo.Telefono,clienteVistaModelo.Email,
-                clienteVistaModelo.Peso,clienteVistaModelo.Altura,cboTipoMembresia.Text,"",});
-                Limpiar();
-                InsertarCliente();
+                MessageBox.Show("El campo 'Nombre' es obligatorio.");
+                isValid = false;
             }
-            else
+            // Verificar si el campo Apellido está vacío
+            if (string.IsNullOrWhiteSpace(txtApellido.Text))
             {
-                // Manejar el caso en el que el valor no es un número válido
-                MessageBox.Show("Por favor,ingrese el valor correcto");
+                MessageBox.Show("El campo 'Apellido' es obligatorio.");
+                isValid = false;
             }
-            dataGridClientes.Rows.Clear();
-            Listar();
+            // Verificar si el campo Teléfono está vacío
+            if (string.IsNullOrWhiteSpace(txtTelefono.Text))
+            {
+                MessageBox.Show("El campo 'Teléfono' es obligatorio.");
+                isValid = false;
+            }
+            if (isValid)
+            {
+                clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
+                // Mostrar un mensaje de error
+                clienteVistaModelo.Cedula = txtCedula.Text;
+                clienteVistaModelo.Nombre = txtNombre.Text;
+                clienteVistaModelo.Apellido = txtApellido.Text;
+                clienteVistaModelo.Direccion = txtDireccion.Text;
+                clienteVistaModelo.Telefono = txtTelefono.Text;
+                clienteVistaModelo.Email = txtEmail.Text;
+                clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
+                // Validacion de valores de peso y altura correctos
+                if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
+                {
+                   clienteVistaModelo.Estado = true;
+                   dataGridClientes.Rows.Add(new object[] {"",clienteVistaModelo.Id_Cliente,cboTipoCliente.Text,clienteVistaModelo.Cedula, clienteVistaModelo.Nombre,clienteVistaModelo.Apellido,clienteVistaModelo.Direccion, clienteVistaModelo.Telefono,clienteVistaModelo.Email,
+                   clienteVistaModelo.Peso,clienteVistaModelo.Altura,cboTipoMembresia.Text,"",});
+                   Limpiar();
+                   InsertarCliente();
+                }
+                else
+                {
+                   // Manejar el caso en el que el valor no es un número válido
+                   MessageBox.Show("Por favor,ingrese el valor correcto");
+                }
+                dataGridClientes.Rows.Clear();
+                Listar();
+            }
         }
 
-        private void ObtenerCliente(int id)
-        {
-            var cliente = clienteControlador.ObtenerCliente(id);
-        }
+        //private void ObtenerCliente(int id)
+        //{
+            //var cliente = clienteControlador.ObtenerCliente(id);
+        //}
 
         private void modificarCliente()
         {
@@ -457,5 +501,6 @@ namespace UI.Windows.Formularios
                 e.Handled = true;
             }
         }
+
     }
 }
