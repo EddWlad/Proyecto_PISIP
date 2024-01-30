@@ -97,7 +97,7 @@ namespace UI.Windows.Formularios
                 if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
-                    txtId.Text = dataGridTipoClientes.Rows[indice].Cells["id_cliente"].Value.ToString();
+                    txtId.Text = dataGridTipoClientes.Rows[indice].Cells["id_tipo_cliente"].Value.ToString();
                     txtDescripcion.Text = dataGridTipoClientes.Rows[indice].Cells["descripcion"].Value.ToString();
                     
                 }

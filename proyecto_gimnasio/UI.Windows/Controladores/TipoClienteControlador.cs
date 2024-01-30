@@ -31,6 +31,7 @@ namespace UI.Windows.Controladores
                 return false;
             }
         }
+
         public IEnumerable<Tipo_Cliente> ListarTipoClienteDescripcion(string descripcion)
         {
             return servicio.ListarTipoClientesDescripcion(descripcion);

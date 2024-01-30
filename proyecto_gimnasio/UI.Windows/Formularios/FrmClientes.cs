@@ -23,13 +23,17 @@ namespace UI.Windows.Formularios
         ClienteControlador clienteControlador;
         TipoClienteControlador tipoClienteControlador;
         MembresiasControlador membresiasControlador;
-        
+        List<ClienteTipoCliente> listaClientes;
         public FrmClientes()
         {
             InitializeComponent();
             clienteControlador = new ClienteControlador();
             tipoClienteControlador = new TipoClienteControlador();
             membresiasControlador = new MembresiasControlador();
+            this.txtCedula.KeyPress += new KeyPressEventHandler(txtCedula_KeyPress);
+            this.txtAltura.KeyPress += new KeyPressEventHandler(txtAltura_KeyPress);
+            this.txtPeso.KeyPress += new KeyPressEventHandler(txtPeso_KeyPress);
+            this.txtTelefono.KeyPress += new KeyPressEventHandler(txtTelefono_KeyPress);
         }
 
         public void InsertarCliente()
@@ -46,6 +50,7 @@ namespace UI.Windows.Formularios
 
         private void FrmClientes_Load(object sender, EventArgs e)
         {
+            Limpiar();
             BusquedaDataGrid();
             contenidoTipoCliente();
             contenidoMembresia();
@@ -86,12 +91,13 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
+            txtId.Text = "";
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
-
+            txtCedula.Text = "";
             txtPeso.Text = "";
             txtAltura.Text = "";
 
@@ -142,7 +148,7 @@ namespace UI.Windows.Formularios
 
         public void Listar()
         {  
-            List<ClienteTipoCliente> listaClientes = (List<ClienteTipoCliente>)clienteControlador.ListarClientesActivos();
+            listaClientes = (List<ClienteTipoCliente>)clienteControlador.ListarClientesActivos();
             foreach (ClienteTipoCliente item in listaClientes)
             {
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
@@ -261,6 +267,13 @@ namespace UI.Windows.Formularios
             if (!string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El cliente ya existe");
+                Limpiar();
+                return;
+            }
+            var cedulaEncontrada = listaClientes.Where(x=>x.cedula.Equals(txtCedula.Text)).ToList();
+            if (cedulaEncontrada.Count > 0)
+            {
+                MessageBox.Show("El cedula existente");
                 return;
             }
             clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
@@ -285,7 +298,8 @@ namespace UI.Windows.Formularios
                 // Manejar el caso en el que el valor no es un número válido
                 MessageBox.Show("Por favor,ingrese el valor correcto");
             }
-            
+            dataGridClientes.Rows.Clear();
+            Listar();
         }
 
         private void ObtenerCliente(int id)
@@ -383,10 +397,14 @@ namespace UI.Windows.Formularios
                 // Manejar el caso en el que el valor no es un número válido
                 MessageBox.Show("Por favor,ingrese el valor correcto");
             }
+            dataGridClientes.Rows.Clear();
+            Listar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            
+            
             if (string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El Id del cliente no fue encontrado");
@@ -402,6 +420,41 @@ namespace UI.Windows.Formularios
             else
             {
                 MessageBox.Show("Error: Al elimnar cliente");
+            }
+            dataGridClientes.Rows.Clear();
+            Limpiar();
+            Listar();
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAltura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
