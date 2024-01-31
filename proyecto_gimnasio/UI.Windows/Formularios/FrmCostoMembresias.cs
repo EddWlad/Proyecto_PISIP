@@ -34,6 +34,17 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("Error: Al insertar costo de membresias");
             }
         }
+        public void ModificarCostoMembresia()
+        {
+            if (costoMembresiasControlador.ModificarCostoMembresia(costoMembresiasVistaModelo))
+            {
+                MessageBox.Show("Costo de membresia modificado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error: Al modificar costo de membresia");
+            }
+        }
         private void BusquedaDataGrid()
         {
             foreach (DataGridViewColumn columna in dataGridCostoMembresia.Columns)
@@ -50,6 +61,7 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
+            txtId.Text = "";
             txtDescripcion.Text = "";
             txtValor.Text = "0";
         }
@@ -58,7 +70,7 @@ namespace UI.Windows.Formularios
             List<Costo_Membresia> listaCostosMembresias = (List<Costo_Membresia>)costoMembresiasControlador.ListarCostoMembresiasActivas();
             foreach (Costo_Membresia item in listaCostosMembresias)
             {
-                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.descripcion });
+                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.descripcion,item.valor});
             }
 
         }
@@ -66,6 +78,7 @@ namespace UI.Windows.Formularios
         {
             BusquedaDataGrid();
             Listar();
+            Limpiar();
         }
 
         private void dataGridCostoMembresia_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -101,10 +114,20 @@ namespace UI.Windows.Formularios
                 }
             }
         }
-        public void ListarCostosMembresia()
+        public void ListarCostosMembresiaDescripcion()
         {
             dataGridCostoMembresia.Rows.Clear();
             List<Costo_Membresia> listaCostoMembresia = (List<Costo_Membresia>)costoMembresiasControlador.ListarCostoMembresiasDescripcion(txtBusqueda.Text);
+            foreach (Costo_Membresia item in listaCostoMembresia)
+            {
+                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.descripcion, item.valor });
+            }
+
+        }
+        public void ListarCostosMembresiaValor()
+        {
+            dataGridCostoMembresia.Rows.Clear();
+            List<Costo_Membresia> listaCostoMembresia = (List<Costo_Membresia>)costoMembresiasControlador.ListarCostoMembresiasCosto(ConversionCosto(txtBusqueda.Text));
             foreach (Costo_Membresia item in listaCostoMembresia)
             {
                 dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.descripcion, item.valor });
@@ -116,8 +139,13 @@ namespace UI.Windows.Formularios
         {
             if (cboBusqueda.Text == "Descripcion")
             {
-                ListarCostosMembresia();
+                ListarCostosMembresiaDescripcion();
             }
+            if (cboBusqueda.Text == "Valor")
+            {
+                ListarCostosMembresiaValor();
+            }
+            
         }
 
         private decimal ConversionCosto(string costo)
@@ -138,14 +166,70 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            decimal valor = ConversionCosto(txtValor.Text);
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El costo ya existe");
+                Limpiar();
+                return;
+            }
             costoMembresiasVistaModelo.Descripcion = txtDescripcion.Text;
             costoMembresiasVistaModelo.Estado = true;
-            costoMembresiasVistaModelo.Valor = valor;
+            costoMembresiasVistaModelo.Valor = ConversionCosto(txtValor.Text);
             dataGridCostoMembresia.Rows.Add(new object[] { "", costoMembresiasVistaModelo.Id_Costo_Membresia, costoMembresiasVistaModelo.Descripcion,
             costoMembresiasVistaModelo.Valor});
-            Limpiar();
             InsertarCostoMembresias();
+            dataGridCostoMembresia.Rows.Clear();
+            Listar();
+            Limpiar();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El costo de membresia no fue encontrado");
+                return;
+            }
+            costoMembresiasVistaModelo.Id_Costo_Membresia = int.Parse(txtId.Text);
+            costoMembresiasVistaModelo.Descripcion = txtDescripcion.Text;
+            costoMembresiasVistaModelo.Valor = ConversionCosto(txtValor.Text);
+            costoMembresiasVistaModelo.Estado = true;
+            dataGridCostoMembresia.Rows.Add(new object[] { "", costoMembresiasVistaModelo.Id_Costo_Membresia, costoMembresiasVistaModelo.Descripcion,
+            costoMembresiasVistaModelo.Valor});
+            ModificarCostoMembresia();
+            dataGridCostoMembresia.Rows.Clear();
+            Listar();
+            Limpiar(); ;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+
+            var eliminacionCosto = costoMembresiasControlador.EliminarCostoMembresia(int.Parse(txtId.Text));
+            if (eliminacionCosto)
+            {
+                MessageBox.Show("Costo de membresia eliminado correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar costo de membresia");
+            }
+            dataGridCostoMembresia.Rows.Clear();
+            Limpiar();
+            Listar();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridCostoMembresia.Rows.Clear();
+            Limpiar();
+            Listar();
         }
     }
 }

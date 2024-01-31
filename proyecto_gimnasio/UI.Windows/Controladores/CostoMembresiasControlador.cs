@@ -32,6 +32,23 @@ namespace UI.Windows.Controladores
                 return false;
             }
         }
+        public bool ModificarCostoMembresia(CostoMembresiasVistaModelo costoMembresiasVistaModelo)
+        {
+            Costo_Membresia costoMembresiaDB = new Costo_Membresia();
+            try
+            {
+                costoMembresiaDB.id_costo_membresia = costoMembresiasVistaModelo.Id_Costo_Membresia;
+                costoMembresiaDB.descripcion = costoMembresiasVistaModelo.Descripcion;
+                costoMembresiaDB.valor = costoMembresiasVistaModelo.Valor;
+                costoMembresiaDB.estado = costoMembresiasVistaModelo.Estado;
+                servicio.ModificarCostoMembresia(costoMembresiaDB);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public IEnumerable<Costo_Membresia> ListarCostoMembresiasDescripcion(string descripcion)
         {
             return servicio.ListarCostosMembresiasDescripcion(descripcion);
@@ -39,6 +56,15 @@ namespace UI.Windows.Controladores
         public IEnumerable<Costo_Membresia> ListarCostoMembresiasActivas()
         {
             return servicio.ListarCostosMembresiasActivas();
+        }
+        public IEnumerable<Costo_Membresia> ListarCostoMembresiasCosto(decimal costo)
+        {
+            return servicio.ListarCostoMembresiaCosto(costo);
+        }
+        public bool EliminarCostoMembresia(int id)
+        {
+            return servicio.EliminarCostoMembresia(id);
+
         }
     }
 }

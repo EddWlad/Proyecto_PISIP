@@ -36,5 +36,13 @@ namespace Aplicacion.Servicio
         {
             return this.costoMembresiaRepository.ListarCostosMembresiasActivas();
         }
+        public bool EliminarCostoMembresia(int id)
+        {
+            return this.costoMembresiaRepository.EliminarCostoMembresia(id);
+        }
+        public IEnumerable<Costo_Membresia> ListarCostoMembresiaCosto(Decimal costo)
+        {
+            return this.costoMembresiaRepository.ListarCosto(costo);
+        }
     }
 }

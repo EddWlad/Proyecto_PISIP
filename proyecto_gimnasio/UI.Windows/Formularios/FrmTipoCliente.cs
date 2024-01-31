@@ -139,6 +139,12 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El tipo ya existe");
+                Limpiar();
+                return;
+            }
             tipoClienteVistaModelo.Descripcion = txtDescripcion.Text;
             tipoClienteVistaModelo.Estado = true;
             dataGridTipoClientes.Rows.Add(new object[] {"",tipoClienteVistaModelo.Id_tipo_cliente,tipoClienteVistaModelo.Descripcion,});
@@ -190,6 +196,7 @@ namespace UI.Windows.Formularios
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             dataGridTipoClientes.Rows.Clear();
+            Limpiar();
             Listar();
         }
     }
