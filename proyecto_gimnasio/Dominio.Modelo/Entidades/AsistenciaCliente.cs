@@ -11,6 +11,8 @@ namespace Dominio.Modelo.Entidades
         public int id_registro { get; set; }
         public string cedula { get; set; }
         public string nombre { get; set; }
+        public string tipo_cliente { get; set; }
+        public string membresia { get; set; }
         public string telefono { get; set; }
         public DateTime fecha { get; set; }
         public bool estado { get; set; }

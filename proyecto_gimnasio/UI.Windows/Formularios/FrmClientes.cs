@@ -1,10 +1,13 @@
-﻿using ClosedXML.Excel;
+﻿using Aplicacion.Servicio;
+using ClosedXML.Excel;
 using Dominio.Modelo.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -498,6 +501,25 @@ namespace UI.Windows.Formularios
             dataGridClientes.Rows.Clear();
             Listar();
             Limpiar();
+        }
+
+        private void btnCargarImagen_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Imagenes|*.jpg;*.jpeg;*.png;*.bmp";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                var filePath = openFileDialog.FileName;
+                var foto = File.ReadAllBytes(filePath);
+
+                // Aquí asumimos que tienes un cliente seleccionado y su Id disponible
+                int clienteId = int.Parse(txtId.Text);
+
+                // Aquí invocas al servicio de aplicación para guardar la foto
+                //var clienteServicio = new ClienteServicio(/* instancia del repositorio */);
+                //clienteVistaModelo.Foto = clienteControlador.CargarFoto(int.Parse(txtId.Text), foto);
+            }
+
         }
     }
 }

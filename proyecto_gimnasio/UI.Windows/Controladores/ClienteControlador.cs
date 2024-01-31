@@ -68,6 +68,7 @@ namespace UI.Windows.Controladores
             }
         }
 
+
         public Cliente ObtenerCliente(int id)
         {
             return servicio.ObtenerCliente(id);
@@ -99,6 +100,10 @@ namespace UI.Windows.Controladores
         {
             return servicio.EliminarCliente(id);
             
+        }
+        public void CargarFoto(int idCliente, byte[]foto)
+        {
+            this.servicio.GuardarFoto(idCliente,foto);
         }
         
     }

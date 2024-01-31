@@ -178,7 +178,7 @@
         lrJDN8ULvQOMWJwtbNyMo3b5T1qi6BsQDCh4Gu8vkAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCargarImagen.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAANRJREFUSEvt
         lD0KwkAQhVNbegxPYW0jCPYezdpLeAp/GgvB1tJ6fZl8STROlmwUgpAPHtnZffPDFMlGOhNCWEonqQ9H

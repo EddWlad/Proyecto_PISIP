@@ -293,5 +293,25 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("No se pudieron recuperar los registro.", ex);
             }
         }
+
+        public void Guardarfoto(int idCliente, byte[] foto)
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    var fotoCliente = context.Cliente.Find(idCliente);
+                    if(fotoCliente != null)
+                    {
+                        fotoCliente.foto = foto;
+                        context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
     }
 }

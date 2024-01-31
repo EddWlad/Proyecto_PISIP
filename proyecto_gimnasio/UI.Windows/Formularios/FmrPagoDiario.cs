@@ -22,11 +22,14 @@ namespace UI.Windows.Formularios
         PagoDiarioVistaModelo pagoDiarioVistaModelo = new PagoDiarioVistaModelo();
         PagoDiarioControlador pagoDiarioControlador;
         ClienteControlador clienteControlador;
+        RegistroAsistenciaControlador registroAsistenciaControlador;
         public FmrPagoDiario()
         {
             InitializeComponent();
             pagoDiarioControlador = new PagoDiarioControlador();
             clienteControlador = new ClienteControlador();
+            registroAsistenciaControlador = new RegistroAsistenciaControlador();
+            this.txtCosto.KeyPress += new KeyPressEventHandler(txtCosto_KeyPress);
         }
         public void InsertarPagoDiario()
         {
@@ -83,7 +86,7 @@ namespace UI.Windows.Formularios
 
                     pagoDiarioVistaModelo.Fecha = DateTime.Now;
                     pagoDiarioVistaModelo.Estado = true;
-                    //pagoDiarioVistaModelo.Id_Registro = pagoDiarioVistaModelo.Id_Registro;
+                    pagoDiarioVistaModelo.Id_Registro = int.Parse(txtId.Text);
                     dtListaPagos.Rows.Add(new object[] {"",pagoDiarioVistaModelo.Id_Pago_Diario,txtCedula.Text,txtNombre.Text, 
                     pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto,txtTipoCliente.Text});
                     Limpiar();
@@ -91,7 +94,7 @@ namespace UI.Windows.Formularios
                 }
             }
             dtListaPagos.Rows.Clear();
-            Listar();
+            ListarPagosRegistros();
         }
         private int ConversionIdCliente(string txtId)
         {
@@ -134,6 +137,7 @@ namespace UI.Windows.Formularios
             txtCedula.Text = "";
             txtMembresia.Text = "";
             txtTipoCliente.Text = "";
+            txtNombre.Text = "";
         }
         private void BusquedaDataGrid()
         {
@@ -163,10 +167,10 @@ namespace UI.Windows.Formularios
         }
         public void Listar()
         {
-            List<ClienteTipoCliente> listaClientes = (List<ClienteTipoCliente>)clienteControlador.ListarClientesActivos();
-            foreach (ClienteTipoCliente item in listaClientes)
+            List<AsistenciaCliente> listaClientes = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciasClientes();
+            foreach (AsistenciaCliente item in listaClientes)
             {
-                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, item.tipoCliente,item.membresia});
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.tipo_cliente,item.membresia});
 
             }    
         }
@@ -203,7 +207,7 @@ namespace UI.Windows.Formularios
                 if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
-                    txtId.Text = dataGridClientesMiembros.Rows[indice].Cells["id_cliente"].Value.ToString();
+                    txtId.Text = dataGridClientesMiembros.Rows[indice].Cells["id_asistencia"].Value.ToString();
                     txtCedula.Text = dataGridClientesMiembros.Rows[indice].Cells["cedula"].Value.ToString();
                     txtNombre.Text = dataGridClientesMiembros.Rows[indice].Cells["nombre"].Value.ToString();
                     txtTipoCliente.Text = dataGridClientesMiembros.Rows[indice].Cells["tipo_cliente"].Value.ToString();
@@ -355,10 +359,11 @@ namespace UI.Windows.Formularios
                     txtIndice2.Text = indice.ToString();
                     txtId2.Text = dtListaPagos.Rows[indice].Cells["id_pago_diario"].Value.ToString();
                     txtCedula.Text = dtListaPagos.Rows[indice].Cells["cedula_pago"].Value.ToString();
+                    txtNombre.Text = dtListaPagos.Rows[indice].Cells["nombre_pago"].Value.ToString();
                     txtFecha.Text = DateTime.Parse(dtListaPagos.Rows[indice].Cells["fecha"].Value.ToString()).ToString("dd/MM/yyyy");
                     txtCosto.Text = dtListaPagos.Rows[indice].Cells["costo"].Value.ToString();
                     txtTipoCliente.Text = dtListaPagos.Rows[indice].Cells["cliente_tipo"].Value.ToString();
-
+                    //txtMembresia.Text = dtListaPagos.Rows[indice].Cells["membresia"].Value.ToString();
                 }
             }
         }
@@ -449,6 +454,14 @@ namespace UI.Windows.Formularios
             dtListaPagos.Rows.Clear();
             ListarPagosRegistros();
             Limpiar();
+        }
+
+        private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

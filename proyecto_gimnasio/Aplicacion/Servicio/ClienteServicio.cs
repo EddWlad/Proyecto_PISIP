@@ -58,5 +58,9 @@ namespace Aplicacion.Servicio
         {
             return this.clienteRepository.ListarClienteMembresia(membresia);
         }
+        public void GuardarFoto(int id, byte[] foto)
+        {
+            this.clienteRepository.Guardarfoto(id, foto);
+        }
     }
 }

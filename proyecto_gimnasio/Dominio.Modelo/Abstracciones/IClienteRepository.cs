@@ -16,7 +16,7 @@ namespace Dominio.Modelo.Abstracciones
         bool ElminarCliente(int id);
         IEnumerable<ClienteTipoCliente> ListarClientesTipo(string tipo);
         IEnumerable<ClienteTipoCliente> ListarClientesCedula(string cedula);
-
+        void Guardarfoto(int idCliente, byte[] foto);
     }
 }
 
