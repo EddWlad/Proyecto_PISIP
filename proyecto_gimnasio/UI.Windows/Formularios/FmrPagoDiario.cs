@@ -42,9 +42,11 @@ namespace UI.Windows.Formularios
         private void FmrPagoDiario_Load(object sender, EventArgs e)
         {
             BusquedaDataGrid();
+            BusquedaDataGridPagos();
             Listar();
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             ListarPagosRegistros();
+            Limpiar();
 
 
         }
@@ -56,8 +58,8 @@ namespace UI.Windows.Formularios
                 pagoDiarioVistaModelo.Fecha = DateTime.Now;
                 pagoDiarioVistaModelo.Estado = true;
                 pagoDiarioVistaModelo.Id_Registro = ConversionIdCliente(txtId2.Text);
-                dataGridView1.Rows.Add(new object[] {"",pagoDiarioVistaModelo.Id_Pago_Diario,txtCedula.Text,txtNombre.Text, 
-                pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto});
+                dtListaPagos.Rows.Add(new object[] {"",pagoDiarioVistaModelo.Id_Pago_Diario,txtCedula.Text, 
+                pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto,txtTipoCliente.Text});
                 Limpiar();
                 InsertarPagoDiario();
             }
@@ -96,15 +98,19 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
+            txtId.Text = "";
+            txtId2.Text = "";
+            txtIndice2.Text = "";
             txtCosto.Text = "";
             txtCedula.Text = "";
-            txtNombre.Text = "";
+            txtMembresia.Text = "";
+            txtTipoCliente.Text = "";
         }
         private void BusquedaDataGrid()
         {
             foreach (DataGridViewColumn columna in dataGridClientesMiembros.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "costo" && columna.Name != "estado" && columna.Name != "id_usuario")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "nombre" && columna.Name != "id_cliente")
                 {
                     cboBusqueda.Items.Add(new OpComboBusquedaPagoDiario() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -113,12 +119,25 @@ namespace UI.Windows.Formularios
             cboBusqueda.ValueMember = "Valor";
             cboBusqueda.SelectedIndex = 0;
         }
+        private void BusquedaDataGridPagos()
+        {
+            foreach (DataGridViewColumn columnapago in dtListaPagos.Columns)
+            {
+                if (columnapago.Visible == true && columnapago.Name != "btnSeleccionarPago" && columnapago.Name != "id_pago_diario"  && columnapago.Name != "costo" && columnapago.Name != "nombre_pago")
+                {
+                    cboBuscarPago.Items.Add(new OpComboBusquedaPagos() { Valor = columnapago.Name, Texto = columnapago.HeaderText });
+                }
+            }
+            cboBuscarPago.DisplayMember = "Texto";
+            cboBuscarPago.ValueMember = "Valor";
+            cboBuscarPago.SelectedIndex = 0;
+        }
         public void Listar()
         {
             List<ClienteTipoCliente> listaClientes = (List<ClienteTipoCliente>)clienteControlador.ListarClientesActivos();
             foreach (ClienteTipoCliente item in listaClientes)
             {
-                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre});
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, item.tipoCliente,item.membresia});
 
             }    
         }
@@ -127,10 +146,12 @@ namespace UI.Windows.Formularios
             List<PagoDiarioRegistro> listaPagos = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivos();
             foreach (PagoDiarioRegistro item in listaPagos)
             {
-                dataGridView1.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,item.fecha,item.costo });
+                dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,item.fecha,item.costo,item.tipo_cliente});
 
             }
         }
+
+        
 
         //}
         //public void ListarPagoDiarioFecha()
@@ -148,12 +169,13 @@ namespace UI.Windows.Formularios
         public DateTime ConvertirFecha()
         {
             DateTime fecha;
-            if (DateTime.TryParse(txtBusqueda.Text, out fecha))
+            if (DateTime.TryParse(txtBusquedaPagos.Text, out fecha))
             {
                 return fecha;
             }
             else
             {
+                throw new Exception("Fecha invalida");
                 return DateTime.Now;
             }
         }
@@ -166,22 +188,19 @@ namespace UI.Windows.Formularios
                 if (indice >= 0)
                 {
                     txtIndice.Text = indice.ToString();
-                    txtId2.Text = dataGridClientesMiembros.Rows[indice].Cells["id_cliente"].Value.ToString();
+                    txtId.Text = dataGridClientesMiembros.Rows[indice].Cells["id_cliente"].Value.ToString();
                     txtCedula.Text = dataGridClientesMiembros.Rows[indice].Cells["cedula"].Value.ToString();
-                    txtNombre.Text = dataGridClientesMiembros.Rows[indice].Cells["nombre"].Value.ToString();
+                    txtCedula.Refresh();
+                    txtTipoCliente.Text = dataGridClientesMiembros.Rows[indice].Cells["tipo_cliente"].Value.ToString();
+                    txtTipoCliente.Refresh();
+                    txtMembresia.Text = dataGridClientesMiembros.Rows[indice].Cells["membresia"].Value.ToString();
+                    txtMembresia.Refresh();
                 }
     
             }
 
         }
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            if (cboBusqueda.Text == "Fecha")
-            {
-                //ListarPagoDiarioFecha();
-            }
-            
-        }
+        
 
 
         private void dataGridClientesMiembros_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -203,58 +222,85 @@ namespace UI.Windows.Formularios
             }
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        public void ListarClientesTipo()
         {
-            if (e.RowIndex < 0)
+            dataGridClientesMiembros.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesTipo(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesTipo)
             {
-                return;
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, 
+                    item.tipoCliente, item.membresia });
             }
-            if (e.ColumnIndex == 0)
-            {
-                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
-                var imgWidth = Properties.Resources.check_circle_solid_24.Width;
-                var imgHeight = Properties.Resources.check_circle_solid_24.Height;
-                var imgX = e.CellBounds.Left + (e.CellBounds.Width - imgWidth) / 2;
-                var imgY = e.CellBounds.Top + (e.CellBounds.Height - imgHeight) / 2;
 
-                e.Graphics.DrawImage(Properties.Resources.check_circle_solid_24, new Rectangle(imgX, imgY, imgWidth, imgHeight));
-                e.Handled = true;
+        }
+        public void ListarClientesCedula()
+        {
+            dataGridClientesMiembros.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesCedula(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesTipo)
+            {
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre,
+                    item.tipoCliente, item.membresia });
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void ListarClientesMembresia()
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "btnSeleccionar")
+            dataGridClientesMiembros.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesMembresia(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesTipo)
             {
-                int indice = e.RowIndex;
-                if (indice >= 0)
-                {
-                    txtIndice.Text = indice.ToString();
-                    txtId.Text = dataGridView1.Rows[indice].Cells["id_pago_diario"].Value.ToString();
-                    txtCedula.Text = dataGridView1.Rows[indice].Cells["cedula_pago"].Value.ToString();
-                    txtNombre.Text = dataGridView1.Rows[indice].Cells["nombre_pago"].Value.ToString();
-                    txtFecha.Text = dataGridView1.Rows[indice].Cells["fecha"].Value.ToString();
-                    txtCosto.Text = dataGridView1.Rows[indice].Cells["costo"].Value.ToString();
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre,
+                    item.tipoCliente, item.membresia });
+            }
 
-                }
+        }
+
+        public void ListarPagosCedula()
+        {
+            dtListaPagos.Rows.Clear();
+            List<PagoDiarioRegistro> listaPagosCedula = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagosCedula(txtBusquedaPagos.Text);
+            foreach (PagoDiarioRegistro item in listaPagosCedula)
+            {
+                dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
+                    item.fecha, item.costo, item.tipo_cliente});
+            }
+        }
+        public void ListarPagosTipo()
+        {
+            dtListaPagos.Rows.Clear();
+            List<PagoDiarioRegistro> listaPagosTipo = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagosTipo(txtBusquedaPagos.Text);
+            foreach (PagoDiarioRegistro item in listaPagosTipo)
+            {
+                dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
+                    item.fecha, item.costo, item.tipo_cliente});
+            }
+        }
+        public void ListarPagosDiario()
+        {
+            dtListaPagos.Rows.Clear();
+            List<PagoDiarioRegistro> listaPagosDiario = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioFecha(ConvertirFecha());
+            foreach (PagoDiarioRegistro item in listaPagosDiario)
+            {
+                dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
+                    item.fecha, item.costo, item.tipo_cliente});
             }
         }
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count < 1)
+            if (dtListaPagos.Rows.Count < 1)
             {
                 MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 DataTable dt = new DataTable();
-                foreach (DataGridViewColumn columna in dataGridView1.Columns)
+                foreach (DataGridViewColumn columna in dtListaPagos.Columns)
                 {
                     if (columna.HeaderText != "" && columna.Visible)
                         dt.Columns.Add(columna.HeaderText, typeof(string));
                 }
-                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                foreach (DataGridViewRow fila in dtListaPagos.Rows)
                 {
                     if (fila.Visible)
                         dt.Rows.Add(new object[] {
@@ -284,6 +330,116 @@ namespace UI.Windows.Formularios
                     }
                 }
             }
+        }
+
+        private void dtListaPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtListaPagos.Columns[e.ColumnIndex].Name == "btnSeleccionarPago")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    txtIndice2.Text = indice.ToString();
+                    txtId2.Text = dtListaPagos.Rows[indice].Cells["id_pago_diario"].Value.ToString();
+                    txtCedula.Text = dtListaPagos.Rows[indice].Cells["cedula_pago"].Value.ToString();
+                    txtCedula.Refresh();
+                    txtFecha.Text = DateTime.Parse(dtListaPagos.Rows[indice].Cells["fecha"].Value.ToString()).ToString("dd/MM/yyyy");
+                    txtFecha.Refresh();
+                    txtCosto.Text = dtListaPagos.Rows[indice].Cells["costo"].Value.ToString();
+                    txtCosto.Refresh();
+                    txtTipoCliente.Text = dtListaPagos.Rows[indice].Cells["cliente_tipo"].Value.ToString();
+                    txtTipoCliente.Refresh();
+
+                }
+            }
+        }
+
+        private void dtListaPagos_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+            {
+                return;
+            }
+            if (e.ColumnIndex == 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+                var imgWidth = Properties.Resources.check_circle_solid_24.Width;
+                var imgHeight = Properties.Resources.check_circle_solid_24.Height;
+                var imgX = e.CellBounds.Left + (e.CellBounds.Width - imgWidth) / 2;
+                var imgY = e.CellBounds.Top + (e.CellBounds.Height - imgHeight) / 2;
+
+                e.Graphics.DrawImage(Properties.Resources.check_circle_solid_24, new Rectangle(imgX, imgY, imgWidth, imgHeight));
+                e.Handled = true;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId2.Text))
+            {
+                MessageBox.Show("El Id del pago no fue encontrado");
+                return;
+            }
+
+            var eliminacionPago = pagoDiarioControlador.EliminarCliente(int.Parse(txtId2.Text));
+            if (eliminacionPago)
+            {
+                MessageBox.Show("Pago eliminado correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar pago");
+            }
+            dtListaPagos.Rows.Clear();
+            Limpiar();
+            ListarPagosRegistros();
+        }
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
+        {
+            if (cboBusqueda.Text == "Tipo cliente")
+            {
+                ListarClientesTipo();
+            }
+            if (cboBusqueda.Text == "Cedula")
+            {
+                ListarClientesCedula();
+            }
+            if (cboBusqueda.Text == "Membresia")
+            {
+                ListarClientesMembresia();
+            }
+        }
+
+        private void btnBuscarPago_Click(object sender, EventArgs e)
+        {
+            if (cboBuscarPago.Text == "Tipo Cliente")
+            {
+                ListarPagosTipo();
+            }
+            if (cboBuscarPago.Text == "Cedula")
+            {
+                ListarPagosCedula();
+            }
+            if (cboBuscarPago.Text == "Fecha")
+            {
+                ListarPagosDiario();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridClientesMiembros.Rows.Clear();
+            Listar();
+            Limpiar();
+        }
+
+        private void btnLimpiarPagos_Click(object sender, EventArgs e)
+        {
+            dtListaPagos.Rows.Clear();
+            ListarPagosRegistros();
+            Limpiar();
         }
     }
 }

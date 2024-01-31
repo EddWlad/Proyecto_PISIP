@@ -13,6 +13,7 @@ namespace Dominio.Modelo.Entidades
         public string nombre { get; set; }
         public DateTime fecha { get; set; }
         public decimal costo { get; set; }
+        public string tipo_cliente { get; set; }
         public bool estado { get; set; }
     }
 }

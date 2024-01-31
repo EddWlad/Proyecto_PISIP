@@ -447,8 +447,7 @@ namespace UI.Windows.Formularios
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            
-            
+          
             if (string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El Id del cliente no fue encontrado");
@@ -502,5 +501,11 @@ namespace UI.Windows.Formularios
             }
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridClientes.Rows.Clear();
+            Listar();
+            Limpiar();
+        }
     }
 }

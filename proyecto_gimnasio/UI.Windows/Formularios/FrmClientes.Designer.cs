@@ -536,7 +536,6 @@
             this.txtCedula.Size = new System.Drawing.Size(204, 23);
             this.txtCedula.TabIndex = 33;
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
-            
             // 
             // lblCedula
             // 
@@ -683,6 +682,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(38, 27);
             this.btnLimpiar.TabIndex = 29;
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 

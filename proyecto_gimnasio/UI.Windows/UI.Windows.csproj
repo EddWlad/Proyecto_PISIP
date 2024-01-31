@@ -216,6 +216,7 @@
     <Compile Include="Formularios\Utilitarios\OpComboAsistencia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboBusquedaCostoMembresia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboBusquedaPagoDiario.cs" />
+    <Compile Include="Formularios\Utilitarios\OpComboBusquedaPagos.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboBusquedaTipoMembresia.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoCliente.cs" />
     <Compile Include="Formularios\Utilitarios\OpComboEstadoMembresia.cs" />

@@ -36,7 +36,7 @@ namespace UI.Windows.Controladores
             }
         }
 
-        public IEnumerable<Pago_diario> ListarPagoDiarioFecha(DateTime fecha)
+        public IEnumerable<PagoDiarioRegistro> ListarPagoDiarioFecha(DateTime fecha)
         {
             return servicio.ListarPagoDiarioFecha(fecha);
         }
@@ -44,6 +44,19 @@ namespace UI.Windows.Controladores
         public IEnumerable<PagoDiarioRegistro> ListarPagoDiarioActivos()
         {
             return servicio.ListarPagosDiariosActivos();
+        }
+        public bool EliminarCliente(int id)
+        {
+            return servicio.EliminarPago(id);
+
+        }
+        public IEnumerable<PagoDiarioRegistro> ListarPagosTipo(string tipo)
+        {
+            return servicio.ListarPagosTipo(tipo);
+        }
+        public IEnumerable<PagoDiarioRegistro> ListarPagosCedula(string cedula)
+        {
+            return servicio.ListarPagosCedula(cedula);
         }
     }
 }

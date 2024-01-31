@@ -42,7 +42,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
 
-                        }).Where(c => c.nombre.Equals(nombre)).ToList();
+                        }).Where(c => c.nombre.Equals(nombre) && c.estado.Equals(true)).ToList();
                     //3.- retorno resultado
                     return clientesActivos.ToList();
                 }
@@ -176,7 +176,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var clientesActivos = context.Cliente
+                    var clientesTipos = context.Cliente
                     .Join(context.Tipo_Cliente,
                         c => c.id_tipo_cliente,
                         t => t.id_tipo_cliente,
@@ -199,9 +199,9 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
 
-                        }).Where(ct => ct.tipoCliente.Equals(tipo)).ToList();
+                        }).Where(ct => ct.tipoCliente.Equals(tipo) && ct.estado.Equals(true)).ToList();
                     //3.- retorno resultado
-                    return clientesActivos.ToList();
+                    return clientesTipos.ToList();
                 }
             }
             catch (Exception ex)
@@ -218,7 +218,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var clientesActivos = context.Cliente
+                    var clientesCedula = context.Cliente
                     .Join(context.Tipo_Cliente,
                         c => c.id_tipo_cliente,
                         t => t.id_tipo_cliente,
@@ -241,9 +241,9 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
 
-                        }).Where(ct => ct.cedula.Equals(cedula)).ToList();
+                        }).Where(ct => ct.cedula.Equals(cedula) && ct.estado.Equals(true)).ToList();
                     //3.- retorno resultado
-                    return clientesActivos.ToList();
+                    return clientesCedula.ToList();
                 }
             }
             catch (Exception ex)
@@ -260,7 +260,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var clientesActivos = context.Cliente
+                    var clientesMembresia = context.Cliente
                     .Join(context.Tipo_Cliente,
                         c => c.id_tipo_cliente,
                         t => t.id_tipo_cliente,
@@ -283,9 +283,9 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
 
-                        }).Where(ct => ct.membresia.Equals(membresias)).ToList();
+                        }).Where(ct => ct.membresia.Equals(membresias) && ct.estado.Equals(true)).ToList();
                     //3.- retorno resultado
-                    return clientesActivos.ToList();
+                    return clientesMembresia.ToList();
                 }
             }
             catch (Exception ex)

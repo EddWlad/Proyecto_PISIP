@@ -8,7 +8,7 @@ namespace UI.Windows.VistaModelos
 {
     public class TipoClienteVistaModelo
     {
-        public int Id_Tipo_Cliente { get; set; }
+        public int Id_tipo_cliente { get; set; }
         public string Descripcion { get; set; }
         public bool Estado { get; set; }
     }

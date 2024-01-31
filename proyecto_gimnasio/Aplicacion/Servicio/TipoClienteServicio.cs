@@ -36,5 +36,9 @@ namespace Aplicacion.Servicio
         {
             return this.tipoClienteRepository.ListarTiposActivos();
         }
+        public bool EliminarTipoCliente(int id)
+        {
+            return this.tipoClienteRepository.ElminarTipoCliente(id);
+        }
     }
 }

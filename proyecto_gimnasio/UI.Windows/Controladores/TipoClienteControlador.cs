@@ -25,6 +25,24 @@ namespace UI.Windows.Controladores
                 tipoclienteDB.estado = tipoClienteVistaModelo.Estado;
                 servicio.InsertarTipoCliente(tipoclienteDB);
                 return true;
+                
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool ModificarTipoCliente(TipoClienteVistaModelo tipoClienteVistaModelo)
+        {
+            Tipo_Cliente tipoclienteDB = new Tipo_Cliente();
+            try
+            {
+                tipoclienteDB.id_tipo_cliente = tipoClienteVistaModelo.Id_tipo_cliente;
+                tipoclienteDB.descripcion = tipoClienteVistaModelo.Descripcion;
+                tipoclienteDB.estado = tipoClienteVistaModelo.Estado;
+                servicio.ModificarTipoCliente(tipoclienteDB);
+                return true;
+
             }
             catch (Exception ex)
             {
@@ -39,6 +57,11 @@ namespace UI.Windows.Controladores
         public IEnumerable<Tipo_Cliente> ListarTipoClientesActivos()
         {
             return servicio.ListarTiposActivos();
+        }
+        public bool EliminarTipoCleinte(int id)
+        {
+            return servicio.EliminarTipoCliente(id);
+
         }
     }
 }

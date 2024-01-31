@@ -19,6 +19,7 @@ namespace UI.Windows.Formularios
         private bool valorEstado;
         PromocionesVistaModelo promocionesVistaModelo = new PromocionesVistaModelo();
         PromocionesControlador promocionesControlador;
+        List<Promociones> listaPromociones;
         public FrmPromociones()
         {
             InitializeComponent();
@@ -50,6 +51,7 @@ namespace UI.Windows.Formularios
 
         private void FrmPromociones_Load(object sender, EventArgs e)
         {
+            Limpiar();
             BusquedaDataGrid();
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             Listar();
@@ -59,9 +61,19 @@ namespace UI.Windows.Formularios
         {
             if (!string.IsNullOrEmpty(txtId.Text))
             {
-                MessageBox.Show("El cliente ya existe");
+                MessageBox.Show("La promocion ya existe");
+                Limpiar();
+                return;
+                
+            }
+            var promocionEncontrada = listaPromociones.Where(x => x.descripcion.Equals(txtDescripcion.Text)).ToList();
+            if (promocionEncontrada.Count > 0)
+            {
+                MessageBox.Show("La promocion existe");
+                Limpiar();
                 return;
             }
+            
             promocionesVistaModelo.Fecha_registro = DateTime.Now;
             promocionesVistaModelo.Descripcion = txtDescripcion.Text;
             promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
@@ -69,8 +81,10 @@ namespace UI.Windows.Formularios
             promocionesVistaModelo.Estado = true;
             dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.Id_promocion, promocionesVistaModelo.Fecha_registro,promocionesVistaModelo.Descripcion,promocionesVistaModelo.Fecha_inicio,
             promocionesVistaModelo.Fecha_fin,});
-            InsertarPromocion();
             Limpiar();
+            InsertarPromocion();
+            dataGridPromociones.Rows.Clear();
+            Listar();
         }
 
         public DateTime ConvertirFechaInicio()
@@ -78,7 +92,7 @@ namespace UI.Windows.Formularios
             DateTime fechaInicio;
             if (DateTime.TryParse(txtFechaInicio.Text, out fechaInicio))
             {
-                return fechaInicio;
+                return DateTime.Parse(fechaInicio.ToString("dd/MM/yyyy"));
             }
             else
             {
@@ -90,7 +104,7 @@ namespace UI.Windows.Formularios
             DateTime fechaFin;
             if (DateTime.TryParse(txtFechaFin.Text, out fechaFin))
             {
-                return fechaFin;
+                return DateTime.Parse(fechaFin.ToString("dd/MM/yyyy"));
             }
             else
             {
@@ -101,6 +115,7 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
+            txtId.Text = "";
             txtDescripcion.Text = "";
             txtFechaInicio.Text = "";
             txtFechaFin.Text = "";
@@ -122,7 +137,7 @@ namespace UI.Windows.Formularios
         }
         public void Listar()
         {
-            List<Promociones> listaPromociones = (List<Promociones>)promocionesControlador.ListarPromocionesActivas();
+            listaPromociones = (List<Promociones>)promocionesControlador.ListarPromocionesActivas();
             foreach (Promociones item in listaPromociones)
             {
                 dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.fecha_registro,item.descripcion,item.fecha_inicio,
@@ -137,7 +152,7 @@ namespace UI.Windows.Formularios
             List<Promociones> listaPromocionesTipo = (List<Promociones>)promocionesControlador.ListarPromocionesTipo(txtBusqueda.Text);
             foreach (Promociones item in listaPromocionesTipo)
             {
-                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.fecha_registro,item.descripcion,item.descripcion,
+                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.fecha_registro,item.descripcion,
                 item.fecha_inicio, item.fecha_fin,});
             }
 
@@ -170,10 +185,10 @@ namespace UI.Windows.Formularios
                 {
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dataGridPromociones.Rows[indice].Cells["id_promocion"].Value.ToString();
-                    txtFecha.Text = dataGridPromociones.Rows[indice].Cells["fecha"].Value.ToString();
+                    txtFecha.Text = DateTime.Parse(dataGridPromociones.Rows[indice].Cells["fecha"].Value.ToString()).ToString("dd/MM/yyyy");
                     txtDescripcion.Text = dataGridPromociones.Rows[indice].Cells["descripcion"].Value.ToString();
-                    txtFechaInicio.Text = dataGridPromociones.Rows[indice].Cells["fecha_inicio"].Value.ToString();
-                    txtFechaFin.Text = dataGridPromociones.Rows[indice].Cells["fecha_fin"].Value.ToString();
+                    txtFechaInicio.Text = DateTime.Parse(dataGridPromociones.Rows[indice].Cells["fecha_inicio"].Value.ToString()).ToString("dd/MM/yyyy");
+                    txtFechaFin.Text = DateTime.Parse(dataGridPromociones.Rows[indice].Cells["fecha_fin"].Value.ToString()).ToString("dd/MM/yyyy");
    
                 }
             }
@@ -202,7 +217,8 @@ namespace UI.Windows.Formularios
             promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
             promocionesVistaModelo.Estado = true;
             modificarPromocion();
-            Limpiar();
+            dataGridPromociones.Rows.Clear();
+            Listar();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -217,12 +233,21 @@ namespace UI.Windows.Formularios
             if (eliminacionPromocion)
             {
                 MessageBox.Show("Promocion eliminada correctamente");
+                dataGridPromociones.Rows.Clear();
+                Listar();
 
             }
             else
             {
                 MessageBox.Show("Error: Al elimnar promocion");
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridPromociones.Rows.Clear();
+            Listar();
+            Limpiar();
         }
     }
 }

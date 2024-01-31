@@ -32,7 +32,18 @@ namespace UI.Windows.Formularios
             }
             else
             {
-                MessageBox.Show("Error: Al insertar tipo de cliente");
+                MessageBox.Show("Error: Al insertar tipo cliente");
+            }
+        }
+        public void ModificarTipoCliente()
+        {
+            if (tipoClienteControlador.ModificarTipoCliente(tipoClienteVistaModelo))
+            {
+                MessageBox.Show("Tipo de cliente modificado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error: Al modificar tipo de cliente");
             }
         }
 
@@ -52,6 +63,7 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
+            txtId.Text = "";
             txtDescripcion.Text = "";
 
         }
@@ -68,6 +80,7 @@ namespace UI.Windows.Formularios
         {
             BusquedaDataGrid();
             Listar();
+            Limpiar();
         }
 
         private void dataGridTipoClientes_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -128,9 +141,56 @@ namespace UI.Windows.Formularios
         {
             tipoClienteVistaModelo.Descripcion = txtDescripcion.Text;
             tipoClienteVistaModelo.Estado = true;
-            dataGridTipoClientes.Rows.Add(new object[] {"",tipoClienteVistaModelo.Id_Tipo_Cliente,tipoClienteVistaModelo.Descripcion,});
+            dataGridTipoClientes.Rows.Add(new object[] {"",tipoClienteVistaModelo.Id_tipo_cliente,tipoClienteVistaModelo.Descripcion,});
             Limpiar();
             InsertarTipoCliente();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del tipo cliente no fue encontrado");
+                return;
+            }
+            tipoClienteVistaModelo.Id_tipo_cliente = int.Parse(txtId.Text);
+            tipoClienteVistaModelo.Descripcion = txtDescripcion.Text;
+            tipoClienteVistaModelo.Estado = true;
+            dataGridTipoClientes.Rows.Add(new object[] { "", tipoClienteVistaModelo.Id_tipo_cliente, 
+                tipoClienteVistaModelo.Descripcion,});
+            ModificarTipoCliente();
+            dataGridTipoClientes.Rows.Clear();
+            Limpiar();
+            Listar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+
+            var eliminacionTipo = tipoClienteControlador.EliminarTipoCleinte(int.Parse(txtId.Text));
+            if (eliminacionTipo)
+            {
+                MessageBox.Show("Tipo cliente eliminado correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar tipo cliente");
+            }
+            dataGridTipoClientes.Rows.Clear();
+            Limpiar();
+            Listar();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridTipoClientes.Rows.Clear();
+            Listar();
         }
     }
 }

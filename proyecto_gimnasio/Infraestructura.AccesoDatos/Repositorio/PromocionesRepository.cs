@@ -104,7 +104,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 {
                     //2.- escribil la consulta
                     var promocionesTipo = from e in context.Promociones
-                                          where e.descripcion == tipo
+                                          where e.descripcion == tipo && e.estado == true
                                          select e;
                     //3.- retorno resultado
                     return promocionesTipo.ToList();

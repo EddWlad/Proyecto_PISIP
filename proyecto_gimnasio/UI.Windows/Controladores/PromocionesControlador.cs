@@ -21,6 +21,7 @@ namespace UI.Windows.Controladores
             Promociones promocionDB = new Promociones();
             try
             {
+                
                 promocionDB.fecha_registro = promocionVistaModelo.Fecha_registro;
                 promocionDB.descripcion = promocionVistaModelo.Descripcion;
                 promocionDB.fecha_inicio = promocionVistaModelo.Fecha_inicio;
