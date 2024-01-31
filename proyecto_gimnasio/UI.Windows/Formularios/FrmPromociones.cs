@@ -59,6 +59,24 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            bool isValid = true;
+
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                MessageBox.Show("El campo 'Descripcion' es obligatorio.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtFechaFin.Text))
+            {
+                MessageBox.Show("El campo 'Fecha inicio' es obligatorio.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtFechaInicio.Text))
+            {
+                MessageBox.Show("El campo 'Fecha fin' es obligatorio.");
+                isValid = false;
+            }
+
             if (!string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("La promocion ya existe");
@@ -66,6 +84,7 @@ namespace UI.Windows.Formularios
                 return;
                 
             }
+
             var promocionEncontrada = listaPromociones.Where(x => x.descripcion.Equals(txtDescripcion.Text)).ToList();
             if (promocionEncontrada.Count > 0)
             {
@@ -73,18 +92,20 @@ namespace UI.Windows.Formularios
                 Limpiar();
                 return;
             }
-            
-            promocionesVistaModelo.Fecha_registro = DateTime.Now;
-            promocionesVistaModelo.Descripcion = txtDescripcion.Text;
-            promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
-            promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
-            promocionesVistaModelo.Estado = true;
-            dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.Id_promocion, promocionesVistaModelo.Fecha_registro,promocionesVistaModelo.Descripcion,promocionesVistaModelo.Fecha_inicio,
-            promocionesVistaModelo.Fecha_fin,});
-            Limpiar();
-            InsertarPromocion();
-            dataGridPromociones.Rows.Clear();
-            Listar();
+            if (isValid)
+            {
+                promocionesVistaModelo.Fecha_registro = DateTime.Now;
+                promocionesVistaModelo.Descripcion = txtDescripcion.Text;
+                promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
+                promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
+                promocionesVistaModelo.Estado = true;
+                dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.Id_promocion, promocionesVistaModelo.Fecha_registro,promocionesVistaModelo.Descripcion,promocionesVistaModelo.Fecha_inicio,
+                promocionesVistaModelo.Fecha_fin,});
+                Limpiar();
+                InsertarPromocion();
+                dataGridPromociones.Rows.Clear();
+                Listar();
+            }
         }
 
         public DateTime ConvertirFechaInicio()

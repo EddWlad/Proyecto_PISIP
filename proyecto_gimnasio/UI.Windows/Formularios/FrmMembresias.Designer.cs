@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMembresias));
             this.txtIndice = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -39,6 +39,15 @@
             this.cboBusqueda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridMembresias = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idmembresias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.promocion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -54,15 +63,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtFechaFin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idmembresias = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecha_fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.promocion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.cboTipoMembresia = new System.Windows.Forms.ComboBox();
             this.cboCostoMembresia = new System.Windows.Forms.ComboBox();
@@ -159,15 +159,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridMembresias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridMembresias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridMembresias.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridMembresias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMembresias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
@@ -183,14 +183,84 @@
             this.dataGridMembresias.MultiSelect = false;
             this.dataGridMembresias.Name = "dataGridMembresias";
             this.dataGridMembresias.ReadOnly = true;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridMembresias.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridMembresias.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridMembresias.RowTemplate.Height = 28;
             this.dataGridMembresias.Size = new System.Drawing.Size(709, 419);
             this.dataGridMembresias.TabIndex = 65;
             this.dataGridMembresias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridMembresias_CellContentClick);
             this.dataGridMembresias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridMembresias_CellPainting);
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnSeleccionar.FillWeight = 30.45685F;
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 35;
+            // 
+            // idmembresias
+            // 
+            this.idmembresias.HeaderText = "ID";
+            this.idmembresias.Name = "idmembresias";
+            this.idmembresias.ReadOnly = true;
+            this.idmembresias.Visible = false;
+            // 
+            // fecha_registro
+            // 
+            this.fecha_registro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fecha_registro.FillWeight = 113.9086F;
+            this.fecha_registro.HeaderText = "Fecha registro";
+            this.fecha_registro.Name = "fecha_registro";
+            this.fecha_registro.ReadOnly = true;
+            this.fecha_registro.Width = 80;
+            // 
+            // descripcion
+            // 
+            this.descripcion.FillWeight = 113.9086F;
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            // 
+            // fecha_inicio
+            // 
+            this.fecha_inicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.fecha_inicio.FillWeight = 113.9086F;
+            this.fecha_inicio.HeaderText = "Fecha Inicio";
+            this.fecha_inicio.Name = "fecha_inicio";
+            this.fecha_inicio.ReadOnly = true;
+            this.fecha_inicio.Width = 85;
+            // 
+            // fecha_fin
+            // 
+            this.fecha_fin.FillWeight = 113.9086F;
+            this.fecha_fin.HeaderText = "Fecha Fin";
+            this.fecha_fin.Name = "fecha_fin";
+            this.fecha_fin.ReadOnly = true;
+            // 
+            // tipo_membresia
+            // 
+            this.tipo_membresia.HeaderText = "Tipo Membresia";
+            this.tipo_membresia.Name = "tipo_membresia";
+            this.tipo_membresia.ReadOnly = true;
+            // 
+            // costo_membresia
+            // 
+            this.costo_membresia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.costo_membresia.HeaderText = "Costo";
+            this.costo_membresia.Name = "costo_membresia";
+            this.costo_membresia.ReadOnly = true;
+            this.costo_membresia.Width = 75;
+            // 
+            // promocion
+            // 
+            this.promocion.HeaderText = "Promocion";
+            this.promocion.Name = "promocion";
+            this.promocion.ReadOnly = true;
             // 
             // pictureBox1
             // 
@@ -219,6 +289,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(38, 27);
             this.btnLimpiar.TabIndex = 64;
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -257,6 +328,7 @@
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnEditar
             // 
@@ -276,6 +348,7 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
@@ -418,76 +491,6 @@
             this.label3.TabIndex = 70;
             this.label3.Text = "Fecha de finalizacion";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.btnSeleccionar.FillWeight = 30.45685F;
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 35;
-            // 
-            // idmembresias
-            // 
-            this.idmembresias.HeaderText = "ID";
-            this.idmembresias.Name = "idmembresias";
-            this.idmembresias.ReadOnly = true;
-            this.idmembresias.Visible = false;
-            // 
-            // fecha_registro
-            // 
-            this.fecha_registro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fecha_registro.FillWeight = 113.9086F;
-            this.fecha_registro.HeaderText = "Fecha registro";
-            this.fecha_registro.Name = "fecha_registro";
-            this.fecha_registro.ReadOnly = true;
-            this.fecha_registro.Width = 80;
-            // 
-            // descripcion
-            // 
-            this.descripcion.FillWeight = 113.9086F;
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
-            // fecha_inicio
-            // 
-            this.fecha_inicio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.fecha_inicio.FillWeight = 113.9086F;
-            this.fecha_inicio.HeaderText = "Fecha Inicio";
-            this.fecha_inicio.Name = "fecha_inicio";
-            this.fecha_inicio.ReadOnly = true;
-            this.fecha_inicio.Width = 85;
-            // 
-            // fecha_fin
-            // 
-            this.fecha_fin.FillWeight = 113.9086F;
-            this.fecha_fin.HeaderText = "Fecha Fin";
-            this.fecha_fin.Name = "fecha_fin";
-            this.fecha_fin.ReadOnly = true;
-            // 
-            // tipo_membresia
-            // 
-            this.tipo_membresia.HeaderText = "Tipo Membresia";
-            this.tipo_membresia.Name = "tipo_membresia";
-            this.tipo_membresia.ReadOnly = true;
-            // 
-            // costo_membresia
-            // 
-            this.costo_membresia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.costo_membresia.HeaderText = "Costo";
-            this.costo_membresia.Name = "costo_membresia";
-            this.costo_membresia.ReadOnly = true;
-            this.costo_membresia.Width = 75;
-            // 
-            // promocion
-            // 
-            this.promocion.HeaderText = "Promocion";
-            this.promocion.Name = "promocion";
-            this.promocion.ReadOnly = true;
             // 
             // label5
             // 

@@ -22,6 +22,7 @@ namespace UI.Windows.Formularios
         TipoMembresiaControlador tipoMembresiaControlador;
         CostoMembresiasControlador costoMembresiasControlador;
         PromocionesControlador promocionesControlador;
+        List<MembresiaTipoCostoPromocion> listaMembresias;
         public FrmMembresias()
         {
             InitializeComponent();
@@ -40,6 +41,17 @@ namespace UI.Windows.Formularios
             else
             {
                 MessageBox.Show("Error: Al ingresar pago");
+            }
+        }
+        public void ModificarMembresia()
+        {
+            if (membresiasControlador.ModificarMembresia(membresiasVistaModelo))
+            {
+                MessageBox.Show("Pago modificado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error: Al modificar pago");
             }
         }
         private void contenidoTipoMembresia()
@@ -66,10 +78,48 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            membresiasVistaModelo.Fecha_Registro = DateTime.Now;
-           
-                //bool estadoMembresias = Convert.ToBoolean(cboEstado.SelectedValue.ToString());
-                
+
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El cliente ya existe");
+                Limpiar();
+                return;
+            }
+            var membresiaEncontrada = listaMembresias.Where(x => x.descripcion.Equals(txtDescripcion.Text)).ToList();
+            if (membresiaEncontrada.Count > 0)
+            {
+                MessageBox.Show("La cedula existe");
+                Limpiar();
+                return;
+            }
+            bool isValid = true;
+
+            // Verificar si el campo Nombre está vacío
+            if (string.IsNullOrWhiteSpace(txtFechaRegistro.Text))
+            {
+                MessageBox.Show("El campo 'Fehcha' es obligatorio.");
+                isValid = false;
+            }
+            // Verificar si el campo Apellido está vacío
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                MessageBox.Show("El campo 'Descripcion' es obligatorio.");
+                isValid = false;
+            }
+            // Verificar si el campo Teléfono está vacío
+            if (string.IsNullOrWhiteSpace(textFechaInicio.Text))
+            {
+                MessageBox.Show("El campo 'Fecha Inicio' es obligatorio.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtFechaFin.Text))
+            {
+                MessageBox.Show("El campo 'Fecha Fin' es obligatorio.");
+                isValid = false;
+            }
+            if (isValid)
+            {
+                membresiasVistaModelo.Fecha_Registro = DateTime.Now;
                 membresiasVistaModelo.Descripcion = txtDescripcion.Text;
                 membresiasVistaModelo.Fecha_Inicio = ConvertirFechaInicio();
                 membresiasVistaModelo.Fecha_Fin = ConvertirFechaFin();
@@ -79,9 +129,11 @@ namespace UI.Windows.Formularios
                 membresiasVistaModelo.Id_Promocion = (int)cboPromocion.SelectedValue;
                 dataGridMembresias.Rows.Add(new object[] {"",membresiasVistaModelo.Id_Membresia, membresiasVistaModelo.Fecha_Registro,membresiasVistaModelo.Descripcion,membresiasVistaModelo.Fecha_Inicio,
                 membresiasVistaModelo.Fecha_Fin,cboTipoMembresia.Text,cboCostoMembresia.Text,cboPromocion.Text});
-                Limpiar();
                 InsertarMembresia();
-            
+                Limpiar();
+                dataGridMembresias.Rows.Clear();
+                Listar();
+            }
         }
 
         public DateTime ConvertirFechaInicio()
@@ -128,7 +180,8 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
-            txtFechaRegistro.Text = "";
+            txtId.Text = "";
+            txtFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtDescripcion.Text = "";
             txtFechaFin.Text = "";
             textFechaInicio.Text = "";
@@ -136,7 +189,7 @@ namespace UI.Windows.Formularios
 
         public void Listar()
         {
-            List<MembresiaTipoCostoPromocion> listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasActivas();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasActivas();
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
                 dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
@@ -144,47 +197,66 @@ namespace UI.Windows.Formularios
             }
 
         }
-
-        //public void ListarMmebresiasTipo()
-        //{
-            //dataGridMembresias.Rows.Clear();
-           // List<Membresias> listaMembresiasTipo = (List<Membresias>)membresiasControlador.ListarMembresiasTipo(txtBusqueda.Text);
-            //foreach (Membresias item in listaMembresiasTipo)
-            //{
-                //dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
-                   // item.estado == true ? "Activo" : "Inactivo","",
-                   // item.estado == true ? 1:0});
-            //}
-
-        //}
-
-        //public void ListarMembresiasEstados()
-        //{
-            //dataGridMembresias.Rows.Clear();
-            //bool busquedaEnGrid = ConversionBooleanaBusqueda();
-            //List<Membresias> listaMembresiasEstado = (List<Membresias>)membresiasControlador.ListarMembresiasEstado(busquedaEnGrid);
-            //foreach (Membresias item in listaMembresiasEstado)
-            //{
-                //dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.tipo,item.costo,item.descripcion,
-                    //item.estado == true ? "Activo" : "Inactivo","",
-                    //item.estado == true ? 1:0});
-            //}
-        //}
-
-        private bool ConversionBooleanaBusqueda()
+        public void MembresiasCosto()
         {
-            string busqueda = txtBusqueda.Text.ToLower();
-            if (busqueda == "activo")
+            dataGridMembresias.Rows.Clear();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasCosto(decimal.Parse(txtBusqueda.Text));
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                return true;
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
             }
-            else if (busqueda == "inactivo")
+
+        }
+        public void MembresiasTipo()
+        {
+            dataGridMembresias.Rows.Clear();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasTipo(txtBusqueda.Text);
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                return false;
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
             }
-            else
+        }
+        public void MembresiasPromocion()
+        {
+            dataGridMembresias.Rows.Clear();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasPromocion(txtBusqueda.Text);
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                throw new ArgumentException("El texto debe ser 'activo' o 'inactivo'");
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
+            }
+        }
+
+        public void MembresiasFechaRegistro()
+        {
+            dataGridMembresias.Rows.Clear();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechaRegistro(DateTime.Parse(txtBusqueda.Text));
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
+            {
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
+            }
+        }
+        public void MembresiasFechaInicio()
+        {
+            dataGridMembresias.Rows.Clear();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechaInicio(DateTime.Parse(txtBusqueda.Text));
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
+            {
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
+            }
+        }
+        public void MembresiasFechaFin()
+        {
+            dataGridMembresias.Rows.Clear();
+            listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechafin(DateTime.Parse(txtBusqueda.Text));
+            foreach (MembresiaTipoCostoPromocion item in listaMembresias)
+            {
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                item.costo,item.promocion});
             }
         }
 
@@ -196,6 +268,7 @@ namespace UI.Windows.Formularios
             contenidoPromociones();
             txtFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
             //ContenidoCboEstado();
+            Limpiar();
             Listar();
         }
 
@@ -231,17 +304,6 @@ namespace UI.Windows.Formularios
                     txtDescripcion.Text = dataGridMembresias.Rows[indice].Cells["descripcion"].Value.ToString();
                     textFechaInicio.Text = dataGridMembresias.Rows[indice].Cells["fecha_inicio"].Value.ToString();
                     txtFechaFin.Text = dataGridMembresias.Rows[indice].Cells["fecha_fin"].Value.ToString();
-                    //Seleciondo el id se cambia el combo box
-                    //foreach (OpComboEstadoMembresia opcMembresia in cboEstado.Items)
-                    //{
-                    //if (Convert.ToBoolean(opcMembresia.Valor) == Convert.ToBoolean(dataGridMembresias.Rows[indice].Cells["EstadoValor"].Value))
-                    //{
-                    //int indice_combo = cboEstado.Items.IndexOf(opcMembresia);
-                    //cboEstado.SelectedIndex = indice_combo;
-                    //break;
-                    //}
-
-                    //}
 
                 }
             }
@@ -249,14 +311,85 @@ namespace UI.Windows.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (cboBusqueda.Text == "Tipo")
+            if (cboBusqueda.Text == "Fecha registro")
             {
-                //ListarMmebresiasTipo();
+                MembresiasFechaRegistro();
             }
-            if (cboBusqueda.Text == "Estado")
+            if (cboBusqueda.Text == "Fecha Inicio")
             {
-                //ListarMembresiasEstados();
+                MembresiasFechaInicio();
             }
+            if (cboBusqueda.Text == "Fecha Fin")
+            {
+                MembresiasFechaFin();
+            }
+            if (cboBusqueda.Text == "Tipo Membresia")
+            {
+                MembresiasTipo();
+            }
+            if (cboBusqueda.Text == "Costo")
+            {
+                MembresiasCosto();
+            }
+            if (cboBusqueda.Text == "Promocion")
+            {
+                MembresiasPromocion();
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del cliente no fue encontrado");
+                return;
+            }
+                membresiasVistaModelo.Id_Membresia = int.Parse(txtId.Text);
+                membresiasVistaModelo.Fecha_Registro = DateTime.Now;
+                membresiasVistaModelo.Descripcion = txtDescripcion.Text;
+                membresiasVistaModelo.Fecha_Inicio = ConvertirFechaInicio();
+                membresiasVistaModelo.Fecha_Fin = ConvertirFechaFin();
+                membresiasVistaModelo.Estado = true;
+                membresiasVistaModelo.Id_Tipo_Membresia = (int)cboTipoMembresia.SelectedValue;
+                membresiasVistaModelo.Id_Costo_Membresia = (int)cboCostoMembresia.SelectedValue;
+                membresiasVistaModelo.Id_Promocion = (int)cboPromocion.SelectedValue;
+                dataGridMembresias.Rows.Add(new object[] {"",membresiasVistaModelo.Id_Membresia, membresiasVistaModelo.Fecha_Registro,membresiasVistaModelo.Descripcion,membresiasVistaModelo.Fecha_Inicio,
+                membresiasVistaModelo.Fecha_Fin,cboTipoMembresia.Text,cboCostoMembresia.Text,cboPromocion.Text});
+                ModificarMembresia();
+                Limpiar();
+                dataGridMembresias.Rows.Clear();
+                Listar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id de membresia no fue encontrado");
+                return;
+            }
+
+            var eliminacionMembresia = membresiasControlador.EliminarMembresia(int.Parse(txtId.Text));
+            if (eliminacionMembresia)
+            {
+                MessageBox.Show("Membresia eliminada correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar membresia");
+            }
+            dataGridMembresias.Rows.Clear();
+            Limpiar();
+            Listar();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridMembresias.Rows.Clear();
+            Limpiar();
+            Listar();
         }
     }
 }

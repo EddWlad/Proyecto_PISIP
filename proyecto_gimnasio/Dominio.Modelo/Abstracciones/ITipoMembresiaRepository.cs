@@ -11,5 +11,6 @@ namespace Dominio.Modelo.Abstracciones
     {
         IEnumerable<Tipo_Membresia> ListarTipoMembresias(String descripcion);
         IEnumerable<Tipo_Membresia> ListarTipoMembresiasActivas();
+        bool ElminarTipoMembresia(int id);
     }
 }

@@ -34,11 +34,22 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("Error: Al insertar tipo de membresia");
             }
         }
+        public void ModificarTipoMembresia()
+        {
+            if (tipoMembresiaControlador.ModificarTipoMembresia(tipoMembresiaVistaModelo))
+            {
+                MessageBox.Show("Tipo de membresia modificado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Error: Al modificar tipo de membresia");
+            }
+        }
         private void BusquedaDataGrid()
         {
             foreach (DataGridViewColumn columna in dataGridTipoMembresia.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "id_tipo_cliente")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "id_tipo_membresia")
                 {
                     cboBusqueda.Items.Add(new OpComboBusquedaTipoMembresia() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -50,6 +61,7 @@ namespace UI.Windows.Formularios
         private void Limpiar()
         {
             txtIndice.Text = "-1";
+            txtId.Text = "";
             txtDescripcion.Text = "";
 
         }
@@ -67,6 +79,7 @@ namespace UI.Windows.Formularios
         {
             BusquedaDataGrid();
             Listar();
+            Limpiar();
         }
 
         private void dataGridTipoMembresia_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -124,11 +137,67 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El tipo ya existe");
+                Limpiar();
+                return;
+            }
+            tipoMembresiaVistaModelo.Descripcion = txtDescripcion.Text;
+            tipoMembresiaVistaModelo.Estado = true;
+            dataGridTipoMembresia.Rows.Add(new object[] { "", tipoMembresiaVistaModelo.Id_Tipo_Membresia, 
+                tipoMembresiaVistaModelo.Descripcion, });
+            InsertarTipoMembresia();
+            Limpiar();
+            Listar();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del tipo cliente no fue encontrado");
+                return;
+            }
+            tipoMembresiaVistaModelo.Id_Tipo_Membresia = int.Parse(txtId.Text);
             tipoMembresiaVistaModelo.Descripcion = txtDescripcion.Text;
             tipoMembresiaVistaModelo.Estado = true;
             dataGridTipoMembresia.Rows.Add(new object[] { "", tipoMembresiaVistaModelo.Id_Tipo_Membresia, tipoMembresiaVistaModelo.Descripcion, });
+            ModificarTipoMembresia();
+            dataGridTipoMembresia.Rows.Clear();
             Limpiar();
-            InsertarTipoMembresia();
+            Listar();
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del la membresia no fue encontrado");
+                return;
+            }
+
+            var eliminacionTipo = tipoMembresiaControlador.EliminarTipoMembresia(int.Parse(txtId.Text));
+            if (eliminacionTipo)
+            {
+                MessageBox.Show("Tipo de membresia a sido eliminado correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar tipo de membresia");
+            }
+            dataGridTipoMembresia.Rows.Clear();
+            Limpiar();
+            Listar();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridTipoMembresia.Rows.Clear();
+            Limpiar();
+            Listar();
         }
     }
 }

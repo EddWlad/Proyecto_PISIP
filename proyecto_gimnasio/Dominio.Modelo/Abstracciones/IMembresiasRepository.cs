@@ -9,8 +9,14 @@ namespace Dominio.Modelo.Abstracciones
 {
     public interface IMembresiasRepository : IBaseRepository<Membresias>
     {
-        //IEnumerable<Membresias> ListarMembresiasTipo(String tipo);
+        IEnumerable<MembresiaTipoCostoPromocion> MembresiaFechaRegistro(DateTime fecha_registro);
+        IEnumerable<MembresiaTipoCostoPromocion> MembresiaFechaInicio(DateTime fecha_inicio);
+        IEnumerable<MembresiaTipoCostoPromocion> MembresiaFechaFin(DateTime fecha_fin);
+        IEnumerable<MembresiaTipoCostoPromocion> MembresiaTipos(String tipo);
+        IEnumerable<MembresiaTipoCostoPromocion> MembresiaCosto(decimal costo);
+        IEnumerable<MembresiaTipoCostoPromocion> MembresiaPromocion(String promocion);
         IEnumerable<MembresiaTipoCostoPromocion> ListarMembresiasActivas();
-        IEnumerable<Membresias> ListarMembresiasEstados(Boolean estado);
+        bool ElminarMmebresia(int id);
+
     }
 }

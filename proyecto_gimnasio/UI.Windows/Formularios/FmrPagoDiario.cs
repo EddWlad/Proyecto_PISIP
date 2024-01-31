@@ -53,16 +53,45 @@ namespace UI.Windows.Formularios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ConversionCosto(txtCosto.Text))
+            if (!string.IsNullOrEmpty(txtIndice2.Text))
             {
-                pagoDiarioVistaModelo.Fecha = DateTime.Now;
-                pagoDiarioVistaModelo.Estado = true;
-                pagoDiarioVistaModelo.Id_Registro = ConversionIdCliente(txtId2.Text);
-                dtListaPagos.Rows.Add(new object[] {"",pagoDiarioVistaModelo.Id_Pago_Diario,txtCedula.Text, 
-                pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto,txtTipoCliente.Text});
+                MessageBox.Show("El cliente ya existe");
                 Limpiar();
-                InsertarPagoDiario();
+                return;
             }
+            bool isValid = true;
+
+            if (string.IsNullOrWhiteSpace(txtCosto.Text))
+            {
+                MessageBox.Show("El campo 'Costo' es obligatorio.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtCedula.Text))
+            {
+                MessageBox.Show("El campo 'Cedula' es obligatorio.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTipoCliente.Text))
+            {
+                MessageBox.Show("El campo 'Tipo de cliente' es obligatorio.");
+                isValid = false;
+            }
+            if (isValid)
+            {
+                if (ConversionCosto(txtCosto.Text))
+                {
+
+                    pagoDiarioVistaModelo.Fecha = DateTime.Now;
+                    pagoDiarioVistaModelo.Estado = true;
+                    //pagoDiarioVistaModelo.Id_Registro = pagoDiarioVistaModelo.Id_Registro;
+                    dtListaPagos.Rows.Add(new object[] {"",pagoDiarioVistaModelo.Id_Pago_Diario,txtCedula.Text,txtNombre.Text, 
+                    pagoDiarioVistaModelo.Fecha,pagoDiarioVistaModelo.Monto,txtTipoCliente.Text});
+                    Limpiar();
+                    InsertarPagoDiario();
+                }
+            }
+            dtListaPagos.Rows.Clear();
+            Listar();
         }
         private int ConversionIdCliente(string txtId)
         {
@@ -151,20 +180,6 @@ namespace UI.Windows.Formularios
             }
         }
 
-        
-
-        //}
-        //public void ListarPagoDiarioFecha()
-        //{
-        //DateTime fechaTxtBusqueda = ConvertirFecha();
-        //dataGridPagoDiario.Rows.Clear();
-        //List<Pago_diario> listaPagoDiarioFecha = (List<Pago_diario>)pagoDiarioControlador.ListarPagoDiarioFecha(fechaTxtBusqueda);
-        //foreach (Pago_diario item in listaPagoDiarioFecha)
-        //{
-        // dataGridPagoDiario.Rows.Add(new object[] { "",item.id_pago_diario,item.fecha,item.monto,item.estado,item.id_usuario,"" });
-        //}
-
-        //}
 
         public DateTime ConvertirFecha()
         {
@@ -190,11 +205,9 @@ namespace UI.Windows.Formularios
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dataGridClientesMiembros.Rows[indice].Cells["id_cliente"].Value.ToString();
                     txtCedula.Text = dataGridClientesMiembros.Rows[indice].Cells["cedula"].Value.ToString();
-                    txtCedula.Refresh();
+                    txtNombre.Text = dataGridClientesMiembros.Rows[indice].Cells["nombre"].Value.ToString();
                     txtTipoCliente.Text = dataGridClientesMiembros.Rows[indice].Cells["tipo_cliente"].Value.ToString();
-                    txtTipoCliente.Refresh();
                     txtMembresia.Text = dataGridClientesMiembros.Rows[indice].Cells["membresia"].Value.ToString();
-                    txtMembresia.Refresh();
                 }
     
             }
@@ -342,13 +355,9 @@ namespace UI.Windows.Formularios
                     txtIndice2.Text = indice.ToString();
                     txtId2.Text = dtListaPagos.Rows[indice].Cells["id_pago_diario"].Value.ToString();
                     txtCedula.Text = dtListaPagos.Rows[indice].Cells["cedula_pago"].Value.ToString();
-                    txtCedula.Refresh();
                     txtFecha.Text = DateTime.Parse(dtListaPagos.Rows[indice].Cells["fecha"].Value.ToString()).ToString("dd/MM/yyyy");
-                    txtFecha.Refresh();
                     txtCosto.Text = dtListaPagos.Rows[indice].Cells["costo"].Value.ToString();
-                    txtCosto.Refresh();
                     txtTipoCliente.Text = dtListaPagos.Rows[indice].Cells["cliente_tipo"].Value.ToString();
-                    txtTipoCliente.Refresh();
 
                 }
             }

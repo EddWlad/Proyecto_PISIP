@@ -26,7 +26,7 @@ namespace UI.Windows.Controladores
                 pagodiarioDB.fecha = fechaActual;
                 pagodiarioDB.monto = pagosDiariosVistaModelo.Monto;
                 pagodiarioDB.estado = pagosDiariosVistaModelo.Estado;
-                pagodiarioDB.id_registro = pagosDiariosVistaModelo.Id_Registro;
+                //pagodiarioDB.id_registro = pagosDiariosVistaModelo.Id_Registro;
                 servicio.InsertarPagos(pagodiarioDB);
                 return true;
             }

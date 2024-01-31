@@ -36,5 +36,9 @@ namespace Aplicacion.Servicio
         {
             return this.tipoMembresiaRepository.ListarTipoMembresiasActivas();
         }
+        public bool EliminarTipoMembresia(int id)
+        {
+            return this.tipoMembresiaRepository.ElminarTipoMembresia(id);
+        }
     }
 }

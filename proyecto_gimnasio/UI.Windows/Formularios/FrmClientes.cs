@@ -23,6 +23,7 @@ namespace UI.Windows.Formularios
         ClienteControlador clienteControlador;
         TipoClienteControlador tipoClienteControlador;
         MembresiasControlador membresiasControlador;
+        RegistroAsistenciaControlador asistenciaControlador;
         List<ClienteTipoCliente> listaClientes;
         public FrmClientes()
         {
@@ -30,6 +31,7 @@ namespace UI.Windows.Formularios
             clienteControlador = new ClienteControlador();
             tipoClienteControlador = new TipoClienteControlador();
             membresiasControlador = new MembresiasControlador();
+            asistenciaControlador = new RegistroAsistenciaControlador();
             this.txtCedula.KeyPress += new KeyPressEventHandler(txtCedula_KeyPress);
             this.txtAltura.KeyPress += new KeyPressEventHandler(txtAltura_KeyPress);
             this.txtPeso.KeyPress += new KeyPressEventHandler(txtPeso_KeyPress);
@@ -78,17 +80,7 @@ namespace UI.Windows.Formularios
             cboBusqueda.ValueMember = "Valor";
             cboBusqueda.SelectedIndex = 0;
         }
-        //private void ContenidoCboEstado()
-        //{
-            //cboEstado.Items.Add(new OpComboEstadoCliente() { Valor = true, Texto = "Activo" });
-            //cboEstado.Items.Add(new OpComboEstadoCliente() { Valor = false, Texto = "Inactivo" });
 
-            //cboEstado.DisplayMember = "Texto";
-            //cboEstado.ValueMember = "Valor";
-            //cboEstado.SelectedIndex = 0;
-            //OpComboEstadoCliente seleccionado = (OpComboEstadoCliente)cboEstado.SelectedItem;
-            //valorEstado = (bool)seleccionado.Valor;
-        //}
         private void Limpiar()
         {
             txtIndice.Text = "-1";
@@ -420,15 +412,15 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("El Id del cliente no fue encontrado");
                 return;
             }
-            clienteVistaModelo.Id_Cliente = int.Parse(txtId.Text); 
-            clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
-            clienteVistaModelo.Cedula = txtCedula.Text;
-            clienteVistaModelo.Nombre = txtNombre.Text;
-            clienteVistaModelo.Apellido = txtApellido.Text;
-            clienteVistaModelo.Direccion = txtDireccion.Text;
-            clienteVistaModelo.Telefono = txtTelefono.Text;
-            clienteVistaModelo.Email = txtEmail.Text;
-            clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
+                clienteVistaModelo.Id_Cliente = int.Parse(txtId.Text); 
+                clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
+                clienteVistaModelo.Cedula = txtCedula.Text;
+                clienteVistaModelo.Nombre = txtNombre.Text;
+                clienteVistaModelo.Apellido = txtApellido.Text;
+                clienteVistaModelo.Direccion = txtDireccion.Text;
+                clienteVistaModelo.Telefono = txtTelefono.Text;
+                clienteVistaModelo.Email = txtEmail.Text;
+                clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
             // Validacion de valores de peso y altura correctos
             if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
             {

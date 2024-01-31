@@ -31,6 +31,22 @@ namespace UI.Windows.Controladores
                 return false;
             }
         }
+        public bool ModificarTipoMembresia(TipoMembresiaVistaModelo tipoMembresiaVistaModelo)
+        {
+            Tipo_Membresia tipoMembresiaDB = new Tipo_Membresia();
+            try
+            {
+                tipoMembresiaDB.id_tipo_membresia = tipoMembresiaVistaModelo.Id_Tipo_Membresia;
+                tipoMembresiaDB.descripcion = tipoMembresiaVistaModelo.Descripcion;
+                tipoMembresiaDB.estado = tipoMembresiaVistaModelo.Estado;
+                servicio.ModificarTipoMembresia(tipoMembresiaDB);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         public IEnumerable<Tipo_Membresia> ListarTipoMembresiaDescripcion(string descripcion)
         {
             return servicio.ListarTipoMembresiaDescripcion(descripcion);
@@ -38,6 +54,11 @@ namespace UI.Windows.Controladores
         public IEnumerable<Tipo_Membresia> ListarTipoMembresiasActivas()
         {
             return servicio.ListarTiposMembresiasActivos();
+        }
+        public bool EliminarTipoMembresia(int id)
+        {
+            return servicio.EliminarTipoMembresia(id);
+
         }
     }
 }
