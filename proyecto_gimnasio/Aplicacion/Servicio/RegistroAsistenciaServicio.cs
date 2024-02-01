@@ -28,13 +28,21 @@ namespace Aplicacion.Servicio
         {
             this.registroAsistenciaRepository.Modify(modificadoAsistencia);
         }
-        public IEnumerable<Registro_Asistencia> ListarAsistenciaFechas(DateTime fecha)
+        public bool EliminarRegistro(int id)
+        {
+            return this.registroAsistenciaRepository.EliminarRegistro(id);
+        }
+        public IEnumerable<Registro_Asistencia> ListarAsistenciaFechas(string fecha)
         {
             return this.registroAsistenciaRepository.ListarAsistenciaFecha(fecha);
         }
         public IEnumerable<AsistenciaCliente> ListarAsistenciaClientes()
         {
             return this.registroAsistenciaRepository.ListarAsistencias();
+        }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciasCedula(string cedula)
+        {
+            return this.registroAsistenciaRepository.ListarAsistenciaCedula(cedula);
         }
     }
 }

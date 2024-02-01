@@ -54,20 +54,20 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnLimpiarA = new System.Windows.Forms.Button();
+            this.btnBuscarA = new System.Windows.Forms.Button();
+            this.txtBusquedaA = new System.Windows.Forms.TextBox();
+            this.cboBusquedaA = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGirdDetalleAsistencia = new System.Windows.Forms.DataGridView();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSeleccionarAsistencia = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_asistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cedula_asistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_asistenica = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_asistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefono_asistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtFecha = new System.Windows.Forms.TextBox();
@@ -245,6 +245,7 @@
             this.txtCedula.ReadOnly = true;
             this.txtCedula.Size = new System.Drawing.Size(204, 23);
             this.txtCedula.TabIndex = 93;
+            this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
             // lblCedula
             // 
@@ -288,6 +289,7 @@
             this.btnLimpiar.Size = new System.Drawing.Size(38, 27);
             this.btnLimpiar.TabIndex = 104;
             this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnBuscar
             // 
@@ -306,6 +308,7 @@
             this.btnBuscar.TabIndex = 103;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnEliminar
             // 
@@ -325,6 +328,7 @@
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnGuardar
             // 
@@ -357,63 +361,65 @@
             this.pictureBox1.TabIndex = 95;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnLimpiarA
             // 
-            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Teal;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(1089, 265);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 27);
-            this.button1.TabIndex = 115;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnLimpiarA.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnLimpiarA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLimpiarA.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnLimpiarA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Teal;
+            this.btnLimpiarA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.btnLimpiarA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarA.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarA.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLimpiarA.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiarA.Image")));
+            this.btnLimpiarA.Location = new System.Drawing.Point(1089, 265);
+            this.btnLimpiarA.Name = "btnLimpiarA";
+            this.btnLimpiarA.Size = new System.Drawing.Size(38, 27);
+            this.btnLimpiarA.TabIndex = 115;
+            this.btnLimpiarA.UseVisualStyleBackColor = false;
+            this.btnLimpiarA.Click += new System.EventHandler(this.btnLimpiarA_Click);
             // 
-            // button2
+            // btnBuscarA
             // 
-            this.button2.BackColor = System.Drawing.Color.LightSlateGray;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(1045, 265);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(38, 27);
-            this.button2.TabIndex = 114;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnBuscarA.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnBuscarA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscarA.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnBuscarA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.ForestGreen;
+            this.btnBuscarA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
+            this.btnBuscarA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarA.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarA.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnBuscarA.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarA.Image")));
+            this.btnBuscarA.Location = new System.Drawing.Point(1045, 265);
+            this.btnBuscarA.Name = "btnBuscarA";
+            this.btnBuscarA.Size = new System.Drawing.Size(38, 27);
+            this.btnBuscarA.TabIndex = 114;
+            this.btnBuscarA.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscarA.UseVisualStyleBackColor = false;
+            this.btnBuscarA.Click += new System.EventHandler(this.btnBuscarA_Click);
             // 
-            // textBox1
+            // txtBusquedaA
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtBusquedaA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBox1.Location = new System.Drawing.Point(898, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 23);
-            this.textBox1.TabIndex = 113;
+            this.txtBusquedaA.BackColor = System.Drawing.Color.White;
+            this.txtBusquedaA.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaA.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtBusquedaA.Location = new System.Drawing.Point(898, 268);
+            this.txtBusquedaA.Name = "txtBusquedaA";
+            this.txtBusquedaA.Size = new System.Drawing.Size(141, 23);
+            this.txtBusquedaA.TabIndex = 113;
             // 
-            // comboBox1
+            // cboBusquedaA
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cboBusquedaA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(768, 269);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(124, 21);
-            this.comboBox1.TabIndex = 112;
+            this.cboBusquedaA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBusquedaA.FormattingEnabled = true;
+            this.cboBusquedaA.Location = new System.Drawing.Point(768, 269);
+            this.cboBusquedaA.Name = "cboBusquedaA";
+            this.cboBusquedaA.Size = new System.Drawing.Size(124, 21);
+            this.cboBusquedaA.TabIndex = 112;
             // 
             // label2
             // 
@@ -517,10 +523,10 @@
             this.dataGirdDetalleAsistencia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGirdDetalleAsistencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGirdDetalleAsistencia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn1,
-            this.dataGridViewTextBoxColumn1,
+            this.btnSeleccionarAsistencia,
+            this.id_asistencia,
             this.cedula_asistencia,
-            this.nombre_asistenica,
+            this.nombre_asistencia,
             this.telefono_asistencia,
             this.fecha});
             this.dataGirdDetalleAsistencia.Location = new System.Drawing.Point(434, 310);
@@ -533,24 +539,25 @@
             this.dataGirdDetalleAsistencia.RowTemplate.Height = 28;
             this.dataGirdDetalleAsistencia.Size = new System.Drawing.Size(709, 222);
             this.dataGirdDetalleAsistencia.TabIndex = 117;
+            this.dataGirdDetalleAsistencia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGirdDetalleAsistencia_CellContentClick);
             this.dataGirdDetalleAsistencia.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGirdDetalleAsistencia_CellPainting);
             // 
-            // dataGridViewButtonColumn1
+            // btnSeleccionarAsistencia
             // 
-            this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewButtonColumn1.HeaderText = "";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
-            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewButtonColumn1.Width = 35;
+            this.btnSeleccionarAsistencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnSeleccionarAsistencia.HeaderText = "";
+            this.btnSeleccionarAsistencia.Name = "btnSeleccionarAsistencia";
+            this.btnSeleccionarAsistencia.ReadOnly = true;
+            this.btnSeleccionarAsistencia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionarAsistencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionarAsistencia.Width = 35;
             // 
-            // dataGridViewTextBoxColumn1
+            // id_asistencia
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.id_asistencia.HeaderText = "ID";
+            this.id_asistencia.Name = "id_asistencia";
+            this.id_asistencia.ReadOnly = true;
+            this.id_asistencia.Visible = false;
             // 
             // cedula_asistencia
             // 
@@ -558,11 +565,11 @@
             this.cedula_asistencia.Name = "cedula_asistencia";
             this.cedula_asistencia.ReadOnly = true;
             // 
-            // nombre_asistenica
+            // nombre_asistencia
             // 
-            this.nombre_asistenica.HeaderText = "Nombre";
-            this.nombre_asistenica.Name = "nombre_asistenica";
-            this.nombre_asistenica.ReadOnly = true;
+            this.nombre_asistencia.HeaderText = "Nombre";
+            this.nombre_asistencia.Name = "nombre_asistencia";
+            this.nombre_asistencia.ReadOnly = true;
             // 
             // telefono_asistencia
             // 
@@ -644,6 +651,7 @@
             this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(204, 23);
             this.txtTelefono.TabIndex = 123;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // label8
             // 
@@ -694,10 +702,10 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.dataGirdDetalleAsistencia);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnLimpiarA);
+            this.Controls.Add(this.btnBuscarA);
+            this.Controls.Add(this.txtBusquedaA);
+            this.Controls.Add(this.cboBusquedaA);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
@@ -748,10 +756,10 @@
         private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.Label lblCedula;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnLimpiarA;
+        private System.Windows.Forms.Button btnBuscarA;
+        private System.Windows.Forms.TextBox txtBusquedaA;
+        private System.Windows.Forms.ComboBox cboBusquedaA;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -764,12 +772,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedula_asistencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_asistenica;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefono_asistencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
@@ -777,5 +779,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefono;
         private System.Windows.Forms.TextBox txtId1;
         private System.Windows.Forms.TextBox txtIndex2;
+        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionarAsistencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_asistencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedula_asistencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre_asistencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefono_asistencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
     }
 }

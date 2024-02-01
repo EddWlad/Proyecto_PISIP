@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UI.Windows.Controladores;
+using UI.Windows.Formularios.Utilitarios;
 using UI.Windows.VistaModelos;
 
 namespace UI.Windows.Formularios
@@ -21,8 +22,12 @@ namespace UI.Windows.Formularios
         public FrmAsistencia()
         {
             InitializeComponent();
+            BusquedaDataGrid();
+            BusquedaDataGridAsistencia();
             registroAsistenciaControlador = new RegistroAsistenciaControlador();
             clienteControlador = new ClienteControlador();
+            this.txtTelefono.KeyPress += new KeyPressEventHandler(txtTelefono_KeyPress);
+            this.txtCedula.KeyPress += new KeyPressEventHandler(txtCedula_KeyPress);
         }
         public void Listar()
         {
@@ -33,6 +38,33 @@ namespace UI.Windows.Formularios
             }
 
         }
+        private void BusquedaDataGrid()
+        {
+            foreach (DataGridViewColumn columna in dataGridClientesMiembros.Columns)
+            {
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "telefono")
+                {
+                    cboBusqueda.Items.Add(new OpComboAsistencia() { Valor = columna.Name, Texto = columna.HeaderText });
+                }
+            }
+            cboBusqueda.DisplayMember = "Texto";
+            cboBusqueda.ValueMember = "Valor";
+            cboBusqueda.SelectedIndex = 0;
+        }
+        private void BusquedaDataGridAsistencia()
+        {
+            foreach (DataGridViewColumn columna in dataGirdDetalleAsistencia.Columns)
+            {
+                if (columna.Visible == true && columna.Name != "btnSeleccionarAsistencia" && columna.Name != "fecha" && columna.Name != "nombre_asistencia" && columna.Name != "telefono_asistencia")
+                {
+                    cboBusquedaA.Items.Add(new OpComboAsistencia() { Valor = columna.Name, Texto = columna.HeaderText });
+                }
+            }
+            cboBusquedaA.DisplayMember = "Texto";
+            cboBusquedaA.ValueMember = "Valor";
+            cboBusquedaA.SelectedIndex = 0;
+        }
+
         public void ListarAsistencias()
         {
             List<AsistenciaCliente> listaAsistencias = (List<AsistenciaCliente>) registroAsistenciaControlador.ListarAsistenciasClientes();
@@ -55,8 +87,6 @@ namespace UI.Windows.Formularios
             }
         }
 
-
-
         private void FrmAsistencia_Load(object sender, EventArgs e)
         {
             Listar();
@@ -70,6 +100,9 @@ namespace UI.Windows.Formularios
             txtCedula.Text = "";
             txtNombre.Text = "";
             txtTelefono.Text = "";
+            txtId1.Text = "";
+            txtIndex2.Text ="";
+            txtId.Text = "";
         }
 
         private int ConversionIdCliente(string txtId)
@@ -127,9 +160,9 @@ namespace UI.Windows.Formularios
                 {
                     txtIndex2.Text = indice.ToString();
                     txtId1.Text = dataGridClientesMiembros.Rows[indice].Cells["id_tipo_cliente"].Value.ToString();
-                    txtCedula.Text = dataGridClientesMiembros.Rows[indice].Cells["cedula"].Value.ToString();
                     txtNombre.Text = dataGridClientesMiembros.Rows[indice].Cells["nombre"].Value.ToString();
                     txtTelefono.Text = dataGridClientesMiembros.Rows[indice].Cells["telefono"].Value.ToString();
+                    txtCedula.Text = dataGridClientesMiembros.Rows[indice].Cells["cedula"].Value.ToString();
                 }
             }
         }
@@ -149,6 +182,151 @@ namespace UI.Windows.Formularios
                 var imgY = e.CellBounds.Top + (e.CellBounds.Height - imgHeight) / 2;
 
                 e.Graphics.DrawImage(Properties.Resources.check_circle_solid_24, new Rectangle(imgX, imgY, imgWidth, imgHeight));
+                e.Handled = true;
+            }
+        }
+        private void dataGirdDetalleAsistencia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGirdDetalleAsistencia.Columns[e.ColumnIndex].Name == "btnSeleccionarAsistencia")
+            {
+                int indice = e.RowIndex;
+                if (indice >= 0)
+                {
+                    txtIndice.Text = indice.ToString();
+                    txtId.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["id_asistencia"].Value.ToString();
+                    txtCedula.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["cedula_asistencia"].Value.ToString();
+                    txtNombre.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["nombre_asistencia"].Value.ToString();
+                    txtTelefono.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["telefono_asistencia"].Value.ToString();
+                    txtFecha.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["fecha"].Value.ToString();
+                }
+            }
+        }
+
+        public void ListarClientesCedula()
+        {
+            dataGridClientesMiembros.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesCedula = (List<ClienteTipoCliente>)clienteControlador.ListarClientesCedula(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesCedula)
+            {
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, item.telefono });
+            }
+
+        }
+
+        public void ListarClientesNombre()
+        {
+            dataGridClientesMiembros.Rows.Clear();
+            List<ClienteTipoCliente> listaClientesNombre = (List<ClienteTipoCliente>)clienteControlador.ListarClientesNombres(txtBusqueda.Text);
+            foreach (ClienteTipoCliente item in listaClientesNombre)
+            {
+                dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, item.telefono });
+            }
+
+        }
+
+        public void ListarAsistenciaCedula()
+        {
+            dataGirdDetalleAsistencia.Rows.Clear();
+            List<AsistenciaCliente> listaAsisteciaCedula = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciasCedula(txtBusquedaA.Text);
+            foreach (AsistenciaCliente item in listaAsisteciaCedula)
+            {
+                dataGirdDetalleAsistencia.Rows.Add(new object[] { "",item.id_registro, item.cedula, item.nombre, item.telefono, item.fecha, "", });
+            }
+
+        }
+
+        public void ListarAsistenciaFechas()
+        {
+            dataGirdDetalleAsistencia.Rows.Clear();
+            List<AsistenciaCliente> listaAsistenciaFecha = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciaFechas(txtBusquedaA.Text);
+            foreach (AsistenciaCliente item in listaAsistenciaFecha)
+            {
+                dataGirdDetalleAsistencia.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.telefono, item.fecha, "", });
+            }
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (cboBusqueda.Text == "Cedula")
+            {
+                dataGridClientesMiembros.Rows.Clear();
+                ListarClientesCedula();
+            }
+            if (cboBusqueda.Text == "Nombre")
+            {
+                dataGridClientesMiembros.Rows.Clear();
+                ListarClientesNombre();
+            }
+            txtBusqueda.Text = "";
+        }
+
+        private void btnBuscarA_Click(object sender, EventArgs e)
+        {
+            if (cboBusquedaA.Text == "Cedula")
+            {
+                dataGirdDetalleAsistencia.Rows.Clear();
+                ListarAsistenciaCedula();
+            }
+            if (cboBusquedaA.Text == "Fecha")
+            {
+                dataGirdDetalleAsistencia.Rows.Clear();
+                ListarAsistenciaFechas();
+            }
+            txtBusquedaA.Text = "";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("El Id del registro no fue encontrado");
+                return;
+            }
+
+            var eliminarRegistro = registroAsistenciaControlador.EliminarRegistro(int.Parse(txtId.Text));
+            if (eliminarRegistro)
+            {
+                MessageBox.Show("El registro fue eliminado correctamente");
+
+            }
+            else
+            {
+                MessageBox.Show("Error: Al elimnar registro");
+            }
+            dataGirdDetalleAsistencia.Rows.Clear();
+            Limpiar();
+            ListarAsistencias();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            dataGridClientesMiembros.Rows.Clear();
+            txtBusqueda.Text = "";
+            Listar();
+            Limpiar();
+        }
+
+        private void btnLimpiarA_Click(object sender, EventArgs e)
+        {
+            dataGirdDetalleAsistencia.Rows.Clear();
+            txtBusquedaA.Text = "";
+            ListarAsistencias();
+            Limpiar();
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
                 e.Handled = true;
             }
         }

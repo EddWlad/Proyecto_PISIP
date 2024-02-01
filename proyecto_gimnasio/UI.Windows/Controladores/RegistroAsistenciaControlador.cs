@@ -32,13 +32,22 @@ namespace UI.Windows.Controladores
                 return false;
             }
         }
-        public IEnumerable<Registro_Asistencia> ListarAsistenciaFechas(DateTime fecha)
+        public bool EliminarRegistro(int id)
+        {
+            return servicio.EliminarRegistro(id);
+
+        }
+        public IEnumerable<Registro_Asistencia> ListarAsistenciaFechas(string fecha)
         {
             return servicio.ListarAsistenciaFechas(fecha);
         }
         public IEnumerable<AsistenciaCliente> ListarAsistenciasClientes()
         {
             return servicio.ListarAsistenciaClientes();
+        }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciasCedula(string cedula)
+        {
+            return servicio.ListarAsistenciasCedula(cedula);
         }
     }
 }
