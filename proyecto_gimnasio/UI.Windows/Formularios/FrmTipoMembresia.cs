@@ -146,7 +146,8 @@ namespace UI.Windows.Formularios
             tipoMembresiaVistaModelo.Descripcion = txtDescripcion.Text;
             tipoMembresiaVistaModelo.Estado = true;
             dataGridTipoMembresia.Rows.Add(new object[] { "", tipoMembresiaVistaModelo.Id_Tipo_Membresia, 
-                tipoMembresiaVistaModelo.Descripcion, });
+            tipoMembresiaVistaModelo.Descripcion, });
+            dataGridTipoMembresia.Rows.Clear();
             InsertarTipoMembresia();
             Limpiar();
             Listar();

@@ -171,7 +171,6 @@ namespace UI.Windows.Formularios
             foreach (AsistenciaCliente item in listaClientes)
             {
                 dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.tipo_cliente,item.membresia});
-
             }    
         }
         private void ListarPagosRegistros()

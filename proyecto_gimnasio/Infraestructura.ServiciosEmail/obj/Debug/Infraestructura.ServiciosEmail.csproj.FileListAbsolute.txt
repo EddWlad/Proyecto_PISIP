@@ -4,3 +4,9 @@ C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.Servicio
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.csproj.CoreCompileInputs.cache
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.dll
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosEmail\bin\Debug\Infraestructura.ServiciosEmail.dll
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosEmail\bin\Debug\Infraestructura.ServiciosEmail.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.dll
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosEmail\obj\Debug\Infraestructura.ServiciosEmail.pdb

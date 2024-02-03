@@ -145,6 +145,7 @@ namespace UI.Windows.Formularios
             }
             else
             {
+                MessageBox.Show("La fecha de inicio invalida se colocara fecha actual, sino desea, corregir");
                 return DateTime.Now;
             }
         }
@@ -157,6 +158,7 @@ namespace UI.Windows.Formularios
             }
             else
             {
+                MessageBox.Show("La fecha de fin invalida se colocara fecha actual, sino desea, corregir");
                 return DateTime.Now;
             }
         }

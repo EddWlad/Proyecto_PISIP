@@ -4,3 +4,9 @@ C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.Servicio
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.csproj.CoreCompileInputs.cache
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.dll
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosExternos\bin\Debug\Infraestructura.ServiciosExternos.dll
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosExternos\bin\Debug\Infraestructura.ServiciosExternos.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.dll
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.ServiciosExternos\obj\Debug\Infraestructura.ServiciosExternos.pdb

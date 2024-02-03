@@ -4,3 +4,9 @@ C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.CrossCut
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.csproj.CoreCompileInputs.cache
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.dll
 C:\Users\USUARIO\Desktop\Intento_1DSI\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.CrossCutting\bin\Debug\Infraestructura.CrossCutting.dll
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.CrossCutting\bin\Debug\Infraestructura.CrossCutting.pdb
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.csproj.AssemblyReference.cache
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.dll
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\Infraestructura.CrossCutting\obj\Debug\Infraestructura.CrossCutting.pdb

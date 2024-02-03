@@ -111,6 +111,8 @@ namespace Infraestructura.AccesoDatos.Repositorio
                            id_registro = asistencia.id_registro,
                            cedula = cliente.cedula,
                            nombre = cliente.nombre,
+                           membresia = cliente.Membresias.descripcion,
+                           tipo_cliente = cliente.Tipo_Cliente.descripcion,
                            telefono = cliente.telefono,
                            fecha = (DateTime)asistencia.fecha,
                            estado = asistencia.estado,

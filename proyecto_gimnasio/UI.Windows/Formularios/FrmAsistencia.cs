@@ -124,12 +124,14 @@ namespace UI.Windows.Formularios
         private void btnGuardar_Click(object sender, EventArgs e)
         {
            
-                registroAsistenciaVistaModelo.Fecha = DateTime.Now;
-                registroAsistenciaVistaModelo.Estado = true;
-                registroAsistenciaVistaModelo.Id_Cliente = ConversionIdCliente(txtId1.Text);
-                dataGirdDetalleAsistencia.Rows.Add(new object[] {"", txtId.Text, txtCedula.Text, txtNombre.Text, txtTelefono.Text, registroAsistenciaVistaModelo.Fecha });
-                Limpiar();
-                InsertarAsistencia();
+            registroAsistenciaVistaModelo.Fecha = DateTime.Now;
+            registroAsistenciaVistaModelo.Estado = true;
+            registroAsistenciaVistaModelo.Id_Cliente = ConversionIdCliente(txtId1.Text);
+            dataGirdDetalleAsistencia.Rows.Add(new object[] {"", txtId.Text, txtCedula.Text, txtNombre.Text, txtTelefono.Text, registroAsistenciaVistaModelo.Fecha });
+            Limpiar();
+            dataGirdDetalleAsistencia.Rows.Clear();
+            InsertarAsistencia();
+            ListarAsistencias();
         }
 
         private void dataGridClientesMiembros_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -197,7 +199,7 @@ namespace UI.Windows.Formularios
                     txtCedula.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["cedula_asistencia"].Value.ToString();
                     txtNombre.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["nombre_asistencia"].Value.ToString();
                     txtTelefono.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["telefono_asistencia"].Value.ToString();
-                    txtFecha.Text = dataGirdDetalleAsistencia.Rows[indice].Cells["fecha"].Value.ToString();
+                    txtFecha.Text = DateTime.Parse(dataGirdDetalleAsistencia.Rows[indice].Cells["fecha"].Value.ToString()).ToString("dd/MM/yyyy");
                 }
             }
         }

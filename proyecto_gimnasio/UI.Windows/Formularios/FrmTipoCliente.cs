@@ -148,8 +148,10 @@ namespace UI.Windows.Formularios
             tipoClienteVistaModelo.Descripcion = txtDescripcion.Text;
             tipoClienteVistaModelo.Estado = true;
             dataGridTipoClientes.Rows.Add(new object[] {"",tipoClienteVistaModelo.Id_tipo_cliente,tipoClienteVistaModelo.Descripcion,});
-            Limpiar();
             InsertarTipoCliente();
+            dataGridTipoClientes.Rows.Clear();
+            Limpiar();
+            Listar();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

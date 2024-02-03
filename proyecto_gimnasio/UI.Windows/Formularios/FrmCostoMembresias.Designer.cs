@@ -204,6 +204,7 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(204, 23);
             this.txtValor.TabIndex = 97;
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // dataGridCostoMembresia
             // 
@@ -318,6 +319,7 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(141, 23);
             this.txtBusqueda.TabIndex = 101;
+            
             // 
             // cboBusqueda
             // 

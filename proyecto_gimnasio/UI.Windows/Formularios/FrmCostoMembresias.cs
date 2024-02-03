@@ -76,6 +76,7 @@ namespace UI.Windows.Formularios
         }
         private void FrmCostoMembresias_Load(object sender, EventArgs e)
         {
+            this.txtValor.KeyPress += new KeyPressEventHandler(txtValor_KeyPress);
             BusquedaDataGrid();
             Listar();
             Limpiar();
@@ -231,5 +232,15 @@ namespace UI.Windows.Formularios
             Limpiar();
             Listar();
         }
+
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ',')
+            {
+                e.Handled = true;
+            }
+        }
+
+
     }
 }
