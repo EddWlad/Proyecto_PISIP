@@ -49,19 +49,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridClientes = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.altura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoMembresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -75,13 +62,29 @@
             this.cboTipoCliente = new System.Windows.Forms.ComboBox();
             this.cboTipoMembresia = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnFoto = new FontAwesome.Sharp.IconButton();
+            this.ptbFoto = new System.Windows.Forms.PictureBox();
+            this.btnReporte = new FontAwesome.Sharp.IconButton();
             this.btnEliminar = new FontAwesome.Sharp.IconButton();
             this.btnEditar = new FontAwesome.Sharp.IconButton();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnReporte = new FontAwesome.Sharp.IconButton();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.altura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoMembresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foto = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -348,97 +351,11 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridClientes.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridClientes.RowTemplate.Height = 28;
+            this.dataGridClientes.RowTemplate.Height = 60;
             this.dataGridClientes.Size = new System.Drawing.Size(709, 439);
             this.dataGridClientes.TabIndex = 22;
             this.dataGridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientes_CellContentClick);
             this.dataGridClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridClientes_CellPainting);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 30;
-            // 
-            // id_cliente
-            // 
-            this.id_cliente.HeaderText = "ID";
-            this.id_cliente.Name = "id_cliente";
-            this.id_cliente.ReadOnly = true;
-            this.id_cliente.Visible = false;
-            // 
-            // tipoCliente
-            // 
-            this.tipoCliente.HeaderText = "Tipo cliente";
-            this.tipoCliente.Name = "tipoCliente";
-            this.tipoCliente.ReadOnly = true;
-            this.tipoCliente.Width = 120;
-            // 
-            // cedula
-            // 
-            this.cedula.HeaderText = "Cedula";
-            this.cedula.Name = "cedula";
-            this.cedula.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // apellido
-            // 
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            this.apellido.ReadOnly = true;
-            // 
-            // direccion
-            // 
-            this.direccion.HeaderText = "Direccion";
-            this.direccion.Name = "direccion";
-            this.direccion.ReadOnly = true;
-            this.direccion.Width = 180;
-            // 
-            // telefono
-            // 
-            this.telefono.HeaderText = "Telefono";
-            this.telefono.Name = "telefono";
-            this.telefono.ReadOnly = true;
-            this.telefono.Width = 80;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Correo";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 150;
-            // 
-            // peso
-            // 
-            this.peso.HeaderText = "Peso";
-            this.peso.Name = "peso";
-            this.peso.ReadOnly = true;
-            // 
-            // altura
-            // 
-            this.altura.HeaderText = "Altura";
-            this.altura.Name = "altura";
-            this.altura.ReadOnly = true;
-            // 
-            // tipoMembresia
-            // 
-            this.tipoMembresia.HeaderText = "Membresia";
-            this.tipoMembresia.Name = "tipoMembresia";
-            this.tipoMembresia.ReadOnly = true;
-            // 
-            // foto
-            // 
-            this.foto.HeaderText = "Foto";
-            this.foto.Name = "foto";
-            this.foto.ReadOnly = true;
             // 
             // label6
             // 
@@ -595,6 +512,58 @@
             this.label9.Text = "Tipo de membresia";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnFoto
+            // 
+            this.btnFoto.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnFoto.BackgroundImage = global::UI.Windows.Properties.Resources.image_add_regular_24;
+            this.btnFoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnFoto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFoto.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFoto.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFoto.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnFoto.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnFoto.IconColor = System.Drawing.Color.White;
+            this.btnFoto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFoto.IconSize = 16;
+            this.btnFoto.Location = new System.Drawing.Point(330, 29);
+            this.btnFoto.Name = "btnFoto";
+            this.btnFoto.Size = new System.Drawing.Size(69, 26);
+            this.btnFoto.TabIndex = 125;
+            this.btnFoto.Text = "Foto";
+            this.btnFoto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnFoto.UseVisualStyleBackColor = false;
+            this.btnFoto.Click += new System.EventHandler(this.btnFoto_Click);
+            // 
+            // ptbFoto
+            // 
+            this.ptbFoto.BackColor = System.Drawing.Color.White;
+            this.ptbFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptbFoto.Location = new System.Drawing.Point(197, 9);
+            this.ptbFoto.Name = "ptbFoto";
+            this.ptbFoto.Size = new System.Drawing.Size(121, 66);
+            this.ptbFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbFoto.TabIndex = 124;
+            this.ptbFoto.TabStop = false;
+            // 
+            // btnReporte
+            // 
+            this.btnReporte.BackColor = System.Drawing.Color.White;
+            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporte.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
+            this.btnReporte.IconColor = System.Drawing.Color.Green;
+            this.btnReporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReporte.IconSize = 20;
+            this.btnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporte.Location = new System.Drawing.Point(578, 50);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(114, 26);
+            this.btnReporte.TabIndex = 123;
+            this.btnReporte.Text = "Descargar Excel";
+            this.btnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReporte.UseVisualStyleBackColor = false;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Red;
@@ -700,23 +669,96 @@
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnReporte
+            // btnSeleccionar
             // 
-            this.btnReporte.BackColor = System.Drawing.Color.White;
-            this.btnReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReporte.IconChar = FontAwesome.Sharp.IconChar.FileDownload;
-            this.btnReporte.IconColor = System.Drawing.Color.Green;
-            this.btnReporte.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReporte.IconSize = 20;
-            this.btnReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporte.Location = new System.Drawing.Point(578, 50);
-            this.btnReporte.Name = "btnReporte";
-            this.btnReporte.Size = new System.Drawing.Size(114, 26);
-            this.btnReporte.TabIndex = 123;
-            this.btnReporte.Text = "Descargar Excel";
-            this.btnReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReporte.UseVisualStyleBackColor = false;
-            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 35;
+            // 
+            // id_cliente
+            // 
+            this.id_cliente.HeaderText = "ID";
+            this.id_cliente.Name = "id_cliente";
+            this.id_cliente.ReadOnly = true;
+            this.id_cliente.Visible = false;
+            // 
+            // tipoCliente
+            // 
+            this.tipoCliente.HeaderText = "Tipo cliente";
+            this.tipoCliente.Name = "tipoCliente";
+            this.tipoCliente.ReadOnly = true;
+            this.tipoCliente.Width = 120;
+            // 
+            // cedula
+            // 
+            this.cedula.HeaderText = "Cedula";
+            this.cedula.Name = "cedula";
+            this.cedula.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            // 
+            // direccion
+            // 
+            this.direccion.HeaderText = "Direccion";
+            this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
+            this.direccion.Width = 180;
+            // 
+            // telefono
+            // 
+            this.telefono.HeaderText = "Telefono";
+            this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
+            this.telefono.Width = 80;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Correo";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 150;
+            // 
+            // peso
+            // 
+            this.peso.HeaderText = "Peso";
+            this.peso.Name = "peso";
+            this.peso.ReadOnly = true;
+            // 
+            // altura
+            // 
+            this.altura.HeaderText = "Altura";
+            this.altura.Name = "altura";
+            this.altura.ReadOnly = true;
+            // 
+            // tipoMembresia
+            // 
+            this.tipoMembresia.HeaderText = "Membresia";
+            this.tipoMembresia.Name = "tipoMembresia";
+            this.tipoMembresia.ReadOnly = true;
+            // 
+            // foto
+            // 
+            this.foto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.foto.FillWeight = 60F;
+            this.foto.HeaderText = "Foto";
+            this.foto.Name = "foto";
+            this.foto.ReadOnly = true;
+            this.foto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.foto.Width = 60;
             // 
             // FrmClientes
             // 
@@ -724,6 +766,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1155, 554);
+            this.Controls.Add(this.btnFoto);
+            this.Controls.Add(this.ptbFoto);
             this.Controls.Add(this.btnReporte);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
@@ -766,6 +810,7 @@
             this.Text = "6";
             this.Load += new System.EventHandler(this.FrmClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -810,6 +855,8 @@
         private FontAwesome.Sharp.IconButton btnEditar;
         private FontAwesome.Sharp.IconButton btnEliminar;
         private FontAwesome.Sharp.IconButton btnReporte;
+        private System.Windows.Forms.PictureBox ptbFoto;
+        private FontAwesome.Sharp.IconButton btnFoto;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoCliente;
@@ -822,6 +869,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn peso;
         private System.Windows.Forms.DataGridViewTextBoxColumn altura;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoMembresia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn foto;
+        private System.Windows.Forms.DataGridViewImageColumn foto;
     }
 }

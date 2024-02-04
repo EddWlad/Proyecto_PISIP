@@ -395,6 +395,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LogoGYM3.ico" />
+    <None Include="Resources\sin foto.jpg" />
+    <None Include="Resources\sinfoto.jpg" />
+    <None Include="Resources\image-add-regular-24.png" />
+    <None Include="Resources\image.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -41,6 +41,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             altura = (decimal)detalleMembresia.cliente.altura,
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
+                            foto = (byte[])detalleMembresia.cliente.foto
 
                         }).Where(c => c.nombre.Equals(nombre) && c.estado.Equals(true)).ToList();
                     //3.- retorno resultado
@@ -83,8 +84,9 @@ namespace Infraestructura.AccesoDatos.Repositorio
                            altura = (decimal)detalleMembresia.cliente.altura,
                            estado = detalleMembresia.cliente.estado,
                            membresia = membresia.descripcion,
+                           foto = (byte[])detalleMembresia.cliente.foto
 
-                       }).Where(c => c.estado.Equals(true)).ToList();
+                        }).Where(c => c.estado.Equals(true)).ToList();
                     //3.- retorno resultado
                     return clientesActivos.ToList();
                 }

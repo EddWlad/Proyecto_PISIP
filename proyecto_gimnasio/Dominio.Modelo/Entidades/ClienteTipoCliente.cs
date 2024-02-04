@@ -21,5 +21,6 @@ namespace Dominio.Modelo.Entidades
         public string tipoCliente { get; set; }
         public bool estado { get; set; }
         public string membresia { get; set; }
+        public byte[] foto { get; set; }
     }
 }

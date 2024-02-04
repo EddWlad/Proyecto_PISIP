@@ -23,6 +23,7 @@ namespace UI.Windows.Controladores
             try 
             {
                 clienteDB.id_tipo_cliente = clienteVistaModelo.Id_Tipo_Cliente;
+                clienteDB.foto = clienteVistaModelo.Foto;
                 clienteDB.cedula = clienteVistaModelo.Cedula;
                 clienteDB.nombre = clienteVistaModelo.Nombre;
                 clienteDB.apellido = clienteVistaModelo.Apellido;
@@ -48,6 +49,7 @@ namespace UI.Windows.Controladores
             try
             {
                 clienteDB.id_cliente = clienteVistaModelo.Id_Cliente;
+                clienteDB.foto = clienteVistaModelo.Foto;
                 clienteDB.id_tipo_cliente = clienteVistaModelo.Id_Tipo_Cliente;
                 clienteDB.cedula = clienteVistaModelo.Cedula;
                 clienteDB.nombre = clienteVistaModelo.Nombre;
