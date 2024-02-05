@@ -121,6 +121,7 @@
             this.txtIndice.Size = new System.Drawing.Size(26, 20);
             this.txtIndice.TabIndex = 93;
             this.txtIndice.Text = "0";
+            this.txtIndice.Visible = false;
             // 
             // txtId
             // 
@@ -130,6 +131,7 @@
             this.txtId.Size = new System.Drawing.Size(26, 20);
             this.txtId.TabIndex = 92;
             this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // txtFecha
             // 
@@ -600,6 +602,7 @@
             this.txtId2.Size = new System.Drawing.Size(26, 20);
             this.txtId2.TabIndex = 119;
             this.txtId2.Text = "0";
+            this.txtId2.Visible = false;
             // 
             // txtIndice2
             // 
@@ -609,6 +612,7 @@
             this.txtIndice2.Size = new System.Drawing.Size(26, 20);
             this.txtIndice2.TabIndex = 118;
             this.txtIndice2.Text = "0";
+            this.txtIndice2.Visible = false;
             // 
             // txtMembresia
             // 

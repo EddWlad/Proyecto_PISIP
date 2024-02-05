@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAsistencia));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtIndice = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.dataGridClientesMiembros = new System.Windows.Forms.DataGridView();
@@ -59,9 +59,6 @@
             this.txtBusquedaA = new System.Windows.Forms.TextBox();
             this.cboBusquedaA = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGirdDetalleAsistencia = new System.Windows.Forms.DataGridView();
             this.btnSeleccionarAsistencia = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -91,6 +88,7 @@
             this.txtIndice.Size = new System.Drawing.Size(26, 20);
             this.txtIndice.TabIndex = 107;
             this.txtIndice.Text = "0";
+            this.txtIndice.Visible = false;
             // 
             // txtId
             // 
@@ -100,6 +98,7 @@
             this.txtId.Size = new System.Drawing.Size(26, 20);
             this.txtId.TabIndex = 106;
             this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // dataGridClientesMiembros
             // 
@@ -108,15 +107,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridClientesMiembros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridClientesMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridClientesMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridClientesMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClientesMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
@@ -128,9 +127,9 @@
             this.dataGridClientesMiembros.MultiSelect = false;
             this.dataGridClientesMiembros.Name = "dataGridClientesMiembros";
             this.dataGridClientesMiembros.ReadOnly = true;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridClientesMiembros.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridClientesMiembros.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridClientesMiembros.RowTemplate.Height = 28;
             this.dataGridClientesMiembros.Size = new System.Drawing.Size(709, 170);
             this.dataGridClientesMiembros.TabIndex = 105;
@@ -434,63 +433,6 @@
             this.label2.TabIndex = 111;
             this.label2.Text = "Detalle asistencia";
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(209, 690);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(204, 32);
-            this.button3.TabIndex = 110;
-            this.button3.Text = "Eliminar";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(209, 652);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(204, 32);
-            this.button4.TabIndex = 109;
-            this.button4.Text = "Editar";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Green;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Image = global::UI.Windows.Properties.Resources.save;
-            this.button5.Location = new System.Drawing.Point(209, 615);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(204, 31);
-            this.button5.TabIndex = 108;
-            this.button5.Text = "Guardar";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button5.UseVisualStyleBackColor = false;
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -512,15 +454,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGirdDetalleAsistencia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGirdDetalleAsistencia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGirdDetalleAsistencia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGirdDetalleAsistencia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGirdDetalleAsistencia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionarAsistencia,
@@ -533,9 +475,9 @@
             this.dataGirdDetalleAsistencia.MultiSelect = false;
             this.dataGirdDetalleAsistencia.Name = "dataGirdDetalleAsistencia";
             this.dataGirdDetalleAsistencia.ReadOnly = true;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGirdDetalleAsistencia.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGirdDetalleAsistencia.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGirdDetalleAsistencia.RowTemplate.Height = 28;
             this.dataGirdDetalleAsistencia.Size = new System.Drawing.Size(709, 222);
             this.dataGirdDetalleAsistencia.TabIndex = 117;
@@ -676,6 +618,7 @@
             this.txtId1.Size = new System.Drawing.Size(26, 20);
             this.txtId1.TabIndex = 125;
             this.txtId1.Text = "0";
+            this.txtId1.Visible = false;
             // 
             // txtIndex2
             // 
@@ -685,6 +628,7 @@
             this.txtIndex2.Size = new System.Drawing.Size(26, 20);
             this.txtIndex2.TabIndex = 124;
             this.txtIndex2.Text = "0";
+            this.txtIndex2.Visible = false;
             // 
             // FrmAsistencia
             // 
@@ -707,9 +651,6 @@
             this.Controls.Add(this.txtBusquedaA);
             this.Controls.Add(this.cboBusquedaA);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.txtIndice);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.dataGridClientesMiembros);
@@ -761,9 +702,6 @@
         private System.Windows.Forms.TextBox txtBusquedaA;
         private System.Windows.Forms.ComboBox cboBusquedaA;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGirdDetalleAsistencia;
         private System.Windows.Forms.TextBox txtFecha;

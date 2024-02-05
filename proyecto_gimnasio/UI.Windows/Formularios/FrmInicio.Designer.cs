@@ -407,7 +407,7 @@
             this.btnMembresias.Name = "btnMembresias";
             this.btnMembresias.Size = new System.Drawing.Size(179, 35);
             this.btnMembresias.TabIndex = 6;
-            this.btnMembresias.Text = "          Membresias";
+            this.btnMembresias.Text = "        Membresias";
             this.btnMembresias.UseVisualStyleBackColor = false;
             this.btnMembresias.Click += new System.EventHandler(this.btnMembresias_Click);
             // 
@@ -443,7 +443,8 @@
             this.btnPagoDiario.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnPagoDiario.Size = new System.Drawing.Size(179, 35);
             this.btnPagoDiario.TabIndex = 10;
-            this.btnPagoDiario.Text = "          Pago Diario";
+            this.btnPagoDiario.Text = "           Pagos";
+            this.btnPagoDiario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPagoDiario.UseVisualStyleBackColor = false;
             this.btnPagoDiario.Click += new System.EventHandler(this.btnPagoDiario_Click);
             // 
@@ -514,7 +515,8 @@
             this.btnClientes.Name = "btnClientes";
             this.btnClientes.Size = new System.Drawing.Size(181, 35);
             this.btnClientes.TabIndex = 4;
-            this.btnClientes.Text = "Clientes";
+            this.btnClientes.Text = "           Clientes";
+            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 

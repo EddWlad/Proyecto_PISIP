@@ -81,6 +81,7 @@
             this.txtIndice.Size = new System.Drawing.Size(26, 20);
             this.txtIndice.TabIndex = 57;
             this.txtIndice.Text = "0";
+            this.txtIndice.Visible = false;
             // 
             // txtId
             // 
@@ -90,6 +91,7 @@
             this.txtId.Size = new System.Drawing.Size(26, 20);
             this.txtId.TabIndex = 56;
             this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // label4
             // 

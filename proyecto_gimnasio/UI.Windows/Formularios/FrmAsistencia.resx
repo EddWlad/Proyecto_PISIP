@@ -183,24 +183,6 @@
         lrJDN8ULvQOMWJwtbNyMo3b5T1qi6BsQDCh4Gu8vkAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAI5JREFUSEvd
-        zjEKgDAQRNGcyspj5A56YUHwJjZxNb9TGccUgg+2cn4w/V8pZYy7MzB7Jx7o49bjqWv7t465Vpt2PHfG
-        92Y89yF+xEausbeRa+xt5Bp7G7nG3kausbeRa+xt5Bp7G7nG3kausbeRa+xt5Bp7G7nG3kauxXaqiWUi
-        12Kc45Yje2aOy+S/ktIG1a8XY+8QrPAAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAQtJREFUSEvl
-        lMFqwkAURbMSXBZTs4hW6B+59mdKf7CtVKm22oKl0K+YnjvzprRKxMxkpQcuGV7mnoQwWlwuzrkemZIZ
-        6du4GxBekQcS2ZIbu50HIskfZYUv8hKWfl3ZtjQQlORJNnglY3JN4uzOtraH8pAsvSbwRkZED5hrAPe2
-        vR0UKxLl32QVlm5H4lrzoVVOh5LkGxngk9ySAVloYPi5VU6H0r58YvO/p+h33gpKNWmSP2sIHyRZrrI4
-        Jq99oQ2UJlYW3cqFlcU7iXKd/3gU1yRNLoLD4yVcJY9vriOZ/Wv12Fry+Fega55cBNcBkpe2JY/g+4c+
-        Tzfy8yB8lXRM04ztS8Y0Z0NR/AADdmzI2rd9hQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="btnSeleccionarAsistencia.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

@@ -49,6 +49,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridClientes = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.altura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoMembresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.foto = new System.Windows.Forms.DataGridViewImageColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -70,19 +83,6 @@
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.altura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoMembresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.foto = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbFoto)).BeginInit();
             this.SuspendLayout();
@@ -357,6 +357,97 @@
             this.dataGridClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridClientes_CellContentClick);
             this.dataGridClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridClientes_CellPainting);
             // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 35;
+            // 
+            // id_cliente
+            // 
+            this.id_cliente.HeaderText = "ID";
+            this.id_cliente.Name = "id_cliente";
+            this.id_cliente.ReadOnly = true;
+            this.id_cliente.Visible = false;
+            // 
+            // tipoCliente
+            // 
+            this.tipoCliente.HeaderText = "Tipo cliente";
+            this.tipoCliente.Name = "tipoCliente";
+            this.tipoCliente.ReadOnly = true;
+            this.tipoCliente.Width = 120;
+            // 
+            // cedula
+            // 
+            this.cedula.HeaderText = "Cedula";
+            this.cedula.Name = "cedula";
+            this.cedula.ReadOnly = true;
+            // 
+            // nombre
+            // 
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            // 
+            // apellido
+            // 
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
+            // 
+            // direccion
+            // 
+            this.direccion.HeaderText = "Direccion";
+            this.direccion.Name = "direccion";
+            this.direccion.ReadOnly = true;
+            this.direccion.Width = 180;
+            // 
+            // telefono
+            // 
+            this.telefono.HeaderText = "Telefono";
+            this.telefono.Name = "telefono";
+            this.telefono.ReadOnly = true;
+            this.telefono.Width = 80;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Correo";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 150;
+            // 
+            // peso
+            // 
+            this.peso.HeaderText = "Peso";
+            this.peso.Name = "peso";
+            this.peso.ReadOnly = true;
+            // 
+            // altura
+            // 
+            this.altura.HeaderText = "Altura";
+            this.altura.Name = "altura";
+            this.altura.ReadOnly = true;
+            // 
+            // tipoMembresia
+            // 
+            this.tipoMembresia.HeaderText = "Membresia";
+            this.tipoMembresia.Name = "tipoMembresia";
+            this.tipoMembresia.ReadOnly = true;
+            // 
+            // foto
+            // 
+            this.foto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.foto.FillWeight = 60F;
+            this.foto.HeaderText = "Foto";
+            this.foto.Name = "foto";
+            this.foto.ReadOnly = true;
+            this.foto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.foto.Width = 60;
+            // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -378,6 +469,7 @@
             this.txtId.Size = new System.Drawing.Size(26, 20);
             this.txtId.TabIndex = 24;
             this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // label7
             // 
@@ -437,6 +529,7 @@
             this.txtIndice.Size = new System.Drawing.Size(26, 20);
             this.txtIndice.TabIndex = 31;
             this.txtIndice.Text = "0";
+            this.txtIndice.Visible = false;
             // 
             // txtCedula
             // 
@@ -668,97 +761,6 @@
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 35;
-            // 
-            // id_cliente
-            // 
-            this.id_cliente.HeaderText = "ID";
-            this.id_cliente.Name = "id_cliente";
-            this.id_cliente.ReadOnly = true;
-            this.id_cliente.Visible = false;
-            // 
-            // tipoCliente
-            // 
-            this.tipoCliente.HeaderText = "Tipo cliente";
-            this.tipoCliente.Name = "tipoCliente";
-            this.tipoCliente.ReadOnly = true;
-            this.tipoCliente.Width = 120;
-            // 
-            // cedula
-            // 
-            this.cedula.HeaderText = "Cedula";
-            this.cedula.Name = "cedula";
-            this.cedula.ReadOnly = true;
-            // 
-            // nombre
-            // 
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // apellido
-            // 
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            this.apellido.ReadOnly = true;
-            // 
-            // direccion
-            // 
-            this.direccion.HeaderText = "Direccion";
-            this.direccion.Name = "direccion";
-            this.direccion.ReadOnly = true;
-            this.direccion.Width = 180;
-            // 
-            // telefono
-            // 
-            this.telefono.HeaderText = "Telefono";
-            this.telefono.Name = "telefono";
-            this.telefono.ReadOnly = true;
-            this.telefono.Width = 80;
-            // 
-            // email
-            // 
-            this.email.HeaderText = "Correo";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 150;
-            // 
-            // peso
-            // 
-            this.peso.HeaderText = "Peso";
-            this.peso.Name = "peso";
-            this.peso.ReadOnly = true;
-            // 
-            // altura
-            // 
-            this.altura.HeaderText = "Altura";
-            this.altura.Name = "altura";
-            this.altura.ReadOnly = true;
-            // 
-            // tipoMembresia
-            // 
-            this.tipoMembresia.HeaderText = "Membresia";
-            this.tipoMembresia.Name = "tipoMembresia";
-            this.tipoMembresia.ReadOnly = true;
-            // 
-            // foto
-            // 
-            this.foto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.foto.FillWeight = 60F;
-            this.foto.HeaderText = "Foto";
-            this.foto.Name = "foto";
-            this.foto.ReadOnly = true;
-            this.foto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.foto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.foto.Width = 60;
             // 
             // FrmClientes
             // 
