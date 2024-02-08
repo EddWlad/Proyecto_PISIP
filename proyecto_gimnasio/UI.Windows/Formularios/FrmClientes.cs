@@ -96,8 +96,8 @@ namespace UI.Windows.Formularios
             txtTelefono.Text = "";
             txtEmail.Text = "";
             txtCedula.Text = "";
-            txtPeso.Text = "";
-            txtAltura.Text = "";
+            txtPeso.Text = "0";
+            txtAltura.Text = "0";
             ptbFoto.Image = null;
             ptbFoto.Image = Properties.Resources.sin_foto;
 
