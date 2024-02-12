@@ -409,6 +409,7 @@ namespace UI.Windows.Formularios
                            fila.Cells[8].Value.ToString(),
                            fila.Cells[9].Value.ToString(),
                            fila.Cells[10].Value.ToString(),
+                           fila.Cells[11].Value.ToString(),
                         });
                 }
                 SaveFileDialog savefile = new SaveFileDialog();

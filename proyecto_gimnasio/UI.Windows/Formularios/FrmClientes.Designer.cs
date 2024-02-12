@@ -581,7 +581,7 @@
             this.cboTipoCliente.Name = "cboTipoCliente";
             this.cboTipoCliente.Size = new System.Drawing.Size(204, 21);
             this.cboTipoCliente.TabIndex = 35;
-            // 
+
             // cboTipoMembresia
             // 
             this.cboTipoMembresia.FormattingEnabled = true;

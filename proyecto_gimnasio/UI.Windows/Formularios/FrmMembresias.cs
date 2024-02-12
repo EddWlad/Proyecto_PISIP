@@ -36,22 +36,22 @@ namespace UI.Windows.Formularios
         {
             if (membresiasControlador.InsertarMembresia(membresiasVistaModelo))
             {
-                MessageBox.Show("Pago insertado correctamente");
+                MessageBox.Show("Membresia insertada correctamente");
             }
             else
             {
-                MessageBox.Show("Error: Al ingresar pago");
+                MessageBox.Show("Error: Al ingresar Membresia");
             }
         }
         public void ModificarMembresia()
         {
             if (membresiasControlador.ModificarMembresia(membresiasVistaModelo))
             {
-                MessageBox.Show("Pago modificado correctamente");
+                MessageBox.Show("Membresia modificada correctamente");
             }
             else
             {
-                MessageBox.Show("Error: Al modificar pago");
+                MessageBox.Show("Error: Al modificar Membresia");
             }
         }
         private void contenidoTipoMembresia()
