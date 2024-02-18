@@ -76,7 +76,7 @@ namespace UI.Windows.Formularios
         {
             foreach(DataGridViewColumn columna in dataGridClientes.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "foto" && columna.Name != "apellido" && columna.Name != "telefono" && columna.Name != "email" && columna.Name != "peso" && columna.Name != "altura")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "foto" && columna.Name != "apellido" && columna.Name != "telefono" && columna.Name != "email" && columna.Name != "peso" && columna.Name != "altura" && columna.Name != "direccion")
                 {
                     cboBusqueda.Items.Add(new OpComboEstadoCliente() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -188,14 +188,14 @@ namespace UI.Windows.Formularios
                 {
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dataGridClientes.Rows[indice].Cells["id_cliente"].Value.ToString();
-                    if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoCliente"].Value?.ToString(), out int tipoClienteId))
-                    {
-                        cboTipoCliente.SelectedValue = tipoClienteId;
-                    }
-                    else
-                    {
+                    //if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoCliente"].Value?.ToString(), out int tipoClienteId))
+                    //{
+                        cboTipoCliente.Text = dataGridClientes.Rows[indice].Cells["tipoCliente"].Value.ToString();
+                    //}
+                    //else
+                    //{
                         // Manejar el caso de valor no válido o nulo
-                    }
+                    //}
                     txtCedula.Text = dataGridClientes.Rows[indice].Cells["cedula"].Value.ToString();
                     txtNombre.Text = dataGridClientes.Rows[indice].Cells["nombre"].Value.ToString();
                     txtApellido.Text = dataGridClientes.Rows[indice].Cells["apellido"].Value.ToString();
@@ -204,15 +204,15 @@ namespace UI.Windows.Formularios
                     txtEmail.Text = dataGridClientes.Rows[indice].Cells["email"].Value.ToString();
                     txtPeso.Text = dataGridClientes.Rows[indice].Cells["peso"].Value.ToString();
                     txtAltura.Text = dataGridClientes.Rows[indice].Cells["altura"].Value.ToString();
-                    if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoMembresia"].Value?.ToString(), out int tipoMembresiaId))
+                    //if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoMembresia"].Value?.ToString(), out int tipoMembresiaId))
 
-                    {
-                        cboTipoMembresia.SelectedValue = tipoMembresiaId;
-                    }
-                    else
-                    {
+                    //{
+                        cboTipoMembresia.Text = dataGridClientes.Rows[indice].Cells["tipoMembresia"].Value.ToString();
+                    //}
+                    //else
+                    //{
                         // Manejar el caso de valor no válido o nulo
-                    }
+                    //}
                     Image img = (Image)dataGridClientes.Rows[indice].Cells["foto"].Value;
 
                     if (img != null) // Verifica si la imagen no es null
@@ -236,9 +236,11 @@ namespace UI.Windows.Formularios
             List<ClienteTipoCliente> listaClientesNombre = (List<ClienteTipoCliente>)clienteControlador.ListarClientesNombres(txtBusqueda.Text);
                 foreach (ClienteTipoCliente item in listaClientesNombre)
                 {
-                dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,"",});
-            }
+                    Image foto = ConvertirBytesAImagen(item.foto);
+                    foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
+                    dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
+                    item.peso,item.altura,item.membresia,foto});
+                }
             
         }
         public void ListarClientesTipo()
@@ -247,8 +249,10 @@ namespace UI.Windows.Formularios
             List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesTipo(txtBusqueda.Text);
             foreach (ClienteTipoCliente item in listaClientesTipo)
             {
+                Image foto = ConvertirBytesAImagen(item.foto);
+                foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,"",});
+                item.peso,item.altura,item.membresia,foto});
             }
 
         }
@@ -258,8 +262,10 @@ namespace UI.Windows.Formularios
             List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesCedula(txtBusqueda.Text);
             foreach (ClienteTipoCliente item in listaClientesTipo)
             {
+                Image foto = ConvertirBytesAImagen(item.foto);
+                foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,"",});
+                item.peso,item.altura,item.membresia,foto});
             }
 
         }
@@ -269,8 +275,10 @@ namespace UI.Windows.Formularios
             List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesMembresia(txtBusqueda.Text);
             foreach (ClienteTipoCliente item in listaClientesTipo)
             {
+                Image foto = ConvertirBytesAImagen(item.foto);
+                foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,"",});
+                item.peso,item.altura,item.membresia,foto});
             }
 
         }

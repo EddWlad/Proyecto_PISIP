@@ -40,9 +40,6 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblCedula = new System.Windows.Forms.Label();
             this.dataGridTipoMembresia = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.id_tipo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
@@ -51,6 +48,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtIndice = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_tipo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTipoMembresia)).BeginInit();
             this.SuspendLayout();
@@ -209,30 +209,6 @@
             this.dataGridTipoMembresia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTipoMembresia_CellContentClick);
             this.dataGridTipoMembresia.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridTipoMembresia_CellPainting);
             // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 35;
-            // 
-            // id_tipo_membresia
-            // 
-            this.id_tipo_membresia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.id_tipo_membresia.HeaderText = "ID";
-            this.id_tipo_membresia.Name = "id_tipo_membresia";
-            this.id_tipo_membresia.ReadOnly = true;
-            this.id_tipo_membresia.Width = 60;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
             // btnLimpiar
             // 
             this.btnLimpiar.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -340,6 +316,31 @@
             this.txtId.Text = "0";
             this.txtId.Visible = false;
             // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 35;
+            // 
+            // id_tipo_membresia
+            // 
+            this.id_tipo_membresia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.id_tipo_membresia.HeaderText = "ID";
+            this.id_tipo_membresia.Name = "id_tipo_membresia";
+            this.id_tipo_membresia.ReadOnly = true;
+            this.id_tipo_membresia.Visible = false;
+            this.id_tipo_membresia.Width = 60;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            // 
             // FrmTipoMembresia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,10 +392,10 @@
         private System.Windows.Forms.ComboBox cboBusqueda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtIndice;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_membresia;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.TextBox txtIndice;
-        private System.Windows.Forms.TextBox txtId;
     }
 }

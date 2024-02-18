@@ -142,6 +142,7 @@ namespace UI.Windows.Formularios
             txtDescripcion.Text = "";
             txtFechaInicio.Text = "";
             txtFechaFin.Text = "";
+            txtBusqueda.Text = "";
         }
         
         

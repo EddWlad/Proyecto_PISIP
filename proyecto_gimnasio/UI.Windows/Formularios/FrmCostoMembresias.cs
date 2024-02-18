@@ -64,6 +64,7 @@ namespace UI.Windows.Formularios
             txtId.Text = "";
             txtDescripcion.Text = "";
             txtValor.Text = "0";
+            txtBusqueda.Text = "";
         }
         public void Listar()
         {

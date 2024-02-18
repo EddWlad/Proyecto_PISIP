@@ -71,7 +71,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                         detalleMembresia => detalleMembresia.cliente.id_membresia,
                         membresia => membresia.id_membresia,
                         (detalleMembresia, membresia) => new ClienteTipoCliente
-                       {
+                        {
                            id_cliente = detalleMembresia.cliente.id_cliente,
                            tipoCliente = detalleMembresia.tipoCLiente.descripcion, 
                            cedula = detalleMembresia.cliente.cedula,
@@ -200,6 +200,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             altura = (decimal)detalleMembresia.cliente.altura,
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
+                            foto = (byte[])detalleMembresia.cliente.foto
 
                         }).Where(ct => ct.tipoCliente.Equals(tipo) && ct.estado.Equals(true)).ToList();
                     //3.- retorno resultado
@@ -242,6 +243,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             altura = (decimal)detalleMembresia.cliente.altura,
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
+                            foto = (byte[])detalleMembresia.cliente.foto
 
                         }).Where(ct => ct.cedula.Equals(cedula) && ct.estado.Equals(true)).ToList();
                     //3.- retorno resultado
@@ -284,6 +286,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             altura = (decimal)detalleMembresia.cliente.altura,
                             estado = detalleMembresia.cliente.estado,
                             membresia = membresia.descripcion,
+                            foto = (byte[])detalleMembresia.cliente.foto
 
                         }).Where(ct => ct.membresia.Equals(membresias) && ct.estado.Equals(true)).ToList();
                     //3.- retorno resultado

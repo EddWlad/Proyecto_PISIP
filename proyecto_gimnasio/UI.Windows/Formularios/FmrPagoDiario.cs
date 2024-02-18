@@ -138,6 +138,7 @@ namespace UI.Windows.Formularios
             txtMembresia.Text = "";
             txtTipoCliente.Text = "";
             txtNombre.Text = "";
+            txtBusqueda.Text = "";
         }
         private void BusquedaDataGrid()
         {

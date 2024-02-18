@@ -81,14 +81,14 @@ namespace UI.Windows.Formularios
 
             if (!string.IsNullOrEmpty(txtId.Text))
             {
-                MessageBox.Show("El cliente ya existe");
+                MessageBox.Show("La membresia ya existe");
                 Limpiar();
                 return;
             }
             var membresiaEncontrada = listaMembresias.Where(x => x.descripcion.Equals(txtDescripcion.Text)).ToList();
             if (membresiaEncontrada.Count > 0)
             {
-                MessageBox.Show("La cedula existe");
+                MessageBox.Show("La membresia existe");
                 Limpiar();
                 return;
             }
@@ -187,6 +187,7 @@ namespace UI.Windows.Formularios
             txtDescripcion.Text = "";
             txtFechaFin.Text = "";
             textFechaInicio.Text = "";
+            txtBusqueda.Text = "";
         }
 
         public void Listar()
@@ -306,7 +307,9 @@ namespace UI.Windows.Formularios
                     txtDescripcion.Text = dataGridMembresias.Rows[indice].Cells["descripcion"].Value.ToString();
                     textFechaInicio.Text = dataGridMembresias.Rows[indice].Cells["fecha_inicio"].Value.ToString();
                     txtFechaFin.Text = dataGridMembresias.Rows[indice].Cells["fecha_fin"].Value.ToString();
-
+                    cboTipoMembresia.Text = dataGridMembresias.Rows[indice].Cells["tipo_membresia"].Value.ToString();
+                    cboCostoMembresia.Text = dataGridMembresias.Rows[indice].Cells["costo_membresia"].Value.ToString();
+                    cboPromocion.Text = dataGridMembresias.Rows[indice].Cells["promocion"].Value.ToString();
                 }
             }
         }

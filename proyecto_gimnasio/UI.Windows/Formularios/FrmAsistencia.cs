@@ -103,6 +103,7 @@ namespace UI.Windows.Formularios
             txtId1.Text = "";
             txtIndex2.Text ="";
             txtId.Text = "";
+            txtBusqueda.Text = "";
         }
 
         private int ConversionIdCliente(string txtId)

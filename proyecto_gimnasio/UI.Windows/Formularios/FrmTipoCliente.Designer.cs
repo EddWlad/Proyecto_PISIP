@@ -46,11 +46,11 @@
             this.cboBusqueda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridTipoClientes = new System.Windows.Forms.DataGridView();
+            this.txtIndice = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.id_tipo_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtIndice = new System.Windows.Forms.TextBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTipoClientes)).BeginInit();
             this.SuspendLayout();
@@ -296,28 +296,6 @@
             this.dataGridTipoClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridTipoClientes_CellContentClick);
             this.dataGridTipoClientes.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridTipoClientes_CellPainting);
             // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 35;
-            // 
-            // id_tipo_cliente
-            // 
-            this.id_tipo_cliente.HeaderText = "ID";
-            this.id_tipo_cliente.Name = "id_tipo_cliente";
-            this.id_tipo_cliente.ReadOnly = true;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
             // txtIndice
             // 
             this.txtIndice.Location = new System.Drawing.Point(384, 75);
@@ -337,6 +315,29 @@
             this.txtId.TabIndex = 89;
             this.txtId.Text = "0";
             this.txtId.Visible = false;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 35;
+            // 
+            // id_tipo_cliente
+            // 
+            this.id_tipo_cliente.HeaderText = "ID";
+            this.id_tipo_cliente.Name = "id_tipo_cliente";
+            this.id_tipo_cliente.ReadOnly = true;
+            this.id_tipo_cliente.Visible = false;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             // 
             // FrmTipoCliente
             // 
@@ -389,10 +390,10 @@
         private System.Windows.Forms.ComboBox cboBusqueda;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridTipoClientes;
+        private System.Windows.Forms.TextBox txtIndice;
+        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_tipo_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.TextBox txtIndice;
-        private System.Windows.Forms.TextBox txtId;
     }
 }
