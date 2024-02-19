@@ -168,7 +168,7 @@ namespace UI.Windows.Formularios
         }
         public void Listar()
         {
-            List<AsistenciaCliente> listaClientes = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciasClientes();
+            List<AsistenciaCliente> listaClientes = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciasClientesFrecuentes();
             foreach (AsistenciaCliente item in listaClientes)
             {
                 dataGridClientesMiembros.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.tipo_cliente,item.membresia});

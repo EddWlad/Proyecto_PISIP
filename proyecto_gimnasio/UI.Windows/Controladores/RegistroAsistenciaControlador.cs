@@ -49,5 +49,9 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarAsistenciasCedula(cedula);
         }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciasClientesFrecuentes()
+        {
+            return servicio.ListarAsistenciaClientesFrecuentes();
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace UI.Windows.Formularios
         private void contenidoMembresia()
         {
             cboTipoMembresia.DataSource = membresiasControlador.ListarMembresiasActivas();
-            cboTipoMembresia.DisplayMember = "descripcion";
+            cboTipoMembresia.DisplayMember = "tipoMembresia";
             cboTipoMembresia.ValueMember = "id_membresia";
 
         }

@@ -44,5 +44,9 @@ namespace Aplicacion.Servicio
         {
             return this.registroAsistenciaRepository.ListarAsistenciaCedula(cedula);
         }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciaClientesFrecuentes()
+        {
+            return this.registroAsistenciaRepository.ListarAsistenciasFrecuentes();
+        }
     }
 }

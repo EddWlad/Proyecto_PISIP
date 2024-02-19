@@ -12,6 +12,7 @@ namespace Dominio.Modelo.Abstracciones
         bool EliminarRegistro(int id);
         IEnumerable<Registro_Asistencia> ListarAsistenciaFecha(string fecha);
         IEnumerable<AsistenciaCliente> ListarAsistencias();
+        IEnumerable<AsistenciaCliente> ListarAsistenciasFrecuentes();
         IEnumerable<AsistenciaCliente> ListarAsistenciaCedula(string cedula);
     }
 }
