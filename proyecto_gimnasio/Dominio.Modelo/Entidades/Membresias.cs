@@ -26,7 +26,6 @@ namespace Dominio.Modelo.Entidades
         public Nullable<System.DateTime> fecha_inicio { get; set; }
         public Nullable<System.DateTime> fecha_fin { get; set; }
         public bool estado { get; set; }
-        public Nullable<int> id_tipo_membresia { get; set; }
         public Nullable<int> id_costo_membresia { get; set; }
         public Nullable<int> id_promocion { get; set; }
     
@@ -34,6 +33,5 @@ namespace Dominio.Modelo.Entidades
         public virtual ICollection<Cliente> Cliente { get; set; }
         public virtual Costo_Membresia Costo_Membresia { get; set; }
         public virtual Promociones Promociones { get; set; }
-        public virtual Tipo_Membresia Tipo_Membresia { get; set; }
     }
 }

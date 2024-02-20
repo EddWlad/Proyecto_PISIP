@@ -236,5 +236,12 @@ namespace UI.Windows.Formularios
             pnlSubmenuMembresias.Visible = false;
             AbrirFormHija(new FrmCostoMembresias());
         }
+
+        private void btnMiembros_Click(object sender, EventArgs e)
+        {
+            pnlSubmenuMembresias.Visible = false;
+            AbrirFormHija(new FrmPagosMiembros());
+            
+        }
     }
 }

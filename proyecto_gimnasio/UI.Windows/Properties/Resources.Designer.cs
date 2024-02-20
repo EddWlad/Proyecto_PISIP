@@ -223,6 +223,16 @@ namespace UI.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap male_female_regular_24 {
+            get {
+                object obj = ResourceManager.GetObject("male-female-regular-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap maximizar {
             get {
                 object obj = ResourceManager.GetObject("maximizar", resourceCulture);
@@ -276,6 +286,16 @@ namespace UI.Windows.Properties {
         internal static System.Drawing.Bitmap pagodiario {
             get {
                 object obj = ResourceManager.GetObject("pagodiario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pagoMiembro {
+            get {
+                object obj = ResourceManager.GetObject("pagoMiembro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

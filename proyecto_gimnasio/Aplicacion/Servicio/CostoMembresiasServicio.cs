@@ -28,7 +28,7 @@ namespace Aplicacion.Servicio
         {
             this.costoMembresiaRepository.Modify(modificadoCostoMembresia);
         }
-        public IEnumerable<Costo_Membresia> ListarCostosMembresiasDescripcion(String descripcion)
+        public IEnumerable<MembresiaTipoCosto> ListarCostosMembresiasDescripcion(String descripcion)
         {
             return this.costoMembresiaRepository.ListarCostoMembresia(descripcion);
         }
@@ -40,9 +40,13 @@ namespace Aplicacion.Servicio
         {
             return this.costoMembresiaRepository.EliminarCostoMembresia(id);
         }
-        public IEnumerable<Costo_Membresia> ListarCostoMembresiaCosto(Decimal costo)
+        public IEnumerable<MembresiaTipoCosto> ListarCostoMembresiaCosto(Decimal costo)
         {
             return this.costoMembresiaRepository.ListarCosto(costo);
+        }
+        public IEnumerable<MembresiaTipoCosto> ListarCostosMembresiasTipos()
+        {
+            return this.costoMembresiaRepository.ListarMembresiasCostoTipo();
         }
     }
 }

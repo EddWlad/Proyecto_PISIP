@@ -17,7 +17,7 @@ namespace Dominio.Modelo.Entidades
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tipo_Membresia()
         {
-            this.Membresias = new HashSet<Membresias>();
+            this.Costo_Membresia = new HashSet<Costo_Membresia>();
         }
     
         public int id_tipo_membresia { get; set; }
@@ -25,6 +25,6 @@ namespace Dominio.Modelo.Entidades
         public bool estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Membresias> Membresias { get; set; }
+        public virtual ICollection<Costo_Membresia> Costo_Membresia { get; set; }
     }
 }

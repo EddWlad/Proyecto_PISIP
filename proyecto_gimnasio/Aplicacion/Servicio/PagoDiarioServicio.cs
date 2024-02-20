@@ -32,9 +32,13 @@ namespace Aplicacion.Servicio
         {
             return this.pagosdiariosRepository.ListarPagosFecha(fecha);
         }
-        public IEnumerable<PagoDiarioRegistro> ListarPagosDiariosActivos()
+        public IEnumerable<PagoDiarioRegistro> ListarPagosDiariosActivosFrecuentes()
         {
-            return this.pagosdiariosRepository.ListarPagosActivos();
+            return this.pagosdiariosRepository.ListarPagosActivosFrecuentes();
+        }
+        public IEnumerable<PagoDiarioRegistro> ListarPagosDiariosActivosMiembro()
+        {
+            return this.pagosdiariosRepository.ListarPagosActivosMiembros();
         }
         public bool EliminarPago(int id)
         {

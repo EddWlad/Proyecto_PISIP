@@ -13,6 +13,7 @@ namespace Dominio.Modelo.Abstracciones
         IEnumerable<Registro_Asistencia> ListarAsistenciaFecha(string fecha);
         IEnumerable<AsistenciaCliente> ListarAsistencias();
         IEnumerable<AsistenciaCliente> ListarAsistenciasFrecuentes();
+        IEnumerable<AsistenciaCliente> ListarAsistenciasMiembros();
         IEnumerable<AsistenciaCliente> ListarAsistenciaCedula(string cedula);
     }
 }

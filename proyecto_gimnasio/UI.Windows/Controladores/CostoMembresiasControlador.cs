@@ -21,6 +21,7 @@ namespace UI.Windows.Controladores
             Costo_Membresia costoMembresiaDB = new Costo_Membresia();
             try
             {
+                costoMembresiaDB.id_tipo_membresia = costoMembresiasVistaModelo.Id_tipo_membresia;
                 costoMembresiaDB.descripcion = costoMembresiasVistaModelo.Descripcion;
                 costoMembresiaDB.valor = costoMembresiasVistaModelo.Valor;
                 costoMembresiaDB.estado = costoMembresiasVistaModelo.Estado;
@@ -38,6 +39,7 @@ namespace UI.Windows.Controladores
             try
             {
                 costoMembresiaDB.id_costo_membresia = costoMembresiasVistaModelo.Id_Costo_Membresia;
+                costoMembresiaDB.id_tipo_membresia = costoMembresiasVistaModelo.Id_tipo_membresia;
                 costoMembresiaDB.descripcion = costoMembresiasVistaModelo.Descripcion;
                 costoMembresiaDB.valor = costoMembresiasVistaModelo.Valor;
                 costoMembresiaDB.estado = costoMembresiasVistaModelo.Estado;
@@ -49,7 +51,7 @@ namespace UI.Windows.Controladores
                 return false;
             }
         }
-        public IEnumerable<Costo_Membresia> ListarCostoMembresiasDescripcion(string descripcion)
+        public IEnumerable<MembresiaTipoCosto> ListarCostoMembresiasDescripcion(string descripcion)
         {
             return servicio.ListarCostosMembresiasDescripcion(descripcion);
         }
@@ -57,7 +59,7 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarCostosMembresiasActivas();
         }
-        public IEnumerable<Costo_Membresia> ListarCostoMembresiasCosto(decimal costo)
+        public IEnumerable<MembresiaTipoCosto> ListarCostoMembresiasCosto(decimal costo)
         {
             return servicio.ListarCostoMembresiaCosto(costo);
         }
@@ -65,6 +67,10 @@ namespace UI.Windows.Controladores
         {
             return servicio.EliminarCostoMembresia(id);
 
+        }
+        public IEnumerable<MembresiaTipoCosto> ListarCostoMembresiasTipos()
+        {
+            return servicio.ListarCostosMembresiasTipos();
         }
     }
 }

@@ -10,7 +10,8 @@ namespace Dominio.Modelo.Abstracciones
     public interface IPagoDiarioRepository : IBaseRepository<Pago_diario>
     {
         IEnumerable<PagoDiarioRegistro> ListarPagosFecha(DateTime fecha);
-        IEnumerable<PagoDiarioRegistro> ListarPagosActivos();
+        IEnumerable<PagoDiarioRegistro> ListarPagosActivosFrecuentes();
+        IEnumerable<PagoDiarioRegistro> ListarPagosActivosMiembros();
 
         IEnumerable<PagoDiarioRegistro> ListarPagosCedula(String cedula);
         IEnumerable<PagoDiarioRegistro> ListarPagosTipoCliente(String tipo);

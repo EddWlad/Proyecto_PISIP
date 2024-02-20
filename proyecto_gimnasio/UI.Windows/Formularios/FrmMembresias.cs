@@ -61,10 +61,10 @@ namespace UI.Windows.Formularios
             cboTipoMembresia.ValueMember = "id_tipo_membresia";
 
         }
-        private void contenidoCostoMembresia()
+        private void contenidoCostoMembresia(string tipo)
         {
-            cboCostoMembresia.DataSource = costoMembresiasControlador.ListarCostoMembresiasActivas();
-            cboCostoMembresia.DisplayMember = "valor";
+            cboCostoMembresia.DataSource = costoMembresiasControlador.ListarCostoMembresiasDescripcion(tipo);
+            cboCostoMembresia.DisplayMember = "costo";
             cboCostoMembresia.ValueMember = "id_costo_membresia";
 
         }
@@ -75,7 +75,7 @@ namespace UI.Windows.Formularios
             cboPromocion.ValueMember = "id_promocion";
 
         }
-
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
@@ -107,15 +107,36 @@ namespace UI.Windows.Formularios
                 isValid = false;
             }
             // Verificar si el campo Teléfono está vacío
-            if (string.IsNullOrWhiteSpace(textFechaInicio.Text))
+            if (string.IsNullOrWhiteSpace(ConvertirFechaInicio().ToString()))
             {
                 MessageBox.Show("El campo 'Fecha Inicio' es obligatorio.");
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(txtFechaFin.Text))
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                if (inicio < DateTime.Now)
+                {
+                    MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
+                    Limpiar();
+                    return;
+                }
+            }
+            if (string.IsNullOrWhiteSpace(ConvertirFechaFin().ToString()))
             {
                 MessageBox.Show("El campo 'Fecha Fin' es obligatorio.");
                 isValid = false;
+            }
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                DateTime fin = DateTime.Parse(ConvertirFechaFin().ToString());
+                if (fin < inicio)
+                {
+                    MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio");
+                    Limpiar();
+                    return;
+                }
             }
             if (isValid)
             {
@@ -267,7 +288,7 @@ namespace UI.Windows.Formularios
         {
             BusquedaDataGrid();
             contenidoTipoMembresia();
-            contenidoCostoMembresia();
+            //contenidoCostoMembresia(cboTipoMembresia.Text);
             contenidoPromociones();
             txtFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
             //ContenidoCboEstado();
@@ -395,6 +416,15 @@ namespace UI.Windows.Formularios
             dataGridMembresias.Rows.Clear();
             Limpiar();
             Listar();
+        }
+
+        private void cboTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTipoMembresia.SelectedItem != null)
+            {
+                string tipoSeleccionado = cboTipoMembresia.Text;
+                contenidoCostoMembresia(tipoSeleccionado);
+            }
         }
     }
 }

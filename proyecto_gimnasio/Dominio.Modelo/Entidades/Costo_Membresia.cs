@@ -24,8 +24,10 @@ namespace Dominio.Modelo.Entidades
         public string descripcion { get; set; }
         public Nullable<decimal> valor { get; set; }
         public bool estado { get; set; }
+        public Nullable<int> id_tipo_membresia { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Membresias> Membresias { get; set; }
+        public virtual Tipo_Membresia Tipo_Membresia { get; set; }
     }
 }

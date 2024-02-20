@@ -15,6 +15,7 @@
     <Property Name="altura" Type="decimal" Precision="5" Scale="2" />
     <Property Name="peso" Type="decimal" Precision="5" Scale="2" />
     <Property Name="estado" Type="bit" Nullable="false" />
+    <Property Name="fecha_nacimiento" Type="date" />
     <Property Name="id_membresia" Type="int" />
     <Property Name="id_tipo_cliente" Type="int" />
   </EntityType>
@@ -25,6 +26,7 @@
     <Property Name="id_costo_membresia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="descripcion" Type="varchar" MaxLength="50" />
     <Property Name="valor" Type="money" />
+    <Property Name="id_tipo_membresia" Type="int" />
     <Property Name="estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Membresias">
@@ -37,7 +39,6 @@
     <Property Name="fecha_inicio" Type="date" />
     <Property Name="fecha_fin" Type="date" />
     <Property Name="estado" Type="bit" Nullable="false" />
-    <Property Name="id_tipo_membresia" Type="int" />
     <Property Name="id_costo_membresia" Type="int" />
     <Property Name="id_promocion" Type="int" />
   </EntityType>
@@ -131,6 +132,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Costo_Membresia_Tipo_Membresia">
+    <End Role="Tipo_Membresia" Type="Self.Tipo_Membresia" Multiplicity="0..1" />
+    <End Role="Costo_Membresia" Type="Self.Costo_Membresia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Membresia">
+        <PropertyRef Name="id_tipo_membresia" />
+      </Principal>
+      <Dependent Role="Costo_Membresia">
+        <PropertyRef Name="id_tipo_membresia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Membresias_Costo_Membresia">
     <End Role="Costo_Membresia" Type="Self.Costo_Membresia" Multiplicity="0..1" />
     <End Role="Membresias" Type="Self.Membresias" Multiplicity="*" />
@@ -152,18 +165,6 @@
       </Principal>
       <Dependent Role="Membresias">
         <PropertyRef Name="id_promocion" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Membresias_Tipo_Membresia">
-    <End Role="Tipo_Membresia" Type="Self.Tipo_Membresia" Multiplicity="0..1" />
-    <End Role="Membresias" Type="Self.Membresias" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tipo_Membresia">
-        <PropertyRef Name="id_tipo_membresia" />
-      </Principal>
-      <Dependent Role="Membresias">
-        <PropertyRef Name="id_tipo_membresia" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -210,16 +211,16 @@
       <End Role="Tipo_Cliente" EntitySet="Tipo_Cliente" />
       <End Role="Cliente" EntitySet="Cliente" />
     </AssociationSet>
+    <AssociationSet Name="FK_Costo_Membresia_Tipo_Membresia" Association="Self.FK_Costo_Membresia_Tipo_Membresia">
+      <End Role="Tipo_Membresia" EntitySet="Tipo_Membresia" />
+      <End Role="Costo_Membresia" EntitySet="Costo_Membresia" />
+    </AssociationSet>
     <AssociationSet Name="FK_Membresias_Costo_Membresia" Association="Self.FK_Membresias_Costo_Membresia">
       <End Role="Costo_Membresia" EntitySet="Costo_Membresia" />
       <End Role="Membresias" EntitySet="Membresias" />
     </AssociationSet>
     <AssociationSet Name="FK_Membresias_Promociones" Association="Self.FK_Membresias_Promociones">
       <End Role="Promociones" EntitySet="Promociones" />
-      <End Role="Membresias" EntitySet="Membresias" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Membresias_Tipo_Membresia" Association="Self.FK_Membresias_Tipo_Membresia">
-      <End Role="Tipo_Membresia" EntitySet="Tipo_Membresia" />
       <End Role="Membresias" EntitySet="Membresias" />
     </AssociationSet>
     <AssociationSet Name="FK_Pago_diario_Registro_Asistencia" Association="Self.FK_Pago_diario_Registro_Asistencia">

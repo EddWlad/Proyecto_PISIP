@@ -26,7 +26,7 @@ namespace UI.Windows.Controladores
                 membresiaDB.fecha_inicio = membresiaVistaModelo.Fecha_Inicio;
                 membresiaDB.fecha_fin = membresiaVistaModelo.Fecha_Fin;
                 membresiaDB.estado = membresiaVistaModelo.Estado;
-                membresiaDB.id_tipo_membresia = membresiaVistaModelo.Id_Tipo_Membresia;
+                //membresiaDB.id_tipo_membresia = membresiaVistaModelo.Id_Tipo_Membresia;
                 membresiaDB.id_costo_membresia = membresiaVistaModelo.Id_Costo_Membresia;
                 membresiaDB.id_promocion = membresiaVistaModelo.Id_Promocion;
                 servicio.InsertarMembresias(membresiaDB);
@@ -48,7 +48,7 @@ namespace UI.Windows.Controladores
                 membresiaDB.fecha_inicio = membresiaVistaModelo.Fecha_Inicio;
                 membresiaDB.fecha_fin = membresiaVistaModelo.Fecha_Fin;
                 membresiaDB.estado = membresiaVistaModelo.Estado;
-                membresiaDB.id_tipo_membresia = membresiaVistaModelo.Id_Tipo_Membresia;
+                //membresiaDB.id_tipo_membresia = membresiaVistaModelo.Id_Tipo_Membresia;
                 membresiaDB.id_costo_membresia = membresiaVistaModelo.Id_Costo_Membresia;
                 membresiaDB.id_promocion = membresiaVistaModelo.Id_Promocion;
                 servicio.ModificarMembresia(membresiaDB);

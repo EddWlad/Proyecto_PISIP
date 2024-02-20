@@ -18,10 +18,13 @@ namespace UI.Windows.Formularios
     {
         CostoMembresiasVistaModelo costoMembresiasVistaModelo = new CostoMembresiasVistaModelo();
         CostoMembresiasControlador costoMembresiasControlador;
+        TipoMembresiaControlador tipomembresiaControlador;
+        List<MembresiaTipoCosto> listaMembresiasTipoCosto;
         public FrmCostoMembresias()
         {
             InitializeComponent();
             costoMembresiasControlador = new CostoMembresiasControlador();
+            tipomembresiaControlador = new TipoMembresiaControlador();
         }
         public void InsertarCostoMembresias()
         {
@@ -79,7 +82,8 @@ namespace UI.Windows.Formularios
         {
             this.txtValor.KeyPress += new KeyPressEventHandler(txtValor_KeyPress);
             BusquedaDataGrid();
-            Listar();
+            contenidoTipoMembresia();
+            ListarCostoTipo();
             Limpiar();
         }
 
@@ -111,35 +115,52 @@ namespace UI.Windows.Formularios
                 {
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dataGridCostoMembresia.Rows[indice].Cells["id_costo_membresia"].Value.ToString();
+                    cboTipo.Text = dataGridCostoMembresia.Rows[indice].Cells["tipo_membresia"].Value.ToString();
                     txtDescripcion.Text = dataGridCostoMembresia.Rows[indice].Cells["descripcion"].Value.ToString();
                     txtValor.Text = dataGridCostoMembresia.Rows[indice].Cells["valor"].Value.ToString();
                 }
             }
         }
+        private void contenidoTipoMembresia()
+        {
+            cboTipo.DataSource = tipomembresiaControlador.ListarTipoMembresiasActivas();
+            cboTipo.DisplayMember = "descripcion";
+            cboTipo.ValueMember = "id_tipo_membresia";
+
+        }
+        public void ListarCostoTipo()
+        {
+            listaMembresiasTipoCosto = (List<MembresiaTipoCosto>)costoMembresiasControlador.ListarCostoMembresiasTipos();
+            foreach (MembresiaTipoCosto item in listaMembresiasTipoCosto)
+            {
+                dataGridCostoMembresia.Rows.Add(new object[] {"",item.id_costo_membresia,item.tipo_membresia,"",item.costo,});
+            }
+
+        }
         public void ListarCostosMembresiaDescripcion()
         {
             dataGridCostoMembresia.Rows.Clear();
-            List<Costo_Membresia> listaCostoMembresia = (List<Costo_Membresia>)costoMembresiasControlador.ListarCostoMembresiasDescripcion(txtBusqueda.Text);
-            foreach (Costo_Membresia item in listaCostoMembresia)
+            List<MembresiaTipoCosto> listaCostoMembresia = (List<MembresiaTipoCosto>)costoMembresiasControlador.ListarCostoMembresiasDescripcion(txtBusqueda.Text);
+            foreach (MembresiaTipoCosto item in listaCostoMembresia)
             {
-                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.descripcion, item.valor });
+                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.tipo_membresia, "", item.costo });
             }
 
         }
         public void ListarCostosMembresiaValor()
         {
             dataGridCostoMembresia.Rows.Clear();
-            List<Costo_Membresia> listaCostoMembresia = (List<Costo_Membresia>)costoMembresiasControlador.ListarCostoMembresiasCosto(ConversionCosto(txtBusqueda.Text));
-            foreach (Costo_Membresia item in listaCostoMembresia)
+            List<MembresiaTipoCosto> listaCostoMembresia = (List<MembresiaTipoCosto>)costoMembresiasControlador.ListarCostoMembresiasCosto(ConversionCosto(txtBusqueda.Text));
+            foreach (MembresiaTipoCosto item in listaCostoMembresia)
             {
-                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.descripcion, item.valor });
+                dataGridCostoMembresia.Rows.Add(new object[] { "", item.id_costo_membresia, item.tipo_membresia,"", item.costo });
             }
 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (cboBusqueda.Text == "Descripcion")
+            if (cboBusqueda.Text == "Tipo Membresia")
             {
                 ListarCostosMembresiaDescripcion();
             }
@@ -174,14 +195,28 @@ namespace UI.Windows.Formularios
                 Limpiar();
                 return;
             }
+            var tipoMembresiaEncontrada = listaMembresiasTipoCosto.Where(x => x.tipo_membresia.Equals(cboTipo.Text)).ToList();
+            if (tipoMembresiaEncontrada.Count > 0)
+            {
+                MessageBox.Show("Tipo de membresia encontrada si desea cambiar el precio editelo por favor");
+                Limpiar();
+                return;
+            }
+            if(decimal.Parse(txtValor.Text) <= 0)
+            {
+                MessageBox.Show("El valor no puede ser menor o igual a 0");
+                Limpiar();
+                return;
+            }
+            costoMembresiasVistaModelo.Id_tipo_membresia = (int)cboTipo.SelectedValue;
             costoMembresiasVistaModelo.Descripcion = txtDescripcion.Text;
             costoMembresiasVistaModelo.Estado = true;
             costoMembresiasVistaModelo.Valor = ConversionCosto(txtValor.Text);
-            dataGridCostoMembresia.Rows.Add(new object[] { "", costoMembresiasVistaModelo.Id_Costo_Membresia, costoMembresiasVistaModelo.Descripcion,
-            costoMembresiasVistaModelo.Valor});
+            //dataGridCostoMembresia.Rows.Add(new object[] { "", costoMembresiasVistaModelo.Id_Costo_Membresia, costoMembresiasVistaModelo.Descripcion,
+            //costoMembresiasVistaModelo.Valor});
             InsertarCostoMembresias();
             dataGridCostoMembresia.Rows.Clear();
-            Listar();
+            ListarCostoTipo();
             Limpiar();
         }
 
@@ -193,6 +228,7 @@ namespace UI.Windows.Formularios
                 return;
             }
             costoMembresiasVistaModelo.Id_Costo_Membresia = int.Parse(txtId.Text);
+            costoMembresiasVistaModelo.Id_tipo_membresia = (int)cboTipo.SelectedValue;
             costoMembresiasVistaModelo.Descripcion = txtDescripcion.Text;
             costoMembresiasVistaModelo.Valor = ConversionCosto(txtValor.Text);
             costoMembresiasVistaModelo.Estado = true;
@@ -200,7 +236,7 @@ namespace UI.Windows.Formularios
             costoMembresiasVistaModelo.Valor});
             ModificarCostoMembresia();
             dataGridCostoMembresia.Rows.Clear();
-            Listar();
+            ListarCostoTipo();
             Limpiar(); ;
         }
 
@@ -224,14 +260,14 @@ namespace UI.Windows.Formularios
             }
             dataGridCostoMembresia.Rows.Clear();
             Limpiar();
-            Listar();
+            ListarCostoTipo();
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             dataGridCostoMembresia.Rows.Clear();
             Limpiar();
-            Listar();
+            ListarCostoTipo();
         }
 
         private void txtValor_KeyPress(object sender, KeyPressEventArgs e)

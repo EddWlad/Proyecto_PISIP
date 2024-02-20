@@ -42,6 +42,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.dataGridCostoMembresia = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.id_costo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
@@ -50,10 +55,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtIndice = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.id_costo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboTipo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCostoMembresia)).BeginInit();
             this.SuspendLayout();
@@ -158,10 +160,11 @@
             this.txtDescripcion.BackColor = System.Drawing.Color.White;
             this.txtDescripcion.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescripcion.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtDescripcion.Location = new System.Drawing.Point(211, 226);
+            this.txtDescripcion.Location = new System.Drawing.Point(211, 295);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(204, 23);
             this.txtDescripcion.TabIndex = 90;
+            this.txtDescripcion.Visible = false;
             // 
             // lblCedula
             // 
@@ -173,9 +176,9 @@
             this.lblCedula.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lblCedula.Location = new System.Drawing.Point(208, 210);
             this.lblCedula.Name = "lblCedula";
-            this.lblCedula.Size = new System.Drawing.Size(58, 13);
+            this.lblCedula.Size = new System.Drawing.Size(74, 13);
             this.lblCedula.TabIndex = 89;
-            this.lblCedula.Text = "Descripcion";
+            this.lblCedula.Text = "Tipo Membresia";
             this.lblCedula.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -226,6 +229,7 @@
             this.dataGridCostoMembresia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
             this.id_costo_membresia,
+            this.tipo_membresia,
             this.descripcion,
             this.valor});
             this.dataGridCostoMembresia.Location = new System.Drawing.Point(434, 123);
@@ -240,6 +244,44 @@
             this.dataGridCostoMembresia.TabIndex = 104;
             this.dataGridCostoMembresia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridCostoMembresia_CellContentClick);
             this.dataGridCostoMembresia.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridCostoMembresia_CellPainting);
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnSeleccionar.Width = 35;
+            // 
+            // id_costo_membresia
+            // 
+            this.id_costo_membresia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.id_costo_membresia.HeaderText = "ID";
+            this.id_costo_membresia.Name = "id_costo_membresia";
+            this.id_costo_membresia.ReadOnly = true;
+            this.id_costo_membresia.Visible = false;
+            this.id_costo_membresia.Width = 35;
+            // 
+            // tipo_membresia
+            // 
+            this.tipo_membresia.HeaderText = "Tipo Membresia";
+            this.tipo_membresia.Name = "tipo_membresia";
+            this.tipo_membresia.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripcion";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Visible = false;
+            // 
+            // valor
+            // 
+            this.valor.HeaderText = "Valor";
+            this.valor.Name = "valor";
+            this.valor.ReadOnly = true;
             // 
             // btnLimpiar
             // 
@@ -348,36 +390,14 @@
             this.txtId.Text = "0";
             this.txtId.Visible = false;
             // 
-            // btnSeleccionar
+            // cboTipo
             // 
-            this.btnSeleccionar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnSeleccionar.Width = 35;
-            // 
-            // id_costo_membresia
-            // 
-            this.id_costo_membresia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.id_costo_membresia.HeaderText = "ID";
-            this.id_costo_membresia.Name = "id_costo_membresia";
-            this.id_costo_membresia.ReadOnly = true;
-            this.id_costo_membresia.Visible = false;
-            this.id_costo_membresia.Width = 35;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripcion";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            // 
-            // valor
-            // 
-            this.valor.HeaderText = "Valor";
-            this.valor.Name = "valor";
-            this.valor.ReadOnly = true;
+            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipo.FormattingEnabled = true;
+            this.cboTipo.Location = new System.Drawing.Point(211, 226);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(204, 21);
+            this.cboTipo.TabIndex = 107;
             // 
             // FrmCostoMembresias
             // 
@@ -385,6 +405,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(45)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1155, 554);
+            this.Controls.Add(this.cboTipo);
             this.Controls.Add(this.txtIndice);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.dataGridCostoMembresia);
@@ -436,8 +457,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtIndice;
         private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_costo_membresia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo_membresia;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor;
     }

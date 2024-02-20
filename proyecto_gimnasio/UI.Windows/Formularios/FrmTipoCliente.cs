@@ -19,10 +19,14 @@ namespace UI.Windows.Formularios
     {
         TipoClienteVistaModelo tipoClienteVistaModelo = new TipoClienteVistaModelo();
         TipoClienteControlador tipoClienteControlador;
+        List<Tipo_Cliente> listaClientesTipo;
+        List<Tipo_Cliente> listaTipos;
         public FrmTipoCliente()
         {
             InitializeComponent();
             tipoClienteControlador = new TipoClienteControlador();
+            listaClientesTipo = new List<Tipo_Cliente>();
+            listaTipos = new List<Tipo_Cliente>();
         }
         public void InsertarTipoCliente()
         {
@@ -70,7 +74,7 @@ namespace UI.Windows.Formularios
         }
         public void Listar()
         {
-            List<Tipo_Cliente> listaTipos = (List<Tipo_Cliente>)tipoClienteControlador.ListarTipoClientesActivos();
+            listaTipos = (List<Tipo_Cliente>)tipoClienteControlador.ListarTipoClientesActivos();
             foreach (Tipo_Cliente item in listaTipos)
             {
                 dataGridTipoClientes.Rows.Add(new object[] {"",item.id_tipo_cliente,item.descripcion});
@@ -120,7 +124,7 @@ namespace UI.Windows.Formularios
         public void ListarClientesTipo()
         {
             dataGridTipoClientes.Rows.Clear();
-            List<Tipo_Cliente> listaClientesTipo = (List<Tipo_Cliente>)tipoClienteControlador.ListarTipoClienteDescripcion(txtBusqueda.Text);
+            listaClientesTipo = (List<Tipo_Cliente>)tipoClienteControlador.ListarTipoClienteDescripcion(txtBusqueda.Text);
             foreach (Tipo_Cliente item in listaClientesTipo)
             {
                 dataGridTipoClientes.Rows.Add(new object[] {"",item.id_tipo_cliente,item.descripcion});
@@ -143,6 +147,13 @@ namespace UI.Windows.Formularios
             if (!string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El tipo ya existe");
+                Limpiar();
+                return;
+            }
+            var tipoClienteEncontrada = listaTipos.Where(x => x.descripcion.ToLower().Equals(txtDescripcion.Text.ToLower())).ToList();
+            if (tipoClienteEncontrada.Count > 0)
+            {
+                MessageBox.Show("Tipo de cliente ya existe");
                 Limpiar();
                 return;
             }

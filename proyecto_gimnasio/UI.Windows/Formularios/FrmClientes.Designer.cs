@@ -576,14 +576,17 @@
             // 
             // cboTipoCliente
             // 
+            this.cboTipoCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoCliente.FormattingEnabled = true;
             this.cboTipoCliente.Location = new System.Drawing.Point(196, 95);
             this.cboTipoCliente.Name = "cboTipoCliente";
             this.cboTipoCliente.Size = new System.Drawing.Size(204, 21);
             this.cboTipoCliente.TabIndex = 35;
-
+            this.cboTipoCliente.SelectedIndexChanged += new System.EventHandler(this.cboTipoCliente_SelectedIndexChanged);
+            // 
             // cboTipoMembresia
             // 
+            this.cboTipoMembresia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoMembresia.FormattingEnabled = true;
             this.cboTipoMembresia.Location = new System.Drawing.Point(196, 440);
             this.cboTipoMembresia.Name = "cboTipoMembresia";

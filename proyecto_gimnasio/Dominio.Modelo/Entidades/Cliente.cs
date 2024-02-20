@@ -33,6 +33,7 @@ namespace Dominio.Modelo.Entidades
         public bool estado { get; set; }
         public Nullable<int> id_membresia { get; set; }
         public Nullable<int> id_tipo_cliente { get; set; }
+        public Nullable<System.DateTime> fecha_nacimiento { get; set; }
     
         public virtual Membresias Membresias { get; set; }
         public virtual Tipo_Cliente Tipo_Cliente { get; set; }

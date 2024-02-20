@@ -53,5 +53,9 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarAsistenciaClientesFrecuentes();
         }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciasClientesMiembros()
+        {
+            return servicio.ListarAsistenciaClientesMiembros();
+        }
     }
 }

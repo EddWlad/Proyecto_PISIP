@@ -44,7 +44,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Costo_Membresia> ListarCosto(decimal costo)
+        public IEnumerable<MembresiaTipoCosto> ListarCosto(decimal valor)
         {
             //1.- conectar a la base
             try
@@ -52,11 +52,19 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var costos = from e in context.Costo_Membresia
-                                        where e.valor == costo && e.estado == true
-                                        select e;
+                    var membresiaTipoCosto = context.Costo_Membresia.
+                        Join(context.Tipo_Membresia,
+                            costo => costo.id_tipo_membresia,
+                            tipo => tipo.id_tipo_membresia,
+                            (costos, membresias) => new MembresiaTipoCosto
+                            {
+                                id_costo_membresia = costos.id_costo_membresia,
+                                tipo_membresia = membresias.descripcion,
+                                costo = (decimal)costos.valor,
+                                estado = (bool)costos.estado
+                            }).Where(p => p.estado.Equals(true) && p.costo.Equals(valor)).ToList();
                     //3.- retorno resultado
-                    return costos.ToList();
+                    return membresiaTipoCosto.ToList();
                 }
             }
             catch (Exception ex)
@@ -65,7 +73,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public IEnumerable<Costo_Membresia> ListarCostoMembresia(string descripcion)
+        public IEnumerable<MembresiaTipoCosto> ListarCostoMembresia(string descripcion)
         {
             //1.- conectar a la base
             try
@@ -73,11 +81,19 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 using (var context = new gestion_membresiasEntities())
                 {
                     //2.- escribil la consulta
-                    var costoDescripcion = from e in context.Costo_Membresia
-                                            where e.descripcion == descripcion && e.estado == true
-                                           select e;
+                    var membresiaTipoCosto = context.Costo_Membresia.
+                        Join(context.Tipo_Membresia,
+                            costo => costo.id_tipo_membresia,
+                            tipo => tipo.id_tipo_membresia,
+                            (costos, membresias) => new MembresiaTipoCosto
+                            {
+                                id_costo_membresia = costos.id_costo_membresia,
+                                tipo_membresia = membresias.descripcion,
+                                costo = (decimal)costos.valor,
+                                estado = (bool)costos.estado
+                            }).Where(p => p.estado.Equals(true) && p.tipo_membresia.Equals(descripcion)).ToList();
                     //3.- retorno resultado
-                    return costoDescripcion.ToList();
+                    return membresiaTipoCosto.ToList();
                 }
             }
             catch (Exception ex)
@@ -98,6 +114,34 @@ namespace Infraestructura.AccesoDatos.Repositorio
                                        select e;
                     //3.- retorno resultado
                     return tiposActivos.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
+
+        public IEnumerable<MembresiaTipoCosto> ListarMembresiasCostoTipo()
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var membresiaTipoCosto = context.Costo_Membresia.
+                        Join(context.Tipo_Membresia,
+                            costo => costo.id_tipo_membresia,
+                            tipo=> tipo.id_tipo_membresia,
+                            (costos, membresias) => new MembresiaTipoCosto
+                            {
+                                id_costo_membresia = costos.id_costo_membresia,
+                                tipo_membresia = membresias.descripcion,
+                                costo = (decimal)costos.valor,
+                                estado = (bool)costos.estado
+                            }).Where(p => p.estado.Equals(true)).ToList();
+                    //3.- retorno resultado
+                    return membresiaTipoCosto.ToList();
                 }
             }
             catch (Exception ex)

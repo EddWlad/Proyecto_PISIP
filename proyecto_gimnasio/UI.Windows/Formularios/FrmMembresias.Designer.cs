@@ -396,6 +396,7 @@
             this.txtFechaRegistro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtFechaRegistro.Location = new System.Drawing.Point(201, 141);
             this.txtFechaRegistro.Name = "txtFechaRegistro";
+            this.txtFechaRegistro.ReadOnly = true;
             this.txtFechaRegistro.Size = new System.Drawing.Size(204, 23);
             this.txtFechaRegistro.TabIndex = 33;
             // 
@@ -510,14 +511,17 @@
             // 
             // cboTipoMembresia
             // 
+            this.cboTipoMembresia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoMembresia.FormattingEnabled = true;
             this.cboTipoMembresia.Location = new System.Drawing.Point(201, 321);
             this.cboTipoMembresia.Name = "cboTipoMembresia";
             this.cboTipoMembresia.Size = new System.Drawing.Size(204, 21);
             this.cboTipoMembresia.TabIndex = 73;
+            this.cboTipoMembresia.SelectedIndexChanged += new System.EventHandler(this.cboTipoMembresia_SelectedIndexChanged);
             // 
             // cboCostoMembresia
             // 
+            this.cboCostoMembresia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCostoMembresia.FormattingEnabled = true;
             this.cboCostoMembresia.Location = new System.Drawing.Point(201, 373);
             this.cboCostoMembresia.Name = "cboCostoMembresia";

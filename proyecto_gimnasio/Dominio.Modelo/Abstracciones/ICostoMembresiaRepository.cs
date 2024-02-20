@@ -9,9 +9,10 @@ namespace Dominio.Modelo.Abstracciones
 {
     public interface ICostoMembresiaRepository : IBaseRepository<Costo_Membresia>
     {
-        IEnumerable<Costo_Membresia> ListarCostoMembresia(String descripcion);
-        IEnumerable<Costo_Membresia> ListarCosto(Decimal costo);
+        IEnumerable<MembresiaTipoCosto> ListarCostoMembresia(String descripcion);
+        IEnumerable<MembresiaTipoCosto> ListarCosto(Decimal costo);
         IEnumerable<Costo_Membresia> ListarCostosMembresiasActivas();
+        IEnumerable<MembresiaTipoCosto> ListarMembresiasCostoTipo();
         bool EliminarCostoMembresia(int id);
     }
 }

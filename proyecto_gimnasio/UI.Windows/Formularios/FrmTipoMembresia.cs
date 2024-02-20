@@ -18,10 +18,12 @@ namespace UI.Windows.Formularios
     {
         TipoMembresiaVistaModelo tipoMembresiaVistaModelo = new TipoMembresiaVistaModelo();
         TipoMembresiaControlador tipoMembresiaControlador;
+        List<Tipo_Membresia> listaTipos;
         public FrmTipoMembresia()
         {
             InitializeComponent();
             tipoMembresiaControlador = new TipoMembresiaControlador();
+            listaTipos = new List<Tipo_Membresia>();
         }
         public void InsertarTipoMembresia()
         {
@@ -67,7 +69,7 @@ namespace UI.Windows.Formularios
         }
         public void Listar()
         {
-            List<Tipo_Membresia> listaTipos = (List<Tipo_Membresia>)tipoMembresiaControlador.ListarTipoMembresiasActivas();
+            listaTipos = (List<Tipo_Membresia>)tipoMembresiaControlador.ListarTipoMembresiasActivas();
             foreach (Tipo_Membresia item in listaTipos)
             {
                 dataGridTipoMembresia.Rows.Add(new object[] { "", item.id_tipo_membresia, item.descripcion });
@@ -140,6 +142,13 @@ namespace UI.Windows.Formularios
             if (!string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El tipo ya existe");
+                Limpiar();
+                return;
+            }
+            var tipoMembresiaEncontrada = listaTipos.Where(x => x.descripcion.ToLower().Equals(txtDescripcion.Text.ToLower())).ToList();
+            if (tipoMembresiaEncontrada.Count > 0)
+            {
+                MessageBox.Show("Tipo de membresia ya existe");
                 Limpiar();
                 return;
             }

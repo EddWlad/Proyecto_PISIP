@@ -48,5 +48,9 @@ namespace Aplicacion.Servicio
         {
             return this.registroAsistenciaRepository.ListarAsistenciasFrecuentes();
         }
+        public IEnumerable<AsistenciaCliente> ListarAsistenciaClientesMiembros()
+        {
+            return this.registroAsistenciaRepository.ListarAsistenciasMiembros();
+        }
     }
 }

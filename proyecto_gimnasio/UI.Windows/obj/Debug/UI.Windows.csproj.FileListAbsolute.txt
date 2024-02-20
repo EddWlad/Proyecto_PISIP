@@ -71,6 +71,7 @@ C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Wind
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmInicio.resources
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmLogin.resources
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmMembresias.resources
+C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmPagosMiembros.resources
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmPromociones.resources
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmSubInicio.resources
 C:\Users\USUARIO\Desktop\Proyecto PISIP\Proyecto_PISIP\proyecto_gimnasio\UI.Windows\obj\Debug\UI.Windows.Formularios.FrmTipoCliente.resources

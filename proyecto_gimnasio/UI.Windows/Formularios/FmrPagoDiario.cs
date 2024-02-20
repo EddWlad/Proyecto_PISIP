@@ -50,15 +50,13 @@ namespace UI.Windows.Formularios
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             ListarPagosRegistros();
             Limpiar();
-
-
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtIndice2.Text))
             {
-                MessageBox.Show("El cliente ya existe");
+                MessageBox.Show("El pago ya existe");
                 Limpiar();
                 return;
             }
@@ -176,7 +174,7 @@ namespace UI.Windows.Formularios
         }
         private void ListarPagosRegistros()
         {
-            List<PagoDiarioRegistro> listaPagos = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivos();
+            List<PagoDiarioRegistro> listaPagos = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivosFrecuentes();
             foreach (PagoDiarioRegistro item in listaPagos)
             {
                 dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,item.fecha,item.costo,item.tipo_cliente});

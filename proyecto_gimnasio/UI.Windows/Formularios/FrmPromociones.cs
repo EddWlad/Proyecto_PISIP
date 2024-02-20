@@ -66,15 +66,39 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("El campo 'Descripcion' es obligatorio.");
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(txtFechaFin.Text))
+            
+            if (string.IsNullOrWhiteSpace(ConvertirFechaFin().ToString()))
+            {
+                
+                MessageBox.Show("El campo 'Fecha fin' es obligatorio.");
+                isValid = false;
+            }
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                DateTime fin = DateTime.Parse(ConvertirFechaFin().ToString());
+                if (fin < inicio)
+                {
+                    MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio");
+                    Limpiar();
+                    return;
+                }
+            }
+            
+            if (string.IsNullOrWhiteSpace(ConvertirFechaInicio().ToString()))
             {
                 MessageBox.Show("El campo 'Fecha inicio' es obligatorio.");
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(txtFechaInicio.Text))
+            else
             {
-                MessageBox.Show("El campo 'Fecha fin' es obligatorio.");
-                isValid = false;
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                if (inicio < DateTime.Now)
+                {
+                    MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
+                    Limpiar();
+                    return;
+                }
             }
 
             if (!string.IsNullOrEmpty(txtId.Text))
@@ -85,7 +109,7 @@ namespace UI.Windows.Formularios
                 
             }
 
-            var promocionEncontrada = listaPromociones.Where(x => x.descripcion.Equals(txtDescripcion.Text)).ToList();
+            var promocionEncontrada = listaPromociones.Where(x => x.descripcion.ToLower().Trim().Equals(txtDescripcion.Text.ToLower().Trim())).ToList();
             if (promocionEncontrada.Count > 0)
             {
                 MessageBox.Show("La promocion existe");

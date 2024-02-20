@@ -62,6 +62,7 @@
     <Compile Include="Entidades\Membresias.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\MembresiaTipoCosto.cs" />
     <Compile Include="Entidades\MembresiaTipoCostoPromocion.cs" />
     <Compile Include="Entidades\Modelo_proyecto_gimnasio.cs">
       <AutoGen>True</AutoGen>

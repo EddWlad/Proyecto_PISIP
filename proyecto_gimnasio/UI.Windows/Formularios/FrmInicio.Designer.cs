@@ -38,6 +38,8 @@
             this.btnCerar = new System.Windows.Forms.PictureBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
             this.pnlSubmenuMembresias = new System.Windows.Forms.Panel();
+            this.btnMiembros = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnNuevaMembresia = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnCostosMembresia = new System.Windows.Forms.Button();
@@ -192,6 +194,8 @@
             // 
             // pnlSubmenuMembresias
             // 
+            this.pnlSubmenuMembresias.Controls.Add(this.btnMiembros);
+            this.pnlSubmenuMembresias.Controls.Add(this.panel1);
             this.pnlSubmenuMembresias.Controls.Add(this.btnNuevaMembresia);
             this.pnlSubmenuMembresias.Controls.Add(this.panel10);
             this.pnlSubmenuMembresias.Controls.Add(this.btnCostosMembresia);
@@ -200,9 +204,37 @@
             this.pnlSubmenuMembresias.Controls.Add(this.btnTiposMembresia);
             this.pnlSubmenuMembresias.Location = new System.Drawing.Point(35, 431);
             this.pnlSubmenuMembresias.Name = "pnlSubmenuMembresias";
-            this.pnlSubmenuMembresias.Size = new System.Drawing.Size(152, 95);
+            this.pnlSubmenuMembresias.Size = new System.Drawing.Size(152, 120);
             this.pnlSubmenuMembresias.TabIndex = 12;
             this.pnlSubmenuMembresias.Visible = false;
+            // 
+            // btnMiembros
+            // 
+            this.btnMiembros.BackColor = System.Drawing.SystemColors.Desktop;
+            this.btnMiembros.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMiembros.FlatAppearance.BorderSize = 0;
+            this.btnMiembros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.btnMiembros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMiembros.Font = new System.Drawing.Font("Wide Latin", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMiembros.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMiembros.Image = global::UI.Windows.Properties.Resources.male_female_regular_24;
+            this.btnMiembros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMiembros.Location = new System.Drawing.Point(4, 96);
+            this.btnMiembros.Name = "btnMiembros";
+            this.btnMiembros.Size = new System.Drawing.Size(147, 25);
+            this.btnMiembros.TabIndex = 13;
+            this.btnMiembros.Text = "                 Miembros";
+            this.btnMiembros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMiembros.UseVisualStyleBackColor = false;
+            this.btnMiembros.Click += new System.EventHandler(this.btnMiembros_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.OrangeRed;
+            this.panel1.Location = new System.Drawing.Point(-1, 96);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(5, 25);
+            this.panel1.TabIndex = 14;
             // 
             // btnNuevaMembresia
             // 
@@ -217,7 +249,7 @@
             this.btnNuevaMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNuevaMembresia.Location = new System.Drawing.Point(4, 65);
             this.btnNuevaMembresia.Name = "btnNuevaMembresia";
-            this.btnNuevaMembresia.Size = new System.Drawing.Size(150, 25);
+            this.btnNuevaMembresia.Size = new System.Drawing.Size(147, 25);
             this.btnNuevaMembresia.TabIndex = 6;
             this.btnNuevaMembresia.Text = "                 Nueva";
             this.btnNuevaMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -245,9 +277,9 @@
             this.btnCostosMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCostosMembresia.Location = new System.Drawing.Point(4, 3);
             this.btnCostosMembresia.Name = "btnCostosMembresia";
-            this.btnCostosMembresia.Size = new System.Drawing.Size(150, 25);
+            this.btnCostosMembresia.Size = new System.Drawing.Size(147, 25);
             this.btnCostosMembresia.TabIndex = 8;
-            this.btnCostosMembresia.Text = "                  Costos";
+            this.btnCostosMembresia.Text = "                 Costos";
             this.btnCostosMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCostosMembresia.UseVisualStyleBackColor = false;
             this.btnCostosMembresia.Click += new System.EventHandler(this.btnCostosMembresia_Click);
@@ -281,9 +313,9 @@
             this.btnTiposMembresia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTiposMembresia.Location = new System.Drawing.Point(4, 34);
             this.btnTiposMembresia.Name = "btnTiposMembresia";
-            this.btnTiposMembresia.Size = new System.Drawing.Size(150, 25);
+            this.btnTiposMembresia.Size = new System.Drawing.Size(147, 25);
             this.btnTiposMembresia.TabIndex = 10;
-            this.btnTiposMembresia.Text = "                   Tipos";
+            this.btnTiposMembresia.Text = "                 Tipos";
             this.btnTiposMembresia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTiposMembresia.UseVisualStyleBackColor = false;
             this.btnTiposMembresia.Click += new System.EventHandler(this.btnTiposMembresia_Click);
@@ -606,5 +638,7 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btnNuevaMembresia;
         private System.Windows.Forms.Panel panleContenedor;
+        private System.Windows.Forms.Button btnMiembros;
+        private System.Windows.Forms.Panel panel1;
     }
 }

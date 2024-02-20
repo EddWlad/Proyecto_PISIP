@@ -571,5 +571,25 @@ namespace UI.Windows.Formularios
             grp.DrawImage(img, rect);
             return bm;
         }
+
+        private void cboTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTipoCliente.SelectedItem.ToString() == "Frecuente")
+            {
+                txtDireccion.Enabled = false;
+                txtEmail.Enabled = false;
+                txtPeso.Enabled = false;
+                txtAltura.Enabled = false;
+                cboTipoMembresia.Enabled = false;
+            }
+            else // Si se selecciona "Miembro" o cualquier otra opción
+            {
+                txtDireccion.Enabled = true;
+                txtEmail.Enabled = true;
+                txtPeso.Enabled = true;
+                txtAltura.Enabled = true;
+                cboTipoMembresia.Enabled = true;
+            }
+        }
     }
 }

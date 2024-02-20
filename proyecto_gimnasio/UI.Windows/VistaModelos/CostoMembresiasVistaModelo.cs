@@ -11,6 +11,7 @@ namespace UI.Windows.VistaModelos
         public int Id_Costo_Membresia { get; set; }
         public string Descripcion { get; set; }
         public Nullable<decimal> Valor { get; set; }
+        public Nullable<int> Id_tipo_membresia { get; set; }
         public bool Estado { get; set; }
     }
 }

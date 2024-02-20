@@ -21,5 +21,6 @@ namespace UI.Windows.VistaModelos
         public bool Estado { get; set; }
         public Nullable<int> Id_Membresia { get; set; }
         public Nullable<int> Id_Tipo_Cliente { get; set; }
+        public Nullable<System.DateTime> Fecha_nacimiento { get; set; }
     }
 }
