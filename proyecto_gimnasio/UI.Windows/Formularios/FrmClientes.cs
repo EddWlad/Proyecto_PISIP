@@ -68,9 +68,14 @@ namespace UI.Windows.Formularios
         private void contenidoMembresia()
         {
             cboTipoMembresia.DataSource = membresiasControlador.ListarMembresiasActivas();
+            cboTipoMembresia.DisplayMember = "descripcion";
+            cboTipoMembresia.ValueMember = "id_membresia";
+        }
+        private void contenidoMembresiaFrecuente(string tipo)
+        {
+            cboTipoMembresia.DataSource = membresiasControlador.ListarMembresiasTipo(tipo);
             cboTipoMembresia.DisplayMember = "tipoMembresia";
             cboTipoMembresia.ValueMember = "id_membresia";
-
         }
         private void BusquedaDataGrid()
         {
@@ -572,15 +577,17 @@ namespace UI.Windows.Formularios
             return bm;
         }
 
-        private void cboTipoCliente_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboTipoCliente_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (cboTipoCliente.SelectedItem.ToString() == "Frecuente")
+            if (cboTipoCliente.Text == "Frecuente")
             {
                 txtDireccion.Enabled = false;
                 txtEmail.Enabled = false;
                 txtPeso.Enabled = false;
                 txtAltura.Enabled = false;
+                contenidoMembresiaFrecuente("N/A");
                 cboTipoMembresia.Enabled = false;
+                btnFoto.Enabled = false;
             }
             else // Si se selecciona "Miembro" o cualquier otra opción
             {
@@ -589,6 +596,8 @@ namespace UI.Windows.Formularios
                 txtPeso.Enabled = true;
                 txtAltura.Enabled = true;
                 cboTipoMembresia.Enabled = true;
+                contenidoMembresia();
+                btnFoto.Enabled = true;
             }
         }
     }

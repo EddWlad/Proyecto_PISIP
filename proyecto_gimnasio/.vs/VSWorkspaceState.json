@@ -8,6 +8,6 @@
     "\\UI.Windows\\Controladores",
     "\\UI.Windows\\Formularios"
   ],
-  "SelectedNode": "\\Infraestructura.AccesoDatos\\Modelo_proyecto_gimnasio.edmx",
+  "SelectedNode": "\\UI.Windows\\Formularios\\FrmClientes.cs",
   "PreviewInSolutionExplorer": false
 }
