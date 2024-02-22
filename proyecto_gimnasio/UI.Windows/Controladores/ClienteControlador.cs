@@ -82,6 +82,14 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarClientesActivos();
         }
+        public IEnumerable<ClienteMembresiaCosto> ListarClientesActivosMiembros()
+        {
+            return servicio.ListarClientesActivosMiembros();
+        }
+        public IEnumerable<ClienteMembresiaCosto> ListarClientes()
+        {
+            return servicio.ListarClientes();
+        }
         public IEnumerable<ClienteTipoCliente> ListarClientesNombres(string nombre)
         {
             return servicio.ListarClientesNombre(nombre);
@@ -94,6 +102,10 @@ namespace UI.Windows.Controladores
         public IEnumerable<ClienteTipoCliente> ListarClientesCedula(string cedula)
         {
             return servicio.ListarClientesCedula(cedula);
+        }
+        public IEnumerable<ClienteMembresiaCosto> ListarClientesCedulaMiembros(string cedula)
+        {
+            return servicio.ListarClientesCedulaMiembros(cedula);
         }
         public IEnumerable<ClienteTipoCliente> ListarClientesMembresia(string membresia)
         {

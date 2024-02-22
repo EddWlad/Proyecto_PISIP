@@ -323,5 +323,158 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("No se pudieron recuperar los registro.", ex);
             }
         }
+
+        public IEnumerable<ClienteMembresiaCosto> ListarClientesActivosMiembros()
+        {
+            //1.- conectar a la base
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var clientesActivosMiembros = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new {detalleMembresia, membresia })
+                    .Join(context.Costo_Membresia,
+                        membresiasCosto => membresiasCosto.membresia.id_costo_membresia,
+                        costoMembresia => costoMembresia.id_costo_membresia,
+                        (membresiasCosto, costoMembresias) => new {membresiasCosto, costoMembresias})
+                    .Join(context.Tipo_Membresia,
+                        membresiaDatos => membresiaDatos.costoMembresias.id_tipo_membresia,
+                        tipoMembresia => tipoMembresia.id_tipo_membresia,
+                        (membresiaDatos, tipoMembresia) => new { membresiaDatos, tipoMembresia })
+                    .Join(context.Registro_Asistencia,
+                        clienteMembresiaDatos => clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.id_cliente,
+                        registroAsistencia => registroAsistencia.id_cliente, 
+                        (clienteMembresiaDatos, registroAsistencia) => new ClienteMembresiaCosto
+                        {
+                            id_cliente = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.id_cliente,
+                            tipoCliente = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.tipoCLiente.descripcion,
+                            cedula = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.cedula,
+                            nombre = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.nombre,
+                            membresia = clienteMembresiaDatos.membresiaDatos.membresiasCosto.membresia.descripcion,
+                            fecha_inicio = (DateTime)clienteMembresiaDatos.membresiaDatos.membresiasCosto.membresia.fecha_inicio,
+                            fecha_fin = (DateTime)clienteMembresiaDatos.membresiaDatos.membresiasCosto.membresia.fecha_fin,
+                            tipoMembresia = clienteMembresiaDatos.tipoMembresia.descripcion,
+                            costo = (decimal)clienteMembresiaDatos.membresiaDatos.costoMembresias.valor,
+                            fecha_asistencia = (DateTime)registroAsistencia.fecha,
+                            id_registro = (int)registroAsistencia.id_registro,
+                            estado = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.estado
+                        }).Where(c => c.tipoCliente.Equals("Miembro") && c.estado.Equals(true) && c.fecha_asistencia != null).ToList();
+                    //3.- retorno resultado
+                    return clientesActivosMiembros.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
+
+        public IEnumerable<ClienteMembresiaCosto> ClientesActivos()
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var clientesActivosMiembros = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new { detalleMembresia, membresia })
+                    .Join(context.Costo_Membresia,
+                        membresiasCosto => membresiasCosto.membresia.id_costo_membresia,
+                        costoMembresia => costoMembresia.id_costo_membresia,
+                        (membresiasCosto, costoMembresias) => new { membresiasCosto, costoMembresias })
+                    .Join(context.Tipo_Membresia,
+                        membresiaDatos => membresiaDatos.costoMembresias.id_tipo_membresia,
+                        tipoMembresia => tipoMembresia.id_tipo_membresia,
+                        (membresiaDatos, tipoMembresia) => new ClienteMembresiaCosto
+                        {
+                            id_cliente = membresiaDatos.membresiasCosto.detalleMembresia.cliente.id_cliente,
+                            tipoCliente = membresiaDatos.membresiasCosto.detalleMembresia.tipoCLiente.descripcion,
+                            cedula = membresiaDatos.membresiasCosto.detalleMembresia.cliente.cedula,
+                            nombre = membresiaDatos.membresiasCosto.detalleMembresia.cliente.nombre,
+                            telefono = membresiaDatos.membresiasCosto.detalleMembresia.cliente.telefono,
+                            membresia = membresiaDatos.membresiasCosto.membresia.descripcion,
+                            fecha_inicio = (DateTime)membresiaDatos.membresiasCosto.membresia.fecha_inicio,
+                            fecha_fin = (DateTime)membresiaDatos.membresiasCosto.membresia.fecha_fin,
+                            tipoMembresia = tipoMembresia.descripcion,
+                            costo = (decimal)membresiaDatos.costoMembresias.valor,
+                            estado = membresiaDatos.membresiasCosto.detalleMembresia.cliente.estado
+                        }).Where(c => c.estado.Equals(true)).ToList();
+                    //3.- retorno resultado
+                    return clientesActivosMiembros.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
+
+        public IEnumerable<ClienteMembresiaCosto> ListarClientesCedulaMiembros(string cedula)
+        {
+            //1.- conectar a la base
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    //2.- escribil la consulta
+                    var clientesActivosMiembros = context.Cliente
+                    .Join(context.Tipo_Cliente,
+                        c => c.id_tipo_cliente,
+                        t => t.id_tipo_cliente,
+                       (cliente, tipoCLiente) => new { cliente, tipoCLiente })
+                    .Join(context.Membresias,
+                        detalleMembresia => detalleMembresia.cliente.id_membresia,
+                        membresia => membresia.id_membresia,
+                        (detalleMembresia, membresia) => new { detalleMembresia, membresia })
+                    .Join(context.Costo_Membresia,
+                        membresiasCosto => membresiasCosto.membresia.id_costo_membresia,
+                        costoMembresia => costoMembresia.id_costo_membresia,
+                        (membresiasCosto, costoMembresias) => new { membresiasCosto, costoMembresias })
+                    .Join(context.Tipo_Membresia,
+                        membresiaDatos => membresiaDatos.costoMembresias.id_tipo_membresia,
+                        tipoMembresia => tipoMembresia.id_tipo_membresia,
+                        (membresiaDatos, tipoMembresia) => new { membresiaDatos, tipoMembresia })
+                    .Join(context.Registro_Asistencia,
+                        clienteMembresiaDatos => clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.id_cliente,
+                        registroAsistencia => registroAsistencia.id_cliente,
+                        (clienteMembresiaDatos, registroAsistencia) => new ClienteMembresiaCosto
+                        {
+                            id_cliente = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.id_cliente,
+                            tipoCliente = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.tipoCLiente.descripcion,
+                            cedula = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.cedula,
+                            nombre = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.nombre,
+                            membresia = clienteMembresiaDatos.membresiaDatos.membresiasCosto.membresia.descripcion,
+                            fecha_inicio = (DateTime)clienteMembresiaDatos.membresiaDatos.membresiasCosto.membresia.fecha_inicio,
+                            fecha_fin = (DateTime)clienteMembresiaDatos.membresiaDatos.membresiasCosto.membresia.fecha_fin,
+                            tipoMembresia = clienteMembresiaDatos.tipoMembresia.descripcion,
+                            costo = (decimal)clienteMembresiaDatos.membresiaDatos.costoMembresias.valor,
+                            fecha_asistencia = (DateTime)registroAsistencia.fecha,
+                            id_registro = (int)registroAsistencia.id_registro,
+                            estado = clienteMembresiaDatos.membresiaDatos.membresiasCosto.detalleMembresia.cliente.estado
+                        }).Where(c => c.tipoCliente.Equals("Miembro") && c.estado.Equals(true) && c.fecha_asistencia != null && c.cedula.Equals(cedula)).ToList();
+                    //3.- retorno resultado
+                    return clientesActivosMiembros.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
     }
 }

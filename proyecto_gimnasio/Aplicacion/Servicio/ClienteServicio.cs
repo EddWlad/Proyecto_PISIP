@@ -34,6 +34,14 @@ namespace Aplicacion.Servicio
         {
             return this.clienteRepository.ListarClientesActivos();
         }
+        public IEnumerable<ClienteMembresiaCosto> ListarClientesActivosMiembros()
+        {
+            return this.clienteRepository.ListarClientesActivosMiembros();
+        }
+        public IEnumerable<ClienteMembresiaCosto> ListarClientes()
+        {
+            return this.clienteRepository.ClientesActivos();
+        }
         public IEnumerable<ClienteTipoCliente> ListarClientesNombre(String nombre)
         {
             return this.clienteRepository.ListarClienteNombre(nombre);
@@ -61,6 +69,10 @@ namespace Aplicacion.Servicio
         public void GuardarFoto(int id, byte[] foto)
         {
             this.clienteRepository.Guardarfoto(id, foto);
+        }
+        public IEnumerable<ClienteMembresiaCosto> ListarClientesCedulaMiembros(String cedula)
+        {
+            return this.clienteRepository.ListarClientesCedulaMiembros(cedula);
         }
     }
 }

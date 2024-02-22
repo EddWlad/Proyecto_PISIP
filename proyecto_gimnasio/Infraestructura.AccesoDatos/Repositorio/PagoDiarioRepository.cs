@@ -105,7 +105,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             costo = nombreCliente.pago.monto,
                             tipo_cliente = clientes.Tipo_Cliente.descripcion,
                             estado = nombreCliente.pago.estado
-                        }).Where(p => p.estado.Equals(true) && p.cedula.Equals(cedula)).ToList();
+                        }).Where(p => p.estado.Equals(true) && p.cedula.Equals(cedula) && p.tipo_cliente.Equals("Frecuente")).ToList();
                     //3.- retorno resultado
                     return pagosRegistros.ToList();
                 }
@@ -173,7 +173,7 @@ namespace Infraestructura.AccesoDatos.Repositorio
                             costo = nombreCliente.pago.monto,
                             tipo_cliente = clientes.Tipo_Cliente.descripcion,
                             estado = nombreCliente.pago.estado
-                        }).Where(p => p.fecha.Equals(fecha) && p.estado.Equals(true)).ToList();
+                        }).Where(p => p.fecha.Equals(fecha) && p.estado.Equals(true) && p.tipo_cliente.Equals("Frecuente")).ToList();
                     //3.- retorno resultado
                     return pagosRegistros.ToList();
                 }

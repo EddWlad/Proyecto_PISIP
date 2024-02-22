@@ -115,7 +115,7 @@ namespace UI.Windows.Formularios
             else
             {
                 DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
-                if (inicio < DateTime.Now)
+                if (inicio < DateTime.Now.Date)
                 {
                     MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
                     Limpiar();
@@ -324,7 +324,7 @@ namespace UI.Windows.Formularios
                 {
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dataGridMembresias.Rows[indice].Cells["idmembresias"].Value.ToString();
-                    txtFechaRegistro.Text = dataGridMembresias.Rows[indice].Cells["fecha_registro"].Value.ToString();
+                    txtFechaRegistro.Text = DateTime.Parse(dataGridMembresias.Rows[indice].Cells["fecha_registro"].Value.ToString()).ToString("dd/MM/yyyy");
                     txtDescripcion.Text = dataGridMembresias.Rows[indice].Cells["descripcion"].Value.ToString();
                     textFechaInicio.Text = dataGridMembresias.Rows[indice].Cells["fecha_inicio"].Value.ToString();
                     txtFechaFin.Text = dataGridMembresias.Rows[indice].Cells["fecha_fin"].Value.ToString();

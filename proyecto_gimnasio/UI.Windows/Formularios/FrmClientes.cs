@@ -397,6 +397,7 @@ namespace UI.Windows.Formularios
         public DateTime ConvertirFechaNacimiento()
         {
             DateTime fechaNacimiento;
+            DateTime fechaErronea;
             if (DateTime.TryParse(txtFechaNacimiento.Text, out fechaNacimiento))
             {
                 // Calcular la edad
@@ -416,8 +417,8 @@ namespace UI.Windows.Formularios
             }
             else
             {
-                MessageBox.Show("La fecha de nacimiento es inválida.");
-                return DateTime.MinValue; // Devolver un valor mínimo para indicar un error
+
+                return fechaErronea = DateTime.Now; // Devolver un valor mínimo para indicar un error
             }
         }
 

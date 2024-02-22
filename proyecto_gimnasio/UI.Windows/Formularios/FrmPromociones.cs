@@ -93,7 +93,7 @@ namespace UI.Windows.Formularios
             else
             {
                 DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
-                if (inicio < DateTime.Now)
+                if (inicio < DateTime.Now.Date)
                 {
                     MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
                     Limpiar();

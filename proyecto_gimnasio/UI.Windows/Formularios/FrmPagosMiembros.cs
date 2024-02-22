@@ -45,7 +45,8 @@ namespace UI.Windows.Formularios
         {
             foreach (DataGridViewColumn columna in dtgClientesMiembros.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "nombre" && columna.Name != "id_cliente")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "nombre" && columna.Name != "id_cliente" && columna.Name != "membresia" && columna.Name != "fecha_inicio"
+                    && columna.Name != "fecha_fin" && columna.Name != "tipo_membresia" && columna.Name != "costo_membresia")
                 {
                     cboBusqueda.Items.Add(new OpComboBusquedaPagoDiario() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -58,7 +59,7 @@ namespace UI.Windows.Formularios
         {
             foreach (DataGridViewColumn columnapago in dtListaPagosMiembros.Columns)
             {
-                if (columnapago.Visible == true && columnapago.Name != "btnSeleccionarPago" && columnapago.Name != "id_pago_diario" && columnapago.Name != "costo" && columnapago.Name != "nombre_pago")
+                if (columnapago.Visible == true && columnapago.Name != "btnSeleccionarPago" && columnapago.Name != "id_pago_diario" && columnapago.Name != "costo" && columnapago.Name != "nombre_pago" && columnapago.Name != "cliente_tipo")
                 {
                     cboBuscarPago.Items.Add(new OpComboBusquedaPagos() { Valor = columnapago.Name, Texto = columnapago.HeaderText });
                 }
@@ -69,10 +70,11 @@ namespace UI.Windows.Formularios
         }
         public void Listar()
         {
-            List<AsistenciaCliente> listaClientes = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciasClientesMiembros();
-            foreach (AsistenciaCliente item in listaClientes)
+            List<ClienteMembresiaCosto> listaClientes = (List<ClienteMembresiaCosto>)clienteControlador.ListarClientesActivosMiembros();
+            foreach (ClienteMembresiaCosto item in listaClientes)
             {
-                dtgClientesMiembros.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.tipo_cliente, item.membresia });
+                dtgClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, item.membresia, item.fecha_inicio.ToString("dd/MM/yyyy"), item.fecha_fin.ToString("dd/MM/yyyy"),
+                item.tipoMembresia, item.costo, item.id_registro});
             }
         }
         private void ListarPagosRegistros()
@@ -188,8 +190,9 @@ namespace UI.Windows.Formularios
                     txtIndice.Text = indice.ToString();
                     txtId.Text = dtgClientesMiembros.Rows[indice].Cells["id_asistencia"].Value.ToString();
                     txtCedula.Text = dtgClientesMiembros.Rows[indice].Cells["cedula"].Value.ToString();
+                    txtCosto.Text = dtgClientesMiembros.Rows[indice].Cells["costo_membresia"].Value.ToString();
                     txtNombre.Text = dtgClientesMiembros.Rows[indice].Cells["nombre"].Value.ToString();
-                    txtTipoCliente.Text = dtgClientesMiembros.Rows[indice].Cells["tipo_cliente"].Value.ToString();
+                    txtTipoCliente.Text = dtgClientesMiembros.Rows[indice].Cells["tipo_membresia"].Value.ToString();
                     txtMembresia.Text = dtgClientesMiembros.Rows[indice].Cells["membresia"].Value.ToString();
                 }
 
@@ -397,11 +400,11 @@ namespace UI.Windows.Formularios
         public void ListarClientesCedula()
         {
             dtgClientesMiembros.Rows.Clear();
-            List<ClienteTipoCliente> listaClientesTipo = (List<ClienteTipoCliente>)clienteControlador.ListarClientesCedula(txtBusqueda.Text);
-            foreach (ClienteTipoCliente item in listaClientesTipo)
+            List<ClienteMembresiaCosto> listaClientes = (List<ClienteMembresiaCosto>)clienteControlador.ListarClientesCedulaMiembros(txtBusqueda.Text);
+            foreach (ClienteMembresiaCosto item in listaClientes)
             {
-                dtgClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre,
-                    item.tipoCliente, item.membresia });
+                dtgClientesMiembros.Rows.Add(new object[] { "", item.id_cliente, item.cedula, item.nombre, item.membresia, item.fecha_inicio.ToString("dd/MM/yyyy"), item.fecha_fin.ToString("dd/MM/yyyy"),
+                item.tipoMembresia, item.costo, item.id_registro});
             }
         }
         public void ListarClientesMembresia()
@@ -438,5 +441,6 @@ namespace UI.Windows.Formularios
                 ListarPagosRegistros();
                 Limpiar();
         }
+
     }
 }

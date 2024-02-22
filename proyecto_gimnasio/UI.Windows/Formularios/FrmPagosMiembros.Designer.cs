@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPagosMiembros));
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,11 +55,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtgClientesMiembros = new System.Windows.Forms.DataGridView();
             this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.id_asistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_inicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha_fin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costo_membresia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_asistencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.cboBusqueda = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -145,9 +149,9 @@
             this.label10.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label10.Location = new System.Drawing.Point(201, 335);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 151;
-            this.label10.Text = "Tipo Cliente";
+            this.label10.Text = "Tipo Membresia";
             // 
             // txtMembresia
             // 
@@ -183,15 +187,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtListaPagosMiembros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtListaPagosMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtListaPagosMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtListaPagosMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtListaPagosMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionarPago,
@@ -205,9 +209,9 @@
             this.dtListaPagosMiembros.MultiSelect = false;
             this.dtListaPagosMiembros.Name = "dtListaPagosMiembros";
             this.dtListaPagosMiembros.ReadOnly = true;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtListaPagosMiembros.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtListaPagosMiembros.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtListaPagosMiembros.RowTemplate.Height = 28;
             this.dtListaPagosMiembros.Size = new System.Drawing.Size(709, 256);
             this.dtListaPagosMiembros.TabIndex = 147;
@@ -335,30 +339,34 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgClientesMiembros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgClientesMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgClientesMiembros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgClientesMiembros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgClientesMiembros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.btnSeleccionar,
-            this.id_asistencia,
+            this.id_cliente,
             this.cedula,
             this.nombre,
-            this.tipo_cliente,
-            this.membresia});
+            this.membresia,
+            this.fecha_inicio,
+            this.fecha_fin,
+            this.tipo_membresia,
+            this.costo_membresia,
+            this.id_asistencia});
             this.dtgClientesMiembros.Location = new System.Drawing.Point(434, 70);
             this.dtgClientesMiembros.MultiSelect = false;
             this.dtgClientesMiembros.Name = "dtgClientesMiembros";
             this.dtgClientesMiembros.ReadOnly = true;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.dtgClientesMiembros.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dtgClientesMiembros.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgClientesMiembros.RowTemplate.Height = 28;
             this.dtgClientesMiembros.Size = new System.Drawing.Size(709, 145);
             this.dtgClientesMiembros.TabIndex = 141;
@@ -376,12 +384,12 @@
             this.btnSeleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.btnSeleccionar.Width = 38;
             // 
-            // id_asistencia
+            // id_cliente
             // 
-            this.id_asistencia.HeaderText = "ID";
-            this.id_asistencia.Name = "id_asistencia";
-            this.id_asistencia.ReadOnly = true;
-            this.id_asistencia.Visible = false;
+            this.id_cliente.HeaderText = "ID";
+            this.id_cliente.Name = "id_cliente";
+            this.id_cliente.ReadOnly = true;
+            this.id_cliente.Visible = false;
             // 
             // cedula
             // 
@@ -395,17 +403,42 @@
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
             // 
-            // tipo_cliente
-            // 
-            this.tipo_cliente.HeaderText = "Tipo Cliente";
-            this.tipo_cliente.Name = "tipo_cliente";
-            this.tipo_cliente.ReadOnly = true;
-            // 
             // membresia
             // 
             this.membresia.HeaderText = "Membresia";
             this.membresia.Name = "membresia";
             this.membresia.ReadOnly = true;
+            // 
+            // fecha_inicio
+            // 
+            this.fecha_inicio.HeaderText = "Fecha Inicio";
+            this.fecha_inicio.Name = "fecha_inicio";
+            this.fecha_inicio.ReadOnly = true;
+            // 
+            // fecha_fin
+            // 
+            this.fecha_fin.HeaderText = "Fecha Fin";
+            this.fecha_fin.Name = "fecha_fin";
+            this.fecha_fin.ReadOnly = true;
+            // 
+            // tipo_membresia
+            // 
+            this.tipo_membresia.HeaderText = "Tipo Membresia";
+            this.tipo_membresia.Name = "tipo_membresia";
+            this.tipo_membresia.ReadOnly = true;
+            // 
+            // costo_membresia
+            // 
+            this.costo_membresia.HeaderText = "Costo";
+            this.costo_membresia.Name = "costo_membresia";
+            this.costo_membresia.ReadOnly = true;
+            // 
+            // id_asistencia
+            // 
+            this.id_asistencia.HeaderText = "ID_Registro";
+            this.id_asistencia.Name = "id_asistencia";
+            this.id_asistencia.ReadOnly = true;
+            this.id_asistencia.Visible = false;
             // 
             // txtBusqueda
             // 
@@ -479,6 +512,7 @@
             this.txtCosto.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.txtCosto.Location = new System.Drawing.Point(204, 198);
             this.txtCosto.Name = "txtCosto";
+            this.txtCosto.ReadOnly = true;
             this.txtCosto.Size = new System.Drawing.Size(199, 23);
             this.txtCosto.TabIndex = 132;
             this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
@@ -799,12 +833,6 @@
         private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dtgClientesMiembros;
-        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_asistencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipo_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn membresia;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBusqueda;
@@ -826,5 +854,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLimpiarPagos;
         private System.Windows.Forms.Button btnBuscarPago;
+        private System.Windows.Forms.DataGridViewButtonColumn btnSeleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn membresia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_inicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha_fin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipo_membresia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn costo_membresia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_asistencia;
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="Entidades\Cliente.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\ClienteMembresiaCosto.cs" />
     <Compile Include="Entidades\ClienteTipoCliente.cs" />
     <Compile Include="Entidades\Costo_Membresia.cs">
       <DependentUpon>Modelo_proyecto_gimnasio.tt</DependentUpon>

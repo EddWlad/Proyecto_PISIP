@@ -142,7 +142,7 @@ namespace UI.Windows.Formularios
         {
             foreach (DataGridViewColumn columna in dataGridClientesMiembros.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "nombre" && columna.Name != "id_cliente")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "nombre" && columna.Name != "id_cliente" && columna.Name != "tipo_cliente" && columna.Name != "membresia")
                 {
                     cboBusqueda.Items.Add(new OpComboBusquedaPagoDiario() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -155,7 +155,7 @@ namespace UI.Windows.Formularios
         {
             foreach (DataGridViewColumn columnapago in dtListaPagos.Columns)
             {
-                if (columnapago.Visible == true && columnapago.Name != "btnSeleccionarPago" && columnapago.Name != "id_pago_diario"  && columnapago.Name != "costo" && columnapago.Name != "nombre_pago")
+                if (columnapago.Visible == true && columnapago.Name != "btnSeleccionarPago" && columnapago.Name != "id_pago_diario"  && columnapago.Name != "costo" && columnapago.Name != "nombre_pago" && columnapago.Name != "cliente_tipo")
                 {
                     cboBuscarPago.Items.Add(new OpComboBusquedaPagos() { Valor = columnapago.Name, Texto = columnapago.HeaderText });
                 }
