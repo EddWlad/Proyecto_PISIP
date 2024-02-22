@@ -81,7 +81,7 @@ namespace UI.Windows.Formularios
         {
             foreach(DataGridViewColumn columna in dataGridClientes.Columns)
             {
-                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "foto" && columna.Name != "apellido" && columna.Name != "telefono" && columna.Name != "email" && columna.Name != "peso" && columna.Name != "altura" && columna.Name != "direccion")
+                if (columna.Visible == true && columna.Name != "btnSeleccionar" && columna.Name != "foto" && columna.Name != "apellido" && columna.Name != "telefono" && columna.Name != "email" && columna.Name != "peso" && columna.Name != "altura" && columna.Name != "direccion" && columna.Name != "fecha_nacimiento")
                 {
                     cboBusqueda.Items.Add(new OpComboEstadoCliente() { Valor = columna.Name, Texto = columna.HeaderText });
                 }
@@ -100,9 +100,11 @@ namespace UI.Windows.Formularios
             txtDireccion.Text = "";
             txtTelefono.Text = "";
             txtEmail.Text = "";
+            txtFechaNacimiento.Text = "";
             txtCedula.Text = "";
             txtPeso.Text = "0";
             txtAltura.Text = "0";
+            txtBusqueda.Text = "";
             ptbFoto.Image = null;
             ptbFoto.Image = Properties.Resources.sin_foto;
 
@@ -159,7 +161,7 @@ namespace UI.Windows.Formularios
                 Image foto = ConvertirBytesAImagen(item.foto);
                 foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,foto});
+                item.fecha_nacimiento.ToString("dd/MM/yyyy"), item.peso,item.altura,item.membresia,foto});
             }
                 
         }
@@ -207,6 +209,7 @@ namespace UI.Windows.Formularios
                     txtDireccion.Text = dataGridClientes.Rows[indice].Cells["direccion"].Value.ToString();
                     txtTelefono.Text = dataGridClientes.Rows[indice].Cells["telefono"].Value.ToString();
                     txtEmail.Text = dataGridClientes.Rows[indice].Cells["email"].Value.ToString();
+                    txtFechaNacimiento.Text = dataGridClientes.Rows[indice].Cells["fecha_nacimiento"].Value.ToString();
                     txtPeso.Text = dataGridClientes.Rows[indice].Cells["peso"].Value.ToString();
                     txtAltura.Text = dataGridClientes.Rows[indice].Cells["altura"].Value.ToString();
                     //if (int.TryParse(dataGridClientes.Rows[indice].Cells["tipoMembresia"].Value?.ToString(), out int tipoMembresiaId))
@@ -244,7 +247,7 @@ namespace UI.Windows.Formularios
                     Image foto = ConvertirBytesAImagen(item.foto);
                     foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                     dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                    item.peso,item.altura,item.membresia,foto});
+                    item.fecha_nacimiento.ToString("dd/MM/yyyy"), item.peso,item.altura,item.membresia,foto});
                 }
             
         }
@@ -257,7 +260,7 @@ namespace UI.Windows.Formularios
                 Image foto = ConvertirBytesAImagen(item.foto);
                 foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,foto});
+                item.fecha_nacimiento.ToString("dd/MM/yyyy"),item.peso,item.altura,item.membresia,foto});
             }
 
         }
@@ -270,7 +273,7 @@ namespace UI.Windows.Formularios
                 Image foto = ConvertirBytesAImagen(item.foto);
                 foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,foto});
+                item.fecha_nacimiento.ToString("dd/MM/yyyy"),item.peso,item.altura,item.membresia,foto});
             }
 
         }
@@ -283,7 +286,7 @@ namespace UI.Windows.Formularios
                 Image foto = ConvertirBytesAImagen(item.foto);
                 foto = RedimensionarImagen(foto, dataGridClientes.Columns["foto"].Width, dataGridClientes.RowTemplate.Height);
                 dataGridClientes.Rows.Add(new object[] {"",item.id_cliente,item.tipoCliente,item.cedula,item.nombre,item.apellido,item.direccion, item.telefono,item.email,
-                item.peso,item.altura,item.membresia,foto});
+                item.fecha_nacimiento.ToString("dd/MM/yyyy"),item.peso,item.altura,item.membresia,foto});
             }
 
         }
@@ -308,6 +311,7 @@ namespace UI.Windows.Formularios
         }
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
+
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             ptbFoto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             if (txtCedula.Text.Length != 10)
@@ -348,6 +352,13 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("El campo 'Teléfono' es obligatorio.");
                 isValid = false;
             }
+            DateTime fechaNacimiento = DateTime.Parse(ConvertirFechaNacimiento().ToString());
+            if (fechaNacimiento > DateTime.Now)
+            {
+                MessageBox.Show("La fecha de nacimiento debe ser menor a la fecha actual");
+                Limpiar();
+                return;
+            }
             if (isValid)
             {
                 clienteVistaModelo.Foto = ms.GetBuffer();
@@ -359,13 +370,17 @@ namespace UI.Windows.Formularios
                 clienteVistaModelo.Direccion = txtDireccion.Text;
                 clienteVistaModelo.Telefono = txtTelefono.Text;
                 clienteVistaModelo.Email = txtEmail.Text;
+                DateTime fecha_Nacimiento = ConvertirFechaNacimiento();
+                if (fecha_Nacimiento == DateTime.MinValue) // Verifica si la fecha de nacimiento no es válida
+                {
+                    return; // Detiene la ejecución del método si la fecha de nacimiento no es válida
+                }
+                clienteVistaModelo.Fecha_nacimiento = ConvertirFechaNacimiento();
                 clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
                 // Validacion de valores de peso y altura correctos
                 if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
                 {
                    clienteVistaModelo.Estado = true;
-                   dataGridClientes.Rows.Add(new object[] {"",clienteVistaModelo.Id_Cliente,cboTipoCliente.Text,clienteVistaModelo.Cedula, clienteVistaModelo.Nombre,clienteVistaModelo.Apellido,clienteVistaModelo.Direccion, clienteVistaModelo.Telefono,clienteVistaModelo.Email,
-                   clienteVistaModelo.Peso,clienteVistaModelo.Altura,cboTipoMembresia.Text,clienteVistaModelo.Foto});
                    Limpiar();
                    InsertarCliente();
                 }
@@ -379,10 +394,32 @@ namespace UI.Windows.Formularios
             }
         }
 
-        //private void ObtenerCliente(int id)
-        //{
-            //var cliente = clienteControlador.ObtenerCliente(id);
-        //}
+        public DateTime ConvertirFechaNacimiento()
+        {
+            DateTime fechaNacimiento;
+            if (DateTime.TryParse(txtFechaNacimiento.Text, out fechaNacimiento))
+            {
+                // Calcular la edad
+                int edad = DateTime.Today.Year - fechaNacimiento.Year;
+                if (fechaNacimiento > DateTime.Today.AddYears(-edad)) edad--;
+
+                // Verificar el rango de edad
+                if (edad <= 14 || edad > 70)
+                {
+                    MessageBox.Show("El cliente debe tener entre 14 y 70 años.");
+                    return DateTime.MinValue; // Devolver un valor mínimo para indicar un error
+                }
+                else
+                {
+                    return fechaNacimiento; // Fecha de nacimiento es válida
+                }
+            }
+            else
+            {
+                MessageBox.Show("La fecha de nacimiento es inválida.");
+                return DateTime.MinValue; // Devolver un valor mínimo para indicar un error
+            }
+        }
 
         private void modificarCliente()
         {
@@ -456,6 +493,13 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("El Id del cliente no fue encontrado");
                 return;
             }
+            DateTime fechaNacimiento = DateTime.Parse(ConvertirFechaNacimiento().ToString());
+            if (fechaNacimiento > DateTime.Now)
+            {
+                MessageBox.Show("La fecha de nacimiento debe ser menor a la fecha actual");
+                Limpiar();
+                return;
+            }
             clienteVistaModelo.Foto = ms.GetBuffer();
             clienteVistaModelo.Id_Cliente = int.Parse(txtId.Text); 
             clienteVistaModelo.Id_Tipo_Cliente = (int)cboTipoCliente.SelectedValue;
@@ -465,6 +509,12 @@ namespace UI.Windows.Formularios
             clienteVistaModelo.Direccion = txtDireccion.Text;
             clienteVistaModelo.Telefono = txtTelefono.Text;
             clienteVistaModelo.Email = txtEmail.Text;
+            DateTime fecha_Nacimiento = ConvertirFechaNacimiento();
+            if (fecha_Nacimiento == DateTime.MinValue) // Verifica si la fecha de nacimiento no es válida
+            {
+                return; // Detiene la ejecución del método si la fecha de nacimiento no es válida
+            }
+            clienteVistaModelo.Fecha_nacimiento = ConvertirFechaNacimiento();
             clienteVistaModelo.Id_Membresia = (int)cboTipoMembresia.SelectedValue;
             // Validacion de valores de peso y altura correctos
             if (ConversionAltura(txtAltura.Text) && ConversionPeso(txtPeso.Text))
@@ -583,6 +633,7 @@ namespace UI.Windows.Formularios
             {
                 txtDireccion.Enabled = false;
                 txtEmail.Enabled = false;
+                txtFechaNacimiento.Enabled = false;
                 txtPeso.Enabled = false;
                 txtAltura.Enabled = false;
                 contenidoMembresiaFrecuente("N/A");
@@ -593,6 +644,7 @@ namespace UI.Windows.Formularios
             {
                 txtDireccion.Enabled = true;
                 txtEmail.Enabled = true;
+                txtFechaNacimiento.Enabled = true;
                 txtPeso.Enabled = true;
                 txtAltura.Enabled = true;
                 cboTipoMembresia.Enabled = true;

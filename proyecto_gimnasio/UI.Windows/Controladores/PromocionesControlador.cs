@@ -66,6 +66,10 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarPromocionesActivas();
         }
+        public IEnumerable<Promociones> ListarPromocionesVigentes(DateTime fechaActual)
+        {
+            return servicio.ListarPromocionesVigentes(fechaActual);
+        }
         public bool EliminarPromocion(int id)
         {
             return servicio.EliminarPromocion(id);

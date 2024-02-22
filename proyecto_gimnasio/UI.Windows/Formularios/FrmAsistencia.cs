@@ -70,7 +70,7 @@ namespace UI.Windows.Formularios
             List<AsistenciaCliente> listaAsistencias = (List<AsistenciaCliente>) registroAsistenciaControlador.ListarAsistenciasClientes();
             foreach (AsistenciaCliente item in listaAsistencias)
             {
-                dataGirdDetalleAsistencia.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.telefono,item.fecha });
+                dataGirdDetalleAsistencia.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.telefono,item.fecha.ToString("dd/MM/yyy") });
             }
 
         }
@@ -233,7 +233,7 @@ namespace UI.Windows.Formularios
             List<AsistenciaCliente> listaAsisteciaCedula = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciasCedula(txtBusquedaA.Text);
             foreach (AsistenciaCliente item in listaAsisteciaCedula)
             {
-                dataGirdDetalleAsistencia.Rows.Add(new object[] { "",item.id_registro, item.cedula, item.nombre, item.telefono, item.fecha, "", });
+                dataGirdDetalleAsistencia.Rows.Add(new object[] { "",item.id_registro, item.cedula, item.nombre, item.telefono, item.fecha.ToString("dd/MM/yyy"), "", });
             }
 
         }
@@ -244,7 +244,7 @@ namespace UI.Windows.Formularios
             List<AsistenciaCliente> listaAsistenciaFecha = (List<AsistenciaCliente>)registroAsistenciaControlador.ListarAsistenciaFechas(txtBusquedaA.Text);
             foreach (AsistenciaCliente item in listaAsistenciaFecha)
             {
-                dataGirdDetalleAsistencia.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.telefono, item.fecha, "", });
+                dataGirdDetalleAsistencia.Rows.Add(new object[] { "", item.id_registro, item.cedula, item.nombre, item.telefono, item.fecha.ToString("dd/MM/yyy"), "", });
             }
 
         }

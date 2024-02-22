@@ -16,6 +16,7 @@ namespace Dominio.Modelo.Entidades
         public string direccion { get; set; }
         public string telefono { get; set; }
         public string email { get; set; }
+        public DateTime fecha_nacimiento { get; set; }
         public decimal altura { get; set; }
         public decimal peso { get; set; }
         public string tipoCliente { get; set; }

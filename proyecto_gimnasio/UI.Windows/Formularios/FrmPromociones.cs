@@ -123,8 +123,6 @@ namespace UI.Windows.Formularios
                 promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
                 promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
                 promocionesVistaModelo.Estado = true;
-                dataGridPromociones.Rows.Add(new object[] {"",promocionesVistaModelo.Id_promocion, promocionesVistaModelo.Fecha_registro,promocionesVistaModelo.Descripcion,promocionesVistaModelo.Fecha_inicio,
-                promocionesVistaModelo.Fecha_fin,});
                 Limpiar();
                 InsertarPromocion();
                 dataGridPromociones.Rows.Clear();
@@ -137,7 +135,7 @@ namespace UI.Windows.Formularios
             DateTime fechaInicio;
             if (DateTime.TryParse(txtFechaInicio.Text, out fechaInicio))
             {
-                return DateTime.Parse(fechaInicio.ToString("dd/MM/yyyy"));
+                return fechaInicio;
             }
             else
             {
@@ -150,7 +148,7 @@ namespace UI.Windows.Formularios
             DateTime fechaFin;
             if (DateTime.TryParse(txtFechaFin.Text, out fechaFin))
             {
-                return DateTime.Parse(fechaFin.ToString("dd/MM/yyyy"));
+                return fechaFin;
             }
             else
             {
@@ -167,6 +165,7 @@ namespace UI.Windows.Formularios
             txtFechaInicio.Text = "";
             txtFechaFin.Text = "";
             txtBusqueda.Text = "";
+            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
         
         
@@ -188,8 +187,8 @@ namespace UI.Windows.Formularios
             listaPromociones = (List<Promociones>)promocionesControlador.ListarPromocionesActivas();
             foreach (Promociones item in listaPromociones)
             {
-                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.fecha_registro,item.descripcion,item.fecha_inicio,
-                item.fecha_fin,});
+                dataGridPromociones.Rows.Add(new object[] {"",item.id_promocion,item.fecha_registro,item.descripcion,item.fecha_inicio?.ToString("dd/MM/yyyy"),
+                item.fecha_fin?.ToString("dd/MM/yyyy")});
             }
 
         }
@@ -235,8 +234,8 @@ namespace UI.Windows.Formularios
                     txtId.Text = dataGridPromociones.Rows[indice].Cells["id_promocion"].Value.ToString();
                     txtFecha.Text = DateTime.Parse(dataGridPromociones.Rows[indice].Cells["fecha"].Value.ToString()).ToString("dd/MM/yyyy");
                     txtDescripcion.Text = dataGridPromociones.Rows[indice].Cells["descripcion"].Value.ToString();
-                    txtFechaInicio.Text = DateTime.Parse(dataGridPromociones.Rows[indice].Cells["fecha_inicio"].Value.ToString()).ToString("dd/MM/yyyy");
-                    txtFechaFin.Text = DateTime.Parse(dataGridPromociones.Rows[indice].Cells["fecha_fin"].Value.ToString()).ToString("dd/MM/yyyy");
+                    txtFechaInicio.Text = dataGridPromociones.Rows[indice].Cells["fecha_inicio"].Value.ToString();
+                    txtFechaFin.Text = dataGridPromociones.Rows[indice].Cells["fecha_fin"].Value.ToString();
    
                 }
             }

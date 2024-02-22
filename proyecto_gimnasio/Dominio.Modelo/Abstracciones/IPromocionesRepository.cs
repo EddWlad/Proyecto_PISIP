@@ -11,6 +11,7 @@ namespace Dominio.Modelo.Abstracciones
     {
         IEnumerable<Promociones> ListarPromocionesTipo(String tipo);
         IEnumerable<Promociones> ListarPromocionesActivas();
+        IEnumerable<Promociones> ListarPromocionesVigentes(DateTime fechaActual);
         bool ElminarPromocion(int id);
 
     }

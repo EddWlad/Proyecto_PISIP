@@ -80,7 +80,7 @@ namespace UI.Windows.Formularios
             List<PagoDiarioRegistro> listaPagos = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivosMiembros();
             foreach (PagoDiarioRegistro item in listaPagos)
             {
-                dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre, item.fecha, item.costo, item.tipo_cliente });
+                dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre, item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente });
 
             }
         }
@@ -96,6 +96,7 @@ namespace UI.Windows.Formularios
             txtTipoCliente.Text = "";
             txtNombre.Text = "";
             txtBusqueda.Text = "";
+            txtFechaRegistro.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -231,7 +232,7 @@ namespace UI.Windows.Formularios
             foreach (PagoDiarioRegistro item in listaPagosCedula)
             {
                 dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
-                    item.fecha, item.costo, item.tipo_cliente});
+                    item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente});
             }
         }
         public void ListarPagosTipo()
@@ -241,7 +242,7 @@ namespace UI.Windows.Formularios
             foreach (PagoDiarioRegistro item in listaPagosTipo)
             {
                 dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
-                    item.fecha, item.costo, item.tipo_cliente});
+                    item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente});
             }
         }
         public void ListarPagosDiario()
@@ -251,7 +252,7 @@ namespace UI.Windows.Formularios
             foreach (PagoDiarioRegistro item in listaPagosDiario)
             {
                 dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
-                    item.fecha, item.costo, item.tipo_cliente});
+                    item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente});
             }
         }
 

@@ -40,5 +40,9 @@ namespace Aplicacion.Servicio
         {
             return this.promocionesRepository.ListarPromocionesActivas();
         }
+        public IEnumerable<Promociones> ListarPromocionesVigentes(DateTime fechaActual)
+        {
+            return this.promocionesRepository.ListarPromocionesVigentes(fechaActual);
+        }
     }
 }

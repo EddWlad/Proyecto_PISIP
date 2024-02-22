@@ -177,7 +177,7 @@ namespace UI.Windows.Formularios
             List<PagoDiarioRegistro> listaPagos = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivosFrecuentes();
             foreach (PagoDiarioRegistro item in listaPagos)
             {
-                dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,item.fecha,item.costo,item.tipo_cliente});
+                dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,item.fecha.ToString("dd/MM/yyyy"), item.costo,item.tipo_cliente});
 
             }
         }
@@ -277,7 +277,7 @@ namespace UI.Windows.Formularios
             foreach (PagoDiarioRegistro item in listaPagosCedula)
             {
                 dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
-                    item.fecha, item.costo, item.tipo_cliente});
+                    item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente});
             }
         }
         public void ListarPagosTipo()
@@ -287,7 +287,7 @@ namespace UI.Windows.Formularios
             foreach (PagoDiarioRegistro item in listaPagosTipo)
             {
                 dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
-                    item.fecha, item.costo, item.tipo_cliente});
+                    item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente});
             }
         }
         public void ListarPagosDiario()
@@ -297,7 +297,7 @@ namespace UI.Windows.Formularios
             foreach (PagoDiarioRegistro item in listaPagosDiario)
             {
                 dtListaPagos.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
-                    item.fecha, item.costo, item.tipo_cliente});
+                    item.fecha.ToString("dd/MM/yyyy"), item.costo, item.tipo_cliente});
             }
         }
 

@@ -34,6 +34,7 @@ namespace UI.Windows.Controladores
                 clienteDB.peso = clienteVistaModelo.Peso;
                 clienteDB.id_membresia = clienteVistaModelo.Id_Membresia;
                 clienteDB.estado = clienteVistaModelo.Estado;
+                clienteDB.fecha_nacimiento = clienteVistaModelo.Fecha_nacimiento;
                 servicio.InsertarCliente(clienteDB);
                 return true;
             }
@@ -57,6 +58,7 @@ namespace UI.Windows.Controladores
                 clienteDB.direccion = clienteVistaModelo.Direccion;
                 clienteDB.telefono = clienteVistaModelo.Telefono;
                 clienteDB.email = clienteVistaModelo.Email;
+                clienteDB.fecha_nacimiento = clienteVistaModelo.Fecha_nacimiento;
                 clienteDB.altura = clienteVistaModelo.Altura;
                 clienteDB.peso = clienteVistaModelo.Peso;
                 clienteDB.id_membresia = clienteVistaModelo.Id_Membresia;

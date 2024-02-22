@@ -382,9 +382,9 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Desktop;
             this.label2.Location = new System.Drawing.Point(196, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 25);
+            this.label2.Size = new System.Drawing.Size(197, 25);
             this.label2.TabIndex = 67;
-            this.label2.Text = "Detalle de membresias";
+            this.label2.Text = "Tarjeta de Membresia";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtFechaRegistro

@@ -70,7 +70,7 @@ namespace UI.Windows.Formularios
         }
         private void contenidoPromociones()
         {
-            cboPromocion.DataSource = promocionesControlador.ListarPromocionesActivas();
+            cboPromocion.DataSource = promocionesControlador.ListarPromocionesVigentes(DateTime.Now);
             cboPromocion.DisplayMember = "descripcion";
             cboPromocion.ValueMember = "id_promocion";
 
@@ -216,7 +216,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasActivas();
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
 
@@ -227,7 +227,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasCosto(decimal.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
 
@@ -238,7 +238,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasTipo(txtBusqueda.Text);
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -248,7 +248,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasPromocion(txtBusqueda.Text);
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -259,7 +259,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechaRegistro(DateTime.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -269,7 +269,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechaInicio(DateTime.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -279,7 +279,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechafin(DateTime.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio,item.fecha_fin,item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
