@@ -12,6 +12,8 @@ namespace Dominio.Modelo.Abstracciones
         IEnumerable<PagoDiarioRegistro> ListarPagosFecha(DateTime fecha);
         IEnumerable<PagoDiarioRegistro> ListarPagosActivosFrecuentes();
         IEnumerable<PagoDiarioRegistro> ListarPagosActivosMiembros();
+        IEnumerable<PagoDiarioRegistro> ListarPagosActivosMiembrosCedula(String cedula);
+        IEnumerable<PagoDiarioRegistro> ListarPagosActivosMiembrosFecha(DateTime fecha);
 
         IEnumerable<PagoDiarioRegistro> ListarPagosCedula(String cedula);
         IEnumerable<PagoDiarioRegistro> ListarPagosTipoCliente(String tipo);

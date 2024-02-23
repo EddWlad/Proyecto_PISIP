@@ -231,7 +231,7 @@ namespace UI.Windows.Formularios
         public void ListarPagosCedula()
         {
             dtListaPagosMiembros.Rows.Clear();
-            List<PagoDiarioRegistro> listaPagosCedula = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagosCedula(txtBusquedaPagos.Text);
+            List<PagoDiarioRegistro> listaPagosCedula = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivosMiembrosCedula(txtBusquedaPagos.Text);
             foreach (PagoDiarioRegistro item in listaPagosCedula)
             {
                 dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,
@@ -251,7 +251,7 @@ namespace UI.Windows.Formularios
         public void ListarPagosDiario()
         {
             dtListaPagosMiembros.Rows.Clear();
-            List<PagoDiarioRegistro> listaPagosDiario = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioFecha(ConvertirFecha());
+            List<PagoDiarioRegistro> listaPagosDiario = (List<PagoDiarioRegistro>)pagoDiarioControlador.ListarPagoDiarioActivosMiembrosFecha(ConvertirFecha());
             foreach (PagoDiarioRegistro item in listaPagosDiario)
             {
                 dtListaPagosMiembros.Rows.Add(new object[] { "", item.id_pago_diario, item.cedula, item.nombre,

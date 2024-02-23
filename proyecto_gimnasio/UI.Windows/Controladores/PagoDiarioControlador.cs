@@ -49,6 +49,14 @@ namespace UI.Windows.Controladores
         {
             return servicio.ListarPagosDiariosActivosMiembro();
         }
+        public IEnumerable<PagoDiarioRegistro> ListarPagoDiarioActivosMiembrosCedula(string cedula)
+        {
+            return servicio.ListarPagosDiariosActivosMiembroCedula(cedula);
+        }
+        public IEnumerable<PagoDiarioRegistro> ListarPagoDiarioActivosMiembrosFecha(DateTime fecha)
+        {
+            return servicio.ListarPagosDiariosActivosMiembroFecha(fecha);
+        }
         public bool EliminarCliente(int id)
         {
             return servicio.EliminarPago(id);

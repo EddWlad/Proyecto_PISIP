@@ -217,5 +217,73 @@ namespace Infraestructura.AccesoDatos.Repositorio
                 throw new Exception("No se pudieron recuperar los registro.", ex);
             }
         }
+
+        public IEnumerable<PagoDiarioRegistro> ListarPagosActivosMiembrosCedula(string cedula)
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    var pagosRegistros = context.Pago_diario
+                     .Join(context.Registro_Asistencia,
+                         p => p.id_registro,
+                         r => r.id_registro,
+                        (pago, registro) => new { pago, registro })
+                     .Join(context.Cliente,
+                        nc => nc.registro.id_cliente,
+                        c => c.id_cliente,
+                        (nombreCliente, clientes) => new PagoDiarioRegistro
+                        {
+                            id_pago_diario = nombreCliente.pago.id_pago_diario,
+                            cedula = clientes.cedula,
+                            nombre = clientes.nombre,
+                            fecha = nombreCliente.pago.fecha,
+                            costo = nombreCliente.pago.monto,
+                            tipo_cliente = clientes.Tipo_Cliente.descripcion,
+                            estado = nombreCliente.pago.estado
+                        }).Where(p => p.estado.Equals(true) && p.tipo_cliente.Equals("Miembro") && p.cedula.Equals(cedula)).ToList();
+                    //3.- retorno resultado
+                    return pagosRegistros.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
+
+        public IEnumerable<PagoDiarioRegistro> ListarPagosActivosMiembrosFecha(DateTime fecha)
+        {
+            try
+            {
+                using (var context = new gestion_membresiasEntities())
+                {
+                    var pagosRegistros = context.Pago_diario
+                     .Join(context.Registro_Asistencia,
+                         p => p.id_registro,
+                         r => r.id_registro,
+                        (pago, registro) => new { pago, registro })
+                     .Join(context.Cliente,
+                        nc => nc.registro.id_cliente,
+                        c => c.id_cliente,
+                        (nombreCliente, clientes) => new PagoDiarioRegistro
+                        {
+                            id_pago_diario = nombreCliente.pago.id_pago_diario,
+                            cedula = clientes.cedula,
+                            nombre = clientes.nombre,
+                            fecha = nombreCliente.pago.fecha,
+                            costo = nombreCliente.pago.monto,
+                            tipo_cliente = clientes.Tipo_Cliente.descripcion,
+                            estado = nombreCliente.pago.estado
+                        }).Where(p => p.estado.Equals(true) && p.tipo_cliente.Equals("Miembro") && p.fecha.Equals(fecha)).ToList();
+                    //3.- retorno resultado
+                    return pagosRegistros.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudieron recuperar los registro.", ex);
+            }
+        }
     }
 }

@@ -356,7 +356,6 @@ namespace UI.Windows.Formularios
             if (fechaNacimiento > DateTime.Now)
             {
                 MessageBox.Show("La fecha de nacimiento debe ser menor a la fecha actual");
-                Limpiar();
                 return;
             }
             if (isValid)
@@ -498,7 +497,7 @@ namespace UI.Windows.Formularios
             if (fechaNacimiento > DateTime.Now)
             {
                 MessageBox.Show("La fecha de nacimiento debe ser menor a la fecha actual");
-                Limpiar();
+
                 return;
             }
             clienteVistaModelo.Foto = ms.GetBuffer();

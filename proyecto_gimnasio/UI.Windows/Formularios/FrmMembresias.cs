@@ -70,7 +70,7 @@ namespace UI.Windows.Formularios
         }
         private void contenidoPromociones()
         {
-            cboPromocion.DataSource = promocionesControlador.ListarPromocionesVigentes(DateTime.Now);
+            cboPromocion.DataSource = promocionesControlador.ListarPromocionesVigentes(DateTime.Now.Date);
             cboPromocion.DisplayMember = "descripcion";
             cboPromocion.ValueMember = "id_promocion";
 
@@ -118,7 +118,6 @@ namespace UI.Windows.Formularios
                 if (inicio < DateTime.Now.Date)
                 {
                     MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
-                    Limpiar();
                     return;
                 }
             }
@@ -134,7 +133,6 @@ namespace UI.Windows.Formularios
                 if (fin < inicio)
                 {
                     MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio");
-                    Limpiar();
                     return;
                 }
             }
@@ -216,7 +214,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasActivas();
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
 
@@ -227,7 +225,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasCosto(decimal.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
 
@@ -238,7 +236,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasTipo(txtBusqueda.Text);
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -248,7 +246,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasPromocion(txtBusqueda.Text);
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -259,7 +257,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechaRegistro(DateTime.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -269,7 +267,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechaInicio(DateTime.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -279,7 +277,7 @@ namespace UI.Windows.Formularios
             listaMembresias = (List<MembresiaTipoCostoPromocion>)membresiasControlador.ListarMembresiasFechafin(DateTime.Parse(txtBusqueda.Text));
             foreach (MembresiaTipoCostoPromocion item in listaMembresias)
             {
-                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro,item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
+                dataGridMembresias.Rows.Add(new object[] {"",item.id_membresia,item.fecha_registro.ToString("dd/MM/yyyy"),item.descripcion,item.fecha_inicio.ToString("dd/MM/yyyy"),item.fecha_fin.ToString("dd/MM/yyy"),item.tipoMembresia,
                 item.costo,item.promocion});
             }
         }
@@ -370,6 +368,59 @@ namespace UI.Windows.Formularios
                 MessageBox.Show("El Id del cliente no fue encontrado");
                 return;
             }
+            var membresiaEncontrada = listaMembresias.Where(x => x.descripcion.Equals(txtDescripcion.Text)).ToList();
+            if (membresiaEncontrada.Count > 0)
+            {
+                MessageBox.Show("La membresia existe");
+                Limpiar();
+                return;
+            }
+            bool isValid = true;
+
+            // Verificar si el campo Nombre está vacío
+            if (string.IsNullOrWhiteSpace(txtFechaRegistro.Text))
+            {
+                MessageBox.Show("El campo 'Fehcha' es obligatorio.");
+                isValid = false;
+            }
+            // Verificar si el campo Apellido está vacío
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                MessageBox.Show("El campo 'Descripcion' es obligatorio.");
+                isValid = false;
+            }
+            // Verificar si el campo Teléfono está vacío
+            if (string.IsNullOrWhiteSpace(ConvertirFechaInicio().ToString()))
+            {
+                MessageBox.Show("El campo 'Fecha Inicio' es obligatorio.");
+                isValid = false;
+            }
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                if (inicio < DateTime.Now.Date)
+                {
+                    MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
+                    return;
+                }
+            }
+            if (string.IsNullOrWhiteSpace(ConvertirFechaFin().ToString()))
+            {
+                MessageBox.Show("El campo 'Fecha Fin' es obligatorio.");
+                isValid = false;
+            }
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                DateTime fin = DateTime.Parse(ConvertirFechaFin().ToString());
+                if (fin < inicio)
+                {
+                    MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio");
+                    return;
+                }
+            }
+            if(isValid)
+            {
                 membresiasVistaModelo.Id_Membresia = int.Parse(txtId.Text);
                 membresiasVistaModelo.Fecha_Registro = DateTime.Now;
                 membresiasVistaModelo.Descripcion = txtDescripcion.Text;
@@ -385,6 +436,7 @@ namespace UI.Windows.Formularios
                 Limpiar();
                 dataGridMembresias.Rows.Clear();
                 Listar();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

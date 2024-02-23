@@ -40,6 +40,14 @@ namespace Aplicacion.Servicio
         {
             return this.pagosdiariosRepository.ListarPagosActivosMiembros();
         }
+        public IEnumerable<PagoDiarioRegistro> ListarPagosDiariosActivosMiembroCedula(String cedula)
+        {
+            return this.pagosdiariosRepository.ListarPagosActivosMiembrosCedula(cedula);
+        }
+        public IEnumerable<PagoDiarioRegistro> ListarPagosDiariosActivosMiembroFecha(DateTime fecha)
+        {
+            return this.pagosdiariosRepository.ListarPagosActivosMiembrosFecha(fecha);
+        }
         public bool EliminarPago(int id)
         {
             return this.pagosdiariosRepository.ElminarPago(id);

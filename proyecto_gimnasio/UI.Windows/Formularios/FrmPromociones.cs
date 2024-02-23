@@ -252,21 +252,58 @@ namespace UI.Windows.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            bool isValid = true;
             if (string.IsNullOrEmpty(txtId.Text))
             {
                 MessageBox.Show("El Id del cliente no fue encontrado");
                 return;
             }
-            promocionesVistaModelo.Id_promocion = int.Parse(txtId.Text);
-            promocionesVistaModelo.Fecha_registro = DateTime.Now;
-            promocionesVistaModelo.Descripcion = txtDescripcion.Text;
-            promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
-            promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
-            promocionesVistaModelo.Estado = true;
-            modificarPromocion();
-            dataGridPromociones.Rows.Clear();
-            Listar();
-            Limpiar();
+            if (string.IsNullOrWhiteSpace(ConvertirFechaFin().ToString()))
+            {
+
+                MessageBox.Show("El campo 'Fecha fin' es obligatorio.");
+                isValid = false;
+            }
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                DateTime fin = DateTime.Parse(ConvertirFechaFin().ToString());
+                if (fin < inicio)
+                {
+                    MessageBox.Show("La fecha de fin debe ser mayor a la fecha de inicio");
+                    Limpiar();
+                    return;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(ConvertirFechaInicio().ToString()))
+            {
+                MessageBox.Show("El campo 'Fecha inicio' es obligatorio.");
+                isValid = false;
+            }
+            else
+            {
+                DateTime inicio = DateTime.Parse(ConvertirFechaInicio().ToString());
+                if (inicio < DateTime.Now.Date)
+                {
+                    MessageBox.Show("La fecha de inicio debe ser mayor a la fecha actual");
+                    Limpiar();
+                    return;
+                }
+            }
+            if (isValid)
+            {
+                promocionesVistaModelo.Id_promocion = int.Parse(txtId.Text);
+                promocionesVistaModelo.Fecha_registro = DateTime.Now;
+                promocionesVistaModelo.Descripcion = txtDescripcion.Text;
+                promocionesVistaModelo.Fecha_inicio = ConvertirFechaInicio();
+                promocionesVistaModelo.Fecha_fin = ConvertirFechaFin();
+                promocionesVistaModelo.Estado = true;
+                modificarPromocion();
+                dataGridPromociones.Rows.Clear();
+                Listar();
+                Limpiar();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
