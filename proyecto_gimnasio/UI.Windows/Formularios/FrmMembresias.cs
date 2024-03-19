@@ -1,9 +1,12 @@
-﻿using Dominio.Modelo.Entidades;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using Dominio.Modelo.Entidades;
+using iTextSharp.text;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +14,17 @@ using System.Windows.Forms;
 using UI.Windows.Controladores;
 using UI.Windows.Formularios.Utilitarios;
 using UI.Windows.VistaModelos;
+using iTextSharp.text;
+using Document = iTextSharp.text.Document;
+using PageSize = iTextSharp.text.PageSize;
+using iText.Kernel.Pdf;
+using iTextSharp.text.pdf;
+using PdfWriter = iTextSharp.text.pdf.PdfWriter;
+using Irony;
+using System.IO;
+using System.Drawing;
+using Image = System.Drawing.Image;
+using iTextSharp.tool.xml;
 
 namespace UI.Windows.Formularios
 {
@@ -308,7 +322,7 @@ namespace UI.Windows.Formularios
                 var imgX = e.CellBounds.Left + (e.CellBounds.Width - imgWidth) / 2;
                 var imgY = e.CellBounds.Top + (e.CellBounds.Height - imgHeight) / 2;
 
-                e.Graphics.DrawImage(Properties.Resources.check_circle_solid_24, new Rectangle(imgX, imgY, imgWidth, imgHeight));
+                e.Graphics.DrawImage(Properties.Resources.check_circle_solid_24, new System.Drawing.Rectangle(imgX, imgY, imgWidth, imgHeight));
                 e.Handled = true;
             }
         }
@@ -477,6 +491,72 @@ namespace UI.Windows.Formularios
                 string tipoSeleccionado = cboTipoMembresia.Text;
                 contenidoCostoMembresia(tipoSeleccionado);
             }
+        }
+
+        private void btnTarjeta_Click(object sender, EventArgs e)
+        {
+            if(txtDescripcion.Text == "")
+            {
+                MessageBox.Show("No se encontro tarjeta de miembro", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            string textoHtml = Properties.Resources.PlantillaMembresia.ToString();
+
+            textoHtml = textoHtml.Replace("@nombrenegocio", "WORKOUTCENTER");
+            textoHtml = textoHtml.Replace("@docnegocio", "1726517103001");
+            textoHtml = textoHtml.Replace("@direcnegocio", "PICHINCHA I QUITO I GUAYLLABAMBA / AV SIMON BOLIVAR SN Y PASAJE SN");
+
+            textoHtml = textoHtml.Replace("@tipodocumento", cboTipoMembresia.Text);
+            textoHtml = textoHtml.Replace("@numerodocumento", txtFechaRegistro.Text);
+
+            textoHtml = textoHtml.Replace("@docproveedor", txtDescripcion.Text);
+            textoHtml = textoHtml.Replace("@nombreproveedor", textFechaInicio.Text);
+            textoHtml = textoHtml.Replace("@fecharegistro", txtFechaFin.Text);
+            textoHtml = textoHtml.Replace("@usuarioregistro", cboPromocion.Text);
+            textoHtml = textoHtml.Replace("@montototal", cboCostoMembresia.Text);
+
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.FileName = string.Format("Tarjeta_{0}.pdf", DateTime.Now.ToString("dd-MM-yyyy"));
+            savefile.Filter = "Pdf Files|*.pdf";
+
+            if(savefile.ShowDialog() == DialogResult.OK)
+            {
+                using(FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A5,25,25,25,25);
+                    PdfWriter write = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+
+                    // Asumiendo que tienes una imagen llamada Logo en tus recursos
+                    Image image = Properties.Resources.Logo;
+
+                    byte[] byteImage;
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        // Guardar la imagen en el MemoryStream
+                        image.Save(ms, image.RawFormat);
+
+                        // Convertir el MemoryStream a byte array
+                        byteImage = ms.ToArray();
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(byteImage);
+                        img.ScaleToFit(60, 60);
+                        img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                        img.SetAbsolutePosition(pdfDoc.Left, pdfDoc.GetTop(51));
+                        pdfDoc.Add(img);
+                    }
+                    using(StringReader sr = new StringReader(textoHtml))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(write,pdfDoc,sr);
+                    }
+                    pdfDoc.Close();
+                    stream.Close();
+                    MessageBox.Show("Documento generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
         }
     }
 }
